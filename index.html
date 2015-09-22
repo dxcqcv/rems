@@ -45,6 +45,7 @@
 	<meta name="msapplication-TileColor" content="#3372DF">
 	<meta http-equiv="Cache-Control" content="no-siteapp">
     <link media="all" rel="stylesheet" href="css/reset.css" type="text/css" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&services=false&ak=508d19135c7e834335c9fd942625c161"></script>
 
 </head>
 <body>
@@ -109,7 +110,253 @@
         <!--登录页-->
         <div id="login" class="hide my-section"></div>
         <!--首页-->
-        <div id="index" class="hide my-section"></div>
+        <div id="index" class="hide my-section">
+            <!-- 地图部分 -->
+            <div id="allmap"></div>
+            <div class="search-section">
+                <input type="text" id="suggestId" size="20" class="search-input" value="百度" />
+                <input type="button" class="search-btn" />
+            </div>
+            <!-- 地图部分 -->
+            <!-- 右侧列表和图片切换 -->
+            <div class="tabs">
+                <div class="tab-btn">列表</div>
+                <div class="tab-btn">图片</div>
+            </div>
+            <div class="swiper-contents">
+                <div class="swiper-content cur">
+                    <div class="swiper-container swiper-container1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <ul class="image-show">
+                                    <li>
+                                        <a href="#">
+                                            <div class="index-right-locate">
+                                                <span>湖南省</span>·<span>长沙市</span>·<span>长沙区</span>
+                                                <b>黄花机场泛能站</b>
+                                            </div>
+                                            <div class="image">
+                                                <img src="images/index/img_demo.jpg" alt="">
+                                            </div>
+                                            <div class="inner-right">
+                                                <div class="architecture datas">
+                                                    <span>10.1万</span>
+                                                    <span>建筑</span>
+                                                </div>
+                                                <div class="energysupply datas">
+                                                    <span>6.1万</span>
+                                                    <span>供能</span>
+                                                </div>
+                                                <div class="station-type station-type1">
+                                                    公共建筑
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="index-right-locate">
+                                                <span>湖南省</span>·<span>长沙市</span>·<span>长沙区</span>
+                                                <b>黄花机场泛能站</b>
+                                            </div>
+                                            <div class="image">
+                                                <img src="images/index/img_demo.jpg" alt="">
+                                            </div>
+                                            <div class="inner-right">
+                                                <div class="architecture datas">
+                                                    <span>10.1万</span>
+                                                    <span>建筑</span>
+                                                </div>
+                                                <div class="energysupply datas">
+                                                    <span>6.1万</span>
+                                                    <span>供能</span>
+                                                </div>
+                                                <div class="station-type station-type1">
+                                                    公共建筑
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="swiper-slide">
+                                <ul class="image-show">
+                                    <li>
+                                        <a href="#">
+                                            <div class="index-right-locate">
+                                                <span>湖南省</span>·<span>长沙市</span>·<span>长沙区</span>
+                                                <b>黄花机场泛能站</b>
+                                            </div>
+                                            <div class="image">
+                                                <img src="images/index/img_demo.jpg" alt="">
+                                            </div>
+                                            <div class="inner-right">
+                                                <div class="architecture datas">
+                                                    <span>10.1万</span>
+                                                    <span>建筑</span>
+                                                </div>
+                                                <div class="energysupply datas">
+                                                    <span>6.1万</span>
+                                                    <span>供能</span>
+                                                </div>
+                                                <div class="station-type station-type1">
+                                                    公共建筑
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="index-right-locate">
+                                                <span>湖南省</span>·<span>长沙市</span>·<span>长沙区</span>
+                                                <b>黄花机场泛能站</b>
+                                            </div>
+                                            <div class="image">
+                                                <img src="images/index/img_demo.jpg" alt="">
+                                            </div>
+                                            <div class="inner-right">
+                                                <div class="architecture datas">
+                                                    <span>10.1万</span>
+                                                    <span>建筑</span>
+                                                </div>
+                                                <div class="energysupply datas">
+                                                    <span>6.1万</span>
+                                                    <span>供能</span>
+                                                </div>
+                                                <div class="station-type station-type1">
+                                                    公共建筑
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="swiper-slide">
+                                <ul class="image-show">
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <div class="index-right-locate">
+                                                <span>湖南省</span>·<span>长沙市</span>·<span>长沙区</span>
+                                                <b>黄花机场泛能站</b>
+                                            </div>
+                                            <div class="image">
+                                                <img src="images/index/img_demo.jpg" alt="">
+                                            </div>
+                                            <div class="inner-right">
+                                                <div class="architecture datas">
+                                                    <span>10.1万</span>
+                                                    <span>建筑</span>
+                                                </div>
+                                                <div class="energysupply datas">
+                                                    <span>6.1万</span>
+                                                    <span>供能</span>
+                                                </div>
+                                                <div class="station-type station-type1">
+                                                    公共建筑
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="index-right-locate">
+                                                <span>湖南省</span>·<span>长沙市</span>·<span>长沙区</span>
+                                                <b>黄花机场泛能站</b>
+                                            </div>
+                                            <div class="image">
+                                                <img src="images/index/img_demo.jpg" alt="">
+                                            </div>
+                                            <div class="inner-right">
+                                                <div class="architecture datas">
+                                                    <span>10.1万</span>
+                                                    <span>建筑</span>
+                                                </div>
+                                                <div class="energysupply datas">
+                                                    <span>6.1万</span>
+                                                    <span>供能</span>
+                                                </div>
+                                                <div class="station-type station-type1">
+                                                    公共建筑
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination swiper-pagination1"></div>
+                        
+                        <!-- 如果需要导航按钮 -->
+                        <div class="swiper-button-prev swiper-button-prev1"></div>
+                        <div class="swiper-button-next swiper-button-next1"></div>
+                    </div>
+                </div>
+                <div class="swiper-content">
+                    <div class="swiper-container swiper-container2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <ul class="block-show">
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/index/index_demo2.png" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination swiper-pagination2"></div>
+                        
+                        <!-- 如果需要导航按钮 -->
+                        <div class="swiper-button-prev swiper-button-prev2"></div>
+                        <div class="swiper-button-next swiper-button-next2"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧列表和图片切换 -->
+        </div>
         <!--能效检测-->
         <div id="nxjc" class="hide my-section"></div>
 

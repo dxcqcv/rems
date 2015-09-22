@@ -73,6 +73,9 @@ html, body {
   border: 1px solid red;
   box-sizing: border-box; }
 
+.my-section {
+  height: 100%; }
+
 /*icon fonts*/
 .ttt {
   font-size: 16px;

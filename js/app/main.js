@@ -8,6 +8,7 @@ require.config({
     paths: {
         jquery:'../lib/jquery',
         bootstrap:'../lib/bootstrap.min',
+        swiper:'../lib/swiper.3.1.2.jquery.min',
         highcharts:'../lib/highcharts/highcharts',
         index:'index',
         login:'login',
@@ -17,6 +18,7 @@ require.config({
     shim: {
        'bootstrap':{deps:['jquery']},
        'highcharts':{deps:['jquery']},
+       'swiper':{deps:['jquery']},
        'gyt':{deps:['jquery','highcharts']},
        'roy':{deps:['jquery','bootstrap']}, 
        'index':{deps:['jquery','bootstrap']}, 
@@ -26,7 +28,7 @@ require.config({
 
 require(
 	[
-		'roy','gyt','index','login'
+		'roy','gyt','index','login','swiper'
 	], 
 	function (jquery,modernizr){
 		$(function() {
@@ -41,6 +43,10 @@ require(
 require([
 //Reset CSS
     //"css!../../css/reset",
+//Index css
+    "css!../../css/index_right",
+    "css!../../css/map",
+    "css!../../css/swiper.3.1.2.min",
 //Bootstrap Core CSS
     "css!../../css/bootstrap",
     "css!../../css/bootstrap-theme",

@@ -124,7 +124,7 @@ function failFn(jqXHR, textStatus,errorThrown) { console.log('error is ' + jqXHR
 function doneFn() { console.log('done'); }
 var demand = new Request(); // 统一调用ajax
             //demand.start({url:'http://10.36.128.73:8080/reds/ds/equipState', jsonp: 'equipState',done:shenlongchengEquipStatFn});
-            demand.start({url:'http://10.20.1.155:8080/rems/login',data:{username:'sundear-wq',password:'qwe123'}});
+            //demand.start({url:'http://10.20.1.155:8080/rems/login',data:{username:'sundear-wq',password:'qwe123'}});
             //demand.start({url:'http://10.20.1.155:8080/rems/rest/index3.json', done:testfn});
             //demand.start({url:'http://10.20.1.155:8080/rems/rest/gislist.json ', done:testfn2});
             function testfn(data){
