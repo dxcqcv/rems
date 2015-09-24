@@ -27,5 +27,17 @@
 
 
 ********************************************************************************************  */
+.my-index-right {
+  width: 475px;
+  height: 654px;
+  position: absolute;
+  top: 130px;
+  right: 20px; }
+
+.my-index-right-detail {
+  background: url("../img/index/index-right01.png") no-repeat; }
+
+.my-index-right-list {
+  background: url("../img/index/index-right02.png") no-repeat; }
 
 /*# sourceMappingURL=index.css.map */

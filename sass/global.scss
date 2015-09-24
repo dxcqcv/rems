@@ -48,6 +48,15 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .my-left { background: green;}
 .my-box { height: 50%; background: #ccc;border: 1px solid red; box-sizing: border-box; }
 .my-section { height: 100%; }
+/* login */
+.my-login {
+    background: #e1edf8 url('../img/login/log_mid.png') no-repeat center;
+}
+.my-login-form {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(50%, -100%);
+    width: 210px;
+}
 /*icon fonts*/
 .ttt { font-size: 16px; color: #39c;}
 @font-face {

@@ -1,10 +1,29 @@
 var royfunction = function() {
     var 
-        navButton = $('.my-nav').children('li').children('a'),
-        myCont = $('.my-content')
-        myShow = $('.my-show')
-        mySection = $('.my-section')
+          navButton = $('.my-nav').children('li').children('a')
+        , myCont = $('.my-content')
+        , myShow = $('.my-show')
+        , mySection = $('.my-section')
+        , url = (window.location.href).split('#')[0] 
         ;
+    //页面跳转
+    var fragment = (window.location.href).split('#')[1];
+    switch(fragment ) {
+        case 'login': 
+            showPage('#login'); 
+            break; 
+        case 'index': 
+            showPage('#index'); 
+            showNav();
+            break; 
+    }
+    function showNav() {
+        myCont.removeClass('two-nav').addClass('one-nav');        
+        $('.my-navbar').removeClass('hide');
+    }
+    function showPage(name) {
+        $(name).siblings('div').addClass('hide').end().removeClass('hide');
+    }
         //首页导航高度
     navButton.on('click', function(){
         var indexNav = $(this).data('hight');        
@@ -22,13 +41,22 @@ var royfunction = function() {
                 id = $this.attr('id') 
             ;
             if(id == 'index') {
-                window.location.href = 'index.html#index';
+                window.location.href = url+'#index';
+                fragment = 'index'; 
             }
             if(id == show) {
                 $this.siblings('div').addClass('hide').end().removeClass('hide');
             }
         });
     });
+    //登录页面
+    $('#loginButton').on('click', function() {
+         fragment = 'index'; 
+         window.location.href = url+'#index';
+         showPage('#index'); 
+         showNav();
+    });
+
     //封装ajax
 function LocalJsonp() {
     this.loading = $('#loading');

@@ -2,13 +2,13 @@ var indexfunction = function() {
         // 百度地图API功能
         var map = new BMap.Map("allmap");// 创建Map实例
         var top_left_navigation = new BMap.NavigationControl();//左上角，添加默认缩放平移控件
-        var marker = new BMap.Marker(new BMap.Point(116.404, 39.915));//添加坐标
+        var marker = new BMap.Marker(new BMap.Point(106.404, 39.915));//添加坐标
         var sContent = "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>天安门</h4>" + 
                        "<img style='float:right;margin:4px' id='imgDemo' src='http://app.baidu.com/map/images/tiananmen.jpg' width='139' height='104' title='天安门'/>" + 
                        "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" + 
                        "</div>";
         var infoWindow = new BMap.InfoWindow(sContent);
-        map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);  // 初始化地图,设置中心点坐标和地图级别
+        map.centerAndZoom(new BMap.Point(106.404, 39.915), 5);  // 初始化地图,设置中心点坐标和地图级别
         map.addControl(top_left_navigation); //添加缩放平移控件
         map.addOverlay(marker);
         marker.addEventListener("click", function(){          
@@ -73,7 +73,7 @@ var indexfunction = function() {
         }
 
         // for (var i = 0; i < 5; i ++) {
-            var point = new BMap.Point(121.487899,31.249162);
+            var point = new BMap.Point(101.487899,31.249162);
             addMarker(point);
         // }
 
