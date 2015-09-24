@@ -14,11 +14,19 @@ var royfunction = function() {
             break; 
         case 'index': 
             showPage('#index'); 
-            showNav();
+            showMainNav();
+            break; 
+        case 'nxjc': 
+            showPage('#nxjc'); 
+            showSubNav();
             break; 
     }
-    function showNav() {
+    function showMainNav() {
         myCont.removeClass('two-nav').addClass('one-nav');        
+        $('.my-navbar').removeClass('hide');
+    }
+    function showSubNav() {
+        myCont.removeClass('one-nav').addClass('two-nav');        
         $('.my-navbar').removeClass('hide');
     }
     function showPage(name) {
@@ -32,6 +40,10 @@ var royfunction = function() {
         } else {
             myCont.removeClass('two-nav').addClass('one-nav');        
         } 
+    });
+    //首页项目选择
+    $('.my-index-right').on('click', function(){
+        $(this).toggleClass('my-index-right-list');
     });
     //导航选择
     myShow.on('click', function(){
@@ -54,7 +66,7 @@ var royfunction = function() {
          fragment = 'index'; 
          window.location.href = url+'#index';
          showPage('#index'); 
-         showNav();
+         showMainNav();
     });
 
     //封装ajax

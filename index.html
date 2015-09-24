@@ -84,7 +84,7 @@
                 <div id="sectionC" class="tab-pane fade">
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#gyt" data-show="gyt" class="my-show">工艺监测</a></li>
-                        <li><a href="#">能效监测</a></li>
+                        <li><a href="#nxjc"  data-show="nxjc" class="my-show">能效监测</a></li>
                         <li><a href="#">数据监测</a></li>
                     </ul>
                 </div>
@@ -104,11 +104,6 @@
             <!--<div id="second">second</div>-->
         <!--</div>-->
         <!--<div class="my-right col-lg-10 col-md-10  col-sm-10"></div>-->
-        <!--4分格-->
-        <!--<div class="my-box col-md-6 col-lg-6 col-xs-12"></div>-->
-        <!--<div class="my-box col-md-6 col-lg-6 col-xs-12"></div>-->
-        <!--<div class="my-box col-md-6 col-lg-6 col-xs-12"></div>-->
-        <!--<div class="my-box col-md-6 col-lg-6 col-xs-12"></div>-->
         <!--登录页-->
         <div id="login" class="my-section my-login">
             <!--<form class="my-login-form">-->
@@ -143,12 +138,38 @@
             <!-- 地图部分 -->
             <!--项目选择-->
             <div class="my-index-right my-index-right-detail">
-                
             </div>
             <!--项目选择-->
         </div>
         <!--能效检测-->
-        <div id="nxjc" class="hide my-section"></div>
+        <div id="nxjc" class="hide my-section">
+            <!--4分格-->
+            <div id="singleBox" class="my-box col-md-6 col-lg-6 col-xs-12">
+                <div id="chart-0" class="panel panel-default module module-1 no">
+                    <div id="singleBoxTitle" class="panel-heading clearfix">
+                        <ul class="nav nav-tabs pull-left">
+                            <li><h4>气象信息</h4></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" type="button">
+                            <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="singleBoxSubTitle" class="list-inline">
+                            <li>温度 30C</li>
+                            <li>湿度 15%</li>
+                            <li>辐照度 1234w/m2</li>
+                        </ul>
+                        <div id="qxxxChartBox" class="chart-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-box col-md-6 col-lg-6 col-xs-12">
+            
+            </div>
+            <div class="my-box col-md-6 col-lg-6 col-xs-12"></div>
+            <div class="my-box col-md-6 col-lg-6 col-xs-12"></div>
+        </div>
 
         <div id="hightcharts" class="highcharts-box hide my-section"></div>
             <!--内页工艺图-->

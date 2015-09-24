@@ -20,6 +20,7 @@ require.config({
        'highcharts':{deps:['jquery']},
        'swiper':{deps:['jquery']},
        'gyt':{deps:['jquery','highcharts']},
+       'nxjc':{deps:['jquery','highcharts']},
        'roy':{deps:['jquery','bootstrap']}, 
        'index':{deps:['jquery','bootstrap']}, 
        'login':{deps:['jquery','bootstrap']} 
@@ -28,12 +29,13 @@ require.config({
 
 require(
 	[
-		'roy','gyt','index','login','swiper'
+		'roy','nxjc','gyt','index','login','swiper'
 	], 
 	function (jquery,modernizr){
 		$(function() {
 			royfunction();
 			gytfunction();
+			nxjcfunction();
 			indexfunction();
 			loginfunction();
 		});
