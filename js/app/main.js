@@ -1,4 +1,5 @@
 require.config({
+    baseUrl: 'js/lib',
     waitSeconds:120,
     map:{
         '*':{
@@ -6,41 +7,33 @@ require.config({
         }
     },
     paths: {
-        jquery:'../lib/jquery',
-        bootstrap:'../lib/bootstrap.min',
-        swiper:'../lib/swiper.3.1.2.jquery.min',
-        highcharts:'../lib/highcharts/highcharts',
-        index:'index',
-        login:'login',
-        gyt:'gyt',
-        roy:'roy'
+        app: '../app'
     },
+    //paths: {
+        //jquery:'../lib/jquery',
+        //bootstrap:'../lib/bootstrap.min',
+        //swiper:'../lib/swiper.3.1.2.jquery.min',
+        //highcharts:'../lib/highcharts/highcharts',
+        //index:'index',
+        //login:'login',
+        //gyt:'gyt',
+        //roy:'roy'
+    //},
     shim: {
        'bootstrap':{deps:['jquery']},
        'highcharts':{deps:['jquery']},
-       'swiper':{deps:['jquery']},
-       'gyt':{deps:['jquery','highcharts']},
-       'nxjc':{deps:['jquery','highcharts']},
-       'roy':{deps:['jquery','bootstrap']}, 
-       'index':{deps:['jquery','bootstrap']}, 
-       'login':{deps:['jquery','bootstrap']} 
+       'swiper':{deps:['jquery']}
+       //'gyt':{deps:['jquery','highcharts']},
+       //'nxjc':{deps:['jquery','highcharts']},
+       //'roy':{deps:['jquery','bootstrap']}, 
+       //'index':{deps:['jquery','bootstrap']}, 
+       //'login':{deps:['jquery','bootstrap']} 
     }
 });
 
-require(
-	[
-		'roy','nxjc','gyt','index','login','swiper'
-	], 
-	function (jquery,modernizr){
-		$(function() {
-			royfunction();
-			gytfunction();
-			nxjcfunction();
-			indexfunction();
-			loginfunction();
-		});
-	}
-);
+require(['app/roy'],function(roy){
+    roy.pageInit();    
+});
 //加载对应css模块
 require([
 //Reset CSS
