@@ -1,0 +1,33 @@
+<% include header.html %>
+        <!--两栏-->
+        <!--<div class="my-left col-lg-2 col-md-2 col-sm-2">-->
+            <!--<div id="index">12121</div>-->
+            <!--<div id="second">second</div>-->
+        <!--</div>-->
+        <!--<div class="my-right col-lg-10 col-md-10  col-sm-10"></div>-->
+        <!--登录页-->
+        <div id="login" class="my-section my-login">
+            <!--<form class="my-login-form" method="post">-->
+            <form method="post">
+            <div class="my-login-form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label class="sr-only" for="username"></label>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input class="form-control" type="text" id="username" name="username" placeholder="请输入用户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <label class="sr-only" for="password"></label>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input class="form-control" type="password" id="password" name="password" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="checkbox"></div>
+                <button type="submit" class="btn btn-primary btn-block">登录</button>
+            </div>
+            </form>
+        </div>
+       
+<% include footer.html %>
