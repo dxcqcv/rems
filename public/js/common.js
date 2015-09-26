@@ -16,9 +16,9 @@ require.config({
     }
 });
 
-require(['app/roy'],function(roy){
-    roy.pageInit();    
-});
+//require(['app/roy'],function(roy){
+    //roy.pageInit();    
+//});
 //加载对应css模块
 require([
 //Reset CSS

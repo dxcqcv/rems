@@ -1,5 +1,4 @@
 <% include header.html %>
-
         <!--首页-->
         <div id="index" class="my-section">
             <!-- 地图部分 -->
@@ -10,5 +9,8 @@
             </div>
             <!--项目选择-->
         </div>
-
+        <script>
+            requirejs(['../js/common'], function (common) {
+            });
+        </script>
 <% include footer.html %>

@@ -1,4 +1,4 @@
-<% include header.html %>
+<% include header-no-nav.html %>
         <!--两栏-->
         <!--<div class="my-left col-lg-2 col-md-2 col-sm-2">-->
             <!--<div id="index">12121</div>-->
@@ -30,4 +30,9 @@
             </form>
         </div>
        
+        <script>
+            requirejs(['js/common'], function (common) {
+                requirejs(['app/login']);
+            });
+        </script>
 <% include footer.html %>
