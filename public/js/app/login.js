@@ -11,7 +11,7 @@
 define(function (require) {
     var $ = require('jquery');
     (function(){
-    }));
+    }());
 });
 //define(function (require) {
     //var $ = require('jquery'),

@@ -1,76 +1,24 @@
-define(['jquery','app/nxjc','app/index','app/login','app/gyt','bootstrap'],function($,nxjc,index,login){
+define(['jquery'],function($){
     return {
         pageInit: function() {
-            //index.map();
-            login.hideNav();
-            //var 
-                  //navButton = $('.my-nav').children('li').children('a')
-                //, myCont = $('.my-content')
-                //, myShow = $('.my-show')
-                //, mySection = $('.my-section')
-                //, url = (window.location.href).split('#')[0] 
-                //;
-            ////页面跳转
-            ////var fragment = (window.location.href).split('#')[1];
-            ////switch(fragment ) {
-                ////case 'login': 
-                    ////showPage('#login'); 
-                    ////break; 
-                ////case 'index': 
-                    ////showPage('#index'); 
-                    ////showMainNav();
-                    ////break; 
-                ////case 'nxjc': 
-                    ////showPage('#nxjc'); 
-                    ////showSubNav();
-                    ////break; 
-            ////}
-            ////function showMainNav() {
-                ////myCont.removeClass('two-nav').addClass('one-nav');        
-                ////$('.my-navbar').removeClass('hide');
-            ////}
-            ////function showSubNav() {
-                ////myCont.removeClass('one-nav').addClass('two-nav');        
-                ////$('.my-navbar').removeClass('hide');
-            ////}
-            ////function showPage(name) {
-                ////$(name).siblings('div').addClass('hide').end().removeClass('hide');
-            ////}
-                ////首页导航高度
-            //navButton.on('click', function(){
-                //var indexNav = $(this).data('hight');        
-                //if(indexNav === 1) {
-                    //myCont.removeClass('one-nav').addClass('two-nav');        
-                //} else {
-                    //myCont.removeClass('two-nav').addClass('one-nav');        
-                //} 
-            //});
+            var 
+                  navButton = $('.my-nav').children('li').children('a')
+                , myCont = $('.my-content')
+                , myShow = $('.my-show')
+                , mySection = $('.my-section')
+                ;
+                //导航高度
+            navButton.on('click', function(){
+                var indexNav = $(this).data('hight');        
+                if(indexNav === 1) {
+                    myCont.removeClass('one-nav').addClass('two-nav');        
+                } else {
+                    myCont.removeClass('two-nav').addClass('one-nav');        
+                } 
+            });
             ////首页项目选择
             //$('.my-index-right').on('click', function(){
                 //$(this).toggleClass('my-index-right-list');
-            //});
-            ////导航选择
-            //myShow.on('click', function(){
-                //var show = $(this).data('show');                
-                //$.each(mySection, function(i,k){
-                    //var $this = $(this)
-                        //id = $this.attr('id') 
-                    //;
-                    //if(id == 'index') {
-                        //window.location.href = url+'#index';
-                        //fragment = 'index'; 
-                    //}
-                    //if(id == show) {
-                        //$this.siblings('div').addClass('hide').end().removeClass('hide');
-                    //}
-                //});
-            //});
-            ////登录页面
-            //$('#loginButton').on('click', function() {
-                 //fragment = 'index'; 
-                 //window.location.href = url+'#index';
-                 //showPage('#index'); 
-                 //showMainNav();
             //});
 
             ////封装ajax
