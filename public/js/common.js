@@ -10,26 +10,21 @@ require.config({
         app: '../app'
     },
     shim: {
-       'bootstrap':{deps:['jquery']},
+       'bootstrap':{deps:['jquery',"css!../../css/bootstrap","css!../../css/bootstrap-theme"]},
        'highcharts':{deps:['jquery']},
        'swiper':{deps:['jquery']}
     }
 });
 
-require(['app/roy'],function(roy){
+require(['app/roy',"css!../../css/reset",'bootstrap'],function(roy){
     roy.pageInit();    
 });
 //加载对应css模块
 require([
-//Reset CSS
-    //"css!../../css/reset",
 //Index css
     "css!../../css/index_right",
     "css!../../css/map",
     "css!../../css/swiper.3.1.2.min",
-//Bootstrap Core CSS
-    "css!../../css/bootstrap",
-    "css!../../css/bootstrap-theme",
 //Custom Fonts 
     "css!../../font-awesome/css/font-awesome",
 //Custom CSS
