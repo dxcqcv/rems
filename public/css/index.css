@@ -27,17 +27,44 @@
 
 
 ********************************************************************************************  */
+.my-map {
+  height: 100%; }
+
 .my-index-right {
   width: 475px;
-  height: 654px;
+  height: 100%;
   position: absolute;
   top: 0px;
-  right: 20px; }
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end; }
 
-.my-index-right-detail {
-  background: url("../img/index/index-right01.png") no-repeat; }
+.my-index-switch {
+  width: 56px;
+  height: 25px; }
 
-.my-index-right-list {
-  background: url("../img/index/index-right02.png") no-repeat; }
+.my-index-switch-detail {
+  background: url("../img/index/index_switch_logo02.png") no-repeat; }
+
+.my-index-switch-list {
+  background: url("../img/index/index_switch_logo01.png") no-repeat; }
+
+.my-index-project-box {
+  display: block;
+  width: 464px;
+  height: 186px;
+  background: url("../img/index/index_project01.png") no-repeat; }
+
+.my-index-project-box:hover {
+  background: url("../img/index/index_project02.png") no-repeat; }
+
+.my-index-list-cont {
+  width: 143px;
+  height: 127px;
+  display: inline-block;
+  background: url("../img/index/index_project03.png") no-repeat; }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,16 +1,24 @@
 <% include header-no-nav.html %>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&services=false&ak=508d19135c7e834335c9fd942625c161"></script>
         <!--首页-->
         <div id="index" class="my-section">
             <!-- 地图部分 -->
-            <div id="allmap"></div>
+            <div id="allmap" class="my-map"></div>
             <!-- 地图部分 -->
             <!--项目选择-->
-            <div class="my-index-right my-index-right-detail">
+            <div class="my-index-right">
+                <div data-list=0 class="my-index-switch my-index-switch-detail my-index-switch-list"></div>
+                <div class="my-index-projects-wrapper">
+                    <a href="/user/xmgl" class="my-index-project-box"></a>
+                    <a href="/user/xmgl" class="my-index-project-box"></a>
+                    <a href="/user/xmgl" class="my-index-project-box"></a>
+                </div>
             </div>
             <!--项目选择-->
         </div>
         <script>
             requirejs(['../js/common'], function (common) {
+                requirejs(['app/index']);
             });
         </script>
 <% include footer.html %>

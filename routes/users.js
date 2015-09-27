@@ -22,5 +22,8 @@ router.get('/gyt', function(req, res) {
 router.get('/hc', function(req, res) {
     res.render('hightcharts', { title: 'Home' });
 });
+router.get('/xmgl', function(req, res) {
+    res.render('xmgl', { title: 'Home' });
+});
 
 module.exports = router;

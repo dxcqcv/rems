@@ -1,13 +1,3 @@
-//define(['jquery'],function($){
-    //return {
-        //hideNav: function() {
-            //var myNavbar = $('.my-navbar');
-            //if(!myNavbar.hasClass('hide')) {
-               //myNavbar.addClass('hide'); 
-            //}
-        //}
-    //}    
-//});
 define(function (require) {
     var $ = require('jquery');
     (function(){
