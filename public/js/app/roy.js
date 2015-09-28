@@ -32,10 +32,10 @@ define(['jquery'],function($){
                 } 
                 switch(navName) {
                     case 'ycjc': 
-                        str = '<li><a href="#">工艺监测</a></li><li><a href="/user/nxjc">能效监测</a></li><li><a href="/user/sjjc">数据监测</a></li>'; 
+                        str = '<li><a class="active" href="#">工艺监测</a></li><li><a href="/user/nxjc">能效监测</a></li><li><a href="/user/sjjc">数据监测</a></li>'; 
                         break;
                     case 'nygl':
-                        str = '<li><a href="#">能效分析</a></li><li><a href="/user/tbhb">同比环比</a></li><li><a href="#">分项计量</a></li><li><a href="#">成本收益分析</a></li><li><a href="#">报表</a></li>'; 
+                        str = '<li><a class="active" href="#">能效分析</a></li><li><a href="/user/tbhb">同比环比</a></li><li><a href="#">分项计量</a></li><li><a href="#">成本收益分析</a></li><li><a href="#">报表</a></li>'; 
                         break;
                     case 'pgzd':
                         str = ''; 

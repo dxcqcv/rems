@@ -7,6 +7,16 @@
   min-height: 50%;
   padding: 15px; }
 
+.my-card:first-child {
+  padding-bottom: 0;
+  padding-right: 0; }
+
+.my-card:nth-child(2) {
+  padding-bottom: 0; }
+
+.my-card:nth-child(3) {
+  padding-right: 0; }
+
 .my-card-top {
   position: absolute;
   top: 0;
@@ -14,9 +24,13 @@
   width: 100%;
   padding: 15px 15px 0 15px; }
 
+.my-card:nth-child(1) > .my-card-top,
+.my-card:nth-child(3) > .my-card-top {
+  padding-right: 0; }
+
 .chart-box {
   height: 100%;
-  background: #39c;
-  padding-top: 120px; }
+  padding-top: 120px;
+  border: 1px solid transparent; }
 
 /*# sourceMappingURL=nxjc.css.map */
