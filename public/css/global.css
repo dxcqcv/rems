@@ -67,12 +67,6 @@ html, body {
 .my-left {
   background: green; }
 
-.my-box {
-  height: 50%;
-  background: #ccc;
-  border: 1px solid red;
-  box-sizing: border-box; }
-
 .my-section {
   height: 100%; }
 

@@ -25,5 +25,11 @@ router.get('/hc', function(req, res) {
 router.get('/xmgl', function(req, res) {
     res.render('xmgl', { title: 'Home' });
 });
+router.get('/nxjc', function(req, res) {
+    res.render('nxjc', { title: 'Home' });
+});
+router.get('/sjjc', function(req, res) {
+    res.render('sjjc', { title: 'Home' });
+});
 
 module.exports = router;

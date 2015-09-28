@@ -3,10 +3,12 @@ define(['jquery'],function($){
         pageInit: function() {
             var 
                   navButton = $('.my-nav').children('li').children('a')
+                , doc = document
                 , myCont = $('.my-content')
                 , myShow = $('.my-show')
                 , mySection = $('.my-section')
                 , mySectionId = mySection.attr('id')
+                , subNav = $('.my-sub-nav').children('li').children('a')
                 ;
             // global layout
             switch(mySectionId ) {
@@ -15,14 +17,14 @@ define(['jquery'],function($){
                     myCont.removeClass('one-nav'); break; 
                 default: myCont.removeClass('one-nav').addClass('two-nav');
             }
-                //导航高度
-            navButton.on('click', function(){
+                //导航高度和高亮及子导航内容
+            $(doc).on('click','.my-nav > li > a', function(){
                 var $this = $(this) 
                   , indexNav = $this.data('hight')
                   , navName = $this.data('show')
                   , str = ''
                   ;        
-                $this.parent('li').siblings('li').removeClass('active').end().end().addClass('active')
+                $this.parent('li').siblings('li').removeClass('active').end().addClass('active')
                 if(indexNav === 1) {
                     myCont.removeClass('one-nav').addClass('two-nav');        
                 } else {
@@ -30,16 +32,20 @@ define(['jquery'],function($){
                 } 
                 switch(navName) {
                     case 'ycjc': 
-                        str = '<li><a href="#">工艺监测</a></li><li><a href="#">能效监测</a></li><li><a href="#">数据监测</a></li>'; 
+                        str = '<li><a href="#">工艺监测</a></li><li><a href="/user/nxjc">能效监测</a></li><li><a href="/user/sjjc">数据监测</a></li>'; 
                         break;
                     case 'nygl':
-                        str = '<li><a href="#">能效分析</a></li><li><a href="/user/gbhb">同比环比</a></li><li><a href="#">分项计量</a></li><li><a href="#">成本收益分析</a></li><li><a href="#">报表</a></li>'; 
+                        str = '<li><a href="#">能效分析</a></li><li><a href="/user/tbhb">同比环比</a></li><li><a href="#">分项计量</a></li><li><a href="#">成本收益分析</a></li><li><a href="#">报表</a></li>'; 
                         break;
                     case 'pgzd':
                         str = ''; 
                         break;
                 }
                 $('.my-sub-nav').empty().append(str);
+            });
+            //子导航选择
+            $(doc).on('click','.my-sub-nav > li > a',function(){
+                $(this).parent('li').siblings('li').removeClass('active').end().addClass('active'); 
             });
             ////首页项目选择
             //$('.my-index-right').on('click', function(){

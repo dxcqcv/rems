@@ -7,7 +7,8 @@ require.config({
         }
     },
     paths: {
-        app: '../app'
+        app: '../app',
+        highcharts:'../lib/highcharts/highcharts'
     },
     shim: {
        'bootstrap':{deps:['jquery']},
@@ -30,9 +31,6 @@ require([
     "css!../../font-awesome/css/font-awesome",
     "css!../../css/bootstrap","css!../../css/bootstrap-theme",
     "css!../../css/global",
-    "css!../../css/login",
-    "css!../../css/index",
-    "css!../../css/xmgl",
     "css!../../css/gyt",
     "css!../../css/others"
 ]);

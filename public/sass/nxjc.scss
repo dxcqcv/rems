@@ -1,0 +1,9 @@
+/*能效监测*/
+.my-card { height: 50%; background: #ccc; box-sizing: border-box; min-height: 50%; padding: 15px;}
+.my-card-top {
+    position: absolute; top: 0; left: 0;
+    width: 100%; padding: 15px 15px 0 15px;
+}
+.chart-box {
+    height: 100%; background: #39c; padding-top: 120px;
+}

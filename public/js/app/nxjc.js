@@ -1,13 +1,9 @@
-define(function(){
-    return {
-        gonxjc: function() {
-                    
-            var totalHeight = $('#singleBox').outerHeight()
-              , titleHeight = $('#singleBoxTitle').outerHeight()
-              , subTitleHeight = $('#singleBoxSubTitle').outerHeight()
-              , chartBoxHeight = totalHeight - titleHeight - subTitleHeight -50 
-              ;
-              $('#qxxxChartBox').height(chartBoxHeight);
+
+define(function(require){
+    var $ = require('jquery')
+      , highcharts = require('highcharts')
+      ;
+      (function(){
             $('.chart-box').highcharts({
                 chart: {
                     type: 'area'
@@ -74,6 +70,5 @@ define(function(){
                         21000, 20000, 19000, 18000, 18000, 17000, 16000]
                 }]
             });
-        }
-    }
+      }());
 });

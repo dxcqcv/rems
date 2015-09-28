@@ -31,7 +31,7 @@
         </div>
         <script>
             requirejs(['js/common'], function (common) {
-                requirejs(['app/login']);
+                requirejs(["css!../../css/login",'app/login']);
             });
         </script>
 <% include footer.html %>

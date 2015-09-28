@@ -1,0 +1,15 @@
+<% include header.html %>
+       <!--数据监测-->
+        <div id="sjjc" class="my-section">
+            <!--两栏-->
+            <div class="my-left col-lg-2 col-md-2 col-sm-2">
+                <div id="index">12121</div>
+                <div id="second">second</div>
+            </div>
+        </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/sjjc',"css!../../css/sjjc"])
+            });
+        </script>
+<% include footer.html %>
