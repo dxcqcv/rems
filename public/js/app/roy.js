@@ -2,50 +2,74 @@ define(['jquery'],function($){
     return {
         pageInit: function() {
             var 
-                  navButton = $('.my-nav').children('li').children('a')
+                  mainNav = $('#mainNav')
+                , navButton = mainNav.children('li').children('a')
                 , doc = document
                 , myCont = $('.my-content')
                 , myShow = $('.my-show')
                 , mySection = $('.my-section')
                 , mySectionId = mySection.attr('id')
-                , subNav = $('.my-sub-nav').children('li').children('a')
+                , subNav = $('#subNav')
+                , subNavList = $('.my-sub-nav').children('li').children('a')
+                , curNav
+                , str = ''
                 ;
-            // global layout
-            switch(mySectionId ) {
+
+            //check current nav position
+            if(localStorage.getItem('curNav') != null) {
+                curNav = localStorage.getItem('curNav').split('-');
+                highlightNav(curNav[0]);
+                $('.'+curNav[1]+'-subnav').parent('li').siblings('li').removeClass('active').end().addClass('active');
+            }
+            // global nav layout
+            switch(mySectionId) {
                 case 'login':
+                    myCont.removeClass('one-nav'); 
+                    break;
                 case 'index':
-                    myCont.removeClass('one-nav'); break; 
-                default: myCont.removeClass('one-nav').addClass('two-nav');
+                    subNav.addClass('hide'); 
+                    mainNav.empty();
+                    break; 
+                default: 
+                    myCont.removeClass('one-nav').addClass('two-nav');
+                    subNav.removeClass('hide');
             }
                 //导航高度和高亮及子导航内容
             $(doc).on('click','.my-nav > li > a', function(){
                 var $this = $(this) 
                   , indexNav = $this.data('hight')
                   , navName = $this.data('show')
-                  , str = ''
                   ;        
-                $this.parent('li').siblings('li').removeClass('active').end().addClass('active')
+                //$this.parent('li').siblings('li').removeClass('active').end().addClass('active')
                 if(indexNav === 1) {
                     myCont.removeClass('one-nav').addClass('two-nav');        
                 } else {
                     myCont.removeClass('two-nav').addClass('one-nav');        
                 } 
+                localStorage.setItem('curNav',$this.data('subshow'));
+                highlightNav(navName);
+            });
+            function highlightNav(navName) {
+                $('.'+navName+'-nav').parent('li').siblings('li').removeClass('active').end().addClass('active');
                 switch(navName) {
                     case 'ycjc': 
-                        str = '<li><a class="active" href="#">工艺监测</a></li><li><a href="/user/nxjc">能效监测</a></li><li><a href="/user/sjjc">数据监测</a></li>'; 
+                        str = '<li class="active"><a class="gyjc-subnav" data-subshow="ycjc-gyjc" href="#">工艺监测</a></li><li><a class="nxjc-subnav" data-subshow="ycjc-nxjc" href="/user/nxjc">能效监测</a></li><li><a class="sjjc-subnav" data-subshow="ycjc-sjjc" href="/user/sjjc">数据监测</a></li>'; 
                         break;
                     case 'nygl':
-                        str = '<li><a class="active" href="#">能效分析</a></li><li><a href="/user/tbhb">同比环比</a></li><li><a href="#">分项计量</a></li><li><a href="#">成本收益分析</a></li><li><a href="#">报表</a></li>'; 
+                        str = '<li class="active"><a class="nxfx-subnav" data-subshow="nygl-nxfx" href="#">能效分析</a></li><li><a class="tbhb-subnav" data-subshow="nygl-tbhb" href="/user/tbhb">同比环比</a></li><li><a class="fxjl-subnav" data-subshow="nygl-fxjl" href="#">分项计量</a></li><li><a class="cbfx-subnav" data-subshow="nygl-cbfx" href="#">成本分析</a></li><li><a class="bb-subnav" data-subshow="nygl-bb" href="#">报表</a></li>'; 
                         break;
                     case 'pgzd':
                         str = ''; 
                         break;
+                    default:
                 }
                 $('.my-sub-nav').empty().append(str);
-            });
+            }
             //子导航选择
             $(doc).on('click','.my-sub-nav > li > a',function(){
-                $(this).parent('li').siblings('li').removeClass('active').end().addClass('active'); 
+                var $this = $(this)
+                $this.parent('li').siblings('li').removeClass('active').end().addClass('active'); 
+                localStorage.setItem('curNav',$this.data('subshow'));
             });
             ////首页项目选择
             //$('.my-index-right').on('click', function(){
