@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*能效监测*/
+.my-card:first-child {
+  padding-bottom: 0;
+  padding-right: 0; }
+
+.my-card:nth-child(2) {
+  padding-bottom: 0; }
+
+.my-card:nth-child(3) {
+  padding-right: 0; }
+
+.my-card:nth-child(1) > .my-card-top,
+.my-card:nth-child(3) > .my-card-top {
+  padding-right: 0; }
+
+.chart-box {
+  height: 100%;
+  padding-top: 120px;
+  border: 1px solid transparent; }
+
+/*# sourceMappingURL=nxjc.css.map */

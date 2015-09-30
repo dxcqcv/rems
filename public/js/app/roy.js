@@ -53,10 +53,10 @@ define(['jquery'],function($){
                 $('.'+navName+'-nav').parent('li').siblings('li').removeClass('active').end().addClass('active');
                 switch(navName) {
                     case 'ycjc': 
-                        str = '<li class="active"><a class="gyjc-subnav" data-subshow="ycjc-gyjc" href="#">工艺监测</a></li><li><a class="nxjc-subnav" data-subshow="ycjc-nxjc" href="/user/nxjc">能效监测</a></li><li><a class="sjjc-subnav" data-subshow="ycjc-sjjc" href="/user/sjjc">数据监测</a></li>'; 
+                        str = '<li class="active"><a class="gyjc-subnav" data-subshow="ycjc-gyjc" href="">工艺监测</a></li><li><a class="nxjc-subnav" data-subshow="ycjc-nxjc" href="/user/nxjc">能效监测</a></li><li><a class="sjjc-subnav" data-subshow="ycjc-sjjc" href="/user/sjjc">数据监测</a></li>'; 
                         break;
                     case 'nygl':
-                        str = '<li class="active"><a class="nxfx-subnav" data-subshow="nygl-nxfx" href="#">能效分析</a></li><li><a class="tbhb-subnav" data-subshow="nygl-tbhb" href="/user/tbhb">同比环比</a></li><li><a class="fxjl-subnav" data-subshow="nygl-fxjl" href="#">分项计量</a></li><li><a class="cbfx-subnav" data-subshow="nygl-cbfx" href="/user/cbfx">成本分析</a></li><li><a class="bb-subnav" data-subshow="nygl-bb" href="#">报表</a></li>'; 
+                        str = '<li class="active"><a class="nxfx-subnav" data-subshow="nygl-nxfx" href="/user/nxfx">能效分析</a></li><li><a class="tbhb-subnav" data-subshow="nygl-tbhb" href="/user/tbhb">同比环比</a></li><li><a class="fxjl-subnav" data-subshow="nygl-fxjl" href="#">分项计量</a></li><li><a class="cbfx-subnav" data-subshow="nygl-cbfx" href="/user/cbfx">成本分析</a></li><li><a class="bb-subnav" data-subshow="nygl-bb" href="#">报表</a></li>'; 
                         break;
                     case 'pgzd':
                         str = ''; 

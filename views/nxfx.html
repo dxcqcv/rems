@@ -1,0 +1,130 @@
+<% include header.html %>
+       <!--能效检测-->
+        <div id="nxjc" class="my-section">
+            <!--4分格-->
+            <div id="singleBox" class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>气象信息</h4></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>
+                                <select class="form-control">
+                                  <option>电</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                                </li>
+                                <li>                                
+                                <select class="form-control">
+                                  <option>温度</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="input-append date form_datetime">
+                                        <input size="16" type="text" value="" readonly>
+                                        <span class="add-on"><i class="icon-th"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="qxxxChartBox" class="chart-box"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li class="active"><a href="#tab1" data-toggle="tab">章节 1</a></li>
+                                <li><a href="#tab2" data-toggle="tab">章节 2</a></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-box1" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li class="active"><a href="#tab1" data-toggle="tab">章节 1</a></li>
+                                <li><a href="#tab2" data-toggle="tab">章节 2</a></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-box2" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li class="active"><a href="#tab1" data-toggle="tab">章节 1</a></li>
+                                <li><a href="#tab2" data-toggle="tab">章节 2</a></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+            </div>
+        </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['css!../../css/nxfx','app/nxfx']);
+            });
+        </script>
+<% include footer.html %>

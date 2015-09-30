@@ -1,0 +1,99 @@
+<% include header.html %>
+       <!--能效检测-->
+        <div id="nxfx" class="my-section">
+            <!--4分格-->
+            <div id="singleBox" class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>气象信息</h4></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="qxxxChartBox" class="chart-box"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>工艺系统效率</h4></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="qxxxChartBox" class="chart-box2"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>耗能信息</h4></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="qxxxChartBox" class="chart-box"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>系统指标</h4></li>
+                            </ul>
+                            <button class="btn btn-default pull-right" type="button">
+                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="singleBoxSubTitle" class="list-inline">
+                                <li>温度 30C</li>
+                                <li>湿度 15%</li>
+                                <li>辐照度 1234w/m2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="qxxxChartBox" class="chart-box3"></div>
+            </div>
+        </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['css!../../css/nxfx','app/nxfx']);
+            });
+        </script>
+<% include footer.html %>
