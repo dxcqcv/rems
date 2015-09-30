@@ -27,10 +27,10 @@ require([
 });
 require([
 //Custom CSS
-    //"css!../../css/reset",
-    //"css!../../css/bootstrap","css!../../css/bootstrap-theme",
-    //"css!../../font-awesome/css/font-awesome",
-    //"css!../../css/global",
-    //"css!../../css/gyt",
-    //"css!../../css/others"
+    "css!../../css/reset",
+    "css!../../css/bootstrap","css!../../css/bootstrap-theme",
+    "css!../../font-awesome/css/font-awesome",
+    "css!../../css/global",
+    "css!../../css/gyt",
+    "css!../../css/others"
 ]);

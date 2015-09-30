@@ -1,0 +1,63 @@
+<% include header.html %>
+    <!--成本分析-->        
+    <div id="cbfx" class="my-section cbfx-wrapper">
+        <div class="cbfx-top col-md-12 col-lg-12 col-xs-12">99999</div>
+        <div class="cbfx-bottom">
+            <div class="cbfx-bottom-left col-md-9 col-lg-9 col-xs-9">
+            
+                <div class="my-card">
+                    <div class="my-card-top">
+                        <div  class="panel panel-default module module-1 no">
+                            <div  class="panel-heading clearfix">
+                                <ul class="nav nav-tabs pull-left">
+                                    <li><h4>气象信息</h4></li>
+                                </ul>
+                                <button class="btn btn-default pull-right" type="button">
+                                    <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-inline">
+                                    <li>温度 30C</li>
+                                    <li>湿度 15%</li>
+                                    <li>辐照度 1234w/m2</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-box"></div>
+                </div>
+
+                <div class="my-card">
+                    <div class="my-card-top">
+                        <div  class="panel panel-default module module-1 no">
+                            <div  class="panel-heading clearfix">
+                                <ul class="nav nav-tabs pull-left">
+                                    <li><h4>气象信息</h4></li>
+                                </ul>
+                                <button class="btn btn-default pull-right" type="button">
+                                    <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-inline">
+                                    <li>温度 30C</li>
+                                    <li>湿度 15%</li>
+                                    <li>辐照度 1234w/m2</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-box"></div>
+                </div>
+
+            </div>
+            <div class="cbfx-bottom-right"></div>
+        </div>
+    </div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/cbfx', "css!../../css/cbfx"])
+		});
+	</script>
+<% include footer.html %>

@@ -31,5 +31,8 @@ router.get('/nxjc', function(req, res) {
 router.get('/sjjc', function(req, res) {
     res.render('sjjc', { title: 'Home' });
 });
+router.get('/cbfx', function(req, res) {
+    res.render('cbfx', { title: 'Home' });
+});
 
 module.exports = router;

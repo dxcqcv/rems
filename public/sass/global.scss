@@ -50,6 +50,12 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .subTitle,
 .my-sub-nav { display: inline-block; vertical-align: top; }
 .subTitle { width: 210px; text-align: center; }
+/* card config */
+.my-card { position: relative; height: 50%; background: #ccc; box-sizing: border-box; min-height: 50%; padding: 15px;}
+.my-card-top {
+    position: absolute; top: 0; left: 0;
+    width: 100%; padding: 15px 15px 0 15px;
+}
 /* login */
 .my-login {
     background: #e1edf8 url('../img/login/log_mid.png') no-repeat center;
