@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,aAAc;EACV,UAAU,EAAE,MAAM;EAClB,QAAQ,EAAE,MAAM",
-"sources": ["../sass/xmgl.scss"],
-"names": [],
-"file": "xmgl.css"
-}
