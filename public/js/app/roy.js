@@ -30,6 +30,8 @@ define(function(require){
               this.nav();  
             },
             nav: function() {
+                var self = this
+                  ; 
                 //check current nav position
                 if(localStorage.getItem('curNav') != null) {
                     this.curNav = localStorage.getItem('curNav').split('-');
@@ -57,9 +59,9 @@ define(function(require){
                       ;        
                     //$this.parent('li').siblings('li').removeClass('active').end().addClass('active')
                     if(indexNav === 1) {
-                        this.myCont.removeClass('one-nav').addClass('two-nav');        
+                        self.myCont.removeClass('one-nav').addClass('two-nav');        
                     } else {
-                        this.myCont.removeClass('two-nav').addClass('one-nav');        
+                        self.myCont.removeClass('two-nav').addClass('one-nav');        
                     } 
                     localStorage.setItem('curNav',$this.data('subshow'));
                     highlightNav(navName);
