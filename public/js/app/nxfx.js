@@ -2,6 +2,7 @@
 define(function(require){
     var $ = require('jquery')
       , highcharts = require('highcharts')
+      , nxfxCss =  require('css!../../css/nxfx')
       ;
       (function(){
             $('.chart-box').highcharts({

@@ -1,4 +1,10 @@
 <% include header.html %>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxjc']);
+            });
+        </script>
+
        <!--能效检测-->
         <div id="nxjc" class="my-section">
             <!--4分格-->
@@ -91,9 +97,4 @@
                 <div id="qxxxChartBox" class="chart-box"></div>
             </div>
         </div>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(['css!../../css/nxjc','app/nxjc']);
-            });
-        </script>
 <% include footer.html %>

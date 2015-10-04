@@ -1,4 +1,9 @@
 <% include header.html %>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/cbfx', "css!../../css/cbfx"])
+		});
+	</script>
     <!--成本分析-->        
     <div id="cbfx" class="my-section cbfx-wrapper">
         <div class="cbfx-top col-md-12 col-lg-12 col-xs-12">99999</div>
@@ -55,9 +60,4 @@
             <div class="cbfx-bottom-right"></div>
         </div>
     </div>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/cbfx', "css!../../css/cbfx"])
-		});
-	</script>
 <% include footer.html %>

@@ -1,4 +1,10 @@
 <% include header.html %>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/sjjc'])
+		});
+	</script>
+
 	<!--数据监测-->
 	<div id="sjjc" class="my-section">
 		<!--两栏-->
@@ -114,9 +120,4 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/sjjc', "css!../../css/sjjc"])
-		});
-	</script>
 	<% include footer.html %>

@@ -1,6 +1,7 @@
 define(function(require){
     var $ = require('jquery'),
-        swiper = require('swiper')
+        swiper = require('swiper'),
+        indexCss = require("css!../../css/index")
     ;
     (function(){
         function Index(){

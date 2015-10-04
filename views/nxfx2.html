@@ -1,4 +1,9 @@
 <% include header.html %>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxfx']);
+            });
+        </script>
        <!--能效检测-->
         <div id="nxfx2" class="my-section">
             <!--4分格-->
@@ -195,9 +200,4 @@
                 <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
             </div>
         </div>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(['css!../../css/nxfx','app/nxfx']);
-            });
-        </script>
 <% include footer.html %>

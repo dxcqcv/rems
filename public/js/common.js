@@ -1,14 +1,14 @@
 require.config({
-    baseUrl: '/js/lib',
+    //baseUrl: 'js/lib', // for r.js
+    baseUrl: '/js/lib', //for dev mode
     //waitSeconds:120,
     map:{
         '*':{
-           'css':'../lib/css.min' 
+           'css':'css.min' 
         }
     },
     paths: {
-        app: '../app',
-        highcharts:'../lib/highcharts/highcharts'
+        app: '../app'
     },
     shim: {
        'bootstrap':{deps:['jquery']},
@@ -16,21 +16,5 @@ require.config({
        'swiper':{deps:['jquery',"css!../../css/swiper"]}
     }
 });
-
-require([
-//加载对应css模块
-//Index css
-    'app/roy',
-    'bootstrap'
-],function(roy){
-    roy.pageInit();    
-});
-require([
-//Custom CSS
-    "css!../../css/reset",
-    "css!../../css/bootstrap","css!../../css/bootstrap-theme",
-    "css!../../font-awesome/css/font-awesome",
-    "css!../../css/global",
-    "css!../../css/gyt",
-    "css!../../css/others"
-]);
+// 全局调用
+requirejs(['app/roy']);

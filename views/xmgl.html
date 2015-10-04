@@ -1,11 +1,11 @@
 <% include header.html %>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/xmgl']);
+            });
+        </script>
         <!--项目概览-->        
         <div id="xmgl" class="my-section xmgl-wrapper">
             <img src="/img/xmgl/xmgl.png" alt="">
         </div>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(["css!../../css/xmgl"])
-            });
-        </script>
 <% include footer.html %>
