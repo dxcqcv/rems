@@ -1,5 +1,9 @@
 <% include header.html %>
-
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/gyt', "css!../../css/gyt"])
+		});
+	</script>
 
     <!--内页工艺图-->
       <div id="gyt" class="gyt-wrapper my-section">
