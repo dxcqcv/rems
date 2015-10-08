@@ -1,0 +1,11 @@
+<% include header.html %>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/zdbg', "css!../../css/zdbg"])
+		});
+	</script>
+    	<!--诊断报告-->
+	<div id="zdbg" class="my-section zdbg-wrapper">
+    <p>诊断报告</p>
+	</div>
+<% include footer.html %>

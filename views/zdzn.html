@@ -1,0 +1,11 @@
+<% include header.html %>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/zdzn', "css!../../css/zdzn"])
+		});
+	</script>
+    	<!--诊断指南-->
+	<div id="zdzn" class="my-section zdzn-wrapper">
+    <p>诊断指南</p>
+	</div>
+<% include footer.html %>
