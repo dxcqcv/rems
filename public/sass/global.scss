@@ -32,6 +32,12 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .my-navbar { position: absolute; top: 0; left:0; width: 100%; z-index: 2;}
 .one-nav { padding: 52px 0 0; }
 .two-nav { padding: 92px 0 0; }
+.m100 {  min-height: 100%; }
+.h100 { height: 100%; }
+.pr { position: relative; }
+.mg0 { margin: 0; }
+.pd0 { padding: 0; }
+
 .my-content {
     height: 100%; box-sizing: border-box;
 }

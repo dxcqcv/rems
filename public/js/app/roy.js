@@ -4,8 +4,7 @@ define(function(require){
       , bootstrapThemeCss = require("css!../../css/bootstrap-theme")
       , fontAwesomeCss = require("css!../../font-awesome/css/font-awesome")
       , globalCss = require("css!../../css/global")
-      , gytCss = require("css!../../css/gyt")
-      , othersCss = require("css!../../css/others")
+      , bootstrap = require('bootstrap')
       , $ = require('jquery')
       ;
 

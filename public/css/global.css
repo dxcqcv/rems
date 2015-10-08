@@ -48,6 +48,21 @@ html, body {
 .two-nav {
   padding: 92px 0 0; }
 
+.m100 {
+  min-height: 100%; }
+
+.h100 {
+  height: 100%; }
+
+.pr {
+  position: relative; }
+
+.mg0 {
+  margin: 0; }
+
+.pd0 {
+  padding: 0; }
+
 .my-content {
   height: 100%;
   box-sizing: border-box; }
@@ -154,5 +169,3 @@ html, body {
     top: auto;
     left: auto;
     background: #eee; } }
-
-/*# sourceMappingURL=global.css.map */
