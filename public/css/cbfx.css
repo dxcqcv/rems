@@ -17,5 +17,18 @@
 
 .cbfx-bottom-left {
   height: 100%; }
+  .haichar,.haitwo {
+	width: 100%;
+	height: 100%;
+	padding-top: 78px;
+	text-align: left;
+	line-height: normal;
+}
+.panel_title{line-height: 60px;margin-top: 5px;margin-bottom: 10px;background-color: #f1f1f1;}
+.panel_title h4{margin-left: 10px;}
+.btn_anniu{float: right;position: static;margin-top: -2.5%;}
+.cbfx_temp{margin: 5px;}
+.cb_jdu{height: 100%;width: 24.5%;background-color: #cccccc;float: right;margin-right: 5px;}
+.cb_jdtemp{margin-left: 10%;}
 
 /*# sourceMappingURL=cbfx.css.map */
