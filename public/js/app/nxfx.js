@@ -3,6 +3,8 @@ define(function(require){
     var $ = require('jquery')
       , highcharts = require('highcharts')
       , nxfxCss =  require('css!../../css/nxfx')
+      , datapickerCss = require('css!../../css/bootstrap-datepicker3')
+      , datapicker = require('bootstrap-datepicker')
       ;
       (function(){
             $('.chart-box').highcharts({
@@ -257,7 +259,7 @@ define(function(require){
       }());
 
         (function(){
-         $(".form_datetime").datetimepicker({
+         $(".form_datetime").datepicker({
                 format: "dd MM yyyy - hh:ii",
                 autoclose: true,
                 todayBtn: true,
