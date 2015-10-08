@@ -72,10 +72,13 @@ define(function(require){
                             this.str = '<li class="active"><a class="gyjc-subnav" data-subshow="ycjc-gyjc" href="">工艺监测</a></li><li><a class="nxjc-subnav" data-subshow="ycjc-nxjc" href="/user/nxjc">能效监测</a></li><li><a class="sjjc-subnav" data-subshow="ycjc-sjjc" href="/user/sjjc">数据监测</a></li>'; 
                             break;
                         case 'nygl':
-                            this.str = '<li class="active"><a class="nxfx-subnav" data-subshow="nygl-nxfx" href="/user/nxfx">能效分析</a></li><li><a class="tbhb-subnav" data-subshow="nygl-tbhb" href="/user/tbhb">同比环比</a></li><li><a class="fxjl-subnav" data-subshow="nygl-fxjl" href="#">分项计量</a></li><li><a class="cbfx-subnav" data-subshow="nygl-cbfx" href="/user/cbfx">成本分析</a></li><li><a class="bb-subnav" data-subshow="nygl-bb" href="#">报表</a></li>'; 
+                            this.str = '<li class="active"><a class="nxfx-subnav" data-subshow="nygl-nxfx" href="/user/nxfx">能效分析</a></li><li><a class="nxfx2-subnav" data-subshow="nygl-nxfx2" href="/user/nxfx2">能效分析2</a></li><li><a class="nxfx3-subnav" data-subshow="nygl-nxfx3" href="/user/nxfx3">能效分析3</a></li><li><a class="tbhb-subnav" data-subshow="nygl-tbhb" href="/user/tbhb">同比环比</a></li><li><a class="fxjl-subnav" data-subshow="nygl-fxjl" href="#">分项计量</a></li><li><a class="cbfx-subnav" data-subshow="nygl-cbfx" href="/user/cbfx">成本分析</a></li><li><a class="bb-subnav" data-subshow="nygl-bb" href="#">报表</a></li>'; 
                             break;
                         case 'pgzd':
-                            this.str = ''; 
+                            this.str = '<li class="active"><a class="zdzn-subnav" data-subshow="pgzd-zdzn" href="/user/zdzn">诊断指南</a></li><li><a class="yyzd-subnav" data-subshow="pgzd-yyzd" href="/user/yyzd">预约诊断</a></li><li><a class="zdbg-subnav" data-subshow="pgzd-zdbg" href="/user/zdbg">诊断报告</a></li>'; 
+                            break;
+                        case 'pgzdzj':
+                            this.str = '<li class="active"><a class="bgbj-subnav" data-subshow="pgzdzj-bgbj" href="/user/bgbj">报告编辑</a></li>';
                             break;
                         default:
                     }

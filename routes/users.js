@@ -25,21 +25,29 @@ router.get('/hc', function(req, res) {
 router.get('/xmgl', function(req, res) {
     res.render('xmgl', { title: 'Home' });
 });
-
 router.get('/sjjc', function(req, res) {
     res.render('sjjc', { title: 'Home' });
 });
 router.get('/cbfx', function(req, res) {
     res.render('cbfx', { title: 'Home' });
 });
-
 router.get('/nxfx', function(req, res) {
-    
     res.render('nxfx', { title: 'Home' });
 });
 router.get('/nxfx2', function(req, res) {
-    
     res.render('nxfx2', { title: 'Home' });
+});
+router.get('/zdzn', function(req, res) {
+    res.render('zdzn', { title: 'Home' });
+});
+router.get('/yyzd', function(req, res) {
+    res.render('yyzd', { title: 'Home' });
+});
+router.get('/zdbg', function(req, res) {
+    res.render('zdbg', { title: 'Home' });
+});
+router.get('/bgbj', function(req, res) {
+    res.render('bgbj', { title: 'Home' });
 });
 
 module.exports = router;
