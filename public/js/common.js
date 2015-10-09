@@ -12,7 +12,8 @@ require.config({
     },
     shim: {
        'bootstrap':{deps:['jquery']},
-       'bootstrap-datepicker':{deps:['jquery']},
+       'bootstrap-select':{deps:['jquery']},
+       'bootstrap-datetimepicker.min':{deps:['jquery','moment']},
        'highcharts':{deps:['jquery']},
        'swiper':{deps:['jquery',"css!../../css/swiper"]}
     }

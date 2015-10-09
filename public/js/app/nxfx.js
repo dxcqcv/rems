@@ -3,10 +3,18 @@ define(function(require){
     var $ = require('jquery')
       , highcharts = require('highcharts')
       , nxfxCss =  require('css!../../css/nxfx')
-      , datapickerCss = require('css!../../css/bootstrap-datepicker3')
-      , datapicker = require('bootstrap-datepicker')
+      , datapickerCss = require('css!../../css/bootstrap-datetimepicker')
+      , selectpickerCss = require('css!../../css/bootstrap-select')
+      , selectpicker = require('bootstrap-select')
+      , datapicker = require('bootstrap-datetimepicker.min')
       ;
       (function(){
+      //日期控件
+       $('#datetimepicker1').datetimepicker();
+      //下拉选择
+      $('.selectpicker').selectpicker({
+      });
+      //图表
             $('.chart-box').highcharts({
         chart: {
             zoomType: 'xy'
@@ -258,12 +266,4 @@ define(function(require){
     });
       }());
 
-        (function(){
-         $(".form_datetime").datepicker({
-                format: "dd MM yyyy - hh:ii",
-                autoclose: true,
-                todayBtn: true,
-                pickerPosition: "bottom-left"
-            });
-         }());
 });

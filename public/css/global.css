@@ -63,6 +63,9 @@ html, body {
 .pd0 {
   padding: 0; }
 
+.vat > li {
+  vertical-align: top; }
+
 .my-content {
   height: 100%;
   box-sizing: border-box; }

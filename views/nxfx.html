@@ -19,9 +19,9 @@
                             </button>
                         </div>
                         <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline">
+                            <ul id="singleBoxSubTitle" class="list-inline vat">
                                 <li>
-                                    <select class="form-control">
+                                    <select class="form-control selectpicker">
                                       <option>电</option>
                                       <option>2</option>
                                       <option>3</option>
@@ -30,7 +30,7 @@
                                     </select>
                                 </li>
                                 <li>                                
-                                    <select class="form-control">
+                                    <select class="form-control selectpicker">
                                       <option>温度</option>
                                       <option>2</option>
                                       <option>3</option>
@@ -46,10 +46,14 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="input-append date form_datetime">
-                                        <input size="16" type="text" value="" readonly>
-                                        <span class="add-on"><i class="icon-th"></i></span>
-                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    <!--</div>-->
                                 </li>
                             </ul>
                         </div>
