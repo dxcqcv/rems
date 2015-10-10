@@ -3,28 +3,41 @@
   min-height: 100%; }
 
 .cbfx-top {
-  height: 40px;
   width: 100%;
   background: red;
+  padding-top: 20px;
   position: absolute;
   top: 0;
   left: 0; }
 
 .cbfx-bottom {
-  padding-top: 40px;
+  padding-top: 102px;
   height: 100%;
   background: pink; }
 
 .cbfx-bottom-left {
   height: 100%; }
-  .haichar,.haitwo {
+.cbfx-bottom-right {
+  padding: 15px;
+  position: relative;
+}
+.cbfx-right-content {
+    padding-top: 60px;
+    padding-left: 15px;
+    height: 100%;
+}
+.cbfx-right-content-inner {
+    background: #fff;
+    height: 100%;
+}
+.haichar,.haitwo {
 	width: 100%;
 	height: 100%;
-	padding-top: 78px;
+	padding-top: 60px;
 	text-align: left;
 	line-height: normal;
 }
-.panel_title{line-height: 60px;margin-top: 5px;margin-bottom: 10px;background-color: #f1f1f1;}
+.panel_title{}
 .panel_title h4{margin-left: 10px;}
 .btn_anniu{float: right;position: static;margin-top: -2.5%;}
 .cbfx_temp{margin: 5px;}

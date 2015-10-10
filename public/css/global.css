@@ -48,30 +48,6 @@ html, body {
 .two-nav {
   padding: 92px 0 0; }
 
-.m100 {
-  min-height: 100%; }
-
-.h100 {
-  height: 100%; }
-
-.pr {
-  position: relative; }
-
-.mg0 {
-  margin: 0; }
-
-.pd0 {
-  padding: 0; }
-
-.vat > li {
-  vertical-align: top; }
-
-.pdr0 {
-  padding-right: 0; }
-
-.pdl0 {
-  padding-left: 0; }
-
 .my-content {
   height: 100%;
   box-sizing: border-box; }
@@ -107,7 +83,6 @@ html, body {
 .my-card {
   position: relative;
   height: 50%;
-  background: #ccc;
   box-sizing: border-box;
   min-height: 50%;
   padding: 15px; }
@@ -193,3 +168,28 @@ html, body {
   display: inline-block;
   text-align: left;
   vertical-align: middle; }
+
+/* tools class */
+.m100 {
+  min-height: 100%; }
+
+.h100 {
+  height: 100%; }
+
+.pr {
+  position: relative; }
+
+.mg0 {
+  margin: 0; }
+
+.pd0 {
+  padding: 0; }
+
+.vat > li {
+  vertical-align: top; }
+
+.pdr0 {
+  padding-right: 0; }
+
+.pdl0 {
+  padding-left: 0; }
