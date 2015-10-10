@@ -66,6 +66,12 @@ html, body {
 .vat > li {
   vertical-align: top; }
 
+.pdr0 {
+  padding-right: 0; }
+
+.pdl0 {
+  padding-left: 0; }
+
 .my-content {
   height: 100%;
   box-sizing: border-box; }
@@ -159,6 +165,7 @@ html, body {
   background: #999; }
 
 /*修改bootstrap部分*/
+/* 二级导航 */
 .my-tab-content {
   position: absolute;
   top: 52px;
@@ -172,3 +179,17 @@ html, body {
     top: auto;
     left: auto;
     background: #eee; } }
+/* 弹出层 */
+.modal {
+  text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%; } }
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; }

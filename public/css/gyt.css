@@ -28,6 +28,34 @@
 
 ********************************************************************************************  */
 /*工艺图*/
+/*弹出框*/
+.gyt-modal-list {
+  height: 447px;
+  overflow: auto; }
+
+.gyt-charts {
+  background: #000;
+  height: 447px;
+  width: 584px; }
+
+/* 侧边栏 */
+.gyt-sidebar-title {
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  border: 1px solid #DDD; }
+
+.gyt-sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  background: #eee; }
+
+.gyt-sidebar > ul > li {
+  background: #eee;
+  cursor: pointer; }
+
 /* 工艺图样式 */
 .h100 {
   height: 100%; }
@@ -67,7 +95,8 @@
   min-height: 162px;
   background: linear-gradient(0deg, rgba(193, 193, 193, 0.5), #fff);
   line-height: 1.5;
-  z-index: 5; }
+  z-index: 5;
+  cursor: pointer; }
 
 .artwork-popup02 {
   position: absolute;
@@ -2341,9 +2370,11 @@
 
 .artwork-title {
   font-size: 70px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -100%);
   /*
   text-align: center;
-  position: absolute;
   top: 7%; left: 50%;
   */ }
 
@@ -2384,55 +2415,51 @@
   display: none; }
 
 .huanghua-thumbnail {
-  background-image: url("../images/huanghua-gyt01-s.png");
   /*
-  background-image: url('../images/huanghua-gyt01.png');
+  background-image: url('../images/huanghua-gyt01-s.png');
   width: 250px;
   height: 116px;
   background-size: 250px 116px;
-  */
-  width: 723px;
-  height: 335px;
-  background-size: 723px 335px; }
+  width: 723px; height: 335px;
+  background-size: 723px 335px;
+  */ }
 
 .huanghua-thumbnail:hover {
-  background-image: url("../images/huanghua-gyt01-s2.png"); }
+  /*background-image: url('../images/huanghua-gyt01-s2.png');*/ }
 
 .tinghu-thumbnail {
-  background-image: url("../images/tinghu-gyt-s.png");
   /*
+  background-image: url('../images/tinghu-gyt-s.png');
   background-image: url('../images/tinghu-gyt.png');
   width: 246px;
   height: 256px;
   background-size: 246px 256px;
-  */
-  width: 578px;
-  height: 605px;
-  background-size: 578px 605px; }
+  width: 578px; height: 605px;
+  background-size: 578px 605px;
+  */ }
 
 .tinghu-thumbnail:hover {
-  background-image: url("../images/tinghu-gyt-s2.png");
   /*
+      background-image: url('../images/tinghu-gyt-s2.png');
       box-shadow: 0 5px 5px 5px rgba(0,0,0,.5);
       */ }
 
 .shenlongcheng-thumbnail {
-  background-image: url("../images/shenlongcheng-gyt-s.png");
   /*
+  background-image: url('../images/shenlongcheng-gyt-s.png');
   background-image: url('../images/shenlongcheng-gyt.png');
   width: 247px;
   height: 156px;
   background-size: 247px 156px;
-  */
-  width: 658px;
-  height: 415px;
-  background-size: 658px 415px; }
+  width: 658px; height: 415px;
+  background-size: 658px 415px;
+  */ }
 
 .shenlongcheng-thumbnail:hover {
-  background-image: url("../images/shenlongcheng-gyt-s2.png"); }
+  /*background-image: url('../images/shenlongcheng-gyt-s2.png');*/ }
 
 .tails-box {
-  /* display: inline-block;*/
+  /*display: inline-block;*/
   display: none; }
 
 .tail-icon {

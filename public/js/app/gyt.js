@@ -1,5 +1,7 @@
 define(function(require){
-    var $ = require('jquery');
+    var $ = require('jquery')
+        highcharts = require('highcharts') 
+    ;
     (function(){
             
         //工艺图
@@ -58,6 +60,46 @@ define(function(require){
         var nowDay = nowdate.getDate();
 
         var jsonDataRight = {}; // 全局
+
+        //工艺图弹出层
+        $('.artwork-popup').on('click', function() {
+            $('#gytModal').modal({
+                backdrop: 'static' 
+            });            
+        //弹出层图表
+        //if($('#gytModal').css('display') != 'none')
+            $('#gytCharts').highcharts({
+                title: {
+                    text: '燃气常压热水锅炉',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: '动态属性1h实时数据对比',
+                    x: -20
+                },
+                xAxis: {
+                    categories: ['16:20','16:30','16:40','16:50','17:00','17:10']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Temperature (°C)'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: '°C'
+                },
+                series: [{
+                    name: '输入热水温度 (°C)',
+                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5]
+                }]
+        });
+        });
+
 
         function LocalJsonp() {
             this.loading = $('#loading')
@@ -321,7 +363,8 @@ define(function(require){
             w1048.show()
         } 
         function huanghuaFirst() {
-            gytSelectFn(false,'#huanghuaOverview', '黄花工艺设计图',[-1]);//-1为空
+            //gytSelectFn(false,'#huanghuaOverview', '黄花工艺设计图',[-1]);//-1为空
+            gytSelectFn(false,'#huanghuaOverview', '黄花工艺设计图',[0]);//-1为空
             huanghuaArtwork.height(1434);
         }
         function tinghuFirst() {
@@ -750,19 +793,23 @@ define(function(require){
         }
 
         function huanghuaPAFn(){
-            gytSelectFn(true,'#huanghuaA','三联供系统',[0]);
+            //gytSelectFn(true,'#huanghuaA','三联供系统',[0]);
+            gytSelectFn(true,'#huanghuaA','三联供系统',[1]);
             huanghuaArtwork.height(1434);
         }
         function huanghuaPBFn(){
-            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
+            //gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
+            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[2,3]);
             huanghuaArtwork.height(1288);
         }
         function huanghuaPCFn(){
-            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
+            //gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
+            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[2,3]);
             huanghuaArtwork.height(1288);
         }
         function huanghuaPDFn(){
-            gytSelectFn(true,'#huanghuaD','电制冷系统',[3]); 
+            //gytSelectFn(true,'#huanghuaD','电制冷系统',[3]); 
+            gytSelectFn(true,'#huanghuaD','电制冷系统',[4]); 
             huanghuaArtwork.height(1194);
         }
 
@@ -809,7 +856,9 @@ define(function(require){
                 $('#artworkBottom').addClass('hide')
             }
             $('#artworkTitle').children('div').text(title)
-            $('#artworkTailsBox').children('.tail-icon').removeClass('active')
+            //$('#artworkTailsBox').children('.tail-icon').removeClass('active')
+            //.filter(function(i){ return $.inArray(i,num) > -1; }).addClass('active')
+            $('#gyt-list').children('.list-group-item').removeClass('active')
             .filter(function(i){ return $.inArray(i,num) > -1; }).addClass('active')
         }
         function showBottomArea(showName,tailNum) {
