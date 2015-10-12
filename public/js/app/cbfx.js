@@ -1,7 +1,13 @@
 define(function(require) {
-	var $ = require('jquery'),
-		highcharts = require('highcharts');
+	var $ = require('jquery')
+      , datapickerCss = require('css!../../css/bootstrap-datetimepicker')
+      , datapicker = require('bootstrap-datetimepicker.min')
+	  , highcharts = require('highcharts')
+      ;
 	$(function() {
+    //时间控件
+       $('.datetimepicker1').datetimepicker();
+    //图表
 		$('.haichar').highcharts({
 			chart: {
 				type: 'area'

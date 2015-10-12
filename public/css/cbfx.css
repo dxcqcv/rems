@@ -1,10 +1,12 @@
 .cbfx-wrapper {
   height: 100%;
-  min-height: 100%; }
+  min-height: 100%; 
+  background: #ddd; 
+  }
 
 .cbfx-top {
   width: 100%;
-  background: red;
+  /*background: red;*/
   padding-top: 20px;
   position: absolute;
   top: 0;
@@ -13,7 +15,8 @@
 .cbfx-bottom {
   padding-top: 102px;
   height: 100%;
-  background: pink; }
+  /*background: pink; */
+  }
 
 .cbfx-bottom-left {
   height: 100%; }
@@ -28,7 +31,19 @@
 }
 .cbfx-right-content-inner {
     background: #fff;
+    overflow: auto;
     height: 100%;
+}
+div.cbfx-top-panel { margin-bottom: 0; }
+.date-sep { padding: 8px 10px 0 10px; }
+.cbfx-top-right {
+    padding: 2px 20px 0 0;
+}
+.cbfx-pm-top {
+    padding-bottom: 5px;
+}
+div.cbfx-pm-progress {
+    margin-bottom: 5px;
 }
 .haichar,.haitwo {
 	width: 100%;
