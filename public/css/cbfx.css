@@ -37,8 +37,9 @@
 div.cbfx-top-panel { margin-bottom: 0; }
 .date-sep { padding: 8px 10px 0 10px; }
 .cbfx-top-right {
-    padding: 2px 20px 0 0;
+    padding-right: 20px;
 }
+.cbfx-date-box { width: 209px; }
 .cbfx-pm-top {
     padding-bottom: 5px;
 }
