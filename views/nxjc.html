@@ -1,7 +1,7 @@
 <% include header.html %>
         <script>
             requirejs(['../js/common'], function (common) {
-                requirejs(['app/nxjc']);
+                requirejs(["css!../../css/nxjc",'app/nxjc']);
             });
         </script>
 
@@ -12,9 +12,7 @@
                 <div class="my-card-top">
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
-                            <ul class="nav nav-tabs pull-left">
-                                <li><h4>气象信息</h4></li>
-                            </ul>
+                            <h4 class="pull-left">气象信息</h4>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
@@ -34,45 +32,65 @@
                 <div class="my-card-top">
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
-                            <ul class="nav nav-tabs pull-left">
-                                <li><h4>工艺系统效率</h4></li>
+                            <ul class="pull-left title-list clearfix">
+                                <li class="active"><h4>工艺系统效率</h4></li>
+                                <li><h4>设备效率</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline">
-                                <li>温度 30C</li>
-                                <li>湿度 15%</li>
-                                <li>辐照度 1234w/m2</li>
-                            </ul>
+                        <div class="panel-body clearfix">
+                            <div class="nxjc-gyxtxl-sele pull-left">
+                                <select class="form-control selectpicker ">
+                                  <option>默认系统名称</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                            </div>
+                            <div class="nxjc-gyxtxl-sele pull-left">
+                                <select class="form-control selectpicker ">
+                                  <option>默认指标</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="qxxxChartBox" class="chart-box"></div>
+                <div id="gyxtxl" class="chart-box"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
-                            <ul class="nav nav-tabs pull-left">
-                                <li><h4>耗能信息</h4></li>
+                            <ul class="pull-left title-list clearfix">
+                                <li class="active"><h4>耗能信息</h4></li>
+                                <li><h4>供能信息</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline">
-                                <li>温度 30C</li>
-                                <li>湿度 15%</li>
-                                <li>辐照度 1234w/m2</li>
-                            </ul>
+                        <div class="panel-body clearfix">
+                            <div class="nxjc-gyxtxl-sele pull-left">
+                                <select class="form-control selectpicker ">
+                                  <option>默认指标</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                            </div>
+                            <div class="pull-left">供冷量：1234Kwh</div>
                         </div>
                     </div>
                 </div>
-                <div id="qxxxChartBox" class="chart-box"></div>
+                <div id="gongnenghaonengCharts" class="chart-box"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">

@@ -79,7 +79,24 @@ html, body {
   width: 210px;
   text-align: center; }
 
-/* card config */
+/* global title list */
+.title-list {
+  margin-bottom: 0; }
+
+.title-list > li {
+  float: left;
+  color: #999;
+  padding-right: 20px;
+  cursor: pointer; }
+
+.title-list > li:hover {
+  color: #000; }
+
+.title-list > li.active {
+  color: #000;
+  position: relative; }
+
+/* global card config */
 .my-card {
   position: relative;
   height: 50%;

@@ -51,7 +51,22 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .subTitle,
 .my-sub-nav { display: inline-block; vertical-align: top; }
 .subTitle { width: 210px; text-align: center; }
-/* card config */
+/* global title list */
+.title-list { margin-bottom: 0; }
+.title-list > li {
+   float: left; 
+   color: #999;
+   padding-right: 20px;
+   cursor: pointer;
+}
+.title-list > li:hover {
+    color: #000;
+}
+.title-list > li.active {
+    color: #000;
+    position: relative;
+}
+/* global card config */
 .my-card { position: relative; height: 50%; box-sizing: border-box; min-height: 50%; padding: 15px;}
 .my-card-top {
     position: absolute; top: 0; left: 0;
