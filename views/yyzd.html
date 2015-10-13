@@ -1,11 +1,146 @@
 <% include header.html %>
 	<script>
 		requirejs(['../js/common'], function(common) {
-			requirejs(['app/', "css!../../css/"])
+			requirejs(['app/yyzd', "css!../../css/yyzd"])
 		});
 	</script>
-    	<!--预约诊断-->
+	<!--预约诊断-->
 	<div id="yyzd" class="my-section yyzd-wrapper">
-    <p>预约诊断</p>
+		<div id="yyzd_top">
+			<div class="YZ_one">
+				<div class="NX_tiyle">
+					<p class="zd_font">能效诊断套餐</p>
+				</div>
+				<div class="YZ_title">
+					<div class="YZ_left"><img src="/img/pgzd/NX_1.png"> </div>
+					<div class="YZ_right">
+						<div class="YZ_font">
+							<p><span>支持业态：全部业态</span></p>
+							<p><span>是一套全面综合的诊断套餐，对站内各个系统从能效层面进行深入检查，并提供综合诊断建议和相应问题的解决方案。适用于运行时间超过一年以上的项目。</span></p>
+						</div>
+
+						<button type="button" class="btn btn-info btn_xq">查看详情</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="YZ_one">
+				<div class="NX_tiyle">
+					<p class="zd_font">能效诊断套餐</p>
+				</div>
+				<div class="YZ_title">
+					<div class="YZ_left"><img src="/img/pgzd/NX_1.png"> </div>
+					<div class="YZ_right">
+						<div class="YZ_font">
+							<p><span>支持业态：全部业态</span></p>
+							<p><span>是一套全面综合的诊断套餐，对站内各个系统从能效层面进行深入检查，并提供综合诊断建议和相应问题的解决方案。适用于运行时间超过一年以上的项目。</span></p>
+						</div>
+						<button type="button" class="btn btn-info btn_xq">查看详情</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="YZ_one">
+				<div class="NX_tiyle">
+					<p class="zd_font">能效诊断套餐</p>
+				</div>
+				<div class="YZ_title">
+					<div class="YZ_left"><img src="/img/pgzd/NX_1.png"> </div>
+					<div class="YZ_right">
+						<div class="YZ_font">
+							<p><span>支持业态：全部业态</span></p>
+							<p><span>是一套全面综合的诊断套餐，对站内各个系统从能效层面进行深入检查，并提供综合诊断建议和相应问题的解决方案。适用于运行时间超过一年以上的项目。</span></p>
+						</div>
+						<button type="button" class="btn btn-info btn_xq">查看详情</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- 隐藏表格-->
+		<div id="tab_foot" class="tab_img">
+			<img src="/img/pgzd/black.png" class="tab_black" />
+			<div class="TAB_zd">
+				<h4 class="tab_h4">套餐详情</h4>
+				<div class="tab_hr">
+					<table class="table table-bordered gridtable">
+						<tr>
+							<td class="tr_left">诊断环节</td>
+							<td class="tr_right">检查内容及意义</td>
+						</tr>
+
+						<tr>
+							<td>负荷分析</td>
+							<td>考察实际负荷与符合指标之间的差异，以及负荷与室外温度的相关性，从而对用户端的负荷水平进行评价。</td>
+						</tr>
+
+						<tr>
+							<td>节能型分析</td>
+							<td>根据系统的能源综合利用率、节能率指标，从能效角度，对系统进行评价。</td>
+						</tr>
+
+						<tr>
+							<td>经济性分析</td>
+							<td>通过分析单位供能能耗与成本，从经济性角度，对系统进行评价。</td>
+						</tr>
+
+						<tr>
+							<td>CCHP子系统</td>
+							<td>考察CCHP子系统的余热利用效率、热电比、热效率，以及发电设备、余热利用设备效率、负荷率，评价其运行效果，并分析可能存在的问题。</td>
+						</tr>
+
+						<tr>
+							<td>常规调峰子系统</td>
+							<td>考察CCHP子系统的余热利用效率、热电比、热效率，以及发电设备、余热利用设备效率、负荷率，评价其运行效果，并分析可能存在的问题。</td>
+						</tr>
+
+						<tr>
+							<td>储能调峰子系统</td>
+							<td>考察常规调峰子系统中设备的效率、负荷率，评价其运行效果，并分析可能存在的问题。</td>
+						</tr>
+
+						<tr>
+							<td>冷温水输配子系统</td>
+							<td>考察冷温水泵组的输送系数、运行效率，评价其运行效果，并分析可能存在的问题。</td>
+						</tr>
+						<tr>
+							<td>冷却子系统</td>
+							<td>考察冷却水泵组的输送系数、运行效率，以及冷却塔的性能，评价其运行效果，并分析可能存在的问题。</td>
+						</tr>
+					</table>
+					<div class="btn_footrt">
+						<button type="button" data-toggle="modal" data-target="#mymodal"  class="btn btn-info btn-primary">再次申请</button>
+						<button type="button" data-toggle="modal" data-target="#mymodal"  class="btn btn-info btn-primary btn_right">自动订阅</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹框-->
+			<div class="modal fade " id="mymodal">
+				<div class="modal-dialog diamo">
+					<div class="modal-content all_select">
+						<p><h3>选择诊断的时间段!</h3></p>
+						<p>
+							<select class="dz_secle">
+							<option value="volvo">最近一天</option>
+							<option value="saab">最近一周</option>
+							<option value="opel">最近一个功能季</option>
+							<option value="audi">最近一年</option>
+						</select>
+						</p>
+						<p class="btn_sel">
+							<a href="/user/zdbg"><button type="button" class="btn btn-info">提交申请</button></a>
+						</p>
+					</div>
+				</div>
+				
+				
+</div>
+		
+		
+
+</div>
 	</div>
-<% include footer.html %>
+
+	<% include footer.html %>

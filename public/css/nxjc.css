@@ -16,7 +16,7 @@
 
 .chart-box {
   height: 100%;
-  padding-top: 120px;
+  padding-top: 122px;
   border: 1px solid transparent; }
 
 .nxjc-chart-box {
@@ -26,6 +26,5 @@
   width: 207px; }
 
 .nxjc-pie {
-  height: 10px;
   width: 24%;
   display: inline-block; }
