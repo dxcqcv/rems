@@ -14,29 +14,552 @@ define(function(require){
       });
       //图表
       //fourth
-        $('#container').highcharts({
+            $('#xitongzhibiao').highcharts({
+                chart: {
+                    type: 'area'
+                },
+                title: {
+                    text: null,
+                },
+                subtitle: {
+                    text: null,
+                },
+                xAxis: {
+                    allowDecimals: false,
+                    labels: {
+                        formatter: function () {
+                            return this.value; // clean, unformatted number for year
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Nuclear weapon states'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value / 1000 + 'k';
+                        }
+                    }
+                },
+                tooltip: {
+                    pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+                },
+                plotOptions: {
+                    area: {
+                        pointStart: 1940,
+                        marker: {
+                            enabled: false,
+                            symbol: 'circle',
+                            radius: 2,
+                            states: {
+                                hover: {
+                                    enabled: true
+                                }
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'USA',
+                    data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
+                        1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
+                        27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
+                        26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
+                        24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
+                        22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
+                        10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104]
+                }, {
+                    name: 'USSR/Russia',
+                    data: [null, null, null, null, null, null, null, null, null, null,
+                        5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
+                        4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
+                        15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
+                        33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
+                        35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
+                        21000, 20000, 19000, 18000, 18000, 17000, 16000]
+                }]
+            });
+      var noBorder = { 
+        states:{
+            hover:{
+                halo: {
+                    size: 1
+                }     
+            }
+        }
+      };
+	    Highcharts.setOptions({
+	        colors: ['#8edce7', '#e8ebeb']
+	    });
+        // Create the chart for completion
+        var chart_completion = new Highcharts.Chart({
             chart: {
-                type: 'pie' //图表类型还是pie图
-            },	    
+                renderTo: 'pieChart4',
+                type: 'pie',
+                margin: [0,0,0,0],
+                height: 100,
+                width: 100
+
+            },
+            tooltip: {
+                enabled: false,
+            },
             plotOptions: {
                 pie: {
-                    innerSize: '20' //也可以配置为10%的百分比形式
+	            	slicedOffset: 0,
+                	size: '100%',
+                	dataLabels: {
+                    	enabled: false
+                	}
+	            },
+                series: noBorder
+	        }, 
+            title: {
+	            text: 'In Prog.',
+	            align: 'center',
+	            verticalAlign: 'middle',
+                style: {
+                    fontSize: '9.5px'
                 }
-            },
-            credits:{
-                text:"www.stepday.com",
-                href:"http://www.stepday.com"
-            },
+	            
+        	},      
+            credits: {
+			   enabled: false
+			},
             series: [{
-                data: [
-                    ['Firefox',   44.2],
-                    ['IE7',       26.6],
-                    ['IE6',       20],
-                    ['Chrome',    3.1],
-                    ['Other',    5.4]
-                ]
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                },
+                point : {
+                    events: {
+                        mouseOver: function(){
+                           this.oldTitle = chart_completion.options.title.text;
+
+                           chart_completion.setTitle({
+                                text: 'New title '
+                            });
+                           
+                        },
+                        mouseOut: function(){
+                            chart_completion.setTitle({
+                                text: this.oldTitle
+                            });
+                        }
+                    }
+                }
             }]
         });
+
+        // Create the chart for completion
+        var chart_completion = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart1',
+                type: 'pie',
+                margin: [0,0,0,0],
+                height: 100,
+                width: 100
+
+            },
+            tooltip: {
+                enabled: false,
+            },
+            plotOptions: {
+                pie: {
+	            	slicedOffset: 0,
+                	size: '100%',
+                	dataLabels: {
+                    	enabled: false
+                	}
+	            },
+                series: noBorder
+	        }, 
+            title: {
+	            text: 'In Prog.',
+	            align: 'center',
+	            verticalAlign: 'middle',
+                style: {
+                    fontSize: '9.5px'
+                }
+	            
+        	},      
+            credits: {
+			   enabled: false
+			},
+            series: [{
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                },
+                point : {
+                    events: {
+                        mouseOver: function(){
+                           this.oldTitle = chart_completion.options.title.text;
+
+                           chart_completion.setTitle({
+                                text: 'New title '
+                            });
+                           
+                        },
+                        mouseOut: function(){
+                            chart_completion.setTitle({
+                                text: this.oldTitle
+                            });
+                        }
+                    }
+                }
+            }]
+        });
+        
+
+
+
+        Highcharts.setOptions({
+	        colors: ['#f07173', '#e8ebeb']
+	    });
+
+        // Create the chart for time
+        var chart_time = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart2',
+                type: 'pie',
+                margin: 0,
+                 height: 100,
+                width: 100
+            },
+
+            plotOptions: {
+                pie: {
+    	            	slicedOffset: 0,
+                    	size: '100%',
+                    	dataLabels: {
+                        enabled: false
+                	}
+	            },
+                series : noBorder
+	        },
+            tooltip: {
+                enabled: false,
+            },
+
+            title: {
+	            text: 'Hours',
+	            align: 'center',
+	            verticalAlign: 'middle',
+                style: {
+                    fontSize: '9.5px'
+                }
+	            
+        	},
+            
+            credits: {
+			   enabled: false
+			},
+            series: [{
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }]
+        });
+      
+        Highcharts.setOptions({
+	        colors: ['#8adfb9', '#e8ebeb']
+	    });
+
+        // Create the chart for Budget
+        var chart_budget = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart3',
+                type: 'pie',
+                margin: 0,
+                 height: 100,
+                width: 100
+            },
+
+            plotOptions: {
+            pie: {
+	            	slicedOffset: 0,
+                	size: '100%',
+                	dataLabels: {
+                    	enabled: false
+                	}
+	            },
+                series: noBorder
+	        },
+            title: {
+	            text: 'Budget',
+	            align: 'center',
+	            verticalAlign: 'middle',
+                style: {
+                    fontSize: '9.5px'
+                } 
+        	},
+            tooltip: {
+                enabled: false,
+                animation: false,
+                backgroundColor: null
+            },
+
+            credits: {
+			   enabled: false
+			},
+            series: [{
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }]
+        });
+      //var chart1 = new Highcharts.Chart({
+        //chart: {
+            //renderTo: 'pieChart1',
+            //type: 'pie'
+        //},
+        //credits: {
+            //enabled: false
+        //},
+        //title: {
+            //text: 'Equities',
+            //y: 5,
+            //verticalAlign: 'bottom'
+        //},
+        //tooltip: {
+            //enabled: false
+        //},
+        //plotOptions: {
+            //pie: {
+                //borderColor: '#000000',
+                //innerSize: '60%',
+                //dataLabels: {
+                    //enabled: false
+                //}
+            //}
+        //},
+        //series: [{
+            //data: [
+                //['Equities', 54],
+                //['other', 46]
+                //]}]
+    //},
+    //// using 
+
+    //function(chart1) { // on complete
+        //var xpos = '50%';
+        //var ypos = '50%';
+        //var circleradius = 20;
+
+        //// Render the circle
+        //chart1.renderer.circle(xpos, ypos, circleradius).attr({
+            //fill: '#ddd',
+        //}).add();
+
+        //// Render the text 
+        //chart1.renderer.text(chart1.series[0].data[0].percentage + '%', 62, 80).css({
+            //width: circleradius * 2,
+            //color: '#4572A7',
+            //fontSize: '16px',
+            //textAlign: 'center'
+        //}).attr({
+            //// why doesn't zIndex get the text in front of the chart?
+            //zIndex: 999
+        //}).add();
+    //});
+      //var chart2 = new Highcharts.Chart({
+        //chart: {
+            //renderTo: 'pieChart2',
+            //type: 'pie'
+        //},
+        //credits: {
+            //enabled: false
+        //},
+        //title: {
+            //text: 'Equities',
+            //y: 5,
+            //verticalAlign: 'bottom'
+        //},
+        //tooltip: {
+            //enabled: false
+        //},
+        //plotOptions: {
+            //pie: {
+                //borderColor: '#000000',
+                //innerSize: '60%',
+                //dataLabels: {
+                    //enabled: false
+                //}
+            //}
+        //},
+        //series: [{
+            //data: [
+                //['Equities', 54],
+                //['other', 46]
+                //]}]
+    //},
+    //// using 
+
+    //function(chart2) { // on complete
+        //var xpos = '50%';
+        //var ypos = '50%';
+        //var circleradius = 40;
+
+        //// Render the circle
+        //chart2.renderer.circle(xpos, ypos, circleradius).attr({
+            //fill: '#ddd',
+        //}).add();
+
+        //// Render the text 
+        //chart2.renderer.text(chart2.series[0].data[0].percentage + '%', 62, 80).css({
+            //width: circleradius * 2,
+            //color: '#4572A7',
+            //fontSize: '16px',
+            //textAlign: 'center'
+        //}).attr({
+            //// why doesn't zIndex get the text in front of the chart?
+            //zIndex: 999
+        //}).add();
+    //});
+      //var chart3 = new Highcharts.Chart({
+        //chart: {
+            //renderTo: 'pieChart3',
+            //type: 'pie'
+        //},
+        //credits: {
+            //enabled: false
+        //},
+        //title: {
+            //text: 'Equities',
+            //y: 5,
+            //verticalAlign: 'bottom'
+        //},
+        //tooltip: {
+            //enabled: false
+        //},
+        //plotOptions: {
+            //pie: {
+                //borderColor: '#000000',
+                //innerSize: '60%',
+                //dataLabels: {
+                    //enabled: false
+                //}
+            //}
+        //},
+        //series: [{
+            //data: [
+                //['Equities', 54],
+                //['other', 46]
+                //]}]
+    //},
+    //// using 
+
+    //function(chart3) { // on complete
+        //var xpos = '50%';
+        //var ypos = '50%';
+        //var circleradius = 40;
+
+        //// Render the circle
+        //chart3.renderer.circle(xpos, ypos, circleradius).attr({
+            //fill: '#ddd',
+        //}).add();
+
+        //// Render the text 
+        //chart3.renderer.text(chart3.series[0].data[0].percentage + '%', 62, 80).css({
+            //width: circleradius * 2,
+            //color: '#4572A7',
+            //fontSize: '16px',
+            //textAlign: 'center'
+        //}).attr({
+            //// why doesn't zIndex get the text in front of the chart?
+            //zIndex: 999
+        //}).add();
+    //});
+      //var chart4 = new Highcharts.Chart({
+        //chart: {
+            //renderTo: 'pieChart4',
+            //type: 'pie'
+        //},
+        //credits: {
+            //enabled: false
+        //},
+        //title: {
+            //text: 'Equities',
+            //y: 5,
+            //verticalAlign: 'bottom'
+        //},
+        //tooltip: {
+            //enabled: false
+        //},
+        //plotOptions: {
+            //pie: {
+                //borderColor: '#000000',
+                //innerSize: '60%',
+                //dataLabels: {
+                    //enabled: false
+                //}
+            //}
+        //},
+        //series: [{
+            //data: [
+                //['Equities', 54],
+                //['other', 46]
+                //]}]
+    //},
+    //// using 
+
+    //function(chart4) { // on complete
+        //var xpos = '50%';
+        //var ypos = '50%';
+        //var circleradius = 40;
+
+        //// Render the circle
+        //chart4.renderer.circle(xpos, ypos, circleradius).attr({
+            //fill: '#ddd',
+        //}).add();
+
+        //// Render the text 
+        //chart4.renderer.text(chart4.series[0].data[0].percentage + '%', 62, 80).css({
+            //width: circleradius * 2,
+            //color: '#4572A7',
+            //fontSize: '16px',
+            //textAlign: 'center'
+        //}).attr({
+            //// why doesn't zIndex get the text in front of the chart?
+            //zIndex: 999
+        //}).add();
+    //});
       //third
           $('#gongnenghaonengCharts').highcharts({
         chart: {

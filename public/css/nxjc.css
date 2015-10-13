@@ -19,5 +19,13 @@
   padding-top: 120px;
   border: 1px solid transparent; }
 
+.nxjc-chart-box {
+  padding-top: 195px; }
+
 .nxjc-gyxtxl-sele {
   width: 207px; }
+
+.nxjc-pie {
+  height: 10px;
+  width: 24%;
+  display: inline-block; }
