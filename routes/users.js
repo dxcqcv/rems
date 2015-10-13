@@ -57,4 +57,7 @@ router.get('/fxjl', function(req, res) {
     res.render('fxjl', { title: 'Home' });
 });
 
+router.get('/bb', function(req, res) {
+    res.render('bb', { title: 'Home' });
+});
 module.exports = router;
