@@ -15,82 +15,106 @@ define(function(require){
       $('.selectpicker').selectpicker({
       });
       //图表
-             $('.chart-box').highcharts({
+            $('.chart-box').highcharts({
+         chart: {
+            type: 'column'
+        },
         title: {
-            text: '',
-            x: -20 //center
+            text: ''
         },
         subtitle: {
-            text: '',
-            x: -20
+            text: ''
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: [
+                '耗气',
+                '耗电',
+                '耗水',
+                '耗蒸汽'
+                
+            ]
         },
         yAxis: {
+            min: 0,
             title: {
-                text: 'Temperature (°C)'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
+                text: 'Rainfall (mm)'
+            }
         },
         tooltip: {
-            valueSuffix: '°C'
+            headerFormat: '<span style="font-size:10px">{point.key}</span>',
+            pointFormat: '' +
+                '',
+            footerFormat: '<table><tbody><tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0"><b>{point.y:.1f} mm</b></td></tr></tbody></table>',
+            shared: true,
+            useHTML: true
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
         },
         series: [{
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            name: '去年',
+            data: [49.9, 71.5, 106.4, 129.2]
+
+        }, {
+            name: '今年',
+            data: [83.6, 78.8, 98.5, 93.4]
+
         }]
     });
       }());
 
 
 (function(){
-                $('.chart-box1').highcharts({
+           $('.chart-box1').highcharts({
+         chart: {
+            type: 'column'
+        },
         title: {
-            text: '',
-            x: -20 //center
+            text: ''
         },
         subtitle: {
-            text: '',
-            x: -20
+            text: ''
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: [
+                '耗气',
+                '耗电',
+                '耗水',
+                '耗蒸汽'
+                
+            ]
         },
         yAxis: {
+            min: 0,
             title: {
-                text: 'Temperature (°C)'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
+                text: 'Rainfall (mm)'
+            }
         },
         tooltip: {
-            valueSuffix: '°C'
+            headerFormat: '<span style="font-size:10px">{point.key}</span>',
+            pointFormat: '' +
+                '',
+            footerFormat: '<table><tbody><tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0"><b>{point.y:.1f} mm</b></td></tr></tbody></table>',
+            shared: true,
+            useHTML: true
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
         },
         series: [{
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            name: '去年',
+            data: [49.9, 71.5, 106.4, 129.2]
+
+        }, {
+            name: '今年',
+            data: [83.6, 78.8, 98.5, 93.4]
+
         }]
     });
       }());

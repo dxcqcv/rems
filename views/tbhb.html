@@ -1,5 +1,259 @@
 <% include header.html %>
-        <!--同比环比-->        
-        <div id="tbhb" class="my-section tbhb-wrapper">
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/tbhb']);
+            });
+        </script>
+       <!--同比环比-->
+        <div id="nxjc" class="my-section">
+            <!--4分格-->
+            <div id="singleBox" class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>能耗</h4></li>
+                            </ul>
+                            <ul class=" pull-right">
+                                <li class="pull-left">
+	                                <div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    同比分析
+									  </label>
+									</div>
+								</li>
+                                <li class="pull-left">
+                                	<div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    环比分析
+									  </label>
+									</div>
+                                </li>
+								<li class="pull-right">
+									<button class="btn btn-default pull-right" type="button">
+									    <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+									</button>
+								</li>
+                            </ul>
+                        </div>
+                                                    <div class="panel-body clearfix">
+                              
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                <div id="qxxxChartBox" class="chart-box"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>供能</h4></li>
+                            </ul>
+                            <ul class=" pull-right">
+                                <li class="pull-left">
+	                                <div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    同比分析
+									  </label>
+									</div>
+								</li>
+                                <li class="pull-left">
+                                	<div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    环比分析
+									  </label>
+									</div>
+                                </li>
+								<li class="pull-right">
+									<button class="btn btn-default pull-right" type="button">
+									    <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+									</button>
+								</li>
+                            </ul>
+                        </div>
+                        <div class="panel-body clearfix">
+                              
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="chart-box1" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                 <li><h4>能源综合利用率</h4></li>
+                            </ul>
+                            <ul class=" pull-right">
+                                <li class="pull-left">
+	                                <div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    同比分析
+									  </label>
+									</div>
+								</li>
+                                <li class="pull-left">
+                                	<div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    环比分析
+									  </label>
+									</div>
+                                </li>
+								<li class="pull-right">
+									<button class="btn btn-default pull-right" type="button">
+									    <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+									</button>
+								</li>
+                            </ul>
+                        </div>
+                        <div class="panel-body clearfix">
+                              
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="chart-box2" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                        <div id="singleBoxTitle" class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li><h4>节能率</h4></li>
+                            </ul>
+                            <ul class=" pull-right">
+                                <li class="pull-left">
+	                                <div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    同比分析
+									  </label>
+									</div>
+								</li>
+                                <li class="pull-left">
+                                	<div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    环比分析
+									  </label>
+									</div>
+                                </li>
+								<li class="pull-right">
+									<button class="btn btn-default pull-right" type="button">
+									    <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+									</button>
+								</li>
+                            </ul>
+                        </div>
+                        <div class="panel-body clearfix">
+                              
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+            </div>
         </div>
 <% include footer.html %>

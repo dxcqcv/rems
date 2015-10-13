@@ -1,0 +1,431 @@
+<% include header.html %>
+    <script>
+        requirejs(['../js/common'], function(common) {
+            requirejs(['app/cbfx', "css!../../css/cbfx"])
+        });
+    </script>
+        <!--成本分析-->
+    <div id="cbfx" class="my-section cbfx-wrapper">
+        <div class="cbfx-top col-md-12 col-lg-12 col-xs-12">
+            <div class="panel panel-default cbfx-top-panel">
+                <div class="panel-body clearfix">
+                    <ul class="nav nav-tabs pull-left">
+                        <li role="presentation" class="active"><a href="#">供能</a></li>
+                        <li role="presentation"><a href="#">能耗</a></li>
+                       
+                    </ul>
+                    <div class="pull-right cbfx-date-box">
+                        <div class='input-group date datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pull-right date-sep">至</div>
+                    <div class="pull-right cbfx-date-box">
+                        <div class='input-group date datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cbfx-top-right pull-right">
+                        <div class="btn-group ">
+                            <button type="button" class="btn btn-default">日</button>
+                            <button type="button" class="btn btn-default">月</button>
+                            <button type="button" class="btn btn-default">年</button>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="cbfx-bottom">
+        <div class="cbfx-bottom-right h100 col-md-4 col-lg-4 col-xs-4 pdl0">
+                <div class="my-card-top pdl0">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li>
+                                    <h4>工艺系统分项</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cbfx-right-content h100 pdl0">
+
+                    <h4>总耗电量：1234kwh</h4>
+                    <div class="panel wrapper">     
+                        <div class="row row-sm">
+                          <div class="col-xs-6 text-center">
+                            <div class="inline m-t">
+                              <div>
+                                <span class="text-primary h4">75%</span>
+                              </div>
+                            </div>
+                            <div class="text-muted font-bold text-xs m-t m-b">Work Done</div>
+                          </div>
+                          <div class="col-xs-6 text-center">
+                            <div class="inline m-t">
+                              <div>
+                                <span class="text-primary h4">75%</span>
+                              </div>
+                            </div>
+                            <div class="text-muted font-bold text-xs m-t m-b">Started</div>
+                          </div>
+                        </div>
+                    </div>  
+
+
+                    <div class="cbfx-right-content-inner">
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                           
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="cbfx-bottom-right h100 col-md-4 col-lg-4 col-xs-4 pdl0">
+                <div class="my-card-top pdl0">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li>
+                                    <h4>工艺系统分项</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cbfx-right-content h100 pdl0">
+                    <div class="cbfx-right-content-inner">
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                           
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--三-->
+            <div class="cbfx-bottom-right h100 col-md-4 col-lg-4 col-xs-4 pdl0">
+                <div class="my-card-top pdl0">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <ul class="nav nav-tabs pull-left">
+                                <li>
+                                    <h4>工艺系统分项</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cbfx-right-content h100 pdl0">
+                    <div class="cbfx-right-content-inner">
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>三联供子系统</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress">
+
+                                    <div class="progress-bar" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                               <div class="cbfx-pm-bottom clearfix">
+                                    <span>成本：89,000</span>
+                                    <span class="pull-right">收益：99,000</span>
+                               </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+<% include footer.html %>

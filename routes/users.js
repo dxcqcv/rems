@@ -34,6 +34,9 @@ router.get('/nxfx', function(req, res) {
 router.get('/nxfx2', function(req, res) {
     res.render('nxfx2', { title: 'Home' });
 });
+router.get('/nxfx3', function(req, res) {
+    res.render('nxfx3', { title: 'Home' });
+});
 router.get('/zdzn', function(req, res) {
     res.render('zdzn', { title: 'Home' });
 });
@@ -45,6 +48,13 @@ router.get('/zdbg', function(req, res) {
 });
 router.get('/bgbj', function(req, res) {
     res.render('bgbj', { title: 'Home' });
+});
+
+router.get('/tbhb', function(req, res) {
+    res.render('tbhb', { title: 'Home' });
+});
+router.get('/fxjl', function(req, res) {
+    res.render('fxjl', { title: 'Home' });
 });
 
 module.exports = router;

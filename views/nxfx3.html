@@ -1,7 +1,7 @@
 <% include header.html %>
         <script>
             requirejs(['../js/common'], function (common) {
-                requirejs(['app/nxfx']);
+                requirejs(['app/nxfx3']);
             });
         </script>
        <!--能效检测-->
@@ -12,7 +12,9 @@
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                <li><h4>CCHP</h4></li>
+                                <li role="presentation" class="active"><a href="#">冷温水情况</a></li>
+                                <li role="presentation"><a href="#">冷却水情况</a></li>
+                               
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
@@ -60,20 +62,21 @@
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                <li><h4>常规调峰</h4></li>
+                                <li><h4>泵组运行方案</h4></li>
+
                                 
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body clearfix">
+                                                    <div class="panel-body clearfix">
                               <div class="pull-left cbfx-date-box">
                                    <select class="form-control">
-                                      <option>冷机热泵</option>
-                                      <option>锅炉</option>
-                                      <option>溴化锂</option>
-                                      <option>地/水源热泵</option>
+                                      <option>请选择泵组类型</option>
+                                      <option>冷温水</option>
+                                      <option>冷却水</option>
+                                      <option>地源循环</option>
                                     </select>
                               </div>
                               <div class="pull-right cbfx-date-box col-md-2">
@@ -110,13 +113,13 @@
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                 <li><h4>蓄能调峰</h4></li>
+                                 <li><h4>机组运行方案</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body clearfix">
+                            <div class="panel-body clearfix">
                               <div class="pull-left cbfx-date-box">
                                    <select class="form-control">
                                       <option>蓄能量</option>
@@ -150,20 +153,26 @@
                           </div>
                     </div>
                 </div>
-                <div class="chart-box2" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+                
+                 <div class="chart-box2" style="height: 100%; background: #39c; padding-top: 120px;">
+                    <div class="col-md-6 chart-box2-1" style="height:100%;">ddddd</div>
+                    <div class="col-md-6 chart-box2-2" style="height:100%;">fffff</div>
+                </div>   
+                
+                
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                <li><h4>输配</h4></li>
+                                <li><h4>机组负荷与COP</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                            <div class="panel-body clearfix">
+                        <div class="panel-body clearfix">
                               <div class="pull-left cbfx-date-box">
                                    <select class="form-control">
                                       <option>冷温水输配</option>
@@ -198,7 +207,8 @@
                           </div>
                     </div>
                 </div>
-                <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
+                <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div> 
+                      
             </div>
         </div>
 <% include footer.html %>

@@ -12,51 +12,49 @@
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                <li><h4>能耗分析</h4></li>
+                                <li><h4>能耗情况</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline vat">
-                                <li>
-                                    <select class="form-control selectpicker">
-                                      <option>电</option>
+                        
+                           <div class="panel-body clearfix">
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择工艺系统</option>
                                       <option>2</option>
                                       <option>3</option>
                                       <option>4</option>
                                       <option>5</option>
                                     </select>
-                                </li>
-                                <li>                                
-                                    <select class="form-control selectpicker">
-                                      <option>温度</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <div class="btn-group">
+                              </div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
                                       <button type="button" class="btn btn-default">日</button>
                                       <button type="button" class="btn btn-default">月</button>
                                       <button type="button" class="btn btn-default">年</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!--<div class="form-group">-->
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input type='text' class="form-control" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
-                                        </div>
-                                    <!--</div>-->
-                                </li>
-                            </ul>
-                        </div>
+                                  </div>
+                              </div>
+                          </div>
+                       
                     </div>
                 </div>
                 <div id="qxxxChartBox" class="chart-box"></div>
@@ -73,41 +71,50 @@
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline">
-                                <li>
-                                    <select class="form-control">
-                                      <option>电</option>
+                        <div class="panel-body clearfix">
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择工艺系统</option>
                                       <option>2</option>
                                       <option>3</option>
                                       <option>4</option>
                                       <option>5</option>
                                     </select>
-                                </li>
-                                <li>                                
-                                    <select class="form-control">
-                                      <option>温度</option>
+                              </div>
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择指标</option>
                                       <option>2</option>
                                       <option>3</option>
                                       <option>4</option>
                                       <option>5</option>
                                     </select>
-                                </li>
-                                <li>
-                                    <div class="btn-group">
+                              </div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
                                       <button type="button" class="btn btn-default">日</button>
                                       <button type="button" class="btn btn-default">月</button>
                                       <button type="button" class="btn btn-default">年</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="input-append date form_datetime">
-                                        <input size="16" type="text" value="" readonly>
-                                        <span class="add-on"><i class="icon-th"></i></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                  </div>
+                              </div>
+                          </div>
                     </div>
                 </div>
                 <div class="chart-box1" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
@@ -117,47 +124,40 @@
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                 <li><h4>能源综合利用率</h4></li>
+                                 <li><h4>整体系统指标</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline">
-                                <li>
-                                    <select class="form-control">
-                                      <option>电</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </li>
-                                <li>                                
-                                    <select class="form-control">
-                                      <option>温度</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <div class="btn-group">
+                        <div class="panel-body clearfix">
+                              <h4 class="pull-left">能源综合利用率</h4>
+                             
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
                                       <button type="button" class="btn btn-default">日</button>
                                       <button type="button" class="btn btn-default">月</button>
                                       <button type="button" class="btn btn-default">年</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="input-append date form_datetime">
-                                        <input size="16" type="text" value="" readonly>
-                                        <span class="add-on"><i class="icon-th"></i></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                  </div>
+                              </div>
+                          </div>
                     </div>
                 </div>
                 <div class="chart-box2" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
@@ -167,47 +167,40 @@
                     <div id="chart-0" class="panel panel-default module module-1 no">
                         <div id="singleBoxTitle" class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
-                                <li><h4>节能率</h4></li>
+                                <li><h4>整体系统指标</h4></li>
                             </ul>
                             <button class="btn btn-default pull-right" type="button">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="panel-body">
-                            <ul id="singleBoxSubTitle" class="list-inline">
-                                <li>
-                                    <select class="form-control">
-                                      <option>电</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </li>
-                                <li>                                
-                                    <select class="form-control">
-                                      <option>温度</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <div class="btn-group">
+                        <div class="panel-body clearfix">
+                              <h4 class="pull-left">节能率</h4>
+                             
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
                                       <button type="button" class="btn btn-default">日</button>
                                       <button type="button" class="btn btn-default">月</button>
                                       <button type="button" class="btn btn-default">年</button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="input-append date form_datetime">
-                                        <input size="16" type="text" value="" readonly>
-                                        <span class="add-on"><i class="icon-th"></i></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                  </div>
+                              </div>
+                          </div>
                     </div>
                 </div>
                 <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
