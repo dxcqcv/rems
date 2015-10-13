@@ -1,6 +1,7 @@
 var express = require('express');
 var user = require('./users');
 var login = require('./login');
+var api = require('./api');
 
 var router = express.Router();
 
@@ -11,5 +12,6 @@ router.get('/', function(req, res, next) {
 
 router.use('/login', login);
 router.use('/user', user);
+router.use('/api', api);
 
 module.exports = router;
