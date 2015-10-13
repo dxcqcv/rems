@@ -1,7 +1,7 @@
 <% include header.html %>
     <script>
         requirejs(['../js/common'], function(common) {
-            requirejs(['app/cbfx', "css!../../css/cbfx"])
+            requirejs(['app/fxjl', "css!../../css/cbfx"])
         });
     </script>
         <!--成本分析-->
@@ -59,30 +59,44 @@
 
                 <div class="cbfx-right-content h100 pdl0">
 
-                    <h4>总耗电量：1234kwh</h4>
-                    <div class="panel wrapper">     
-                        <div class="row row-sm">
-                          <div class="col-xs-6 text-center">
-                            <div class="inline m-t">
-                              <div>
-                                <span class="text-primary h4">75%</span>
-                              </div>
-                            </div>
-                            <div class="text-muted font-bold text-xs m-t m-b">Work Done</div>
-                          </div>
-                          <div class="col-xs-6 text-center">
-                            <div class="inline m-t">
-                              <div>
-                                <span class="text-primary h4">75%</span>
-                              </div>
-                            </div>
-                            <div class="text-muted font-bold text-xs m-t m-b">Started</div>
-                          </div>
-                        </div>
-                    </div>  
-
-
+                   
                     <div class="cbfx-right-content-inner">
+                        <div class="h4 text-center">总耗电量：1234kwh</div>
+                        <div class="panel wrapper">     
+                            <div class="row row-sm">
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                    天然气
+                                    </span>
+                                  </div>
+                                
+                                 <div id="pieChart1" class="fxjl-pie"></div>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                        水泵机组
+                                    </span>
+                                  </div>
+                                
+                                    <div id="pieChart2" class="fxjl-pie"></div>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                        低压热泵
+                                    </span>
+                                  </div>
+                                
+                                <div id="pieChart3" class="fxjl-pie"></div>
+                              </div>
+                            </div>
+                        </div>  
+
                         <ul class="list-group">
 
                             <li class="list-group-item">
@@ -144,7 +158,45 @@
                     </div>
                 </div>
                 <div class="cbfx-right-content h100 pdl0">
+                    
+                 
                     <div class="cbfx-right-content-inner">
+                        <div class="h4 text-center">总耗电量：1234kwh</div>
+                        <div class="panel wrapper">     
+                            <div class="row row-sm">
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                    天然气
+                                    </span>
+                                  </div>
+                                
+                                 <div id="pieChart4" class="fxjl-pie"></div>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                        水泵机组
+                                    </span>
+                                  </div>
+                                
+                                    <div id="pieChart5" class="fxjl-pie"></div>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                        低压热泵
+                                    </span>
+                                  </div>
+                                
+                                <div id="pieChart6" class="fxjl-pie"></div>
+                              </div>
+                            </div>
+                        </div>  
+
                         <ul class="list-group">
 
                             <li class="list-group-item">
@@ -200,13 +252,51 @@
                         <div class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
                                 <li>
-                                    <h4>工艺系统分项</h4></li>
+                                    <h4>工艺系统分项</h4>
+
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="cbfx-right-content h100 pdl0">
+
                     <div class="cbfx-right-content-inner">
+                        <div class="h4 text-center">总耗电量：1234kwh</div>
+                        <div class="panel wrapper">     
+                            <div class="row row-sm">
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                    天然气
+                                    </span>
+                                  </div>
+                                
+                                 <div id="pieChart7" class="fxjl-pie"></div>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                        水泵机组
+                                    </span>
+                                  </div>
+                                
+                                    <div id="pieChart8" class="fxjl-pie"></div>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                
+                                  <div>
+                                    <span class="text-primary h6">
+                                        低压热泵
+                                    </span>
+                                  </div>
+                                
+                                <div id="pieChart9" class="fxjl-pie"></div>
+                              </div>
+                            </div>
+                        </div> 
                         <ul class="list-group">
 
                             <li class="list-group-item">
