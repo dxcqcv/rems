@@ -34,7 +34,8 @@ define(function(require){
                 },
                 yAxis: {
                     title: {
-                        text: 'Nuclear weapon states'
+                        //text: 'Nuclear weapon states'
+                        text: null
                     },
                     labels: {
                         formatter: function () {
@@ -97,9 +98,10 @@ define(function(require){
             chart: {
                 renderTo: 'pieChart4',
                 type: 'pie',
-                margin: [0,0,0,0],
-                height: 100,
-                width: 100
+                margin: [0,0,0,0]
+                //,
+                //height: 100,
+                //width: 100
 
             },
             tooltip: {
@@ -107,6 +109,8 @@ define(function(require){
             },
             plotOptions: {
                 pie: {
+                                allowPointSelect: true,
+                shadow: true,
 	            	slicedOffset: 0,
                 	size: '100%',
                 	dataLabels: {
@@ -116,14 +120,23 @@ define(function(require){
                 series: noBorder
 	        }, 
             title: {
-	            text: 'In Prog.',
+                text: '80%',
+                    floating: true,
+                    align: 'center',
+                    x: 0,
+                    y: 25,
+                style: {
+                    fontSize: '18px'
+                }
+        	},      
+            subtitle: {
+	            text: '可再生能源<br>利用率',
 	            align: 'center',
 	            verticalAlign: 'middle',
                 style: {
                     fontSize: '9.5px'
                 }
-	            
-        	},      
+            },
             credits: {
 			   enabled: false
 			},
@@ -165,9 +178,10 @@ define(function(require){
             chart: {
                 renderTo: 'pieChart1',
                 type: 'pie',
-                margin: [0,0,0,0],
-                height: 100,
-                width: 100
+                margin: [0,0,0,0]
+                //,
+                //height: 100,
+                //width: 100
 
             },
             tooltip: {
@@ -184,14 +198,23 @@ define(function(require){
                 series: noBorder
 	        }, 
             title: {
-	            text: 'In Prog.',
+                text: '80%',
+                    floating: true,
+                    align: 'center',
+                    x: 0,
+                    y: 25,
+                style: {
+                    fontSize: '18px'
+                }
+        	},      
+            subtitle: {
+	            text: '节能率',
 	            align: 'center',
 	            verticalAlign: 'middle',
                 style: {
                     fontSize: '9.5px'
                 }
-	            
-        	},      
+            },
             credits: {
 			   enabled: false
 			},
@@ -240,9 +263,10 @@ define(function(require){
             chart: {
                 renderTo: 'pieChart2',
                 type: 'pie',
-                margin: 0,
-                 height: 100,
-                width: 100
+                margin: 0
+                //,
+                 //height: 100,
+                //width: 100
             },
 
             plotOptions: {
@@ -260,15 +284,23 @@ define(function(require){
             },
 
             title: {
-	            text: 'Hours',
+                text: '80%',
+                    floating: true,
+                    align: 'center',
+                    x: 0,
+                    y: 25,
+                style: {
+                    fontSize: '18px'
+                }
+        	},      
+            subtitle: {
+	            text: 'CO2减排率',
 	            align: 'center',
 	            verticalAlign: 'middle',
                 style: {
                     fontSize: '9.5px'
                 }
-	            
-        	},
-            
+            },
             credits: {
 			   enabled: false
 			},
@@ -297,9 +329,10 @@ define(function(require){
             chart: {
                 renderTo: 'pieChart3',
                 type: 'pie',
-                margin: 0,
-                 height: 100,
-                width: 100
+                margin: 0
+                //,
+                 //height: 100,
+                //width: 100
             },
 
             plotOptions: {
@@ -313,13 +346,23 @@ define(function(require){
                 series: noBorder
 	        },
             title: {
-	            text: 'Budget',
+                text: '80%',
+                    floating: true,
+                    align: 'center',
+                    x: 0,
+                    y: 25,
+                style: {
+                    fontSize: '18px'
+                }
+        	},      
+            subtitle: {
+	            text: '系统能效',
 	            align: 'center',
 	            verticalAlign: 'middle',
                 style: {
                     fontSize: '9.5px'
-                } 
-        	},
+                }
+            },
             tooltip: {
                 enabled: false,
                 animation: false,
@@ -592,7 +635,8 @@ define(function(require){
         yAxis: {
             min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                //text: 'Rainfall (mm)'
+                text: null 
             }
         },
         tooltip: {
@@ -633,7 +677,8 @@ define(function(require){
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                //text: 'Temperature (°C)'
+                text: null 
             },
             plotLines: [{
                 value: 20,
@@ -672,7 +717,8 @@ define(function(require){
                 },
                 yAxis: {
                     title: {
-                        text: 'Nuclear weapon states'
+                        //text: 'Nuclear weapon states'
+                        text: null 
                     },
                     labels: {
                         formatter: function () {

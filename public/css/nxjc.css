@@ -16,7 +16,8 @@
 
 .chart-box {
   height: 100%;
-  padding-top: 121px;
+  /*padding-top: 121px;*/
+  padding-top: 103px;
   border: 1px solid transparent; }
 
 .nxjc-chart-box {
@@ -31,8 +32,13 @@
 
 .nxjc-pie {
   width: 24%;
-  display: inline-block; }
+  height: 80px;
+  display: inline-block;
+  cursor: pointer; }
 
 .nxjc-gyxtxl-msg {
   line-height: 34px;
   padding-left: 20px; }
+
+.xtzb-chart-box {
+  padding-top: 155px; }
