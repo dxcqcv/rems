@@ -4,16 +4,98 @@
             requirejs(['app/fxjl', "css!../../css/cbfx"])
         });
     </script>
+    <style type="text/css">
+    .cbfx-right-content{
+      padding-top: 42px;
+    }
+
+    .select-pie{
+      border: solid 1px #ddd;
+      margin-right: -1px;
+    }
+    .pie-Chart-top-h6{
+      margin-bottom: 10px;
+      font-size: 10px;
+    }
+    .fxjl-h6{
+      font-size: 11px;
+    }
+    .fxjl-progress{
+      margin: 0px;
+    }
+
+    .carousel-control {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 15%;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+      filter: alpha(opacity=50);
+      opacity: .5;
+      }
+
+    .carousel-control.left {
+      background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+      background-repeat: repeat-x;
+    }
+
+    .carousel-control.right {
+right: 0;
+left: auto;
+background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+background-repeat: repeat-x;
+}
+
+.glyphicon-chevron-left {
+  font-size: 18px;
+}
+
+.fxjl-pie-group-3{
+  padding-right: 55px;
+  padding-left: 55px;
+}
+
+.pie-cell{
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.fxjl-nav-active {
+  color:#337ab7;
+}
+
+
+    
+    
+    </style>
+
+
+
+
+
         <!--成本分析-->
     <div id="cbfx" class="my-section cbfx-wrapper">
         <div class="cbfx-top col-md-12 col-lg-12 col-xs-12">
             <div class="panel panel-default cbfx-top-panel">
                 <div class="panel-body clearfix">
-                    <ul class="nav nav-tabs pull-left">
-                        <li role="presentation" class="active"><a href="#">供能</a></li>
-                        <li role="presentation"><a href="#">能耗</a></li>
-                       
-                    </ul>
+                    <div class="pull-left">
+                      <div id="gongnengbt" class="h5 pull-left fxjl-nav-active " style="padding-right:15px;border-right:2px solid #ddd;">供能</div>
+                      <div id="nenghaobt" class="h5 pull-left" style="padding-left:15px;">能耗</div>
+                    </div>
+                    
+                    
                     <div class="pull-right cbfx-date-box">
                         <div class='input-group date datetimepicker1'>
                             <input type='text' class="form-control" />
@@ -33,7 +115,7 @@
                     </div>
                     <div class="cbfx-top-right pull-right">
                         <div class="btn-group ">
-                            <button type="button" class="btn btn-default">日</button>
+                            <button type="button" class="btn btn-default active">日</button>
                             <button type="button" class="btn btn-default">月</button>
                             <button type="button" class="btn btn-default">年</button>
                         </div>
@@ -44,13 +126,14 @@
             </div>
         </div>
         <div class="cbfx-bottom">
-        <div class="cbfx-bottom-right h100 col-md-4 col-lg-4 col-xs-4 pdl0">
-                <div class="my-card-top pdl0">
+        <div class="cbfx-bottom-right h100 col-md-4 col-lg-4 col-xs-4">
+                <div class="my-card-top ">
                     <div class="panel panel-default">
                         <div class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
                                 <li>
-                                    <h4>工艺系统分项</h4></li>
+                                    <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>电
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -59,88 +142,588 @@
 
                 <div class="cbfx-right-content h100 pdl0">
 
-                   
+                  
                     <div class="cbfx-right-content-inner">
-                        <div class="h4 text-center">总耗电量：1234kwh</div>
-                        <div class="panel wrapper">     
-                            <div class="row row-sm">
-                              <div class="col-xs-4 text-center">
-                                
-                                  <div>
-                                    <span class="text-primary h6">
-                                    天然气
-                                    </span>
+                        <div class="h4 text-center">总供电量：1234kwh</div>
+                        <div class="panel wrapper">
+                          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                              <div class="item active">
+                                  <div class="row row-sm fxjl-pie-group-3">
+                                    <div class="col-xs-4 text-center pie-cell">
+                                      
+                                        <div class="pie-Chart-top-h6">
+                                          <span class="text-primary h6">
+                                          天然气多联供系统
+                                          </span>
+                                        </div>
+                                      
+                                       <div id="pieChart1" class="fxjl-pie"></div>
+                                    </div>
+                                    <div class="col-xs-4 text-center pie-cell">
+                                      
+                                        <div class="pie-Chart-top-h6">
+                                          <span class="text-primary h6">
+                                              水泵机组
+                                          </span>
+                                        </div>
+                                      
+                                          <div id="pieChart2" class="fxjl-pie"></div>
+                                    </div>
+                                    <div class="col-xs-4 text-center pie-cell">
+                                      
+                                        <div class="pie-Chart-top-h6">
+                                          <span class="text-primary h6">
+                                              低压热泵机组
+                                          </span>
+                                        </div>
+                                      
+                                      <div id="pieChart3" class="fxjl-pie"></div>
+                                    </div>
                                   </div>
-                                
-                                 <div id="pieChart1" class="fxjl-pie"></div>
                               </div>
-                              <div class="col-xs-4 text-center">
-                                
-                                  <div>
-                                    <span class="text-primary h6">
-                                        水泵机组
-                                    </span>
+                              <div class="item">
+                                  <div class="row row-sm fxjl-pie-group-3">
+                                    <div class="col-xs-4 text-center pie-cell">
+                                      
+                                        <div class="pie-Chart-top-h6">
+                                          <span class="text-primary h6">
+                                          天然气联供系统2
+                                          </span>
+                                        </div>
+                                      
+                                       <div id="pieChart10" class="fxjl-pie"></div>
+                                    </div>
+                                    <div class="col-xs-4 text-center pie-cell">
+                                      
+                                        <div class="pie-Chart-top-h6">
+                                          <span class="text-primary h6">
+                                              水泵机组2
+                                          </span>
+                                        </div>
+                                      
+                                          <div id="pieChart11" class="fxjl-pie"></div>
+                                    </div>
+                                    <div class="col-xs-4 text-center pie-cell">
+                                      
+                                        <div class="pie-Chart-top-h6">
+                                          <span class="text-primary h6">
+                                              低压热泵机组2
+                                          </span>
+                                        </div>
+                                      
+                                      <div id="pieChart12" class="fxjl-pie"></div>
+                                    </div>
                                   </div>
-                                
-                                    <div id="pieChart2" class="fxjl-pie"></div>
                               </div>
-                              <div class="col-xs-4 text-center">
-                                
-                                  <div>
-                                    <span class="text-primary h6">
-                                        低压热泵
-                                    </span>
-                                  </div>
-                                
-                                <div id="pieChart3" class="fxjl-pie"></div>
-                              </div>
+                            
                             </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control slider-ctr" href="#carousel-example-generic" role="button" data-slide="prev">
+                              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </div>
+
+                            
                         </div>  
 
+
+
                         <ul class="list-group">
-
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 99.1%;">
+                                          <span class="sr-only">99.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">99.1%</span>
+                                </div>
                                </div>
                             </li>
-
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 77.1%;">
+                                          <span class="sr-only">77.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">77.1%</span>
+                                </div>
                                </div>
                             </li>
-                           
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">86.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">3#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 44.1%;">
+                                          <span class="sr-only">81.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">44.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">燃气余热锅炉</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 78.1%;">
+                                          <span class="sr-only">78.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">78.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">燃气发电机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 75.1%;">
+                                          <span class="sr-only">75.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">75.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
+                               </div>
+                            </li>
 
                         </ul>
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 89.1%;">
+                                          <span class="sr-only">89.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">89.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 88.1%;">
+                                          <span class="sr-only">88.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">88.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 86.1%;">
+                                          <span class="sr-only">86.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">86.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">3#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 81.1%;">
+                                          <span class="sr-only">81.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">81.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">燃气余热锅炉</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 78.1%;">
+                                          <span class="sr-only">78.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">78.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">燃气发电机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 75.1%;">
+                                          <span class="sr-only">75.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">75.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            
+                        </ul> 
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 70.1%;">
+                                          <span class="sr-only">70.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">70.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 38.1%;">
+                                          <span class="sr-only">38.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">38.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 36.1%;">
+                                          <span class="sr-only">36.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">36.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+
+
+
                     </div>
                 </div>
 
@@ -152,7 +735,8 @@
                         <div class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
                                 <li>
-                                    <h4>工艺系统分项</h4></li>
+                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>燃气
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -161,12 +745,12 @@
                     
                  
                     <div class="cbfx-right-content-inner">
-                        <div class="h4 text-center">总耗电量：1234kwh</div>
+                        <div class="h4 text-center">总供电量：1234kwh</div>
                         <div class="panel wrapper">     
-                            <div class="row row-sm">
+                            <div class="row row-sm fxjl-pie-group-3">
                               <div class="col-xs-4 text-center">
                                 
-                                  <div>
+                                  <div class="pie-Chart-top-h6">
                                     <span class="text-primary h6">
                                     天然气
                                     </span>
@@ -176,7 +760,7 @@
                               </div>
                               <div class="col-xs-4 text-center">
                                 
-                                  <div>
+                                  <div class="pie-Chart-top-h6">
                                     <span class="text-primary h6">
                                         水泵机组
                                     </span>
@@ -186,7 +770,7 @@
                               </div>
                               <div class="col-xs-4 text-center">
                                 
-                                  <div>
+                                  <div class="pie-Chart-top-h6">
                                     <span class="text-primary h6">
                                         低压热泵
                                     </span>
@@ -200,47 +784,173 @@
                         <ul class="list-group">
 
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
                                </div>
                             </li>
-
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
                                </div>
                             </li>
                            
 
                         </ul>
+
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 39.1%;">
+                                          <span class="sr-only">39.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">39.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 28.1%;">
+                                          <span class="sr-only">28.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 6.1%;">
+                                          <span class="sr-only">6.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">6.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 99.1%;">
+                                          <span class="sr-only">99.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">99.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 38.1%;">
+                                          <span class="sr-only">38.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">38.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 16.1%;">
+                                          <span class="sr-only">16.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">16.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+
                     </div>
                 </div>
 
@@ -252,8 +962,7 @@
                         <div class="panel-heading clearfix">
                             <ul class="nav nav-tabs pull-left">
                                 <li>
-                                    <h4>工艺系统分项</h4>
-
+                                    <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>水
                                 </li>
                             </ul>
                         </div>
@@ -262,12 +971,12 @@
                 <div class="cbfx-right-content h100 pdl0">
 
                     <div class="cbfx-right-content-inner">
-                        <div class="h4 text-center">总耗电量：1234kwh</div>
+                        <div class="h4 text-center">总供电量：1234kwh</div>
                         <div class="panel wrapper">     
-                            <div class="row row-sm">
+                            <div class="row row-sm fxjl-pie-group-3">
                               <div class="col-xs-4 text-center">
                                 
-                                  <div>
+                                  <div class="pie-Chart-top-h6">
                                     <span class="text-primary h6">
                                     天然气
                                     </span>
@@ -277,7 +986,7 @@
                               </div>
                               <div class="col-xs-4 text-center">
                                 
-                                  <div>
+                                  <div class="pie-Chart-top-h6">
                                     <span class="text-primary h6">
                                         水泵机组
                                     </span>
@@ -287,7 +996,7 @@
                               </div>
                               <div class="col-xs-4 text-center">
                                 
-                                  <div>
+                                  <div class="pie-Chart-top-h6">
                                     <span class="text-primary h6">
                                         低压热泵
                                     </span>
@@ -300,217 +1009,229 @@
                         <ul class="list-group">
 
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
                                </div>
                             </li>
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
                                </div>
                             </li>
                             <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
                                 </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
-                               </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>三联供子系统</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                               <div class="cbfx-pm-bottom clearfix">
-                                    <span>成本：89,000</span>
-                                    <span class="pull-right">收益：99,000</span>
                                </div>
                             </li>
 
                         </ul>
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 59.1%;">
+                                          <span class="sr-only">59.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">59.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 38.1%;">
+                                          <span class="sr-only">38.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">38.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 26.1%;">
+                                          <span class="sr-only">26.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">26.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 69.1%;">
+                                          <span class="sr-only">69.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">69.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 68.1%;">
+                                          <span class="sr-only">68.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">68.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 66.1%;">
+                                          <span class="sr-only">66.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">66.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+                        <ul class="list-group" style="display:none;">
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">烟气热水余热补燃臭冷机</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 99.1%;">
+                                          <span class="sr-only">99.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">99.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">1#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 78.1%;">
+                                          <span class="sr-only">78.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">78.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="row row-sm">
+                                <div class="col-xs-5 text-center">
+                                  <span class="pull-right fxjl-h6">2#低压热泵</span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                  <div class="progress fxjl-progress">
+                                      <div class="progress-bar" style="width: 56.1%;">
+                                          <span class="sr-only">56.1% Complete</span>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                <span class="pull-right">56.1%</span>
+                                </div>
+                               </div>
+                            </li>
+                        </ul> 
+
+
+
+
+                     
+
                     </div>
                 </div>
 

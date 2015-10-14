@@ -12,6 +12,40 @@ define(function(require){
       //下拉选择
       $('.selectpicker').selectpicker({
       });
+
+      $("#gongnengbt").click(function(){
+        $(".cbfx-right-content-inner").children(".h4").text("总供电量：1234kwh");
+        $(this).siblings().removeClass("fxjl-nav-active");
+        $(this).addClass("fxjl-nav-active");
+        
+      })
+
+      $("#nenghaobt").click(function(){
+        $(".cbfx-right-content-inner").children(".h4").text("总耗电量：1234kwh");
+        $(this).siblings().removeClass("fxjl-nav-active");
+        $(this).addClass("fxjl-nav-active");
+      })
+
+      //图表点击效果
+      $(".fxjl-pie").click(function(){
+            $(this).parents(".cbfx-right-content-inner").children(".list-group").hide();
+            $(this).parents(".row").find(".fxjl-pie:eq(0)").removeClass("select-pie");
+            $(this).parents(".row").find(".fxjl-pie:eq(1)").removeClass("select-pie");
+            $(this).parents(".row").find(".fxjl-pie:eq(2)").removeClass("select-pie");
+            $(this).addClass("select-pie");
+
+            if ($(this).parent().index() == 0) {
+
+                $(this).parents(".cbfx-right-content-inner").children(".list-group:eq(0)").show();
+
+            }else if ($(this).parent().index() == 1) {
+                $(this).parents(".cbfx-right-content-inner").children(".list-group:eq(1)").show();
+            }else{
+                $(this).parents(".cbfx-right-content-inner").children(".list-group:eq(2)").show();
+            };
+            
+            
+      });
       //图表
       //fourth
             $('#xitongzhibiao').highcharts({
@@ -116,14 +150,33 @@ define(function(require){
                 series: noBorder
             }, 
             title: {
-                text: 'In Prog.',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },      
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },     
             credits: {
                enabled: false
             },
@@ -188,14 +241,33 @@ define(function(require){
                 series: noBorder
             }, 
             title: {
-                text: 'In Prog.',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },      
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },         
             credits: {
                enabled: false
             },
@@ -260,11 +332,30 @@ define(function(require){
                 series: noBorder
             }, 
             title: {
-                text: 'In Prog.',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
+                }
+                
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
                 }
                 
             },      
@@ -332,14 +423,33 @@ define(function(require){
                 series: noBorder
             }, 
             title: {
-                text: 'In Prog.',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },      
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },       
             credits: {
                enabled: false
             },
@@ -405,14 +515,33 @@ define(function(require){
                 series: noBorder
             }, 
             title: {
-                text: 'In Prog.',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },      
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },     
             credits: {
                enabled: false
             },
@@ -478,14 +607,33 @@ define(function(require){
                 series: noBorder
             }, 
             title: {
-                text: 'In Prog.',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },      
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },        
             credits: {
                enabled: false
             },
@@ -547,15 +695,34 @@ define(function(require){
                 },
                 series: noBorder
             }, 
-            title: {
-                text: 'In Prog.',
-                align: 'center',
+           title: {
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },      
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },     
             credits: {
                enabled: false
             },
@@ -624,14 +791,33 @@ define(function(require){
             },
 
             title: {
-                text: 'Hours',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
                 }
                 
-            },
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },  
             
             credits: {
                enabled: false
@@ -673,13 +859,33 @@ define(function(require){
                 series: noBorder
             },
             title: {
-                text: 'Budget',
-                align: 'center',
+                text: '250000',
                 verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
                 style: {
                     fontSize: '9.5px'
-                } 
-            },
+                }
+                
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },  
             tooltip: {
                 enabled: false,
                 animation: false,
@@ -704,7 +910,225 @@ define(function(require){
                 }
             }]
         });
+
+
+
+// Create the chart for time
+        var chart_time = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart10',
+                type: 'pie',
+                margin: 0,
+                 height: 100,
+                width: 100
+            },
+
+            plotOptions: {
+                pie: {
+                        slicedOffset: 0,
+                        size: '100%',
+                        dataLabels: {
+                        enabled: false
+                    }
+                },
+                series : noBorder
+            },
+            tooltip: {
+                enabled: false,
+            },
+
+            title: {
+                text: '250000',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
+                style: {
+                    fontSize: '9.5px'
+                }
+                
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },  
+            
+            credits: {
+               enabled: false
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }]
+        });
       
+
+      // Create the chart for time
+        var chart_time = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart11',
+                type: 'pie',
+                margin: 0,
+                 height: 100,
+                width: 100
+            },
+
+            plotOptions: {
+                pie: {
+                        slicedOffset: 0,
+                        size: '100%',
+                        dataLabels: {
+                        enabled: false
+                    }
+                },
+                series : noBorder
+            },
+            tooltip: {
+                enabled: false,
+            },
+
+            title: {
+                text: '250000',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
+                style: {
+                    fontSize: '9.5px'
+                }
+                
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },  
+            
+            credits: {
+               enabled: false
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }]
+        });
+
+// Create the chart for time
+        var chart_time = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart12',
+                type: 'pie',
+                margin: 0,
+                 height: 100,
+                width: 100
+            },
+
+            plotOptions: {
+                pie: {
+                        slicedOffset: 0,
+                        size: '100%',
+                        dataLabels: {
+                        enabled: false
+                    }
+                },
+                series : noBorder
+            },
+            tooltip: {
+                enabled: false,
+            },
+
+            title: {
+                text: '250000',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: 20,
+                style: {
+                    fontSize: '9.5px'
+                }
+                
+            }, 
+             
+            subtitle: {
+                text: '70%',
+                verticalAlign: 'middle',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -5,
+                style: {
+                    fontSize: '18.5px',
+                    left:'100px',
+                    top:'60px'
+
+                }
+                
+            },  
+            
+            credits: {
+               enabled: false
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["MSIE",10],[,2]],
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                },
+                states:{
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }]
+        });
        
 
     
@@ -808,4 +1232,8 @@ define(function(require){
                 }]
             });
       }());
+
+
+
+
 });
