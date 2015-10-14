@@ -98,6 +98,12 @@ define(function(require){
             chart: {
                 renderTo: 'pieChart4',
                 type: 'pie',
+                events: {
+                    click: function(event) {
+                       //console.log(event.currentTarget.options.plotOptions)
+                       //event.currentTarget.options.plotOptions.pie.shadow = true;
+                    }
+                },
                 margin: [0,0,0,0]
                 //,
                 //height: 100,
@@ -109,8 +115,8 @@ define(function(require){
             },
             plotOptions: {
                 pie: {
-                                allowPointSelect: true,
-                shadow: true,
+                    //allowPointSelect: true,
+                    //shadow: true,
 	            	slicedOffset: 0,
                 	size: '100%',
                 	dataLabels: {

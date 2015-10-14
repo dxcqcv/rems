@@ -173,16 +173,18 @@ define(function(require){
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
-        yAxis: {
-            title: {
-                text: 'Temperature (°C)'
+        yAxis: {                                                                             
+            title: {                                                                         
+                text: null                                                          
             },
             plotLines: [{
-                value: 0,
+                value: 60,
                 width: 1,
-                color: '#808080'
-            }]
-        },
+                //color: '#808080'
+                zIndex: 2,
+                color: 'red'
+            }]                                                                                
+        },                                                                                   
         tooltip: {
             valueSuffix: '°C'
         },
