@@ -7,6 +7,7 @@ define(function(require){
       , selectpickerCss = require('css!../../css/bootstrap-select')
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
+      , exporting = require('exporting')
       ;
       (function(){
       //日期控件
@@ -15,7 +16,7 @@ define(function(require){
       $('.selectpicker').selectpicker({
       });
       //图表
-            $('.chart-box').highcharts({
+      $('.chart-box').highcharts({
          chart: {
             type: 'column'
         },
@@ -41,164 +42,542 @@ define(function(require){
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span>',
-            pointFormat: '' +
-                '',
-            footerFormat: '<table><tbody><tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0"><b>{point.y:.1f} mm</b></td></tr></tbody></table>',
-            shared: true,
-            useHTML: true
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
         },
         plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
             }
         },
         series: [{
             name: '去年',
-            data: [49.9, 71.5, 106.4, 129.2]
-
-        }, {
-            name: '今年',
-            data: [83.6, 78.8, 98.5, 93.4]
-
-        }]
-    });
-      }());
-
-
-(function(){
-           $('.chart-box1').highcharts({
-         chart: {
-            type: 'column'
-        },
-        title: {
-            text: ''
-        },
-        subtitle: {
-            text: ''
-        },
-        xAxis: {
-            categories: [
-                '耗气',
-                '耗电',
-                '耗水',
-                '耗蒸汽'
-                
-            ]
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Rainfall (mm)'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span>',
-            pointFormat: '' +
-                '',
-            footerFormat: '<table><tbody><tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0"><b>{point.y:.1f} mm</b></td></tr></tbody></table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-            name: '去年',
-            data: [49.9, 71.5, 106.4, 129.2]
-
-        }, {
-            name: '今年',
-            data: [83.6, 78.8, 98.5, 93.4]
-
-        }]
-    });
-      }());
-
-(function(){
-           $('.chart-box2').highcharts({
-        title: {
-            text: '',
-            x: -20 //center
-        },
-        subtitle: {
-            text: '',
-            x: -20
-        },
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        yAxis: {
-            title: {
-                text: 'Temperature (°C)'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
+            data: [{
+                name: "Microsoft Internet Explorer",
+                y: 56.33,
+                drilldown: "Microsoft Internet Explorer"
+            }, {
+                name: "Chrome",
+                y: 24.03,
+                drilldown: "Chrome"
+            }, {
+                name: "Firefox",
+                y: 10.38,
+                drilldown: "Firefox"
+            }, {
+                name: "Safari",
+                y: 4.77,
+                drilldown: "Safari"
             }]
-        },
-        tooltip: {
-            valueSuffix: '°C'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
+
+        }, {
+            name: '今年',
+            data: [{
+                name: "Microsoft Internet Explorer",
+                y: 56.33,
+                drilldown: "Microsoft Internet Explorer"
+            }, {
+                name: "Chrome",
+                y: 24.03,
+                drilldown: "Chrome"
+            }, {
+                name: "Firefox",
+                y: 10.38,
+                drilldown: "Firefox"
+            }, {
+                name: "Safari",
+                y: 4.77,
+                drilldown: "Safari"
+            }]
+
+        }],
+        drilldown: {
+            series: [{
+                name: "Microsoft Internet Explorer",
+                id: "Microsoft Internet Explorer",
+                data: [
+                    [
+                        "v11.0",
+                        24.13
+                    ],
+                    [
+                        "v8.0",
+                        17.2
+                    ],
+                    [
+                        "v9.0",
+                        8.11
+                    ],
+                    [
+                        "v10.0",
+                        5.33
+                    ],
+                    [
+                        "v6.0",
+                        1.06
+                    ],
+                    [
+                        "v7.0",
+                        0.5
+                    ]
+                ]
+            }, {
+                name: "Chrome",
+                id: "Chrome",
+                data: [
+                    [
+                        "v40.0",
+                        5
+                    ],
+                    [
+                        "v41.0",
+                        4.32
+                    ],
+                    [
+                        "v42.0",
+                        3.68
+                    ],
+                    [
+                        "v39.0",
+                        2.96
+                    ],
+                    [
+                        "v36.0",
+                        2.53
+                    ],
+                    [
+                        "v43.0",
+                        1.45
+                    ],
+                    [
+                        "v31.0",
+                        1.24
+                    ],
+                    [
+                        "v35.0",
+                        0.85
+                    ],
+                    [
+                        "v38.0",
+                        0.6
+                    ],
+                    [
+                        "v32.0",
+                        0.55
+                    ],
+                    [
+                        "v37.0",
+                        0.38
+                    ],
+                    [
+                        "v33.0",
+                        0.19
+                    ],
+                    [
+                        "v34.0",
+                        0.14
+                    ],
+                    [
+                        "v30.0",
+                        0.14
+                    ]
+                ]
+            }, {
+                name: "Firefox",
+                id: "Firefox",
+                data: [
+                    [
+                        "v35",
+                        2.76
+                    ],
+                    [
+                        "v36",
+                        2.32
+                    ],
+                    [
+                        "v37",
+                        2.31
+                    ],
+                    [
+                        "v34",
+                        1.27
+                    ],
+                    [
+                        "v38",
+                        1.02
+                    ],
+                    [
+                        "v31",
+                        0.33
+                    ],
+                    [
+                        "v33",
+                        0.22
+                    ],
+                    [
+                        "v32",
+                        0.15
+                    ]
+                ]
+            }, {
+                name: "Safari",
+                id: "Safari",
+                data: [
+                    [
+                        "v8.0",
+                        2.56
+                    ],
+                    [
+                        "v7.1",
+                        0.77
+                    ],
+                    [
+                        "v5.1",
+                        0.42
+                    ],
+                    [
+                        "v5.0",
+                        0.3
+                    ],
+                    [
+                        "v6.1",
+                        0.29
+                    ],
+                    [
+                        "v7.0",
+                        0.26
+                    ],
+                    [
+                        "v6.2",
+                        0.17
+                    ]
+                ]
+            }]
+        }
     });
       }());
 
+
 (function(){
-             $('.chart-box3').highcharts({
+$('.chart-box1').highcharts({
+         chart: {
+            type: 'column'
+        },
         title: {
-            text: '',
-            x: -20 //center
+            text: ''
         },
         subtitle: {
-            text: '',
-            x: -20
+            text: ''
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: [
+                '耗气',
+                '耗电',
+                '耗水',
+                '耗蒸汽'
+                
+            ]
         },
-        yAxis: {                                                                             
-            title: {                                                                         
-                text: null                                                          
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
+        series: [{
+            name: '去年',
+            data: [{
+                name: "Microsoft Internet Explorer",
+                y: 56.33,
+                drilldown: "Microsoft Internet Explorer"
+            }, {
+                name: "Chrome",
+                y: 24.03,
+                drilldown: "Chrome"
+            }, {
+                name: "Firefox",
+                y: 10.38,
+                drilldown: "Firefox"
+            }, {
+                name: "Safari",
+                y: 4.77,
+                drilldown: "Safari"
+            }]
+
+        }, {
+            name: '今年',
+            data: [{
+                name: "Microsoft Internet Explorer",
+                y: 56.33,
+                drilldown: "Microsoft Internet Explorer"
+            }, {
+                name: "Chrome",
+                y: 24.03,
+                drilldown: "Chrome"
+            }, {
+                name: "Firefox",
+                y: 10.38,
+                drilldown: "Firefox"
+            }, {
+                name: "Safari",
+                y: 4.77,
+                drilldown: "Safari"
+            }]
+
+        }],
+        drilldown: {
+            series: [{
+                name: "Microsoft Internet Explorer",
+                id: "Microsoft Internet Explorer",
+                data: [
+                    [
+                        "v11.0",
+                        24.13
+                    ],
+                    [
+                        "v8.0",
+                        17.2
+                    ],
+                    [
+                        "v9.0",
+                        8.11
+                    ],
+                    [
+                        "v10.0",
+                        5.33
+                    ],
+                    [
+                        "v6.0",
+                        1.06
+                    ],
+                    [
+                        "v7.0",
+                        0.5
+                    ]
+                ]
+            }, {
+                name: "Chrome",
+                id: "Chrome",
+                data: [
+                    [
+                        "v40.0",
+                        5
+                    ],
+                    [
+                        "v41.0",
+                        4.32
+                    ],
+                    [
+                        "v42.0",
+                        3.68
+                    ],
+                    [
+                        "v39.0",
+                        2.96
+                    ],
+                    [
+                        "v36.0",
+                        2.53
+                    ],
+                    [
+                        "v43.0",
+                        1.45
+                    ],
+                    [
+                        "v31.0",
+                        1.24
+                    ],
+                    [
+                        "v35.0",
+                        0.85
+                    ],
+                    [
+                        "v38.0",
+                        0.6
+                    ],
+                    [
+                        "v32.0",
+                        0.55
+                    ],
+                    [
+                        "v37.0",
+                        0.38
+                    ],
+                    [
+                        "v33.0",
+                        0.19
+                    ],
+                    [
+                        "v34.0",
+                        0.14
+                    ],
+                    [
+                        "v30.0",
+                        0.14
+                    ]
+                ]
+            }, {
+                name: "Firefox",
+                id: "Firefox",
+                data: [
+                    [
+                        "v35",
+                        2.76
+                    ],
+                    [
+                        "v36",
+                        2.32
+                    ],
+                    [
+                        "v37",
+                        2.31
+                    ],
+                    [
+                        "v34",
+                        1.27
+                    ],
+                    [
+                        "v38",
+                        1.02
+                    ],
+                    [
+                        "v31",
+                        0.33
+                    ],
+                    [
+                        "v33",
+                        0.22
+                    ],
+                    [
+                        "v32",
+                        0.15
+                    ]
+                ]
+            }, {
+                name: "Safari",
+                id: "Safari",
+                data: [
+                    [
+                        "v8.0",
+                        2.56
+                    ],
+                    [
+                        "v7.1",
+                        0.77
+                    ],
+                    [
+                        "v5.1",
+                        0.42
+                    ],
+                    [
+                        "v5.0",
+                        0.3
+                    ],
+                    [
+                        "v6.1",
+                        0.29
+                    ],
+                    [
+                        "v7.0",
+                        0.26
+                    ],
+                    [
+                        "v6.2",
+                        0.17
+                    ]
+                ]
+            }]
+        }
+    });
+      }());
+
+ $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+        // Create the chart
+        $('.chart-box2').highcharts('StockChart', {
+
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : null 
+            },
+
+        yAxis: {
+            title: {
+                //text: 'Temperature (°C)'
+                text: null 
             },
             plotLines: [{
-                value: 60,
+                value: 125,
                 width: 1,
                 //color: '#808080'
                 zIndex: 2,
                 color: 'red'
-            }]                                                                                
-        },                                                                                   
-        tooltip: {
-            valueSuffix: '°C'
+            }]
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
+            series : [{
+                name : 'AAPL',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
     });
-      }());
+
+$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+        // Create the chart
+        $('.chart-box3').highcharts('StockChart', {
+
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : null 
+            },
+
+        yAxis: {
+            title: {
+                //text: 'Temperature (°C)'
+                text: null 
+            },
+            plotLines: [{
+                value: 125,
+                width: 1,
+                //color: '#808080'
+                zIndex: 2,
+                color: 'red'
+            }]
+        },
+            series : [{
+                name : 'AAPL',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+    });
 
 });
