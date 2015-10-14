@@ -1,0 +1,73 @@
+<% include header.html %>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/bb', "css!../../css/bb"])
+		});
+	</script>
+	<!--报表-->
+	<div id="bb" class="my-section bb-wrapper">
+    <div>
+        <div style="padding-top:16px">
+            <ul class="list-inline">
+                <li>
+                    <a class="label label-default"><span class="glyphicon glyphicon-list"></span>查看自定义报表</a>
+                </li>
+                <li>
+                    <a class="label label-default"><span class="glyphicon glyphicon-leaf"></span>设备能耗报表报表</a>
+                </li>
+                <li>
+                    <a class="label label-default"><span class="glyphicon glyphicon-star"></span>KPI报表查询</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <div class="toolbar">
+                <ul class="list-inline fl">
+                    <li>选择报表</li>
+                    <li>
+                        <select class="selectpicker">
+                            <option>地源热泵运行记录表</option>
+                            <option>锅炉运行记录表</option>
+                            <option>余热系统运行记录表</option>
+                            <option>直燃机运行记录表</option>
+                            <option>能源站运营记录表</option>
+                            <option>能源站设备运行记录表1</option>
+                            <option>设备能耗记录表</option>
+                            <option>能源站设备运行记录表2</option>
+                            <option>设备综合能效表</option>
+                            <option>余热锅炉运行记录表</option>
+                        </select>
+                    </li>
+                    <li>查看方式：</li>
+                    <li>
+                        <input type="radio" name="inspectmode" />
+                        年
+                    </li>
+                    <li>
+                        <input type="radio" name="inspectmode" />
+                        月
+                    </li>
+                    <li>
+                        <input type="radio" name="inspectmode" checked="checked" />
+                        日
+                    </li>
+                    <li>
+                        <input class="datepicker" data-date-format="mm/dd/yyyy">
+                    </li>
+                    <li>
+                        <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary">
+                            查看数据
+                        </button>
+                    </li>
+                </ul>
+
+                <button type="button" title="导出到Excell" class="btn btn-default fr" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+<% include footer.html %>

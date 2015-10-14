@@ -1,4 +1,8 @@
 .xmgl-wrapper {
   text-align: center;
   overflow: hidden;
-  background: #000; }
+  background: #000;
+	height: 100%;
+}
+.img_img{width:840px;height: 470px;margin: auto;}
+.gl_btn{margin-top: 30px;}
