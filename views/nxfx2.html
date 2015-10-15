@@ -4,6 +4,32 @@
                 requirejs(['app/nxfx']);
             });
         </script>
+        <style type="text/css">
+        .chart-box4 {
+          
+          width: 75%;
+          padding-top: 0px;
+          border: 1px solid transparent;
+          }
+        .chart-box5 {
+          
+          width: 75%;
+          padding-top: 0px;
+          border: 1px solid transparent;
+          }
+          .chart-box6 {
+          
+          width: 75%;
+          padding-top: 0px;
+          border: 1px solid transparent;
+          }
+          .chart-box7 {
+         
+          width: 75%;
+          padding-top: 0px;
+          border: 1px solid transparent;
+          }
+        </style>
        <!--能效检测-->
         <div id="nxfx2" class="my-section">
             <!--4分格-->
@@ -14,7 +40,7 @@
                             <ul class="nav nav-tabs pull-left">
                                 <li><h4>CCHP</h4></li>
                             </ul>
-                            <button class="btn btn-default pull-right" type="button">
+                            <button class="btn btn-default pull-right" type="button" data-toggle="modal" data-target=".nxfx-modal-1">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -63,7 +89,7 @@
                                 <li><h4>常规调峰</h4></li>
                                 
                             </ul>
-                            <button class="btn btn-default pull-right" type="button">
+                            <button class="btn btn-default pull-right" type="button" data-toggle="modal" data-target=".nxfx-modal-2">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -112,7 +138,7 @@
                             <ul class="nav nav-tabs pull-left">
                                  <li><h4>蓄能调峰</h4></li>
                             </ul>
-                            <button class="btn btn-default pull-right" type="button">
+                            <button class="btn btn-default pull-right" type="button" data-toggle="modal" data-target=".nxfx-modal-3">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -159,7 +185,7 @@
                             <ul class="nav nav-tabs pull-left">
                                 <li><h4>输配</h4></li>
                             </ul>
-                            <button class="btn btn-default pull-right" type="button">
+                            <button class="btn btn-default pull-right" type="button" data-toggle="modal" data-target=".nxfx-modal-4">
                                 <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -201,4 +227,230 @@
                 <div class="chart-box3" style="height: 100%; background: #39c; padding-top: 120px;"></div>       
             </div>
         </div>
+
+
+<!--弹出框开始1-->
+<div class="modal fade bs-example-modal-lg nxfx-modal-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">CCHP</h4>
+        </div>
+            <!--4分格--> 
+                <div class="">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                           <div class="panel-body clearfix">
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择工艺系统</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                              </div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>             
+                    </div>
+                </div>
+                <div id="" class="chart-box4"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--弹出框开始2-->
+<div class="modal fade bs-example-modal-lg nxfx-modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">常规调峰</h4>
+        </div>
+            <!--4分格--> 
+                <div class="">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                           <div class="panel-body clearfix">
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择工艺系统</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                              </div>
+                              <div class="pull-right cbfx-date-box col-md-3">
+                                  <div class='input-group date datetimepicker1' data-date="10/15/2015 12:00 AM">
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-3">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control"  value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>             
+                    </div>
+                </div>
+                <div id="" class="chart-box5"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--弹出框开始3-->
+<div class="modal fade bs-example-modal-lg nxfx-modal-3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">蓄能调峰</h4>
+        </div>
+            <!--4分格--> 
+                <div class="">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                           <div class="panel-body clearfix">
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择工艺系统</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                              </div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>             
+                    </div>
+                </div>
+                <div id="" class="chart-box6"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--弹出框开始4-->
+<div class="modal fade bs-example-modal-lg nxfx-modal-4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">输配</h4>
+        </div>
+            <!--4分格--> 
+                <div class="">
+                    <div id="chart-0" class="panel panel-default module module-1 no">
+                           <div class="panel-body clearfix">
+                              <div class="pull-left cbfx-date-box">
+                                  <select class="form-control">
+                                      <option>请选择工艺系统</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                              </div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1 '>
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="pull-right date-sep">至</div>
+                              <div class="pull-right cbfx-date-box col-md-2">
+                                  <div class='input-group date datetimepicker1'>
+                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                      <span class="input-group-addon">
+                                          <span class="glyphicon glyphicon-calendar"></span>
+                                      </span>
+                                  </div>
+                              </div>
+                              <div class="cbfx-top-right pull-right">
+                                  <div class="btn-group ">
+                                      <button type="button" class="btn btn-default">日</button>
+                                      <button type="button" class="btn btn-default">月</button>
+                                      <button type="button" class="btn btn-default">年</button>
+                                  </div>
+                              </div>
+                          </div>             
+                    </div>
+                </div>
+                <div id="" class="chart-box7"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <% include footer.html %>
