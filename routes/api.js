@@ -5,11 +5,21 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/restlogin.json', function(req, res, next) {
 
-	request.post({url:'http://117.144.16.98:8080/rems/restlogin.json', form: {key:'value'}}, function(error,response,body){
-		if (!error && response.statusCode == 200) {
-	    	res.send(body);// Show the HTML for the Google homepage.
-	  	}
+	request.post({url:'http://10.20.1.169:8080/rems/innerlogin.json', form: {username:'enn_admin',password:'123456'}}, function(error,response,body){
+		
+	    	res.send(body);
+	  	
 	})
 });
+
+router.get('/gislist.json', function(req, res, next) {
+
+	request.post({url:'http://10.20.1.169:8080/rems/gislist.json', form: {username:'enn_admin',password:'123456'}}, function(error,response,body){
+		
+	    	res.send(response);
+	  	
+	})
+});
+
 
 module.exports = router;

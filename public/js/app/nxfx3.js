@@ -10,7 +10,7 @@ define(function(require){
       ;
       (function(){
       //日期控件
-       $('#datetimepicker1').datetimepicker();
+       $('.datetimepicker1').datetimepicker();
       //下拉选择
       $('.selectpicker').selectpicker({
       });

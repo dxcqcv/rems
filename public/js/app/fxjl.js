@@ -9,6 +9,7 @@ define(function(require){
       , datapicker = require('bootstrap-datetimepicker.min')
       ;
       (function(){
+        $('.datetimepicker1').datetimepicker();
       //下拉选择
       $('.selectpicker').selectpicker({
       });
