@@ -61,6 +61,19 @@ define(function(require){
 
         var jsonDataRight = {}; // 全局
 
+        // 工艺图侧边栏
+        $('.gyt-sidebar-title').on('click', function(){
+            var $this = $(this);
+            if(!$this.hasClass('gyt-sidebar-sm')) {
+                $this.addClass('gyt-sidebar-sm');
+                $('.gyt-sidebar').width(50); 
+                $('.gyt-list-name').hide();
+            } else {
+                $this.removeClass('gyt-sidebar-sm'); 
+                $('.gyt-sidebar').width('auto'); 
+                $('.gyt-list-name').show()
+            }
+        });
         //工艺图弹出层
         $('.artwork-popup').on('click', function() {
             $('#gytModal').modal({

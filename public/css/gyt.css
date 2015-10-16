@@ -47,7 +47,8 @@
 .gyt-sidebar-title {
   padding: 10px 15px;
   margin-bottom: -1px;
-  border: 1px solid #DDD; }
+  border: 1px solid #DDD;
+  cursor: pointer; }
 
 .gyt-sidebar {
   position: absolute;
