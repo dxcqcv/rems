@@ -1,9 +1,8 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/bb', "css!../../css/bb"])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/bb.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<% include header-bottom.html %>
 	<!--报表-->
 	<div id="bb" class="my-section bb-wrapper">
     <div>
@@ -331,4 +330,9 @@
     </div>
         
     </div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/bb'])
+		});
+	</script>
 <% include footer.html %>

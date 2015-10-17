@@ -42,7 +42,6 @@
   justify-content: center;
   align-items: flex-end; }
 
-.my-index-projects-wrapper { width: 475px;}
 .my-index-switch {
   width: 56px;
   height: 25px; }
@@ -68,6 +67,9 @@
   display: inline-block;
   background: url("../img/index/index_project03.png") no-repeat; }
 
+.my-index-projects-wrapper {
+  width: 475px; }
+
 .BMap_stdMpPan {
   display: none; }
 
@@ -76,7 +78,7 @@
   zoom: 1;
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
   position: absolute;
-  left: 7%;
+  left: 10px;
   top: 10px; }
 
 .search-section .search-input {
@@ -96,11 +98,3 @@
   outline: none;
   background: url(../img/index/search_btn.png) no-repeat;
   cursor: pointer; }
-
-.xl_clas{
-   zoom: 1;
-   position: absolute;
-   left: 1%;
-   top: 10px;}
-.btn_ul{min-width: 0px;}
-.btn_allmin{background-color: white!important;}

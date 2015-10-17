@@ -1,9 +1,6 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/gyt', "css!../../css/gyt"])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/gyt.css" media="all">
+<% include header-bottom.html %>
     <!--弹出框-->
     <div id="gytModal" class="modal fade bs-example-modal-lg">
         <div class="modal-dialog modal-lg">
@@ -1396,5 +1393,9 @@
             </div>
             <!--artwork end-->        
         </div>
-
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/gyt'])
+		});
+	</script>
 <% include footer.html %>

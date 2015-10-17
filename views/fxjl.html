@@ -1,9 +1,8 @@
-<% include header.html %>
-    <script>
-        requirejs(['../js/common'], function(common) {
-            requirejs(['app/fxjl', "css!../../css/cbfx"])
-        });
-    </script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/cbfx.css" media="all">
+<link rel="stylesheet" href="/css/nxjc.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
     <style type="text/css">
     .cbfx-right-content{
       padding-top: 42px;
@@ -1239,4 +1238,9 @@ background-repeat: repeat-x;
 
         </div>
     </div>
+    <script>
+        requirejs(['../js/common'], function(common) {
+            requirejs(['app/fxjl'])
+        });
+    </script>
 <% include footer.html %>

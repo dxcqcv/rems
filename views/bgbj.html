@@ -1,9 +1,6 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/bgbj', "css!../../css/bgbj"])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/bgbj.css" media="all">
+<% include header-bottom.html %>
 	<!--报告编辑-->
 	<div id="bgbj" class="my-section bgbj-wrapper">
 		<!--表格区域-->
@@ -919,4 +916,9 @@
 				
 	</div>
 	</div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/bgbj'])
+		});
+	</script>
 	<% include footer.html %>

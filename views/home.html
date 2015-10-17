@@ -1,10 +1,9 @@
-<% include header.html %>
+<% include header-top.html %>
+    <link rel="stylesheet" href="/css/index.css" media="all">
+    <link rel="stylesheet" href="/css/swiper.css" media="all">
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&services=false&ak=508d19135c7e834335c9fd942625c161"></script>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(['app/index']);
-            });
-        </script>
+<% include header-bottom.html %>
+
         <!--首页-->
         <div id="index" class="my-section">
             <!-- 地图部分 -->
@@ -22,4 +21,9 @@
             </div>
             <!--项目选择-->
         </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/index']);
+            });
+        </script>
 <% include footer.html %>

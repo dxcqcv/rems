@@ -1,9 +1,6 @@
-<% include header.html %>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(['app/xmgl']);
-            });
-        </script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/xmgl.css" media="all">
+<% include header-bottom.html %>
         <!--项目概览-->        
         <div id="xmgl" class="my-section xmgl-wrapper">
         	
@@ -15,4 +12,9 @@
 	            	<button type="button" class="btn btn-info btn_four">图片四</button>
 				 </p>
         </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/xmgl']);
+            });
+        </script>
 <% include footer.html %>

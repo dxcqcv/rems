@@ -1,9 +1,7 @@
 
 define(function(require){
     var 
-        nxjcCss = require('css!../../css/nxjc')
-      , selectpickerCss = require('css!../../css/bootstrap-select')
-      , $ = require('jquery')
+       $ = require('jquery')
       , highcharts = require('highcharts')
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')

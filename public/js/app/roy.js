@@ -1,10 +1,6 @@
 define(function(require){
-    var restCss = require("css!../../css/reset")
-      , bootstrapCss = require("css!../../css/bootstrap")
-      , bootstrapThemeCss = require("css!../../css/bootstrap-theme")
-      , fontAwesomeCss = require("css!../../font-awesome/css/font-awesome")
-      , globalCss = require("css!../../css/global")
-      , bootstrap = require('bootstrap')
+    var
+       bootstrap = require('bootstrap')
       , $ = require('jquery')
       ;
 

@@ -1,9 +1,6 @@
-<% include header.html %>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(['app/nxfx']);
-            });
-        </script>
+<% include header-top.html %>
+
+<% include header-bottom.html %>
         <style type="text/css">
         .chart-box4 {
           
@@ -452,5 +449,9 @@
 
 
 
-
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxfx']);
+            });
+        </script>
 <% include footer.html %>

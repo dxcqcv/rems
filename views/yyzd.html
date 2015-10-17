@@ -1,9 +1,6 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/yyzd', "css!../../css/yyzd"])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/yyzd.css" media="all">
+<% include header-bottom.html %>
 	<!--预约诊断-->
 	<div id="yyzd" class="my-section yyzd-wrapper">
 		<div id="yyzd_top">
@@ -143,4 +140,9 @@
 </div>
 	</div>
 
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/yyzd'])
+		});
+	</script>
 	<% include footer.html %>

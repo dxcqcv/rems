@@ -1,9 +1,6 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/sjjc'])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/sjjc.css" media="all">
+<% include header-bottom.html %>
 
 	<!--数据监测-->
 	<div id="sjjc" class="my-section">
@@ -449,5 +446,10 @@
 	</div>
 
 	
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/sjjc'])
+		});
+	</script>
 	
 	<% include footer.html %>

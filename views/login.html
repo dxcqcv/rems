@@ -1,15 +1,6 @@
-<% include header-no-nav.html %>
-        <script>
-            requirejs(['js/common'], function (common) {
-                requirejs(['app/login']);
-            });
-        </script>
-        <!--两栏-->
-        <!--<div class="my-left col-lg-2 col-md-2 col-sm-2">-->
-            <!--<div id="index">12121</div>-->
-            <!--<div id="second">second</div>-->
-        <!--</div>-->
-        <!--<div class="my-right col-lg-10 col-md-10  col-sm-10"></div>-->
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/login.css" media="all">
+<% include header-bottom-no-nav.html %>
         <!--登录页-->
         <div id="login" class="my-section my-login">
             <!--<form class="my-login-form" method="post">-->
@@ -35,4 +26,9 @@
             </div>
             </form>
         </div>
+        <script>
+            requirejs(['js/common'], function (common) {
+                requirejs(['app/login']);
+            });
+        </script>
 <% include footer.html %>

@@ -1,6 +1,5 @@
 define(function(require) {
 	var $ = require('jquery')
-      , datapickerCss = require('css!../../css/bootstrap-datetimepicker')
       , datapicker = require('bootstrap-datetimepicker.min')
 	  , highcharts = require('highcharts')
       ;

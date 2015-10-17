@@ -1,9 +1,6 @@
 
 define(function(require){
     var $ = require('jquery')
-      , nxfxCss =  require('css!../../css/nxfx')
-      , datapickerCss = require('css!../../css/bootstrap-datetimepicker')
-      , selectpickerCss = require('css!../../css/bootstrap-select')
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
       , exporting = require('exporting')

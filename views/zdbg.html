@@ -1,9 +1,6 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/zdbg', "css!../../css/zdbg"])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/zdbg.css" media="all">
+<% include header-bottom.html %>
 	<!--诊断报告-->
 	<div id="zdbg" class="my-section zdbg-wrapper">
 
@@ -903,4 +900,9 @@
 		</div>
 		
 	</div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/zdbg'])
+		});
+	</script>
 	<% include footer.html %>

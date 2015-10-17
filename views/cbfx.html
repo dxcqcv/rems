@@ -1,15 +1,13 @@
-<% include header.html %>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/cbfx', "css!../../css/cbfx"])
-		});
-	</script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/cbfx.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<% include header-bottom.html %>
     	<!--成本分析-->
 	<div id="cbfx" class="my-section cbfx-wrapper">
 		<div class="cbfx-top col-md-12 col-lg-12 col-xs-12">
 			<div class="panel panel-default cbfx-top-panel">
                 <div class="panel-body clearfix">
-                    <h4 class="pull-left">成本收益分析</h4>
+                    <h4 class="pull-left">成本分析</h4>
                     <div class="pull-right cbfx-date-box">
                         <div class='input-group date datetimepicker1'>
                             <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
@@ -305,4 +303,9 @@
 
 		</div>
 	</div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/cbfx'])
+		});
+	</script>
 <% include footer.html %>

@@ -1,9 +1,8 @@
-<% include header.html %>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(['app/tbhb']);
-            });
-        </script>
+<% include header-top.html %>
+      <link rel="stylesheet" href="/css/nxfx.css" media="all">
+      <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+      <link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
 
         <style type="text/css">
         .chart-box4 {
@@ -508,4 +507,9 @@
   </div>
 </div>
 
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/tbhb']);
+            });
+        </script>
 <% include footer.html %>

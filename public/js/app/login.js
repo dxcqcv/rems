@@ -1,6 +1,5 @@
 define(function (require) {
-    var $ = require('jquery'),
-        loginCss = require("css!../../css/login") 
+    var $ = require('jquery')
       ;
     (function(){
     }());

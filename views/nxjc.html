@@ -1,9 +1,7 @@
-<% include header.html %>
-        <script>
-            requirejs(['../js/common'], function (common) {
-                requirejs(["css!../../css/nxjc",'app/nxjc']);
-            });
-        </script>
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/nxjc.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
 
        <!--能效监测-->
         <div id="nxjc" class="my-section">
@@ -105,4 +103,9 @@
                 <div id="xitongzhibiao" class="chart-box nxjc-chart-box xtzb-chart-box"></div>
             </div>
         </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxjc']);
+            });
+        </script>
 <% include footer.html %>

@@ -1,6 +1,5 @@
 ;define(function(require){
     var $ = require('jquery')
-      , sjjcCss = require("css!../../css/sjjc")
       , exporting = require('exporting')
     ;
     (function(){
