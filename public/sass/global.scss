@@ -38,7 +38,7 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 }
 .content-inner {
     position: relative;
-    background: #39c;
+    background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
     height: 100%;
 }
 .my-right,
@@ -66,11 +66,31 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
     color: #000;
     position: relative;
 }
+.nor {border-left: 1px solid #ddd;}
+.nor > a { color: #5e5e5e; }
 /* global card config */
 .my-card { position: relative; height: 50%; box-sizing: border-box; min-height: 50%; padding: 15px;}
 .my-card-top {
     position: absolute; top: 0; left: 0;
     width: 100%; padding: 15px 15px 0 15px;
+}
+.card-title {
+    background: #fafafa;
+    position: relative;
+    border: 1px solid #ddd;
+    border-style: solid solid none none;
+}
+.card-subtitle { 
+    background: #fff; padding: 0px 15px; line-height: 50px; height:50px; box-sizing: border-box;
+    border: 1px solid #ddd; border-style: none solid;
+}
+.card-subtitle li { font-size: 12px; color: #646464; }
+.card-button-resize { position: absolute; top: 10px; right: 12px; }
+.navy { color: #1a9bb8; }
+.chart-box {
+    height: 100%;  
+    padding-top: 92px;
+    border: 1px solid #ddd;
 }
 /* login */
 .my-login {

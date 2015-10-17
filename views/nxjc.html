@@ -9,18 +9,18 @@
             <div id="singleBox" class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
                     <div class="card-title clearfix">
-                       <ul class="nav nav-tabs pull-left">
-                           <li class=""><a href="">气象信息</a></li>
+                       <ul class="nav nav-tabs ">
+                           <li class="nor"><a  href="">气象信息</a></li>
                        </ul>
-                        <button class="btn btn-default btn-xs pull-right" type="button">
+                        <button class="btn btn-default btn-xs card-button-resize" type="button">
                             <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="card-subtitle">
-                        <ul id="singleBoxSubTitle" class="list-inline">
-                            <li>温度 30C</li>
-                            <li>湿度 15%</li>
-                            <li>辐照度 1234w/m2</li>
+                        <ul class="list-inline">
+                            <li>温度 <span class="navy">30C</span></li>
+                            <li>湿度 <span class="navy">15%</span></li>
+                            <li>辐照度 <span class="navy">1234w/m2</span></li>
                         </ul>
                     </div>
                 </div>
@@ -28,18 +28,18 @@
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
-                    <div id="chart-0" class="panel panel-default module module-1 no">
-                        <div id="singleBoxTitle" class="panel-heading clearfix">
-                            <ul class="pull-left title-list clearfix">
-                                <li class="active"><span>工艺系统效率</span></li>
-                                <li><span>设备效率</span></li>
-                            </ul>
-                            <button class="btn btn-default btn-xs pull-right" type="button" data-toggle="modal" data-target=".nxjc-modal-2">
-                                <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                        <div class="panel-body clearfix">
-                            <div class="nxjc-gyxtxl-sele pull-left">
+                    <div class="card-title ">
+                       <ul class="nav nav-tabs ">
+                            <li class="active"><a>工艺系统效率</a></li>
+                            <li><a>设备效率</a></li>
+                       </ul>
+                        <button class="btn btn-default btn-xs card-button-resize" type="button">
+                            <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <ul class="list-inline ">
+                            <li>
                                 <select class="form-control selectpicker" id="gyxtxlSel">
                                   <option>默认系统名称</option>
                                   <option>2</option>
@@ -47,11 +47,9 @@
                                   <option>4</option>
                                   <option>5</option>
                                 </select>
-                            </div>
-                            <div class="nxjc-gyxtxl-val pull-left">
-                                15%
-                            </div>
-                        </div>
+                            </li>
+                            <li>瞬时效率<span class="navy">15%</span></li>
+                        </ul>
                     </div>
                 </div>
                 <div id="gyxtxl" class="chart-box"></div>

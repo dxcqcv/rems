@@ -1,9 +1,4 @@
 .xmgl-wrapper {
   text-align: center;
   overflow: hidden;
-  background: #000;
-	height: 100%;
-}
-.img_img{width:1362px;height: 484px;margin: auto;}
-.gl_btn{margin-top: 5px;}
-.img_mu{width: 1362px;height: 484px;}
+  background: #000; }

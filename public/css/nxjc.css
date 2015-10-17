@@ -1,28 +1,14 @@
 @charset "UTF-8";
-/*能效监测*/
-.my-card:first-child {
-  padding-bottom: 0;
-  padding-right: 0; }
-
-.my-card:nth-child(2) {
-  padding-bottom: 0; }
-
-.my-card:nth-child(3) {
-  padding-right: 0; }
-
-.my-card:nth-child(1) > .my-card-top,
+/*鑳芥晥鐩戞祴*/
+/*
+.my-card:first-child { padding-bottom: 0; padding-right: 0;}
+.my-card:nth-child(2) { padding-bottom: 0; }
+.my-card:nth-child(3) {  padding-right: 0;}
+.my-card:nth-child(1) > .my-card-top, 
 .my-card:nth-child(3) > .my-card-top {
-  padding-right: 0; }
-
-.card-title {
-  background: #ccc; }
-
-.chart-box {
-  height: 100%;
-  /*padding-top: 121px;*/
-  padding-top: 103px;
-  border: 1px solid transparent; }
-
+    padding-right: 0;
+}
+*/
 .nxjc-chart-box {
   padding-top: 195px; }
 
