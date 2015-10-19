@@ -196,7 +196,11 @@ html, body {
 .chart-box {
   height: 100%;
   padding-top: 92px;
-  border: 1px solid #ddd; }
+  border: 1px solid #ddd;
+  background-color: #fff; }
+
+.chart-box-no-sub {
+  padding-top: 42px; }
 
 /* login */
 .my-login {
@@ -297,3 +301,6 @@ html, body {
 
 .pdl0 {
   padding-left: 0; }
+
+.mb0 {
+  margin-bottom: 0; }

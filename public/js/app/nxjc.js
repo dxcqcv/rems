@@ -81,318 +81,318 @@ define(function(require){
                         21000, 20000, 19000, 18000, 18000, 17000, 16000]
                 }]
             });
-      var noBorder = { 
-        states:{
-            hover:{
-                halo: {
-                    size: 1
-                }     
-            }
-        }
-      };
-	    Highcharts.setOptions({
-	        colors: ['#8edce7', '#e8ebeb']
-	    });
-        // Create the chart for completion
-        var chart_completion = new Highcharts.Chart({
-            chart: {
-                renderTo: 'pieChart4',
-                type: 'pie',
-                events: {
-                    click: function(event) {
-                       //console.log(event.currentTarget.options.plotOptions)
-                       //event.currentTarget.options.plotOptions.pie.shadow = true;
-                    }
-                },
-                margin: [0,0,0,0]
-                //,
-                //height: 100,
-                //width: 100
+      //var noBorder = { 
+        //states:{
+            //hover:{
+                //halo: {
+                    //size: 1
+                //}     
+            //}
+        //}
+      //};
+		//Highcharts.setOptions({
+			//colors: ['#8edce7', '#e8ebeb']
+		//});
+        //// Create the chart for completion
+        //var chart_completion = new Highcharts.Chart({
+            //chart: {
+                //renderTo: 'pieChart4',
+                //type: 'pie',
+                //events: {
+                    //click: function(event) {
+                       ////console.log(event.currentTarget.options.plotOptions)
+                       ////event.currentTarget.options.plotOptions.pie.shadow = true;
+                    //}
+                //},
+                //margin: [0,0,0,0]
+                ////,
+                ////height: 100,
+                ////width: 100
 
-            },
-            tooltip: {
-                enabled: false,
-            },
-            plotOptions: {
-                pie: {
-                    //allowPointSelect: true,
-                    //shadow: true,
-	            	slicedOffset: 0,
-                	size: '100%',
-                	dataLabels: {
-                    	enabled: false
-                	}
-	            },
-                series: noBorder
-	        }, 
-            title: {
-                text: '80%',
-                    floating: true,
-                    align: 'center',
-                    x: 0,
-                    y: 25,
-                style: {
-                    fontSize: '18px'
-                }
-        	},      
-            subtitle: {
-	            text: '可再生能源<br>利用率',
-	            align: 'center',
-	            verticalAlign: 'middle',
-                style: {
-                    fontSize: '9.5px'
-                }
-            },
-            credits: {
-			   enabled: false
-			},
-            series: [{
-                name: 'Browsers',
-                data: [["MSIE",10],[,2]],
-                innerSize: '80%',
-                showInLegend:false,
-                dataLabels: {
-                    enabled: false
-                },
-                states:{
-                    hover: {
-                        enabled: false
-                    }
-                },
-                point : {
-                    events: {
-                        mouseOver: function(){
-                           this.oldTitle = chart_completion.options.title.text;
+            //},
+            //tooltip: {
+                //enabled: false,
+            //},
+            //plotOptions: {
+                //pie: {
+                    ////allowPointSelect: true,
+                    ////shadow: true,
+					//slicedOffset: 0,
+                    //size: '100%',
+                    //dataLabels: {
+                        //enabled: false
+                    //}
+				//},
+                //series: noBorder
+			//}, 
+            //title: {
+                //text: '80%',
+                    //floating: true,
+                    //align: 'center',
+                    //x: 0,
+                    //y: 25,
+                //style: {
+                    //fontSize: '18px'
+                //}
+            //},      
+            //subtitle: {
+				//text: '可再生能源<br>利用率',
+				//align: 'center',
+				//verticalAlign: 'middle',
+                //style: {
+                    //fontSize: '9.5px'
+                //}
+            //},
+            //credits: {
+			   //enabled: false
+			//},
+            //series: [{
+                //name: 'Browsers',
+                //data: [["MSIE",10],[,2]],
+                //innerSize: '80%',
+                //showInLegend:false,
+                //dataLabels: {
+                    //enabled: false
+                //},
+                //states:{
+                    //hover: {
+                        //enabled: false
+                    //}
+                //},
+                //point : {
+                    //events: {
+                        //mouseOver: function(){
+                           //this.oldTitle = chart_completion.options.title.text;
 
-                           chart_completion.setTitle({
-                                text: 'New title '
-                            });
+                           //chart_completion.setTitle({
+                                //text: 'New title '
+                            //});
                            
-                        },
-                        mouseOut: function(){
-                            chart_completion.setTitle({
-                                text: this.oldTitle
-                            });
-                        }
-                    }
-                }
-            }]
-        });
+                        //},
+                        //mouseOut: function(){
+                            //chart_completion.setTitle({
+                                //text: this.oldTitle
+                            //});
+                        //}
+                    //}
+                //}
+            //}]
+        //});
 
-        // Create the chart for completion
-        var chart_completion = new Highcharts.Chart({
-            chart: {
-                renderTo: 'pieChart1',
-                type: 'pie',
-                margin: [0,0,0,0]
-                //,
-                //height: 100,
-                //width: 100
+        //// Create the chart for completion
+        //var chart_completion = new Highcharts.Chart({
+            //chart: {
+                //renderTo: 'pieChart1',
+                //type: 'pie',
+                //margin: [0,0,0,0]
+                ////,
+                ////height: 100,
+                ////width: 100
 
-            },
-            tooltip: {
-                enabled: false,
-            },
-            plotOptions: {
-                pie: {
-	            	slicedOffset: 0,
-                	size: '100%',
-                	dataLabels: {
-                    	enabled: false
-                	}
-	            },
-                series: noBorder
-	        }, 
-            title: {
-                text: '80%',
-                    floating: true,
-                    align: 'center',
-                    x: 0,
-                    y: 25,
-                style: {
-                    fontSize: '18px'
-                }
-        	},      
-            subtitle: {
-	            text: '节能率',
-	            align: 'center',
-	            verticalAlign: 'middle',
-                style: {
-                    fontSize: '9.5px'
-                }
-            },
-            credits: {
-			   enabled: false
-			},
-            series: [{
-                name: 'Browsers',
-                data: [["MSIE",10],[,2]],
-                innerSize: '80%',
-                showInLegend:false,
-                dataLabels: {
-                    enabled: false
-                },
-                states:{
-                    hover: {
-                        enabled: false
-                    }
-                },
-                point : {
-                    events: {
-                        mouseOver: function(){
-                           this.oldTitle = chart_completion.options.title.text;
+            //},
+            //tooltip: {
+                //enabled: false,
+            //},
+            //plotOptions: {
+                //pie: {
+					//slicedOffset: 0,
+                    //size: '100%',
+                    //dataLabels: {
+                        //enabled: false
+                    //}
+				//},
+                //series: noBorder
+			//}, 
+            //title: {
+                //text: '80%',
+                    //floating: true,
+                    //align: 'center',
+                    //x: 0,
+                    //y: 25,
+                //style: {
+                    //fontSize: '18px'
+                //}
+            //},      
+            //subtitle: {
+				//text: '节能率',
+				//align: 'center',
+				//verticalAlign: 'middle',
+                //style: {
+                    //fontSize: '9.5px'
+                //}
+            //},
+            //credits: {
+			   //enabled: false
+			//},
+            //series: [{
+                //name: 'Browsers',
+                //data: [["MSIE",10],[,2]],
+                //innerSize: '80%',
+                //showInLegend:false,
+                //dataLabels: {
+                    //enabled: false
+                //},
+                //states:{
+                    //hover: {
+                        //enabled: false
+                    //}
+                //},
+                //point : {
+                    //events: {
+                        //mouseOver: function(){
+                           //this.oldTitle = chart_completion.options.title.text;
 
-                           chart_completion.setTitle({
-                                text: 'New title '
-                            });
+                           //chart_completion.setTitle({
+                                //text: 'New title '
+                            //});
                            
-                        },
-                        mouseOut: function(){
-                            chart_completion.setTitle({
-                                text: this.oldTitle
-                            });
-                        }
-                    }
-                }
-            }]
-        });
+                        //},
+                        //mouseOut: function(){
+                            //chart_completion.setTitle({
+                                //text: this.oldTitle
+                            //});
+                        //}
+                    //}
+                //}
+            //}]
+        //});
         
 
 
 
-        Highcharts.setOptions({
-	        colors: ['#f07173', '#e8ebeb']
-	    });
+        //Highcharts.setOptions({
+			//colors: ['#f07173', '#e8ebeb']
+		//});
 
-        // Create the chart for time
-        var chart_time = new Highcharts.Chart({
-            chart: {
-                renderTo: 'pieChart2',
-                type: 'pie',
-                margin: 0
-                //,
-                 //height: 100,
-                //width: 100
-            },
+        //// Create the chart for time
+        //var chart_time = new Highcharts.Chart({
+            //chart: {
+                //renderTo: 'pieChart2',
+                //type: 'pie',
+                //margin: 0
+                ////,
+                 ////height: 100,
+                ////width: 100
+            //},
 
-            plotOptions: {
-                pie: {
-    	            	slicedOffset: 0,
-                    	size: '100%',
-                    	dataLabels: {
-                        enabled: false
-                	}
-	            },
-                series : noBorder
-	        },
-            tooltip: {
-                enabled: false,
-            },
+            //plotOptions: {
+                //pie: {
+                        //slicedOffset: 0,
+                        //size: '100%',
+                        //dataLabels: {
+                        //enabled: false
+                    //}
+				//},
+                //series : noBorder
+			//},
+            //tooltip: {
+                //enabled: false,
+            //},
 
-            title: {
-                text: '80%',
-                    floating: true,
-                    align: 'center',
-                    x: 0,
-                    y: 25,
-                style: {
-                    fontSize: '18px'
-                }
-        	},      
-            subtitle: {
-	            text: 'CO2减排率',
-	            align: 'center',
-	            verticalAlign: 'middle',
-                style: {
-                    fontSize: '9.5px'
-                }
-            },
-            credits: {
-			   enabled: false
-			},
-            series: [{
-                name: 'Browsers',
-                data: [["MSIE",10],[,2]],
-                innerSize: '80%',
-                showInLegend:false,
-                dataLabels: {
-                    enabled: false
-                },
-                states:{
-                    hover: {
-                        enabled: false
-                    }
-                }
-            }]
-        });
+            //title: {
+                //text: '80%',
+                    //floating: true,
+                    //align: 'center',
+                    //x: 0,
+                    //y: 25,
+                //style: {
+                    //fontSize: '18px'
+                //}
+            //},      
+            //subtitle: {
+				//text: 'CO2减排率',
+				//align: 'center',
+				//verticalAlign: 'middle',
+                //style: {
+                    //fontSize: '9.5px'
+                //}
+            //},
+            //credits: {
+			   //enabled: false
+			//},
+            //series: [{
+                //name: 'Browsers',
+                //data: [["MSIE",10],[,2]],
+                //innerSize: '80%',
+                //showInLegend:false,
+                //dataLabels: {
+                    //enabled: false
+                //},
+                //states:{
+                    //hover: {
+                        //enabled: false
+                    //}
+                //}
+            //}]
+        //});
       
-        Highcharts.setOptions({
-	        colors: ['#8adfb9', '#e8ebeb']
-	    });
+        //Highcharts.setOptions({
+			//colors: ['#8adfb9', '#e8ebeb']
+		//});
 
-        // Create the chart for Budget
-        var chart_budget = new Highcharts.Chart({
-            chart: {
-                renderTo: 'pieChart3',
-                type: 'pie',
-                margin: 0
-                //,
-                 //height: 100,
-                //width: 100
-            },
+        //// Create the chart for Budget
+        //var chart_budget = new Highcharts.Chart({
+            //chart: {
+                //renderTo: 'pieChart3',
+                //type: 'pie',
+                //margin: 0
+                ////,
+                 ////height: 100,
+                ////width: 100
+            //},
 
-            plotOptions: {
-            pie: {
-	            	slicedOffset: 0,
-                	size: '100%',
-                	dataLabels: {
-                    	enabled: false
-                	}
-	            },
-                series: noBorder
-	        },
-            title: {
-                text: '80%',
-                    floating: true,
-                    align: 'center',
-                    x: 0,
-                    y: 25,
-                style: {
-                    fontSize: '18px'
-                }
-        	},      
-            subtitle: {
-	            text: '系统能效',
-	            align: 'center',
-	            verticalAlign: 'middle',
-                style: {
-                    fontSize: '9.5px'
-                }
-            },
-            tooltip: {
-                enabled: false,
-                animation: false,
-                backgroundColor: null
-            },
+            //plotOptions: {
+            //pie: {
+					//slicedOffset: 0,
+                    //size: '100%',
+                    //dataLabels: {
+                        //enabled: false
+                    //}
+				//},
+                //series: noBorder
+			//},
+            //title: {
+                //text: '80%',
+                    //floating: true,
+                    //align: 'center',
+                    //x: 0,
+                    //y: 25,
+                //style: {
+                    //fontSize: '18px'
+                //}
+            //},      
+            //subtitle: {
+				//text: '系统能效',
+				//align: 'center',
+				//verticalAlign: 'middle',
+                //style: {
+                    //fontSize: '9.5px'
+                //}
+            //},
+            //tooltip: {
+                //enabled: false,
+                //animation: false,
+                //backgroundColor: null
+            //},
 
-            credits: {
-			   enabled: false
-			},
-            series: [{
-                name: 'Browsers',
-                data: [["MSIE",10],[,2]],
-                innerSize: '80%',
-                showInLegend:false,
-                dataLabels: {
-                    enabled: false
-                },
-                states:{
-                    hover: {
-                        enabled: false
-                    }
-                }
-            }]
-        });
+            //credits: {
+			   //enabled: false
+			//},
+            //series: [{
+                //name: 'Browsers',
+                //data: [["MSIE",10],[,2]],
+                //innerSize: '80%',
+                //showInLegend:false,
+                //dataLabels: {
+                    //enabled: false
+                //},
+                //states:{
+                    //hover: {
+                        //enabled: false
+                    //}
+                //}
+            //}]
+        //});
       //third
           $('#gongnenghaonengCharts').highcharts({
         chart: {

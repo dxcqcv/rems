@@ -101,6 +101,10 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
     height: 100%;  
     padding-top: 92px;
     border: 1px solid #ddd;
+    background-color: #fff;
+}
+.chart-box-no-sub {
+    padding-top: 42px;
 }
 /* login */
 .my-login {
@@ -191,3 +195,4 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .vat > li { vertical-align: top;}
 .pdr0 { padding-right: 0; }
 .pdl0 { padding-left: 0; }
+.mb0 { margin-bottom: 0; }
