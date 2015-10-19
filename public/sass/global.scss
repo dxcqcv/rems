@@ -33,9 +33,13 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .one-nav { padding: 52px 0 0; }
 .two-nav { padding: 92px 0 0; }
 
+.my-top-brand {position: relative; padding-left: 60px; margin-right: 25px;}
+.rems-logo { background: url('../img/header/rems-logo.png') no-repeat; width: 32px; height: 31px; position: absolute; top: 10px; left: 15px;}
+
 .my-content {
     height: 100%; box-sizing: border-box;
 }
+.rems-top-words { }
 .content-inner {
     position: relative;
     background: linear-gradient(to bottom, #e5e5e5 0%, #ffffff 100%);
@@ -50,7 +54,13 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .my-section { height: 100%; }
 .subTitle,
 .my-sub-nav { display: inline-block; vertical-align: top; }
-.subTitle { width: 210px; text-align: center; }
+.subTitle { position:relative; width: 235px; height: 40px; line-height: 40px; text-align: center; background: #e0e1e3 ; color: #5d5d5d; font-size: 17px; }
+.rems-logo-tail { width: 0; height: 0; border-bottom:50px solid transparent; border-left: 25px solid #007993; position: absolute; top: 0; right: -25px; }
+.rems-sub-tail { width: 0; height: 0; border-bottom:40px solid transparent; border-left: 20px solid #e0e1e3 ; position: absolute; top: 0; right: -20px; }
+.ycjc-offset { margin-left:179px; }
+.nygl-offset { margin-left:179+86px; }
+.pgzd-offset { margin-left:179+86*2px; }
+.pgzdzj-offset { margin-left:179+86*3+15px; }
 /* global title list */
 .title-list { margin-bottom: 0; }
 .title-list > li {
@@ -144,7 +154,7 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 /*修改bootstrap部分*/
 /* 二级导航 */
 .my-tab-content {
-    position: absolute; top: 52px; left: 0;
+    position: absolute; top: 50px; left: 0;
     width: 100%; background: #eee;
 }
 @media (max-width: 768px){
