@@ -109,6 +109,7 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 /* login */
 .my-login {
     background: #e1edf8 url('../img/login/log_mid.png') no-repeat center;
+    position: relative;
 }
 .my-login-form {
     position: absolute; top: 50%; left: 50%;

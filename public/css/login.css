@@ -35,14 +35,13 @@
 .l_pwd a{text-decoration: underline;color: cornflowerblue;}
 .l_pwd a:hover{cursor:pointer!important;}
 
-.login_footer{ border-top:2px solid dodgerblue;   text-align: center;width: 100%; position: absolute; bottom: 0px; line-height: 28px;}
+.login_footer{    text-align: center;width: 100%; position: absolute; top: 86%; line-height: 28px;}
 .login_footer span {font-size: 12px;vertical-align: middle;}
 
-.conteny{position: absolute;top: 65%; left: 36%; transform: translateX(-36%);}
+.conteny{position: absolute;top: 65%; left: 50%; transform: translateX(-50%);}
 .qlwj,.ycfw,.yhty{border-right: 1px solid silver;}
 .tleft{padding: 0px 10px;}
 .putform {border-collapse: collapse;width: 100%;table-layout: auto; width: 279px;}
 .loginnav{width: 850px; left: 257px;}
 .module-login .loginnav {left: 28px;bottom: 180px;width: 891px;top: 400px; position: absolute;}
-.loginnav{margin-left: 25%;}
 table {border-spacing: 0; border-collapse: collapse;width: 100%;border-spacing: 0;table-layout: fixed;}

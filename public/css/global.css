@@ -204,7 +204,8 @@ html, body {
 
 /* login */
 .my-login {
-  background: #e1edf8 url("../img/login/log_mid.png") no-repeat center; }
+  background: #e1edf8 url("../img/login/log_mid.png") no-repeat center;
+  position: relative; }
 
 .my-login-form {
   position: absolute;
