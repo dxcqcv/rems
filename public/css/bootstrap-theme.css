@@ -615,3 +615,15 @@ ul,ol { margin-bottom: 0; }
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
    background-color: transparent; color: #006a87; 
 }
+.btn-default {
+  text-shadow: 0 1px 0 #fff;
+  background-image:none; 
+  background-image:none;
+  background-image:none; 
+  background-image:none;
+  filter:none; 
+  filter:none; 
+  background-repeat: repeat-x;
+  border-color: #dbdbdb;
+  border-color: #ccc;
+}
