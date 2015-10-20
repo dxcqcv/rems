@@ -1,0 +1,23 @@
+.all1,.all2,.all3,.all_tx{width: 58%;margin: auto;height: 380px;margin-top: 30px;}
+		.inpyt{border: 1px solid #BDB6B6;font-size: 12px;width: 267px;height: 26px;-webkit-border-radius: 6px;}
+		.inpy2{border: 1px solid #BDB6B6;font-size: 12px;width: 150px;height: 26px;-webkit-border-radius: 6px;}
+		.inpy3{width: 60px;height: 26px;}
+		.all_two{margin-left: 30px;}
+		.all2,.all3,.all_tx{display: none;}
+		.tz{text-decoration: underline;}
+		.inpy4,.inpyt5{width: 80px;}
+		.btn_blac{margin-left: 110px;margin-top: -10px;}
+		.bot_xq{border-top: 1px solid darkgray;width: 70%;margin: auto;padding-bottom: 10px;}
+		.h4_x{color: #3b5171;}
+		.all_div{margin-left: 20px;}
+		.tan_name,.tan_name1{color: #BDB6B6;font-size: 10px;}
+		.tan_name1{margin-left: 82px;}
+		.tan_pwd{margin-left: 28px;}
+		.bot_xq p{font-size: 13px;line-height: 10px;}
+		.two_di{margin-left: 10%;}
+		.next_1,.next_2,.next_3,.next_4{width: 100px;}
+		.ens_tab{margin-left: 100px;}
+		.next_3{margin-left: 80px;}
+		.next_4{margin-left: 100px;}
+		.tishi{display: none;}
+

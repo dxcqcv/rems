@@ -79,10 +79,11 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .nor {border-left: 1px solid #ddd;}
 .nor > a { color: #5e5e5e; }
 /* global card config */
-.my-card { position: relative; height: 50%; box-sizing: border-box; min-height: 50%; padding: 15px;}
+.card-wrapper { padding: 10px; }
+.my-card { position: relative; height: 50%; box-sizing: border-box; min-height: 50%; padding: 10px;}
 .my-card-top {
     position: absolute; top: 0; left: 0;
-    width: 100%; padding: 15px 15px 0 15px;
+    width: 100%; padding: 10px 10px 0 10px;
 }
 .card-title {
     background: #fafafa;
@@ -99,12 +100,13 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .navy { color: #1a9bb8; }
 .chart-box {
     height: 100%;  
-    padding-top: 92px;
+    /*padding-top: 92px;*/
     border: 1px solid #ddd;
     background-color: #fff;
+    padding: 102px 10px 10px; /*top 92+10*/
 }
 .chart-box-no-sub {
-    padding-top: 42px;
+    padding: 52px 10px 10px;
 }
 /* login */
 .my-login {

@@ -627,3 +627,10 @@ ul,ol { margin-bottom: 0; }
   border-color: #dbdbdb;
   border-color: #ccc;
 }
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: #007993;
+}
+.progress { height: 10px; }

@@ -13,12 +13,12 @@ define(function(require){
                            .end()
                            .removeClass('col-md-6 col-lg-6').addClass('col-md-12 col-lg-12')
                            .css({'height':'100%'})
-                           .children('.chart-box').highcharts().reflow()
+                           .find('.charts-cont').highcharts().reflow()
                     ; 
                 } else {
                    $this.removeClass('card-button-resize-small').parents('.my-card').removeClass('col-md-12 col-lg-12').addClass('col-md-6 col-lg-6')
                        .css({'height':'50%'})
-                       .children('.chart-box').highcharts().reflow()
+                       .find('.charts-cont').highcharts().reflow()
                    ;
                    $this.parents('.my-card').siblings('.my-card').show()  
                    ;

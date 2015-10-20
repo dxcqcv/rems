@@ -34,12 +34,17 @@
 .xtzb-chart-box {padding-top: 155px;}
 .chart-box-chart, 
 .chart-box-list { height: 100%;}
-.nxjc-list-group { height: 100%;}
+.chart-box-chart  { padding: 10px; }
+.nxjc-list-group { height: 100%; 
+}
+.chart-box-no-sub-xtzb { padding: 42px 0 0; }
 .nxjc-list-group > .list-group-item { 
     height: 25%; margin-bottom: 0;
     cursor: pointer;
+    display: flex; flex-direction: column; 
+    justify-content: center;
 }
-
 .nxjc-list-group > .list-group-item:hover { 
     background-color: #eee;
 }
+.cbfx-pm-top { padding-bottom: 10px; }

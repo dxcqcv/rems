@@ -4,34 +4,14 @@
 <% include header-bottom.html %>
 
        <!--能效监测-->
-        <div id="nxjc" class="my-section">
+        <div id="nxjc" class="my-section card-wrapper">
             <!--4分格-->
-            <div id="singleBox" class="my-card col-md-6 col-lg-6 col-xs-12">
-                <div class="my-card-top">
-                    <div class="card-title clearfix">
-                       <ul class="nav nav-tabs ">
-                           <li class="nor"><a  href="">气象信息</a></li>
-                       </ul>
-                        <button class="btn btn-default btn-xs card-button-resize" type="button">
-                            <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="card-subtitle">
-                        <ul class="list-inline">
-                            <li>温度 <span class="navy">30C</span></li>
-                            <li>湿度 <span class="navy">15%</span></li>
-                            <li>辐照度 <span class="navy">1234w/m2</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="qxxxChartBox" class="chart-box"></div>
-            </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
                     <div class="card-title ">
                        <ul class="nav nav-tabs ">
-                            <li class="active"><a>工艺系统效率</a></li>
-                            <li><a>设备效率</a></li>
+                            <li><a>耗能信息</a></li>
+                            <li class="active"><a>供能信息</a></li>
                        </ul>
                         <button class="btn btn-default btn-xs card-button-resize" type="button">
                             <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
@@ -41,18 +21,94 @@
                         <ul class="list-inline ">
                             <li>
                                 <select class="form-control selectpicker" id="gyxtxlSel">
-                                  <option>默认系统名称</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
+                                  <option>供冷</option>
+                                  <option>供热</option>
                                 </select>
                             </li>
-                            <li>瞬时效率<span class="navy">15%</span></li>
+                            <li>供冷量：<span class="navy">1234Kwh</span></li>
                         </ul>
                     </div>
                 </div>
-                <div id="gyxtxl" class="chart-box"></div>
+                <div id="gongnenghaonengCharts" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title clearfix">
+                       <ul class="nav nav-tabs ">
+                           <li class="nor"><a  href="">系统指标</a></li>
+                       </ul>
+                        <button class="btn btn-default btn-xs card-button-resize" type="button">
+                            <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-box chart-box-no-sub-xtzb">
+                    <div class="chart-box-list col-md-4 col-lg-4 col-xs-4 pdr0 pdl0 ">
+                        <ul class="list-group nxjc-list-group mb0">
+                            <li class="list-group-item active">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>节能率</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress mb0">
+
+                                    <div class="progress-bar progress-bar-info" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>CO2减排率</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress mb0">
+
+                                    <div class="progress-bar progress-bar-info" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>系统能效</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress mb0">
+
+                                    <div class="progress-bar progress-bar-info" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                               <div class="cbfx-pm-top clearfix">
+                                <span>可再生能源利用率</span>
+                                <span class="pull-right">60%</span>
+                               </div>
+                                <div class=" progress cbfx-pm-progress mb0">
+
+                                    <div class="progress-bar progress-bar-info" style="width: 60%;">
+
+                                        <span class="sr-only">60% Complete</span>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="xitongzhibiao" class="chart-box-chart col-md-8 col-lg-8 col-xs-8 pdr0 pdl0 charts-cont" ></div>
+                </div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -77,86 +133,35 @@
                         </ul>
                     </div>
                 </div>
-                <div id="gongnenghaonengCharts" class="chart-box"></div>
+                <div id="gongnenghaonengCharts" class="chart-box charts-cont"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
-                    <div class="card-title clearfix">
+                    <div class="card-title ">
                        <ul class="nav nav-tabs ">
-                           <li class="nor"><a  href="">系统指标</a></li>
+                            <li class="active"><a>工艺系统效率</a></li>
+                            <li><a>设备效率</a></li>
                        </ul>
                         <button class="btn btn-default btn-xs card-button-resize" type="button">
                             <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
                         </button>
                     </div>
-                </div>
-                <div class="chart-box chart-box-no-sub">
-                    <div class="chart-box-list col-md-4 col-lg-4 col-xs-4 pdr0 pdl0 ">
-                        <ul class="list-group nxjc-list-group mb0">
-                            <li class="list-group-item active">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>节能率</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress mb0">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
+                    <div class="card-subtitle clearfix">
+                        <ul class="list-inline ">
+                            <li>
+                                <select class="form-control selectpicker" id="gyxtxlSel">
+                                  <option>默认系统名称</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
                             </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>CO2减排率</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress mb0">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>系统能效</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress mb0">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                               <div class="cbfx-pm-top clearfix">
-                                <span>可再生能源利用率</span>
-                                <span class="pull-right">60%</span>
-                               </div>
-                                <div class=" progress cbfx-pm-progress mb0">
-
-                                    <div class="progress-bar" style="width: 60%;">
-
-                                        <span class="sr-only">60% Complete</span>
-
-                                    </div>
-
-                                </div>
-                            </li>
+                            <li>瞬时效率：<span class="navy">15%</span></li>
                         </ul>
                     </div>
-                    <div id="xitongzhibiao" class="chart-box-chart col-md-8 col-lg-8 col-xs-8 pdr0 pdl0 " ></div>
                 </div>
+                <div id="gyxtxl" class="chart-box charts-cont"></div>
             </div>
         </div>
         <script>

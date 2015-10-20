@@ -18,6 +18,9 @@ define(function(require){
                 chart: {
                     type: 'area'
                 },
+        credits: {
+            enabled: false
+        },
                 title: {
                     text: null,
                 },
@@ -399,6 +402,9 @@ define(function(require){
             type: 'column'
         },
 
+        credits: {
+            enabled: false
+        },
         title: {
             text: null,
         },
@@ -461,6 +467,9 @@ define(function(require){
             renderTo: 'gyxtxl',
             defaultSeriesType: 'column'
         },
+        credits: {
+            enabled: false
+        },
         title: {
             text: null 
         },
@@ -469,7 +478,7 @@ define(function(require){
         },
         yAxis: {
             title: {
-                text: 'Units'
+                text: null 
             }
         },
         series: [{}]
@@ -530,6 +539,9 @@ $('#gyxtxlSel').on('change', function(){
                 subtitle: {
                     text: null,
                 },
+        credits: {
+            enabled: false
+        },
                 xAxis: {
                     allowDecimals: false,
                     labels: {

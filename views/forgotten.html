@@ -1,0 +1,66 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/forgotten.css" media="all">
+<% include header-bottom.html %>
+        <!--忘记密码-->
+        <div id="" class="my-section ">
+			<div class="all1" id="one_div">
+				<img src="/img//forgotten/pwd1.png" class="pwd_img1" />
+				<div class="all_two">
+					<p>请填写你需要找回 的账号：</p>
+					<p><input type="email" class="form-control inpyt" id="name" placeholder="请输入您的用户名/邮箱"></p>
+					<p><input type="email" class="form-control inpy2" id="pwd" placeholder="请输入验证码">
+						<input class="form-control inpy3" type="text" placeholder="Readonly input here…" readonly>&nbsp;&nbsp;<a href="#" class="tz">看不清？</a><span class="tishi">您输入的验证码有误！</span></p>
+						<button type="button" class="btn btn-info next_1">下一步</button>
+				</div>
+			</div>
+			
+		<!--	2-->
+			<div class="all2" id="two_div">
+				<img src="/img//forgotten/pwd1.png" class="pwd_img2" />
+				<div class="all_div">
+				<p class="tan_name">您正在找回的账号是<span>Ael123</span></p>
+				<p>为了您的账号安全，请完成下方身份验证找回密码</p>
+				<p>验证方式：<input type="email" class="form-control inpyt3" id="elems" placeholder="密保邮箱ghdash.@sina.com"></p>
+					<div class="two_di">
+						<p><button type="button" class="btn btn-info">发送验证码</button></p>
+						<p><input type="email" class="form-control inpy4" id="yzm1" placeholder="邮箱验证码">		
+							<button type="button" class="btn btn-info btn_blac">重新发送<span>（60）</span></button> 
+							<span>发送成功，<a href="#">立即进入邮箱</a></span>						
+						</p>
+						<p><input type="email" class="form-control inpyt5" id="name" placeholder="邮箱验证码"></p>
+						<button type="button" class="btn btn-info next_2">确定</button>
+					</div>
+				</div>
+			</div>
+			
+			<!--3-->
+			<div class="all3" id="three_div">
+				<img src="/img//forgotten/pwd1.png" class="pwd_img3" />
+				<p class="tan_name1">您正在找回的账号是<span>Ael123</span></p>
+				<p class="tan_pwd">新密码：<input type="email" class="form-control inpyt6" name="newpwdd" id="newpwd"></p>	
+				<p>确认新密码：<input type="email" class="form-control inpyt7" id="newpwd_true"></p>
+				<button type="button" class="btn btn-info next_3">确定</button>
+			</div>
+			
+			<div class="all_tx" id="four_div">
+				<img src="/img//forgotten/pwd1.png" class="pwd_img3" />
+				<div class="ens_tab">
+				<p><img src="/img//forgotten/ok.png" />恭喜，百度账号<span>dhggsdh</span>重置密码成功</p>
+					<button type="button" class="btn btn-info next_4">直接登录</button>
+				</div>
+			</div>
+			
+			<!--底部-->
+			<div class="bot_xq">
+				<h4 class="h4_x">用户名和邮箱都不记得了？</h4>
+				<p>*请联系管理员，重新找回用户名、邮箱</p>
+				<p>*联系方式：800-8888，90%的用户会在4小时内收到反馈</p>
+			</div>
+        </div>
+
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/forgotten']);
+            });
+        </script>
+<% include footer.html %>

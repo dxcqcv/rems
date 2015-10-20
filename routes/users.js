@@ -60,4 +60,7 @@ router.get('/fxjl', function(req, res) {
 router.get('/bb', function(req, res) {
     res.render('bb', { title: 'Home' });
 });
+router.get('/forgotten', function(req, res) {
+    res.render('forgotten', { title: 'Home' });
+});
 module.exports = router;
