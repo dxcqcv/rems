@@ -13,6 +13,9 @@ router.get('/home', function(req, res) {
     }
     res.render('home', { title: 'Home', user: user });
 });
+router.get('/home2', function(req, res) {
+    res.render('home2', { title: 'Home' });
+});
 router.get('/nxjc', function(req, res) {
     res.render('nxjc', { title: 'Home' });
 });
