@@ -1,5 +1,8 @@
-.fl {
-  float: left; }
-
-.fr {
-  float: right; }
+.toolbar{width: 96%;position: absolute;left: 2%;top: 20px;}
+.toolbar button{float: right;}
+.tab_all{position: absolute;border: 1px solid dimgrey;top: 80px;width: 96%;left: 2%;min-height: 100%;}
+.btn_li{position: absolute;}
+.tu{top: 7px;right: 126px;font-size: 15px;position: absolute;}
+.fl{width: 70%;display: inline-block;}
+.btn_two{display: inline-block;float: right;}
+.tab_fon tr td {text-align: center;}
