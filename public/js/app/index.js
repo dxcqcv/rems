@@ -11,13 +11,11 @@ define(function(require){
             init: function() {
                 this.configMap(); 
                 this.indexProject(); 
-            console.log(this.winHeight)
+
+            console.log(this.str)
             },
             getHeight: function() {
-                $(window).resize(function(){
-                    this.winHeight = $(window).height();
-                });
-                return this.winHeight;
+                return this.winHeight = $(window).height();
             },
             configMap: function () {
 		// 百度地图API功能
@@ -136,8 +134,12 @@ define(function(require){
             },
 
             indexProject: function() {
-                    $('.my-index-projects-wrapper').empty().append(this.str);
-                    this.str = '';
+                var l = (this.getHeight() < 800) ? 3 : 4;   
+                for(var i = 0; i < l; i++ )
+                this.projectList();
+
+                $('.my-index-projects-wrapper').empty().append(this.str);
+                this.str = '';
             }
             //indexProject: function() {
                 //var switchButton = $('.my-index-switch')
@@ -209,5 +211,8 @@ define(function(require){
         }
         var index = new Index();
         index.init();
+                $(window).resize(function(){
+        index.init();
+                });
     }());
 });
