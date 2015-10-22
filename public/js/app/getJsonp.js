@@ -1,6 +1,7 @@
 define(function(require) {
     var 
         $ = require('jquery')
+      , jsonpPath = '/jsonp/'
       ;
     (function(){
         // jsonp method
@@ -53,4 +54,6 @@ define(function(require) {
 
         localJsonp = new LocalJsonp(); // 调用本地jsonp 
     }());
+
+        return jsonpPath;  
 });

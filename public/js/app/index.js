@@ -1,71 +1,30 @@
 define(function(require){
-    var $ = require('jquery'),
-        swiper = require('swiper')
+    var $ = require('jquery')
+      , jsonpPath = require('app/getJsonp')
     ;
     (function(){
+        var localData = null;
         function Index(){
             this.winHeight = $(window).height();
             this.str = '';
+            this.sum = 20;
+            this.itemsDone = false;
         }
         Index.prototype = {
             init: function() {
                 this.configMap(); 
-                this.indexProject(); 
-
-            console.log(this.str)
+                localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
+                //this.indexProject(3,4,this.projectList);
+                this.switchProject();
+                this.enterProject();
             },
             getHeight: function() {
                 return this.winHeight = $(window).height();
             },
-            configMap: function () {
-		// 百度地图API功能
-		var map = new BMap.Map("allmap");// 创建Map实例
-		var top_left_navigation = new BMap.NavigationControl();//左上角，添加默认缩放平移控件
-		var marker = new BMap.Marker(new BMap.Point(116.404, 39.915));//添加坐标
-		var sContent = "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>天安门</h4>" + 
-					   "<img style='float:right;margin:4px' id='imgDemo' src='http://app.baidu.com/map/images/tiananmen.jpg' width='139' height='104' title='天安门'/>" + 
-					   "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" + 
-					   "</div>";
-	    var infoWindow = new BMap.InfoWindow(sContent);
-		map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);	// 初始化地图,设置中心点坐标和地图级别
-		map.addControl(top_left_navigation); //添加缩放平移控件
-		map.addOverlay(marker);
-		marker.addEventListener("click", function(){          
-		   this.openInfoWindow(infoWindow);
-		   //图片加载完毕重绘infowindow
-		   document.getElementById('imgDemo').onload = function (){
-			   infoWindow.redraw();//防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
-		   }
-		});
-
-		function G(id) {
-			return document.getElementById(id);
-		}
-
-		function setPlace(){
-			map.clearOverlays();    //清除地图上所有覆盖物
-			function myFun(){
-				var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-				map.centerAndZoom(pp, 18);
-				map.addOverlay(new BMap.Marker(pp));    //添加标注
-			}
-			var local = new BMap.LocalSearch(map, { //智能搜索
-			  onSearchComplete: myFun
-			});
-			local.search(myValue);
-		}
-
-		//添加标记方法
-		function addMarker(point){
-		  var marker = new BMap.Marker(point);
-		  map.addOverlay(marker);
-		}
-
-		// for (var i = 0; i < 5; i ++) {
-			var point = new BMap.Point(121.487899,31.249162);
-			addMarker(point);
-		// }
-
+            enterProject: function() {
+                $(document).on('click','.my-index-project-box',function(){
+                    window.location = '/user/xmgl';  
+                }); 
             },
             switchProject: function() {
                 var switchButton = $('.my-index-switch')
@@ -73,146 +32,160 @@ define(function(require){
                   ;
                 switchButton.on('click', function(){
                     var $this = $(this)
+                      ;
                     $this.toggleClass('my-index-switch-list');
                     if($this.hasClass('my-index-switch-list')) {
-                        self.getHeight()
+                        self.indexProject(3,4,self.projectList);// 错误self.str is undefined
+
                     } else {
                     
+                        self.indexProject(9,12,self.projectAll);
                     }
                 });
             },
-            projectList: function() {
-                        this.str += 
-                                '<div class="my-index-project-box clearfix">'+
-                                    '<div class="project-list-left">'+
-                                        '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
-                                        '<p class="project-name">株洲神农城泛能站</p>'+
-                                        '<p class="project-loc">湖南省 长沙市长沙县</p>'+
-                                        '<span class="pro-left-line"></span>'+
-                                    '</div>'+
-                                    '<div class="project-list-img-wrapper">'+
-                                        '<div class="project-list-img">'+
-                                            '<img src="/img/index/loacationimg00.jpg" class="" alt="">'+
-                                        '</div>'+
-                                        '<div class="project-list-detail ">'+
-                                            '<ul>'+
-                                                '<li>'+
-                                                    '<p class="detail-name">能源综合利用率</p>'+
-                                                    '<p class="detail-val">0.38</p>'+
-                                                '</li>'+
-                                                '<li>'+
-                                                    '<p class="detail-name">可再生能源利用率</p>'+
-                                                    '<p class="detail-val">0.38</p>'+
-                                                '</li>'+
-                                                '<li>'+
-                                                    '<p class="detail-name">累计节能率</p>'+
-                                                    '<p class="detail-val">0.38</p>'+
-                                                '</li>'+
-                                                '<li>'+
-                                                    '<p class="detail-name">CO2减排率</p>'+
-                                                    '<p class="detail-val">0.38</p>'+
-                                                '</li>'+
-                                            '</ul>'+
-                                        '</div>'+
-                                    '</div>'+
-                                    '<div class="project-list-right">'+
-                                        '<div class="project-circle project-circle-top">'+
-                                            '<span>供能</span><span class="pro-num">6.1万</span>'+
-                                        '</div>'+
-                                        '<div class="pro-type">'+
-                                            '<div class="glyphicon glyphicon-home pro-type-icon"></div>'+
-                                            '<div class="pro-type-name">医院m2</div>'+
-                                        '</div>'+
-                                        '<div class="project-circle project-circle-bottom">'+
-                                            '<span>建筑</span><span class="pro-num">10.1万</span>'+
-                                        '</div>'+
-                                    '</div>'+
-                                '</div>';
+            projectList: function(clear, projectName) {
+                if(clear) {
+                    return this.str = ''; 
+                } else {
+                    return this.str += 
+                        '#<div class="my-index-project-box clearfix">'+
+                            '<div class="project-list-left">'+
+                                '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
+                                '<p class="project-name">'+ projectName +'</p>'+
+                                '<p class="project-loc">湖南省 长沙市长沙县</p>'+
+                                '<span class="pro-left-line"></span>'+
+                            '</div>'+
+                            '<div class="project-list-img-wrapper">'+
+                                '<div class="project-list-img">'+
+                                    '<img src="/img/index/loacationimg00.jpg" class="" alt="">'+
+                                '</div>'+
+                                '<div class="project-list-detail ">'+
+                                    '<ul>'+
+                                        '<li>'+
+                                            '<p class="detail-name">能源综合利用率</p>'+
+                                            '<p class="detail-val">0.38</p>'+
+                                        '</li>'+
+                                        '<li>'+
+                                            '<p class="detail-name">可再生能源利用率</p>'+
+                                            '<p class="detail-val">0.38</p>'+
+                                        '</li>'+
+                                        '<li>'+
+                                            '<p class="detail-name">累计节能率</p>'+
+                                            '<p class="detail-val">0.38</p>'+
+                                        '</li>'+
+                                        '<li>'+
+                                            '<p class="detail-name">CO2减排率</p>'+
+                                            '<p class="detail-val">0.38</p>'+
+                                        '</li>'+
+                                    '</ul>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="project-list-right">'+
+                                '<div class="project-circle project-circle-top">'+
+                                    '<span>供能</span><span class="pro-num">6.1万</span>'+
+                                '</div>'+
+                                '<div class="pro-type">'+
+                                    '<div class="glyphicon glyphicon-home pro-type-icon"></div>'+
+                                    '<div class="pro-type-name">医院m2</div>'+
+                                '</div>'+
+                                '<div class="project-circle project-circle-bottom">'+
+                                    '<span>建筑</span><span class="pro-num">10.1万</span>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+                }
             },
             projectAll: function() {
                         this.str += '<a href="" class="my-index-list-cont"></a>';
             },
+            makeItems: function() {
+                        this.str += '<div class="item"></div>';
+            },
 
-            indexProject: function() {
-                var l = (this.getHeight() < 800) ? 3 : 4;   
-                for(var i = 0; i < l; i++ )
-                this.projectList();
+            indexItems: function(sum,num1,num2) {
+                var items = (this.getHeight() < 800) ? sum/num1 : sum/num2
+                  , regI = new RegExp('<div class="item">',i)
+                  ;   
+                for(var i = 0; i < items; i++ )
+                this.makeItems();
+                this.str = this.str.replace(regI,'<div class="item active">');
+                $('.carousel-inner').empty().append(this.str);
+                //this.str = '';
+                this.itemsDone = true;
+            },
+            getGislist: function(data) {
+                localData = data;
+                index.indexProject(3,4,index.projectList); //trigger indexProject
+            },
+            indexProject: function(num1,num2,fn) {
+                var self = this
+                  , k = (self.getHeight() < 800) ? num1 : num2  
+                  , n1, n2, n3, n4
+                  ;
+                this.indexItems(localData.length,3,4);
 
-                $('.my-index-projects-wrapper').empty().append(this.str);
-                this.str = '';
+                        //console.log(self)
+                if(this.itemsDone) {
+                    $.each(localData, function(i,v){
+                        self.str = fn(false, v.projectname); 
+                        //console.log(self)
+                    });
+
+
+                        //console.log(localData)
+                        //console.log(self)
+                    self.str = self.str.split('#')
+                    if(k ==3) {
+                        n1 = self.str[1]+self.str[2]+self.str[3];
+                        n2 = self.str[4]+self.str[5]+self.str[6];
+                        n3 = self.str[7]+self.str[8]+self.str[9];
+                        n4 = self.str[10]+self.str[11]+self.str[12];
+                    } else {
+                        n1 = self.str[1]+self.str[2]+self.str[3]+self.str[4];
+                        n2 = self.str[5]+self.str[6]+self.str[7]+self.str[8];
+                        n3 = self.str[9]+self.str[10]+self.str[11]+self.str[12];
+                    }
+
+                    $('.item').each(function(i,v) {
+                        switch(i) {
+                            case 0: 
+                                $(v).empty().append(n1);
+                                break;
+                            case 1: 
+                                $(v).empty().append(n2);
+                                break;
+                            case 2: 
+                                $(v).empty().append(n3);
+                                break;
+                            case 3: 
+                                $(v).empty().append(n4);
+                                break;
+                        }
+                    });
+                }
+                this.itemsDone = false;
+            },
+            configMap: function () {
+                 var map = new AMap.Map('allmap', {
+                        resizeEnable: true,
+                      // 设置中心点
+                      center: [116.404, 39.915],
+
+                      // 设置缩放级别
+                      zoom: 5
+                });
+                   //在地图中添加ToolBar插件
+                map.plugin(["AMap.ToolBar"], function () {
+                  toolBar = new AMap.ToolBar();
+                  map.addControl(toolBar);
+                }); 
             }
-            //indexProject: function() {
-                //var switchButton = $('.my-index-switch')
-                  //, projectWrapper = $('.my-index-projects-wrapper') 
-                  //, str = ''
-                  //,  l = (this.winHeight < 800) ? 3 : 4
-                  //,  k = (this.winHeight < 800) ? 9 : 12 
-                  //;
-                //switchButton.on('click', function(){
-                    //var $this = $(this)
-                      //;
-                    //$this.toggleClass('my-index-switch-list');
-                    //if($this.hasClass('my-index-switch-list')) {
-                        //for(var i = 0; i < l; i++ )
-                        //str += 
-                                //'<div class="my-index-project-box clearfix">'+
-                                    //'<div class="project-list-left">'+
-                                        //'<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
-                                        //'<p class="project-name">株洲神农城泛能站</p>'+
-                                        //'<p class="project-loc">湖南省 长沙市长沙县</p>'+
-                                        //'<span class="pro-left-line"></span>'+
-                                    //'</div>'+
-                                    //'<div class="project-list-img-wrapper">'+
-                                        //'<div class="project-list-img">'+
-                                            //'<img src="/img/index/loacationimg00.jpg" class="" alt="">'+
-                                        //'</div>'+
-                                        //'<div class="project-list-detail ">'+
-                                            //'<ul>'+
-                                                //'<li>'+
-                                                    //'<p class="detail-name">能源综合利用率</p>'+
-                                                    //'<p class="detail-val">0.38</p>'+
-                                                //'</li>'+
-                                                //'<li>'+
-                                                    //'<p class="detail-name">可再生能源利用率</p>'+
-                                                    //'<p class="detail-val">0.38</p>'+
-                                                //'</li>'+
-                                                //'<li>'+
-                                                    //'<p class="detail-name">累计节能率</p>'+
-                                                    //'<p class="detail-val">0.38</p>'+
-                                                //'</li>'+
-                                                //'<li>'+
-                                                    //'<p class="detail-name">CO2减排率</p>'+
-                                                    //'<p class="detail-val">0.38</p>'+
-                                                //'</li>'+
-                                            //'</ul>'+
-                                        //'</div>'+
-                                    //'</div>'+
-                                    //'<div class="project-list-right">'+
-                                        //'<div class="project-circle project-circle-top">'+
-                                            //'<span>供能</span><span class="pro-num">6.1万</span>'+
-                                        //'</div>'+
-                                        //'<div class="pro-type">'+
-                                            //'<div class="glyphicon glyphicon-home pro-type-icon"></div>'+
-                                            //'<div class="pro-type-name">医院m2</div>'+
-                                        //'</div>'+
-                                        //'<div class="project-circle project-circle-bottom">'+
-                                            //'<span>建筑</span><span class="pro-num">10.1万</span>'+
-                                        //'</div>'+
-                                    //'</div>'+
-                                //'</div>';
-                    //} else {
-                        //for(var i = 0; i < k; i++ )
-                        //str += '<a href="" class="my-index-list-cont"></a>';
-                    //} 
-                    //projectWrapper.empty().append(str);
-                    //str = '';
-                //});
-            //}
         }
         var index = new Index();
         index.init();
-                $(window).resize(function(){
-        index.init();
-                });
+        $(window).resize(function(){
+            //if(localData)
+                //index.indexProject(3,4,index.projectList); // 错误self.str is undefined
+        });
     }());
 });
