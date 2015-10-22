@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";;AACA,oBAAqB;EAAE,cAAc,EAAE,CAAC;EAAE,aAAa,EAAE,CAAC;;AAC1D,qBAAsB;EAAE,cAAc,EAAE,CAAC;;AACzC,qBAAsB;EAAG,aAAa,EAAE,CAAC;;AACzC;oCACqC;EACjC,aAAa,EAAE,CAAC;;AAEpB,UAAW;EACP,MAAM,EAAE,IAAI;EAAG,WAAW,EAAE,KAAK;EACjC,MAAM,EAAE,qBAAqB",
-"sources": ["../sass/nxjc.scss"],
-"names": [],
-"file": "nxjc.css"
-}

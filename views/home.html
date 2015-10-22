@@ -13,7 +13,7 @@
             <!--项目选择-->
             <div class="my-index-right">
                 <div data-list=0 class="my-index-switch my-index-switch-detail my-index-switch-list"></div>
-                <div class="my-index-projects-wrapper">
+                <div id="myCarousel" data-ride="carousel" class="my-index-projects-wrapper carousel slide">
                 <div class="carousel-inner">
                     <div class="item">
                         <div class="my-index-project-box clearfix">
@@ -64,6 +64,19 @@
                     </div>
                     <div class="item"></div>
                 </div>
+                    <!-- Carousel controls -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
                 </div>
             </div>
             <!--项目选择-->
