@@ -121,7 +121,7 @@
         });
          marker.setMap(map);  //在地图上添加点
          //鼠标点击marker弹出自定义的信息窗体
-        AMap.event.addListener(marker, 'mouseove', function() {
+        AMap.event.addListener(marker, 'mouseover', function() {
             infoWindow.open(map, marker.getPosition());
         });
         
