@@ -124,6 +124,9 @@
         AMap.event.addListener(marker, 'mouseover', function() {
             infoWindow.open(map, marker.getPosition());
         });
+        AMap.event.addListener(marker, 'click', function() {
+            window.location.href="/user/xmgl";
+        });
         
     }
 
