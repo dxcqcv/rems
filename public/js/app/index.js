@@ -96,7 +96,7 @@ define(function(require){
                 }
             },
             projectAll: function() {
-                        this.str += '<a href="" class="my-index-list-cont"></a>';
+                        return this.str += '<a href="" class="my-index-list-cont"></a>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
@@ -106,6 +106,8 @@ define(function(require){
                 var items = (this.getHeight() < 800) ? sum/num1 : sum/num2
                   , regI = new RegExp('<div class="item">',i)
                   ;   
+                this.str = '';
+
                 for(var i = 0; i < items; i++ )
                 this.makeItems();
                 this.str = this.str.replace(regI,'<div class="item active">');
@@ -123,10 +125,11 @@ define(function(require){
                   , n1, n2, n3, n4
                   ;
                 this.indexItems(localData.length,3,4);
-
                         //console.log(self)
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
+console.log(self.str)
+self.str = '';
                         self.str = fn(false, v.projectname); 
                         //console.log(self)
                     });
@@ -275,8 +278,8 @@ define(function(require){
         var index = new Index();
         index.init();
         $(window).resize(function(){
-            //if(localData)
-                //index.indexProject(3,4,index.projectList); // 错误self.str is undefined
+            if(localData)
+                index.indexProject(3,4,index.projectList); // 错误self.str is undefined
         });
     }());
 });
