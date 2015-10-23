@@ -44,7 +44,7 @@ define(function(require){
             },
             projectList: function(projectName) {
                     return this.str += 
-                        '#<div class="my-index-project-box clearfix" data-show="xmgl" data-subshow="xmgl-">'+
+                        'shangwenlong<div class="my-index-project-box clearfix" data-show="xmgl" data-subshow="xmgl-">'+
                             '<div class="project-list-left">'+
                                 '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
@@ -91,7 +91,7 @@ define(function(require){
                         '</div>';
             },
             projectAll: function() {
-                return this.str += '#<a href="" class="my-index-list-cont"></a>';
+                return this.str += 'shangwenlong<a href="" class="my-index-list-cont"></a>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
@@ -117,7 +117,7 @@ define(function(require){
             indexProject: function(num1,num2,fn) {
                 var self = this
                   , k = (self.getHeight() < 800) ? num1 : num2  
-                  , temp = null
+                  , temp = '' 
                   ;
                 this.indexItems(localData.length,3,4);
                 if(this.itemsDone) {
@@ -125,10 +125,13 @@ define(function(require){
                         self.str = fn.call(self, v.projectname); 
                     });
 
-                    self.str = self.str.split('#')
+                    self.str = self.str.split('shangwenlong')
+                    self.str.shift()
                     $('.item').each(function(i,v) {
                         for(var i = 0; i<k; i++) {
-                            temp += self.str.shift() 
+                            if(typeof self.str[0] == 'undefined') return;
+                            temp += self.str.shift(); 
+                            console.log(self.str[0])
                         }
                         $(v).empty().append(temp);
                         temp = '';
