@@ -14,7 +14,6 @@ define(function(require){
             init: function() {
                 this.configMap(); 
                 localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
-                //this.indexProject(3,4,this.projectList);
                 this.switchProject();
                 this.enterProject();
             },
@@ -43,11 +42,7 @@ define(function(require){
                     }
                 });
             },
-            projectList: function(clear, projectName) {
-                //console.log(this)
-                if(clear) {
-                    return this.str = ''; 
-                } else {
+            projectList: function(projectName) {
                     return this.str += 
                         '#<div class="my-index-project-box clearfix" data-show="xmgl" data-subshow="xmgl-">'+
                             '<div class="project-list-left">'+
@@ -94,14 +89,9 @@ define(function(require){
                                 '</div>'+
                             '</div>'+
                         '</div>';
-                }
             },
-            projectAll: function(clear) {
-                if(clear) {
-                    return this.str = ''; 
-                } else {
-                    return this.str += '#<a href="" class="my-index-list-cont"></a>';
-                }
+            projectAll: function() {
+                return this.str += '#<a href="" class="my-index-list-cont"></a>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
@@ -117,7 +107,7 @@ define(function(require){
                 this.makeItems();
                 this.str = this.str.replace(regI,'<div class="item active">');
                 $('.carousel-inner').empty().append(this.str);
-                //this.str = '';
+                this.str = '';
                 this.itemsDone = true;
             },
             getGislist: function(data) {
@@ -127,32 +117,15 @@ define(function(require){
             indexProject: function(num1,num2,fn) {
                 var self = this
                   , k = (self.getHeight() < 800) ? num1 : num2  
-                  , n1, n2, n3, n4
+                  , temp = null
                   ;
                 this.indexItems(localData.length,3,4);
-                        //console.log(self)
-                fn(true);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-                        //self.str = fn.call(self,false, v.projectname); 
-                        self.str = fn(false, v.projectname); 
-                        //console.log(self)
+                        self.str = fn.call(self, v.projectname); 
                     });
 
-
-                        //console.log(localData)
-                        //console.log(self)
-                    var tt = null
-                    tt+='#11';
-                    var bb = tt.split('#')
-                    bb.shift();
-                    console.log(bb)
-                    self.str = self.str.trim();
                     self.str = self.str.split('#')
-                    //self.str.shift();
-                    console.log(self.str)
-                    //for(var i = 0, l=3; i<l; i++)
-                    var temp = null;
                     $('.item').each(function(i,v) {
                         for(var i = 0; i<k; i++) {
                             temp += self.str.shift() 
@@ -160,40 +133,6 @@ define(function(require){
                         $(v).empty().append(temp);
                         temp = '';
                     });
-                    //$('.item').each(function(i,v) {
-                        //$(v).empty().append(temp);
-                    //});
-                    //console.log(self.str.shift())
-                    //console.log(self.str)
-                    //console.log(temp)
-
-                    //if(k ==3) {
-                        //n1 = self.str[1]+self.str[2]+self.str[3];
-                        //n2 = self.str[4]+self.str[5]+self.str[6];
-                        //n3 = self.str[7]+self.str[8]+self.str[9];
-                        //n4 = self.str[10]+self.str[11]+self.str[12];
-                    //} else {
-                        //n1 = self.str[1]+self.str[2]+self.str[3]+self.str[4];
-                        //n2 = self.str[5]+self.str[6]+self.str[7]+self.str[8];
-                        //n3 = self.str[9]+self.str[10]+self.str[11]+self.str[12];
-                    //}
-
-                    //$('.item').each(function(i,v) {
-                        //switch(i) {
-                            //case 0: 
-                                //$(v).empty().append(n1);
-                                //break;
-                            //case 1: 
-                                //$(v).empty().append(n2);
-                                //break;
-                            //case 2: 
-                                //$(v).empty().append(n3);
-                                //break;
-                            //case 3: 
-                                //$(v).empty().append(n4);
-                                //break;
-                        //}
-                    //});
                 }
                 this.itemsDone = false;
             },
