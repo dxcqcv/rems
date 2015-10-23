@@ -35,7 +35,7 @@ define(function(require){
                       ;
                     $this.toggleClass('my-index-switch-list');
                     if($this.hasClass('my-index-switch-list')) {
-                        self.indexProject(3,4,self.projectList);// 错误self.str is undefined
+                        self.indexProject(3,4,self.projectList);// 
 
                     } else {
                     
@@ -44,11 +44,12 @@ define(function(require){
                 });
             },
             projectList: function(clear, projectName) {
+                //console.log(this)
                 if(clear) {
                     return this.str = ''; 
                 } else {
                     return this.str += 
-                        '#<div class="my-index-project-box clearfix">'+
+                        '#<div class="my-index-project-box clearfix" data-show="xmgl" data-subshow="xmgl-">'+
                             '<div class="project-list-left">'+
                                 '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
@@ -95,8 +96,12 @@ define(function(require){
                         '</div>';
                 }
             },
-            projectAll: function() {
-                        return this.str += '<a href="" class="my-index-list-cont"></a>';
+            projectAll: function(clear) {
+                if(clear) {
+                    return this.str = ''; 
+                } else {
+                    return this.str += '#<a href="" class="my-index-list-cont"></a>';
+                }
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
@@ -126,10 +131,10 @@ define(function(require){
                   ;
                 this.indexItems(localData.length,3,4);
                         //console.log(self)
+                fn(true);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-console.log(self.str)
-self.str = '';
+                        //self.str = fn.call(self,false, v.projectname); 
                         self.str = fn(false, v.projectname); 
                         //console.log(self)
                     });
@@ -137,34 +142,58 @@ self.str = '';
 
                         //console.log(localData)
                         //console.log(self)
+                    var tt = null
+                    tt+='#11';
+                    var bb = tt.split('#')
+                    bb.shift();
+                    console.log(bb)
+                    self.str = self.str.trim();
                     self.str = self.str.split('#')
-                    if(k ==3) {
-                        n1 = self.str[1]+self.str[2]+self.str[3];
-                        n2 = self.str[4]+self.str[5]+self.str[6];
-                        n3 = self.str[7]+self.str[8]+self.str[9];
-                        n4 = self.str[10]+self.str[11]+self.str[12];
-                    } else {
-                        n1 = self.str[1]+self.str[2]+self.str[3]+self.str[4];
-                        n2 = self.str[5]+self.str[6]+self.str[7]+self.str[8];
-                        n3 = self.str[9]+self.str[10]+self.str[11]+self.str[12];
-                    }
-
+                    //self.str.shift();
+                    console.log(self.str)
+                    //for(var i = 0, l=3; i<l; i++)
+                    var temp = null;
                     $('.item').each(function(i,v) {
-                        switch(i) {
-                            case 0: 
-                                $(v).empty().append(n1);
-                                break;
-                            case 1: 
-                                $(v).empty().append(n2);
-                                break;
-                            case 2: 
-                                $(v).empty().append(n3);
-                                break;
-                            case 3: 
-                                $(v).empty().append(n4);
-                                break;
+                        for(var i = 0; i<k; i++) {
+                            temp += self.str.shift() 
                         }
+                        $(v).empty().append(temp);
+                        temp = '';
                     });
+                    //$('.item').each(function(i,v) {
+                        //$(v).empty().append(temp);
+                    //});
+                    //console.log(self.str.shift())
+                    //console.log(self.str)
+                    //console.log(temp)
+
+                    //if(k ==3) {
+                        //n1 = self.str[1]+self.str[2]+self.str[3];
+                        //n2 = self.str[4]+self.str[5]+self.str[6];
+                        //n3 = self.str[7]+self.str[8]+self.str[9];
+                        //n4 = self.str[10]+self.str[11]+self.str[12];
+                    //} else {
+                        //n1 = self.str[1]+self.str[2]+self.str[3]+self.str[4];
+                        //n2 = self.str[5]+self.str[6]+self.str[7]+self.str[8];
+                        //n3 = self.str[9]+self.str[10]+self.str[11]+self.str[12];
+                    //}
+
+                    //$('.item').each(function(i,v) {
+                        //switch(i) {
+                            //case 0: 
+                                //$(v).empty().append(n1);
+                                //break;
+                            //case 1: 
+                                //$(v).empty().append(n2);
+                                //break;
+                            //case 2: 
+                                //$(v).empty().append(n3);
+                                //break;
+                            //case 3: 
+                                //$(v).empty().append(n4);
+                                //break;
+                        //}
+                    //});
                 }
                 this.itemsDone = false;
             },

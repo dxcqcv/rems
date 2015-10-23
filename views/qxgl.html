@@ -1,0 +1,67 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/qxgl.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
+   <!--权限管理-->
+    <div id="" class="my-section">
+		<div class="tab_two2">
+				<table class="table table-striped table-hover tab_bord">
+					<thead>
+						<tr class="odd">
+								<td>角色名称</td>
+								<td>描述</td>
+								<td>创建时间</td>
+								<td>状态</td>
+								<td>操作</td>
+							</tr>
+					</thead>
+					
+					<tbody>
+						<tr class="odd">
+								<td>初级浏览者</td>
+								<td>首页、远程监测、能源管理</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>				
+							</tr>
+						<tr class="even">
+								<td>高级浏览者</td>
+								<td>首页、远程监测、能源管理、项目管理浏览（模块配置除外）、配置管理浏览（运行监测配置除外）</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>
+							</tr>
+						<tr class="odd">
+								<td>项目级管理者</td>
+								<td>首页、远程监测、能源管理、项目管理（项目信息U、设备CRUD、工艺配置CRUD）、配置管理（新闻配置CRUD、类R、类属性R、运行监测CRUD）</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>							
+							</tr>
+						<tr class="even">
+								<td>项目组级管理员</td>
+								<td>首页、远程监测、能源管理、项目管理、配置管理、系统管理（用户管理CRUD、身份R、权限R、导航R、日志R）</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="odd">
+								<td>系统级管理员</td>
+								<td>全部权限</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>							
+							</tr>
+				</tbody>
+			</table>
+		</div>
+
+    </div>	
+
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxfx']);
+            });
+        </script>
+<% include footer.html %>

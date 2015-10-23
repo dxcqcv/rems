@@ -1,6 +1,7 @@
 ;define(function(require){
     var $ = require('jquery')
     ;
+      (function(){
     var i = -1;
 		var time=0;
 		junmper();
@@ -36,4 +37,5 @@
 	},function(){
 		time=setInterval("junmper()",3700);
 	})
+      }());
 });

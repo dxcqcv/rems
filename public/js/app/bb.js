@@ -4,7 +4,7 @@ define(function(require) {
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
       ;
-	$(function() {
+	(function() {
     //时间控件
         $(".datepicker").datetimepicker();
     //选择控件

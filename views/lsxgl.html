@@ -1,0 +1,597 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/lsxgl.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
+   <!--类属性管理-->
+    <div id="" class="my-section">
+		<div class="all_big">
+		<!--左边-->
+			<div class="all_left">
+				<div class="dropdown all_drop">  
+			        <button class="btn dropdown-toggle tab_top" type="button" id="dropdownMenu1" data-toggle="dropdown">
+			        	泛能站体系  <span class="caret"></span>  
+			        </button>  
+			        <ul class="dropdown-menu but_ul" role="menu" aria-labelledby="dropdownMenu1">  
+			            <li role="presentation"><a href="#" role="menuitem" tabindex="-1">泛能站体系</a></li> 
+			        </ul>  
+			    </div> 
+				
+				<div class="tab_all">
+	                <ul  class="list-inline">
+			            	<li val="2" class="lili">
+			                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>能源站
+			                </li>
+	                </ul>
+            	</div>
+				
+				<div class="classListdiv"> 
+					<ul  class="">
+		            	<li val="2" class="lili">
+		                    能源站<span class="glyphicon glyphicon-pla" aria-hidden="true" class="ul_img"></span>
+		                </li>
+					
+		            	<li val="9" class="lili">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>太阳能光热系统
+		                </li>
+					
+		            	<li val="10" class="lili">
+							<input type="hidden" name="classid" value="10">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>风冷热泵
+		                </li>
+					
+		            	<li val="11" class="lili">
+							<input type="hidden" name="classid" value="11">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>水冷热泵
+		                </li>
+					
+		            	<li val="12" class="lili">
+							<input type="hidden" name="classid" value="12">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>燃气内燃机
+		                </li>
+					
+		            	<li val="13" class="lili">
+							<input type="hidden" name="classid" value="13">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>直燃溴冷机
+		                </li>
+					
+		            	<li val="14" class="lili">
+							<input type="hidden" name="classid" value="14">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>热水型溴冷机
+		                </li>
+					
+		            	<li val="15" class="lili">
+							<input type="hidden" name="classid" value="15">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>烟气型溴冷机
+		                </li>
+					
+		            	<li val="16" class="lili">
+							<input type="hidden" name="classid" value="16">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>燃气锅炉
+		                </li>
+					
+		            	<li val="17" class="lili">
+							<input type="hidden" name="classid" value="17">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>离心式电冷机
+		                </li>
+					
+		            	<li val="18" class="lili">
+							<input type="hidden" name="classid" value="18">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>制冷装置
+		                </li>
+					
+		            	<li val="19" class="lili">
+							<input type="hidden" name="classid" value="19">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>燃气余热锅炉
+		                </li>
+					
+		            	<li val="20" class="lili">
+							<input type="hidden" name="classid" value="20">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>烟气热水余热补燃溴冷机
+		                </li>
+					
+		            	<li val="21" class="lili">
+							<input type="hidden" name="classid" value="21">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>变频器
+		                </li>
+					
+		            	<li val="22" class="lili">
+							<input type="hidden" name="classid" value="22">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>换热器
+		                </li>
+					
+		            	<li val="23" class="lili">
+							<input type="hidden" name="classid" value="23">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>空气处理机
+		                </li>
+					
+		            	<li val="24" class="lili">
+							<input type="hidden" name="classid" value="24">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>风扇
+		                </li>
+					
+		            	<li val="25" class="lili">
+							<input type="hidden" name="classid" value="25">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>热源
+		                </li>
+					
+		            	<li val="26" class="lili">
+							<input type="hidden" name="classid" value="26">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>加湿器
+		                </li>
+					
+		            	<li val="27" class="lili">
+							<input type="hidden" name="classid" value="27">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>环境
+		                </li>
+					
+		            	<li val="28" class="lili">
+							<input type="hidden" name="classid" value="28">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>冷却塔
+		                </li>
+					
+		            	<li val="29" class="lili">
+							<input type="hidden" name="classid" value="29">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>地埋管水泵
+		                </li>
+					
+		            	<li val="30" class="lili">
+							<input type="hidden" name="classid" value="30">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>冷温水泵
+		                </li>
+					
+		            	<li val="31" class="lili">
+							<input type="hidden" name="classid" value="31">
+		                    	<span class="glyphicon glyphicon-pla" aria-hidden="true"></span>冷却水泵
+		                </li>
+					
+		            	<li val="33" class="lili">
+							<input type="hidden" name="classid" value="33">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>锅炉水泵
+		                </li>
+					
+		            	<li val="35" class="lili">
+							<input type="hidden" name="classid" value="35">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>建筑水泵
+		                </li>
+					
+		            	<li val="37" class="lili">
+							<input type="hidden" name="classid" value="37">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>补水泵
+		                </li>
+					
+		            	<li val="39" class="lili">
+							<input type="hidden" name="classid" value="39">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>水泵
+		                </li>
+					
+		            	<li val="40" class="lili">
+							<input type="hidden" name="classid" value="40">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>生活热水泵
+		                </li>
+					
+		            	<li val="41" class="lili">
+							<input type="hidden" name="classid" value="41">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>蒸汽型溴冷机
+		                </li>
+					
+		            	<li val="42" class="lili">
+							<input type="hidden" name="classid" value="42">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>水-水板式换热器
+		                </li>
+					
+		            	<li val="43" class="lili">
+							<input type="hidden" name="classid" value="43">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>汽-水板式换热器
+		                </li>
+					
+		            	<li val="7500" class="lili">
+							<input type="hidden" name="classid" value="7500">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>末端新风机组
+		                </li>
+					
+		            	<li val="7501" class="lili">
+							<input type="hidden" name="classid" value="7501">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>末端空调处理机
+		                </li>
+					
+		            	<li val="7601" class="lili">
+							<input type="hidden" name="classid" value="7601">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>蓄冰槽
+		                </li>
+					
+		            	<li val="7602" class="lili">
+							<input type="hidden" name="classid" value="7602">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>储能罐
+		                </li>
+					
+		            	<li val="7640" class="lili">
+							<input type="hidden" name="classid" value="7640">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>分水箱
+		                </li>
+					
+		            	<li val="7641" class="lili">
+							<input type="hidden" name="classid" value="7641">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>集水箱
+		                </li>
+					
+		            	<li val="7660" class="lili">
+							<input type="hidden" name="classid" value="7660">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>软水箱
+		                </li>
+					
+		            	<li val="7661" class="lili">
+							<input type="hidden" name="classid" value="7661">
+		                      <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>热泵泵组
+		                </li>
+					
+		            	<li val="7980" class="lili">
+							<input type="hidden" name="classid" value="7980">
+		                    <span class="glyphicon glyphicon-pla" aria-hidden="true"></span>燃气调压柜
+		                </li>
+					
+		            	<li val="8020" class="lili">
+							<input type="hidden" name="classid" value="8020">
+		                </li>
+	            	</ul>
+				</div>
+			</div>
+			
+		
+		
+			<!--右边-->
+			<div class="all_right">
+				<div class="all_xl">
+					类型属性：
+					<div class="btn-group">
+					    <button type="button" class="btn btn-default dropdown-toggle btn_all" data-toggle="dropdown">
+					    		请选择属性类型 <span class="caret"></span>
+						</button>
+						    <ul class="dropdown-menu group_ul" role="menu">
+							   	<li val="-1"><a href="">全部属性类型</a></li>                                        	
+			                    <li val="1"><a href="">常规</a></li>											
+			                    <li val="2"><a href="">系统耗能</a></li>											
+			                    <li val="3"><a href="">系统供能</a></li>											
+			                    <li val="4"><a href="">系统效率</a></li>											
+			                    <li val="5"><a href="">系统成本</a></li>											
+			                    <li val="6"><a href="">系统单位能耗</a></li>											
+			                    <li val="7"><a href="">系统指标(率)</a></li>											
+			                    <li val="8"><a href="">系统气象</a></li>											
+			                    <li val="9"><a href="">系统能源单价</a></li>											
+			                    <li val="10"><a href="">单体供能</a></li>											
+			                    <li val="11"><a href="">单体耗能</a></li>											
+			                    <li val="12"><a href="">单体效率</a></li>											
+			                    <li val="13"><a href="">单体耗能成本</a></li>											
+			                    <li val="14"><a href="">单体运行时长</a></li>											
+			                    <li val="15"><a href="">系统指标(量)</a></li>											
+			                    <li val="16"><a href="">启停状态</a></li>											
+			                    <li val="17"><a href="">系统收益</a></li>				     
+						    </ul>
+					</div>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					属性分类：
+					<div class="btn-group">
+					   <button type="button" class="btn btn-default dropdown-toggle btn_all" 
+					      data-toggle="dropdown">
+					    请选择属性分类 <span class="caret"></span>
+					   </button>
+					   <ul class="dropdown-menu" role="menu">
+					        <li val="-1"><a href="">全部属性分类</a></li>
+		                    <li val="0"><a href="">静态属性</a></li>
+		                    <li val="1"><a href="">动态属性</a></li>
+					   </ul>
+					</div>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					属性名称：
+					<input type="text" class="form-control tab_input">
+					<button type="button" class="btn btn-info">查看数据</button>
+			    </div>
+			
+				<!--表格-->
+				<div class="tab_two2">
+					<table class="table table-striped table-hover tab_bord">
+						<thead>
+							<tr class="even">
+								<td class="datalist-no">序号</td>
+								<td>属性名称</td>
+								<td>所属类</td>
+								<td>属性类型</td>
+								<td>属性分类</td>
+								<td>备注</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="odd">
+								<td>1</td>
+								<td>能源站</td>
+								<td></td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td></td>
+								<td></td>								
+							</tr>
+					
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr><tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr><tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr><tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+							<tr class="even">
+								<td>2</td>
+								<td>太阳能光热系统</td>
+								<td>能源站</td>
+								<td>泛能站体系</td>
+								<td>属性分类</td>
+								<td> </td>
+								<td> </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			
+			</div>
+		</div>	
+    </div>	
+
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxfx']);
+            });
+        </script>
+<% include footer.html %>

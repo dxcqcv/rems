@@ -66,4 +66,13 @@ router.get('/bb', function(req, res) {
 router.get('/forgotten', function(req, res) {
     res.render('forgotten', { title: 'Home' });
 });
+router.get('/lsxgl', function(req, res) {
+    res.render('lsxgl', { title: 'Home' });
+});
+router.get('/bzlgl', function(req, res) {
+    res.render('bzlgl', { title: 'Home' });
+});
+router.get('/qxgl', function(req, res) {
+    res.render('qxgl', { title: 'Home' });
+});
 module.exports = router;
