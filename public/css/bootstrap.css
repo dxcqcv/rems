@@ -6282,7 +6282,7 @@ button.close {
   border-left-color: #fff;
 }
 .carousel {
-  position: relative;
+  /*position: relative;*/
 }
 .carousel-inner {
   position: relative;

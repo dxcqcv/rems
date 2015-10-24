@@ -108,6 +108,9 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .chart-box-no-sub {
     padding: 52px 10px 10px;
 }
+.chart-box-no-sub {
+    padding: 42px 10px 10px;
+}
 /* login */
 .my-login {
     background: #e1edf8 url('../img/login/log_mid.png') no-repeat center;
@@ -199,3 +202,4 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .pdr0 { padding-right: 0; }
 .pdl0 { padding-left: 0; }
 .mb0 { margin-bottom: 0; }
+.ib { display: inline-block; vertical-align: top;}

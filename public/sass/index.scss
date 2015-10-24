@@ -156,7 +156,13 @@ position: absolute;
     margin: 5px;
 }
 .my-index-projects-wrapper { width:475px;}
-.index-control-box { text-align: center; }
+.index-control-box { 
+    text-align: center;
+    position: absolute; bottom: 10px;  
+    width: 100%;
+    }
+.carousel-indicators li.my-indicators { margin-right: 5px; }
+.carousel-indicators li.my-indicators:last-child { margin-right: 0px; }
 /* map */
         #tip {
             height: 30px;

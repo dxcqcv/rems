@@ -1,0 +1,89 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/jgfx.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<% include header-bottom.html %>
+    	<!--结构分析-->
+	<div id="jgfx" class="my-section cbfx-wrapper">
+        <div class="jgfx-top col-md-12 col-lg-12 col-xs-12">
+            <div class="jgfx-top-inner">
+                <span class="ib jgfx-top-label">查看方式：</span>
+                <div class="jgfx-top-right ib">
+                    <div class="btn-group ">
+                        <button type="button" class="btn btn-default active">日</button>
+                        <button type="button" class="btn btn-default">月</button>
+                        <button type="button" class="btn btn-default">年</button>
+                    </div>
+                </div>
+                <div class="jgfx-date-box ib">
+                    <div class='input-group date datetimepicker1'>
+                        <input type='text' class="form-control"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="jgfx-bottom card-wrapper">
+            <div class="jgfx-bottom-top">
+                <div class="my-card col-md-4 col-lg-4 col-xs-4 h100">
+                    <div class="my-card-top">
+                        <div class="card-title jgfx-title">
+                           <ul class="nav nav-tabs ">
+                                <li class="nor"><a>总体能源结构（总量：504.8kWh）</a></li>
+                           </ul>
+                        </div>
+                    </div>
+                    <div id="gtnyjg" class="chart-box  chart-box-no-sub"></div>
+                </div>
+                <div class="my-card col-md-4 col-lg-4 col-xs-4 h100">
+                    <div class="my-card-top">
+                        <div class="card-title jgfx-title">
+                           <ul class="nav nav-tabs ">
+                                <li class="nor"><a>总体能源结构（总量：504.8kWh）</a></li>
+                           </ul>
+                        </div>
+                    </div>
+                    <div id="gtnyjg" class="chart-box  chart-box-no-sub"></div>
+                </div>
+                <div class="my-card col-md-4 col-lg-4 col-xs-4 h100">
+                    <div class="my-card-top">
+                        <div class="card-title jgfx-title">
+                           <ul class="nav nav-tabs ">
+                                <li class="nor"><a>总体能源结构（总量：504.8kWh）</a></li>
+                           </ul>
+                        </div>
+                    </div>
+                    <div id="gtnyjg" class="chart-box  chart-box-no-sub"></div>
+                </div>
+            </div>
+            <div class="jgfx-bottom-bottom">
+                <div class="my-card col-md-6 col-lg-6 col-xs-6 h100">
+                    <div class="my-card-top">
+                        <div class="card-title jgfx-title">
+                           <ul class="nav nav-tabs ">
+                                <li class="nor"><a>总体能源结构（总量：504.8kWh）</a></li>
+                           </ul>
+                        </div>
+                    </div>
+                    <div id="gtnyjg" class="chart-box  chart-box-no-sub"></div>
+                </div>
+                <div class="my-card col-md-6 col-lg-6 col-xs-6 h100">
+                    <div class="my-card-top">
+                        <div class="card-title jgfx-title">
+                           <ul class="nav nav-tabs ">
+                                <li class="nor"><a>总体能源结构（总量：504.8kWh）</a></li>
+                           </ul>
+                        </div>
+                    </div>
+                    <div id="gtnyjg" class="chart-box  chart-box-no-sub"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/jgfx'])
+		});
+	</script>
+<% include footer.html %>

@@ -15,7 +15,7 @@ require.config({
        'bootstrap-select':{deps:['jquery']},
        'bootstrap-datetimepicker.min':{deps:['jquery','moment']},
        'highcharts':{deps:['jquery']},
-       'exporting': {deps:['highcharts', 'highstock']},
+       'exporting': {deps:['jquery', 'highstock']},
        'swiper':{deps:['jquery']}
     }
 });

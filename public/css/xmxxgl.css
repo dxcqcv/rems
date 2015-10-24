@@ -1,0 +1,16 @@
+html,body{height: 100%;min-height: 100%;}
+.divall{height: 100%;width: 100%;overflow: auto;font-size: 12px;}
+.leftdiv{width: 14%;display: inline-block;height: 100%;min-height: 100%;border: 1px solid #D4D4D4;}
+.uldiv{min-height: 100%;height: 100%;overflow: auto;}
+.bt{position: absolute;width: 185px;}
+.bt img{width: 25px;}
+.bt{position: absolute;width: 185px;}
+.bt img{width: 25px;}
+h5{    color: white;    line-height: 32px;    background-color: blue;    margin-top: 0px;}
+ul li{list-style: none;}
+#mymenu{height: 100%;min-height: 100%;overflow: auto;padding-top: 30px;}
+li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 112px;}
+.one{padding-left: 2px;}
+.tab_two2{float: right; width: 84%;overflow: auto;height: 100%;min-height: 100%;}
+.waitab{margin-top: 40px;}
+.tab_bord{border: 1px solid #cdcdcd;}

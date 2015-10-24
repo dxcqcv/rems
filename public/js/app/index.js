@@ -3,7 +3,10 @@ define(function(require){
       , jsonpPath = require('app/getJsonp')
     ;
     (function(){
-        var localData = null;
+        var localData = null // global data
+          , isAll = false // check all or not 
+          ;
+
         function Index(){
             this.winHeight = $(window).height();
             this.str = '';
@@ -20,10 +23,22 @@ define(function(require){
             getHeight: function() {
                 return this.winHeight = $(window).height();
             },
+            couterItems: function(h) {
+                var currentHeight = this.getHeight(); 
+                //console.log(currentHeight )
+                if (currentHeight > 800) return 4;
+                else if(currentHeight < 800 && currentHeight > 700) return 3;
+                else if(currentHeight < 700 && currentHeight > 600) return 2;
+                else if(currentHeight < 600) return 1;
+            },
             enterProject: function() {
                 $(document).on('click','.my-index-project-box',function(){
                     window.location = '/user/xmgl';  
                 }); 
+            },
+            getNums: function() {
+                  var num = [this.couterItems(),this.couterItems()*3];
+                  return num; // return display projects nums 3 or 4, 9 or 12
             },
             switchProject: function() {
                 var switchButton = $('.my-index-switch')
@@ -31,20 +46,43 @@ define(function(require){
                   ;
                 switchButton.on('click', function(){
                     var $this = $(this)
+                      , nums = self.getNums()
                       ;
                     $this.toggleClass('my-index-switch-list');
                     if($this.hasClass('my-index-switch-list')) {
-                        self.indexProject(3,4,self.projectList);// 
-
+                        self.indexProject(nums[0],self.projectList, 0);// 
+                        isAll = false;
                     } else {
-                    
-                        self.indexProject(9,12,self.projectAll);
+                        self.indexProject(nums[1],self.projectAll,1);
+                        isAll = true;
                     }
                 });
             },
+            makeIndicators: function(num) {
+                return this.str += '<li class="my-indicators" data-target="#myCarousel" data-slide-to="'+num+'"></li>'; 
+            },
+            projectIndicators: function(sum, type) {
+                    this.makeIndicators();
+                var
+                   k = this.getNums()
+                  , items
+                  , regI = new RegExp('<li class="my-indicators"',i)
+                  ;   
+                if(type == 0) items = sum / k[0]; 
+                else items = sum / k[1]; 
+                this.str = '';
+
+                for(var i = 0; i < items; i++ )
+                this.makeIndicators(i);
+                console.log(this.str)
+                this.str = this.str.replace(regI,'<li class="my-indicators active"');
+                console.log(this.str)
+                $('.carousel-indicators').empty().append(this.str);
+                this.str = '';
+            },
             projectList: function(projectName) {
                     return this.str += 
-                        'shangwenlong<div class="my-index-project-box clearfix" data-show="xmgl" data-subshow="xmgl-">'+
+                        'shangwenlong<div class="my-index-project-box clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-">'+
                             '<div class="project-list-left">'+
                                 '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
@@ -91,16 +129,20 @@ define(function(require){
                         '</div>';
             },
             projectAll: function() {
-                return this.str += 'shangwenlong<a href="" class="my-index-list-cont"></a>';
+                return this.str += 'shangwenlong<a href="" class="my-index-list-cont triggerNav"></a>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
             },
-
-            indexItems: function(sum,num1,num2) {
-                var items = (this.getHeight() < 800) ? sum/num1 : sum/num2
+            
+            indexItems: function(sum,type) {
+                var
+                   k = this.getNums()
+                  , items
                   , regI = new RegExp('<div class="item">',i)
                   ;   
+                if(type == 0) items = sum / k[0]; 
+                else items = sum / k[1]; 
                 this.str = '';
 
                 for(var i = 0; i < items; i++ )
@@ -112,26 +154,29 @@ define(function(require){
             },
             getGislist: function(data) {
                 localData = data;
-                index.indexProject(3,4,index.projectList); //trigger indexProject
+                var nums = index.getNums()
+                index.indexProject(nums[0],index.projectList,0); //trigger indexProject
             },
-            indexProject: function(num1,num2,fn) {
+            indexProject: function(num,fn,type) {
                 var self = this
-                  , k = (self.getHeight() < 800) ? num1 : num2  
+                  , k = num 
                   , temp = '' 
+                  , len = localData.length
                   ;
-                this.indexItems(localData.length,3,4);
+
+                this.indexItems(len,type);
+                this.projectIndicators(len,type);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
                         self.str = fn.call(self, v.projectname); 
                     });
 
-                    self.str = self.str.split('shangwenlong')
-                    self.str.shift()
+                    self.str = self.str.split('shangwenlong'); // splited by string shangwenlong
+                    self.str.shift(); // remove first ''
                     $('.item').each(function(i,v) {
                         for(var i = 0; i<k; i++) {
-                            if(typeof self.str[0] == 'undefined') return;
+                            if(typeof self.str[0] == 'undefined') continue; // continue if undefined
                             temp += self.str.shift(); 
-                            console.log(self.str[0])
                         }
                         $(v).empty().append(temp);
                         temp = '';
@@ -249,8 +294,12 @@ define(function(require){
         var index = new Index();
         index.init();
         $(window).resize(function(){
-            if(localData)
-                index.indexProject(3,4,index.projectList); // 错误self.str is undefined
+            if(localData) {
+                var nums = index.getNums()
+                if(!isAll) index.indexProject(nums[0],index.projectList,0); 
+                else index.indexProject(nums[1],index.projectAll,1);
+            }
+                 
         });
     }());
 });

@@ -112,7 +112,24 @@ define(function(require){
                 }]
         });
         });
-
+        // 缩放工艺图
+        function scaleGYT() {
+            var winHeight; 
+            winHeight = $(window).height();
+            var x = 5;
+            while(x) {
+                if(winHeight > 900){
+                    $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                    return;
+                }  
+                if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) $('.xa-con-cent').css({'transform':'scale(0.'+(x+1)+') translate(-50%, -50%)'}); 
+                x--;
+            }
+        }
+        scaleGYT();
+        $(window).resize(function(){
+            scaleGYT();
+        });
 
         function LocalJsonp() {
             this.loading = $('#loading')
@@ -806,23 +823,19 @@ define(function(require){
         }
 
         function huanghuaPAFn(){
-            //gytSelectFn(true,'#huanghuaA','三联供系统',[0]);
-            gytSelectFn(true,'#huanghuaA','三联供系统',[1]);
+            gytSelectFn(true,'#huanghuaA','三联供系统',[0]);
             huanghuaArtwork.height(1434);
         }
         function huanghuaPBFn(){
-            //gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
-            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[2,3]);
+            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
             huanghuaArtwork.height(1288);
         }
         function huanghuaPCFn(){
-            //gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
-            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[2,3]);
+            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
             huanghuaArtwork.height(1288);
         }
         function huanghuaPDFn(){
-            //gytSelectFn(true,'#huanghuaD','电制冷系统',[3]); 
-            gytSelectFn(true,'#huanghuaD','电制冷系统',[4]); 
+            gytSelectFn(true,'#huanghuaD','电制冷系统',[3]); 
             huanghuaArtwork.height(1194);
         }
 

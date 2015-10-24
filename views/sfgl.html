@@ -1,0 +1,65 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/sfgl.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
+   <!--身份管理-->
+    <div id="" class="my-section">
+		<div class="tab_two2">
+				<table class="table table-striped table-hover tab_bord">
+					<thead>
+						<tr class="odd">
+								<td>身份名称</td>
+								<td>所属项目</td>
+								<td>描述</td>
+								<td>创建时间</td>
+								<td>状态</td>
+								<td>操作</td>
+							</tr>
+					</thead>
+					
+					<tbody>
+						<tr class="odd">
+								<td>超级管理员身份</td>
+								<td>新奥泛能站类型组</td>
+								<td>数据中心级系统角色，可跨项目组。</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>							
+							</tr>
+						<tr class="even">
+								<td>ENN身份角色</td>
+								<td>新奥泛能站类型组</td>
+								<td>新奥项目组系统角色，不可跨项目组。</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>
+							</tr>
+						<tr class="odd">
+								<td>测试身份角色A</td>
+								<td>蓝火焰建筑节能类型组</td>
+								<td>蓝火焰项目组系统角色，不可跨项目组。</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>							
+							</tr>
+						<tr class="even">
+								<td>测试身份角色B</td>
+								<td>某某工业节能类型组</td>
+								<td>工业节能组系统角色，不可跨项目组</td>
+								<td>2014-03-31 00：00：00</td>
+								<td></td>
+								<td></td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+
+    </div>	
+
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/nxfx']);
+            });
+        </script>
+<% include footer.html %>

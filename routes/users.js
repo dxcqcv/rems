@@ -75,4 +75,28 @@ router.get('/bzlgl', function(req, res) {
 router.get('/qxgl', function(req, res) {
     res.render('qxgl', { title: 'Home' });
 });
+router.get('/jgfx', function(req, res) {
+    res.render('jgfx', { title: 'Home' });
+});
+router.get('/hnfx', function(req, res) {
+    res.render('hnfx', { title: 'Home' });
+});
+router.get('/gnfx', function(req, res) {
+    res.render('gnfx', { title: 'Home' });
+});
+router.get('/sbssgl', function(req, res) {
+    res.render('sbssgl', { title: 'Home' });
+});
+router.get('/rzgl', function(req, res) {
+    res.render('rzgl', { title: 'Home' });
+});
+router.get('/yhgl', function(req, res) {
+    res.render('yhgl', { title: 'Home' });
+});
+router.get('/sfgl', function(req, res) {
+    res.render('sfgl', { title: 'Home' });
+});
+router.get('/xmxxgl', function(req, res) {
+    res.render('xmxxgl', { title: 'Home' });
+});
 module.exports = router;
