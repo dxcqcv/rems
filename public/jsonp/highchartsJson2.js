@@ -1,4 +1,4 @@
-highchartsJsonp(
+highchartsJsonp2(
 [
 [1,21],
 [2,52],

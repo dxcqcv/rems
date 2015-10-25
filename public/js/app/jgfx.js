@@ -2,6 +2,7 @@ define(function(require) {
 	var $ = require('jquery')
       , datapicker = require('bootstrap-datetimepicker.min')
 	  , highcharts = require('highcharts')
+      , jsonpPath = require('app/getJsonp')
       ;
 	$(function() {
     //时间控件
@@ -9,188 +10,61 @@ define(function(require) {
             format: 'YYYY-MM-DD',
             defaultDate: new Date()
        });
-    //图表
-		$('.haichar').highcharts({
-			chart: {
-				type: 'area'
-			},
+        //图表
+          var options = {
+            chart: {
+                renderTo: 'ztnyjg',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                defaultSeriesType: 'pie'
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: null 
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{}]
+            }]
+        };
 
-			title: {
-				text: null
-			},
-			tooltip: {
-				shared: true,
-				valueSuffix: ' millions'
-			},
-			plotOptions: {
-				area: {
-					stacking: 'normal',
-					lineColor: '#666666',
-					lineWidth: 1,
-					marker: {
-						lineWidth: 1,
-						lineColor: '#666666'
-					}
-				}
-			},
-			series: [{
-				name: 'Asia',
-				data: [11, 22, 5, 16, 12, 21, 28]
-			}]
-		});
-	});
+         localJsonp.start({url:jsonpPath+'pieData.js',jsonpCallback:'pie1',done:highchartsJsonp});
+         function highchartsJsonp(data) {
+            options.chart.renderTo = 'ztnyjg'; 
+            options.series[0].data = data;
+            chart = new Highcharts.Chart(options); 
+         }
 
-	$(function() {
-		$('.haitwo').highcharts({
-			chart: {
-				type: 'column'
-			},
-			title: {
-				text: null
-			},
-			xAxis: {
-				categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'fss', 'sdfs', 'sds']
-			},
-			tooltip: {
-				formatter: function() {
-					return '<b>' + this.x + '</b><br/>' +
-						this.series.name + ': ' + this.y + '<br/>' +
-						'Total: ' + this.point.stackTotal;
-				}
-			},
-			plotOptions: {
-				column: {
-					stacking: 'normal',
-					pointWidth: 15,
-				}
-			},
-			series: [{
-				name: 'John',
-				data: [5, 3, 4, 7, 2, 6, 7],
-				stack: 'male'
-			}, {
-				name: 'Joe',
-				data: [3, 4, 4, 2, 5, 6, 2],
-				stack: 'male'
-			}, {
-				name: 'Jane',
-				data: [2, 5, 3, 2, 1, 2, 3],
-				stack: 'female'
-			}, {
-				name: 'Janet',
-				data: [3, 2, 1, 4, 3, 5, 6],
-				stack: 'female'
-			}, {
-				name: 'Danie',
-				data: [3, 5, 3, 4, 3, 5, 3],
-				stack: 'female'
-			}, {
-				name: 'fsdf',
-				data: [3, 2, 4, 1, 3, 2, 3],
-				stack: 'female'
-			}]
-		});
-	});
-	
-	
-	$(function () {
-    $('.charli1').highcharts({
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text:null
-        },
-        xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-        },
-        yAxis: {
-            min: 0,            
-            title: {
-                text:null
-            }
-        },
-        legend: {
-            reversed: true
-        },
-        series: [{
-            name: 'John',
-            data: [5]
-        }]
+         function highchartsJsonp2(data) {
+            options.chart.renderTo = 'kzsny'; 
+            options.series[0].data = data;
+            chart = new Highcharts.Chart(options); 
+         }
+         function highchartsJsonp3(data) {
+            options.chart.renderTo = 'qjnyjg'; 
+            options.series[0].data = data;
+            chart = new Highcharts.Chart(options); 
+         }
+         localJsonp.start({url:jsonpPath+'pieData2.js',jsonpCallback:'pie2',done:highchartsJsonp2});
+         localJsonp.start({url:jsonpPath+'pieData3.js',jsonpCallback:'pie3',done:highchartsJsonp3});
     });
-    $('.charli2').highcharts({
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text:null
-        },
-        xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-        },
-        yAxis: {
-            min: 0,            
-            title: {
-                text:null
-            }
-        },
-        legend: {
-            reversed: true
-        },
-        series: [{
-            name: 'John',
-            data: [5]
-        }]
-    });
-    $('.charli3').highcharts({
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text:null
-        },
-        xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-        },
-        yAxis: {
-            min: 0,            
-            title: {
-                text:null
-            }
-        },
-        legend: {
-            reversed: true
-        },
-        series: [{
-            name: 'John',
-            data: [5]
-        }]
-    });
-    $('.charli4').highcharts({
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text:null
-        },
-        xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-        },
-        yAxis: {
-            min: 0,            
-            title: {
-                text:null
-            }
-        },
-        legend: {
-            reversed: true
-        },
-        series: [{
-            name: 'John',
-            data: [5]
-        }]
-    });
-});
 	
 	
 });

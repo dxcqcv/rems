@@ -1,0 +1,72 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/gnfx.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<% include header-bottom.html %>
+    	<!--供能分析-->
+	<div id="gnfx" class="my-section ">
+        <div class="top-bar col-md-12 col-lg-12 col-xs-12">
+            <div class="top-bar-inner">
+                <span class="ib top-bar-label">查看方式：</span>
+                <div class="jgfx-date-box ib">
+                    <div class='input-group date datetimepicker1'>
+                        <input type='text' class="form-control"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="bottom-cont card-wrapper pt63">
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>当日供能水平</a></li>
+                       </ul>
+                       <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
+                    </div>
+                </div>
+                <div id="drgnsp" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>当月供能水平</a></li>
+                       </ul>
+                       <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
+                    </div>
+                </div>
+                <div id="dygnsp" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>前日供能水平</a></li>
+                       </ul>
+                       <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
+                    </div>
+                </div>
+                <div id="qrgnsp" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>当年供能水平</a></li>
+                       </ul>
+                       <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
+                    </div>
+                </div>
+                <div id="dngnsp" class="chart-box charts-cont"></div>
+            </div>
+        </div>
+	</div>
+	<script>
+		requirejs(['../js/common'], function(common) {
+			requirejs(['app/gnfx'])
+		});
+	</script>
+<% include footer.html %>

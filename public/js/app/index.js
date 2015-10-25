@@ -25,7 +25,6 @@ define(function(require){
             },
             couterItems: function(h) {
                 var currentHeight = this.getHeight(); 
-                //console.log(currentHeight )
                 if (currentHeight > 800) return 4;
                 else if(currentHeight < 800 && currentHeight > 700) return 3;
                 else if(currentHeight < 700 && currentHeight > 600) return 2;
@@ -74,9 +73,7 @@ define(function(require){
 
                 for(var i = 0; i < items; i++ )
                 this.makeIndicators(i);
-                console.log(this.str)
                 this.str = this.str.replace(regI,'<li class="my-indicators active"');
-                console.log(this.str)
                 $('.carousel-indicators').empty().append(this.str);
                 this.str = '';
             },
