@@ -81,7 +81,7 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 /* top bar and bottom cont structure */
 .top-bar {
     width: 100%;
-    padding: 10px 10px 0px;
+    padding: 20px 20px 0px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -95,9 +95,8 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 }
 .top-bar-label { line-height: 35px;}
 div.bottom-cont {
-    padding: 73px 0px 0px; height: 100%;
+    padding: 83px 10px 10px; height: 100%;
 }
-div.pt63 { padding-top: 63px; }
 .bottom-title >.nav-tabs > li > a {
     font-size: 16px; color: #363636;
 }
@@ -228,5 +227,6 @@ div.pt63 { padding-top: 63px; }
 .mb0 { margin-bottom: 0; }
 .ib { display: inline-block; vertical-align: top;}
 .pt10 {padding: 10px 0 0;}
-.pt10l5 {padding: 10px 5px 0 0;}
-.pt10r5 {padding: 10px 0 0 5px;}
+.pt10l10 {padding: 10px 10px 0 0;}
+.pt10r10 {padding: 10px 0 0 10px;}
+.pb10 { padding: 0 0 10px 0; }
