@@ -5,6 +5,14 @@ define(function(require){
     (function(){
         var localData = null // global data
           , isAll = false // check all or not 
+          ,map = new AMap.Map('allmap', {
+                        resizeEnable: true,
+                      // 设置中心点
+                      center: [116.404, 39.915],
+
+                      // 设置缩放级别
+                      zoom: 4
+                });
           ;
 
         function Index(){
@@ -19,6 +27,7 @@ define(function(require){
                 localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
                 this.switchProject();
                 this.enterProject();
+                this.redirectProject();
             },
             getHeight: function() {
                 return this.winHeight = $(window).height();
@@ -32,9 +41,32 @@ define(function(require){
             },
             enterProject: function() {
                 $(document).on('click','.my-index-project-box',function(){
-                    window.location = '/user/xmgl';  
+                    //window.location = '/user/xmgl';  
+                    $(this).siblings().removeClass("project-active");
+                    $(this).addClass("project-active");
+                    // 设置缩放级别和中心点
+                      map.setZoomAndCenter(14, [116.205467, 39.907761]);
+
+                      // 添加 marker 并设置中心点
+                      var marker = new AMap.Marker({
+                        map: map,
+                        position: [$(this).attr("lo"), $(this).attr("la")]
+                      });
+                    
+
                 }); 
             },
+
+            redirectProject: function() {
+                $(document).on('click','.project-active',function(){
+                    window.location = '/user/xmgl';  
+                    
+                    
+
+                }).find(".project-active"); 
+            },
+
+
             getNums: function() {
                   var num = [this.couterItems(),this.couterItems()*3];
                   return num; // return display projects nums 3 or 4, 9 or 12
@@ -57,6 +89,7 @@ define(function(require){
                     }
                 });
             },
+
             makeIndicators: function(num) {
                 return this.str += '<li class="my-indicators" data-target="#myCarousel" data-slide-to="'+num+'"></li>'; 
             },
@@ -77,9 +110,9 @@ define(function(require){
                 $('.carousel-indicators').empty().append(this.str);
                 this.str = '';
             },
-            projectList: function(projectName) {
+            projectList: function(projectName,projectid,longitude,latitude) {
                     return this.str += 
-                        'shangwenlong<div class="my-index-project-box clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-">'+
+                        'shangwenlong<div id="'+ projectid +'" class="my-index-project-box clearfix triggerNav" data-show="xmgl" lo="'+ longitude +'" la="'+ latitude +'" data-subshow="xmgl-">'+
                             '<div class="project-list-left">'+
                                 '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
@@ -165,7 +198,7 @@ define(function(require){
                 this.projectIndicators(len,type);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-                        self.str = fn.call(self, v.projectname); 
+                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude,v.latitude); 
                     });
 
                     self.str = self.str.split('shangwenlong'); // splited by string shangwenlong
@@ -182,14 +215,7 @@ define(function(require){
                 this.itemsDone = false;
             },
             configMap: function () {
-                 var map = new AMap.Map('allmap', {
-                        resizeEnable: true,
-                      // 设置中心点
-                      center: [116.404, 39.915],
-
-                      // 设置缩放级别
-                      zoom: 4
-                });
+                 
                    //在地图中添加ToolBar插件
                 map.plugin(["AMap.ToolBar"], function () {
                   toolBar = new AMap.ToolBar();
@@ -197,6 +223,9 @@ define(function(require){
                 }); 
                 //添加自定义点标记
                 addMarker();
+
+
+            
                 
                 //添加带文本的点标记覆盖物
                 function addMarker(){ 
@@ -223,7 +252,10 @@ define(function(require){
                     });
 
                     
+
+                    
                      marker.setMap(map);  //在地图上添加点
+                   
                     
                      //鼠标点击marker弹出自定义的信息窗体
                     AMap.event.addListener(marker, 'mouseover', function() {
@@ -232,6 +264,8 @@ define(function(require){
                     AMap.event.addListener(marker, 'click', function() {
                         window.location.href="/user/xmgl";
                     });
+
+                     
                     
                 }
 

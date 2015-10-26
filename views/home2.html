@@ -1,193 +1,92 @@
 <% include header-top.html %>
-    <link rel="stylesheet" href="/css/index.css" media="all">
+    <link rel="stylesheet" href="/css/index2.css" media="all">
     <link rel="stylesheet" href="/css/swiper.css" media="all">
-    <script src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值">
-
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=6e3a0f19a1e718c8e43263005c1b2f73"></script>
 <% include header-bottom.html %>
-
-
- <style type="text/css">
-        #tip {
-            height: 30px;
-            background-color: #fff;
-            padding-left: 10px;
-            padding-right: 10px;
-            position: absolute;
-            font-size: 12px;
-            right: 10px;
-            bottom: 20px;
-            border-radius: 3px;
-            line-height: 30px;
-            border: 1px solid #ccc;
-        }
-
-        div.info-top {
-            position: relative;
-            background: none repeat scroll 0 0 #F9F9F9;
-            border-bottom: 1px solid #CCC;
-            border-radius: 5px 5px 0 0;
-        }
-
-        div.info-top div {
-            display: inline-block;
-            color: #333333;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 31px;
-            padding: 0 10px;
-        }
-
-        div.info-top img {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            transition-duration: 0.25s;
-        }
-
-        div.info-top img:hover {
-            box-shadow: 0px 0px 5px #000;
-        }
-
-        div.info-middle {
-            font-size: 12px;
-            padding: 10px;
-            line-height: 21px;
-        }
-
-        div.info-bottom {
-            height: 0px;
-            width: 100%;
-            clear: both;
-            text-align: center;
-        }
-
-        div.info-bottom img {
-            position: relative;
-            z-index: 104;
-        }
-    </style>
 
         <!--首页-->
         <div id="index" class="my-section">
             <!-- 地图部分 -->
             <div id="allmap" class="my-map"></div>
-			 
+             
             <!-- 地图部分 -->
             <!--项目选择-->
             <div class="my-index-right">
                 <div data-list=0 class="my-index-switch my-index-switch-detail my-index-switch-list"></div>
-                <div class="my-index-projects-wrapper">
-                    <a href="/user/xmgl" class="my-index-project-box"></a>
-                    <a href="/user/xmgl" class="my-index-project-box"></a>
-                    <a href="/user/xmgl" class="my-index-project-box"></a>
+                <div id="myCarousel" data-ride="carousel" data-interval="false"  class="my-index-projects-wrapper carousel slide">
+                <div class="carousel-inner">
+                    <div class="item">
+                        <div class="my-index-project-box clearfix">
+                            <div class="project-list-left">
+                                <span class="glyphicon glyphicon-map-marker project-icon"></span>
+                                <p class="project-name">株洲神农城泛能站</p>
+                                <p class="project-loc">湖南省 长沙市长沙县</p>
+                                <span class="pro-left-line"></span>
+                            </div>
+                            <div class="project-list-img-wrapper">
+                                <div class="project-list-img ">
+                                    <img src="/img/index/loacationimg00.jpg" class="" alt="">
+                                </div>
+                                <div class="project-list-detail ">
+                                    <ul>
+                                        <li>
+                                            <p class="detail-name">能源综合利用率</p>
+                                            <p class="detail-val">0.38</p>
+                                        </li>
+                                        <li>
+                                            <p class="detail-name">可再生能源利用率</p>
+                                            <p class="detail-val">0.38</p>
+                                        </li>
+                                        <li>
+                                            <p class="detail-name">累计节能率</p>
+                                            <p class="detail-val">0.38</p>
+                                        </li>
+                                        <li>
+                                            <p class="detail-name">CO2减排率</p>
+                                            <p class="detail-val">0.38</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="project-list-right">
+                                <div class="project-circle project-circle-top">
+                                    <span>供能</span><span class="pro-num">6.1万</span>
+                                </div>
+                                <div class="pro-type">
+                                    <div class="glyphicon glyphicon-home pro-type-icon"></div>
+                                    <div class="pro-type-name">医院m2</div>
+                                </div>
+                                <div class="project-circle project-circle-bottom">
+                                    <span>建筑</span><span class="pro-num">10.1万</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item"></div>
+                </div>
+                    <div class="index-control-box">
+                    
+                        <!-- Carousel controls -->
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <!--项目选择-->
         </div>
         <script>
-
- var map = new AMap.Map('allmap', {
-        resizeEnable: true,
-      // 设置中心点
-      center: [116.404, 39.915],
-
-      // 设置缩放级别
-      zoom: 5
-    });
-    //添加自定义点标记
-    addMarker();
-    
-    //添加带文本的点标记覆盖物
-    function addMarker(){ 
-        //自定义点标记内容   
-        var markerContent = document.createElement("div");
-        markerContent.className = "markerContentStyle";
-        
-        //点标记中的图标
-        var markerImg = document.createElement("img");
-         markerImg.className = "markerlnglat";
-         markerImg.src = "/images/index/testpoint.png"; 
-         markerContent.appendChild(markerImg);
-         
-         //点标记中的文本
-         var markerSpan = document.createElement("span");
-         markerSpan.innerHTML = "自定义标记！";
-         markerContent.appendChild(markerSpan);
-         var marker = new AMap.Marker({
-            map:map,
-            position: new AMap.LngLat(116.397428,39.90923), //基点位置
-            offset: new AMap.Pixel(-18,-36), //相对于基点的偏移位置
-            draggable: true,  //是否可拖动
-            content: markerContent   //自定义点标记覆盖物内容
-        });
-         marker.setMap(map);  //在地图上添加点
-         //鼠标点击marker弹出自定义的信息窗体
-        AMap.event.addListener(marker, 'mouseover', function() {
-            infoWindow.open(map, marker.getPosition());
-        });
-        AMap.event.addListener(marker, 'click', function() {
-            window.location.href="/user/xmgl";
-        });
-        
-    }
-
-
-  //实例化信息窗体
-    var infoWindow = new AMap.InfoWindow({
-        isCustom: true,  //使用自定义窗体
-        content: createInfoWindow('方恒假日酒店&nbsp;&nbsp;<span style="font-size:11px;color:#F00;">价格:318</span>', "<img src='http://tpc.googlesyndication.com/simgad/5843493769827749134' style='position:relative;float:left;margin:0 5px 5px 0;'>地址：北京市朝阳区阜通东大街6号院3号楼 东北 8.3 公里<br/>电话：010 64733333<br/><a href='http://baike.baidu.com/view/6748574.htm'>详细信息</a>"),
-        offset: new AMap.Pixel(16, -45)//-113, -140
-    });
-
-    //构建自定义信息窗体
-    function createInfoWindow(title, content) {
-        var info = document.createElement("div");
-        info.className = "info";
-
-        //可以通过下面的方式修改自定义窗体的宽高
-        //info.style.width = "400px";
-
-        // 定义顶部标题
-        var top = document.createElement("div");
-        var titleD = document.createElement("div");
-        var closeX = document.createElement("img");
-        top.className = "info-top";
-        titleD.innerHTML = title;
-        closeX.src = "http://webapi.amap.com/images/close2.gif";
-        closeX.onclick = closeInfoWindow;
-
-        top.appendChild(titleD);
-        top.appendChild(closeX);
-        info.appendChild(top);
-
-
-        // 定义中部内容
-        var middle = document.createElement("div");
-        middle.className = "info-middle";
-        middle.style.backgroundColor = 'white';
-        middle.innerHTML = content;
-        info.appendChild(middle);
-
-        // 定义底部内容
-        var bottom = document.createElement("div");
-        bottom.className = "info-bottom";
-        bottom.style.position = 'relative';
-        bottom.style.top = '0px';
-        bottom.style.margin = '0 auto';
-        var sharp = document.createElement("img");
-        sharp.src = "http://webapi.amap.com/images/sharp.png";
-        bottom.appendChild(sharp);
-        info.appendChild(bottom);
-        return info;
-    }
-
-    //关闭信息窗体
-    function closeInfoWindow() {
-        map.clearInfoWindow();
-    }
-
-</script>
-
-   
-  
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/index2']);
+            });
+        </script>
 <% include footer.html %>
