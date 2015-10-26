@@ -49,9 +49,10 @@
                                       <option>余热利用率</option>
                                     </select>
                               </div>
+
                               <div class="pull-right cbfx-date-box col-md-3">
-                                  <div class='input-group date datetimepicker1 '>
-                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                  <div class='input-group date datetimepicker1'  id="datetimepicker2">
+                                      <input type='text' class="form-control" value="2014,10,21"/>
                                       <span class="input-group-addon">
                                           <span class="glyphicon glyphicon-calendar"></span>
                                       </span>
@@ -59,19 +60,21 @@
                               </div>
                               <div class="pull-right date-sep">至</div>
                               <div class="pull-right cbfx-date-box col-md-3">
-                                  <div class='input-group date datetimepicker1'>
-                                      <input type='text' class="form-control" value="10/15/2015 12:00 AM"/>
+                                  <div class='input-group date datetimepicker1'  id="datetimepicker1">
+                                      <input type='text' class="form-control" value="2012,10,21"/>
                                       <span class="input-group-addon">
                                           <span class="glyphicon glyphicon-calendar"></span>
                                       </span>
                                   </div>
                               </div>
-                              <div class="cbfx-top-right pull-right">
+                              <div class="cbfx-top-right pull-right zoom_controls">
                                   <div class="btn-group ">
-                                      <button type="button" class="btn btn-default active">日</button>
-                                      <button type="button" class="btn btn-default">月</button>
-                                      <button type="button" class="btn btn-default">年</button>
+                                    <button type="button" class="btn btn-default" data-chart="line" data-range="1d">日</button>
+                                      <button type="button" class="btn btn-default active" data-chart="line" data-range="1m">月</button>
+                                      <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                                     
                                   </div>
+                                  
                               </div>
                           </div>
                     </div>
@@ -451,7 +454,7 @@
 
         <script>
             requirejs(['../js/common'], function (common) {
-                requirejs(['app/nxfx']);
+                requirejs(['app/nxfx2']);
             });
         </script>
 <% include footer.html %>
