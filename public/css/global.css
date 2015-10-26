@@ -130,6 +130,29 @@ html, body {
 .pgzdzj-offset {
   margin-left: 452px; }
 
+/* gnhn modal */
+.gnhn-header {
+  background: #fafafa;
+  position: relative; }
+
+.gnhn-switch-icon {
+  width: 18px;
+  height: 14px;
+  display: inline-block;
+  /*position: absolute;*/
+  float: right;
+  cursor: pointer; }
+
+.gnhn-switch-icon01 {
+  /*top: 0px; right: 0px; */
+  background: url("/img/gnhn/gnhn-switch-icon01.png") no-repeat;
+  padding-right: 30px; }
+
+.gnhn-switch-icon02 {
+  /*top: 0px; right: 0px; */
+  background: url("/img/gnhn/gnhn-switch-icon02.png") no-repeat;
+  padding-right: 45px; }
+
 /* global title list */
 .title-list {
   margin-bottom: 0; }
@@ -175,12 +198,24 @@ div.bottom-cont {
   padding: 83px 10px 10px;
   height: 100%; }
 
+div.charts-cont-2-level {
+  padding: 55px 10px 10px;
+  height: 100%; }
+
 .bottom-title > .nav-tabs > li > a {
   font-size: 16px;
   color: #363636; }
 
 .jgfx-date-box {
   width: 210px; }
+
+.gnhn-modal-charts {
+  height: 250px; }
+
+.gnhn-modal-title {
+  font-size: 16px;
+  color: #363636;
+  text-align: center; }
 
 /* 供能耗能小图标 */
 .gnhnIcon {
@@ -217,8 +252,7 @@ div.bottom-cont {
 
 .card-subtitle {
   background: #fff;
-  padding: 0px 15px;
-  line-height: 50px;
+  padding: 8px 15px;
   height: 50px;
   box-sizing: border-box;
   border: 1px solid #ddd;
@@ -247,6 +281,10 @@ div.bottom-cont {
 .chart-box-no-sub {
   padding: 52px 10px 10px;
   /* with padding-top 10px */ }
+
+.zhi-style {
+  line-height: 30px;
+  padding: 0 10px; }
 
 /* login */
 .my-login {
@@ -367,3 +405,6 @@ div.bottom-cont {
 
 .pb10 {
   padding: 0 0 10px 0; }
+
+.pr10 {
+  padding-right: 10px; }

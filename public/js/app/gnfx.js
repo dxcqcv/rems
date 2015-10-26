@@ -6,6 +6,19 @@ define(function(require) {
 	  , highcharts = require('highcharts')
       ;
     (function() {
+    //弹出层
+    $('.gnhnIcon').on('click', function() {
+        $("#myModal").modal('show');
+         localJsonp.start({url:jsonpPath+'modalLines.js',jsonpCallback:'modalLines',done:modalLines});
+    });
+    function modalLines(data) {
+    console.log(data)
+        options.chart.renderTo = 'gnhnHaodianCharts';
+        options.chart.type= 'line';
+        options.xAxis.categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        options.series[0].data = data;
+        chart = new Highcharts.Chart(options); 
+    }
     // tooltips
          $('[data-toggle="tooltip"]').tooltip();  
     //时间控件
@@ -40,6 +53,7 @@ define(function(require) {
          localJsonp.start({url:jsonpPath+'highchartsJson3.js',jsonpCallback:'highchartsJsonp3',done:highchartsJsonp3});
          localJsonp.start({url:jsonpPath+'highchartsJson4.js',jsonpCallback:'highchartsJsonp4',done:highchartsJsonp4});
          function highchartsJsonp(data) {
+            options.chart.renderTo = 'drgnsp';
             options.series[0].data = data;
             chart = new Highcharts.Chart(options); 
          }

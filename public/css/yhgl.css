@@ -1,3 +1,4 @@
-.tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;margin-top: 15px;overflow: auto;border:1px solid #DDDDDD ;}
+.tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;overflow: auto;border:1px solid #DDDDDD ;}
+		.my-content{overflow: hidden!important;}
 		.tab_bord{border: 1px solid #DDDDDD;}
-		tr td{font-size: 1px;text-align: center!important;}
+		tr td{text-align: center!important;}

@@ -37,6 +37,9 @@ router.get('/nxfx', function(req, res) {
 router.get('/nxfx2', function(req, res) {
     res.render('nxfx2', { title: 'Home' });
 });
+router.get('/zbfx', function(req, res) {
+    res.render('zbfx', { title: 'Home' });
+});
 router.get('/nxfx3', function(req, res) {
     res.render('nxfx3', { title: 'Home' });
 });

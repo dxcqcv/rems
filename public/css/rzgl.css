@@ -4,5 +4,6 @@
 		.tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;margin-top: 15px;overflow: auto;border-top:1px solid #DDDDDD ;}
 		.tab_bord{border: 1px solid #DDDDDD;}
 		.intput{width: 120px!important;}
-		.all_xl{width: 95%;margin: auto;margin-top: 10px;}
+		.all_xl{width: 95%;margin: auto;}
+		.my-content{overflow: hidden!important;}
 		.tub{float: right;width: 20px;margin-top: 10px;}

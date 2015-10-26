@@ -27,7 +27,7 @@
                        <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
                     </div>
                 </div>
-                <div id="drgnsp" class="chart-box charts-cont"></div>
+                <div id="drgnsp" class="chart-box charts-cont-2-level"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -38,7 +38,7 @@
                        <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
                     </div>
                 </div>
-                <div id="dygnsp" class="chart-box charts-cont"></div>
+                <div id="dygnsp" class="chart-box charts-cont-2-level"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -49,7 +49,7 @@
                        <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
                     </div>
                 </div>
-                <div id="qrgnsp" class="chart-box charts-cont"></div>
+                <div id="qrgnsp" class="chart-box charts-cont-2-level"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -60,10 +60,33 @@
                        <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情" ></span>
                     </div>
                 </div>
-                <div id="dngnsp" class="chart-box charts-cont"></div>
+                <div id="dngnsp" class="chart-box charts-cont-2-level"></div>
             </div>
         </div>
 	</div>
+<!--弹出层-->
+<div id="myModal" class="modal fade bs-example-modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header gnhn-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <span class="gnhn-switch-icon gnhn-switch-icon02"></span>
+                <span class="gnhn-switch-icon gnhn-switch-icon01"></span>
+                <h4 class="modal-title">当日供能水平详细</h4>
+            </div>
+            <div class="modal-body">
+                <div class="gnhn-modal-block">
+                    <p class="gnhn-modal-title">耗电</p>
+                    <div class="gnhn-modal-charts" id="gnhnHaodianCharts"></div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
 	<script>
 		requirejs(['../js/common'], function(common) {
 			requirejs(['app/gnfx'])

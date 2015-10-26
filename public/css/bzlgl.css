@@ -3,3 +3,4 @@
 		#input1{width: 180px!important;display: inline-block;}
 		.button_tab{overflow: auto; position: absolute;border: 1px solid #BDB6B6; width: 1310px; height: 550px; min-height: 550px;}
 		.class_img{height: 20px;}
+		.my-content{overflow: hidden!important;}
