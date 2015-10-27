@@ -1411,6 +1411,7 @@ top:6px; left:1947px;width:162px;
 }
 .huanghua-huanreqi02 {
     top:640px; left: 1300px;
+    background: linear-gradient(0deg,rgba(125,127,130,.7),rgba(168,168,168,0.7));
 }
 .huanghua-huanreqi03 {
     top:830px; left: 870px;
@@ -2262,7 +2263,9 @@ background: #c6c6c6;
 .huanghua-dianlengji02 {
      left: 1579px; top: 411px;
 }
+/*
 .gray-filter { -webkit-filter: grayscale(1); }
+*/
 /* 补线 */
 .huanghua-a-b-sanreqi-line {
     background: url('../images/lines/huanghua-a-b-sanreqi-line01.png') no-repeat;

@@ -1,12 +1,18 @@
 pie2([{
-                name: "市电：116kWh",
-                y: 23.1
+                name: "",
+                color: '#f8f8f8',
+                dataLabels: {
+                    enabled: false,
+                },
+                y: 85.5
             }, {
-                name: "可再生能源：71kWh",
-                y: 14.5,
+                name: "地热<br>9kWh",
+                y: 13,
+                color: '#aee572',
                 sliced: true,
                 selected: true
             }, {
-                name: "天然气：314kWh",
-                y: 62.3
+                name: "太阳能<br>1kWh",
+                color: '#39bad1',
+                y: 1.5
             }])

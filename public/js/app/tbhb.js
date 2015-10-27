@@ -1,10 +1,9 @@
 
 define(function(require){
     var $ = require('jquery')
-      , highcharts = require('highcharts')
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
-      , exporting = require('exporting')
+      , highcharts = require('exporting')
       ;
       (function(){
       //日期控件
