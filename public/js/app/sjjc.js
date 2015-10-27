@@ -8,6 +8,7 @@
                 backdrop: 'static' 
             });  
 
+		
         });
 
     $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {

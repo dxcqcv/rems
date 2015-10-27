@@ -6,7 +6,7 @@
 .sjjc-left-list {
   overflow: auto;
   position: relative;
-  padding-top: 46px;
+  padding-top: 40px;
   line-height: 30px; }
 
 .tab_all {
@@ -63,11 +63,12 @@
   background-color: WhiteSmoke;
   text-decoration: none; }
 
+.rodr span{font-size: 10px;}
 .table {
   margin-top: 5px; }
 
 .botton_all {
-  width: 90%;
+	    width: 85%;
   font-size: 100%; }
 
 .index_all {
@@ -102,7 +103,9 @@ a:hover {
 .nav-tabs > li {
   float: left;
   margin-bottom: -1px;
-  float: right; }
+  float: right;
+   }
+   .nav-tabs > li a{color: white;}
 
 .one_one, .two_right {
   display: inline-block;
@@ -110,6 +113,9 @@ a:hover {
   margin-left: 1em;
   width: 6%;
   line-height: 2em; }
+.btn_coin{cursor:pointer;}
+
+.btn_coin:hover{background-image: url(/img/sjjc/uikj.png);}
 
 .two {
   display: none; }

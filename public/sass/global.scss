@@ -259,7 +259,7 @@ div.charts-cont-2-level {
 .pb10 { padding: 0 0 10px 0; }
 .pr10 { padding-right: 10px;}
 /*if 1024*/
-@media screen and (min-width: 1024px) { 
+@media (max-width: 1024px)  { 
     .subTitle { width: 200px;}
     .ycjc-offset { margin-left:0; }
     .nygl-offset { margin-left:0; }
