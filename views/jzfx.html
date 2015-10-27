@@ -1,0 +1,114 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/nxjc.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<% include header-bottom.html %>
+
+       <!--指标分析-->
+        <div id="" class="my-section card-wrapper">
+            <!--4分格-->
+            <div class="my-card col-md-12 col-lg-12 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="active"><a>冷温水情况</a></li>
+                            <li class=""><a>冷却水情况</a></li>
+                       </ul>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <ul class="list-inline pull-left">
+                            <li>
+                                <select class="form-control selectpicker" id="">
+                                  <option>供水温度</option>
+                                  <option>供回水温差</option>
+                                  <option>供水流量</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="nyzhlylDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="pull-right zhi-style">至</p>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="nyzhlylDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="jgfx-top-right pull-right pr10">
+                            <div class="btn-group  zoom_controls" id="nyzhlylButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="nyzhlyl" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-12 col-lg-12 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title  bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>泵组运行方案</a></li>
+                       </ul>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <ul class="list-inline pull-left">
+                            <li>
+                                <select class="form-control selectpicker" id="">
+                                  <option>冷温水</option>
+                                  <option>冷却水</option>
+                                  <option>地源循环</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select class="form-control selectpicker" id="">
+                                  <option>泵组扬程曲线</option>
+                                  <option>效率曲线</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="jnlDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="pull-right zhi-style">至</p>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="jnlDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="jgfx-top-right pull-right pr10">
+                            <div class="btn-group  zoom_controls" id="jnlButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="jnl" class="chart-box charts-cont"></div>
+            </div>
+        </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/mkfx']);
+            });
+        </script>
+<% include footer.html %>

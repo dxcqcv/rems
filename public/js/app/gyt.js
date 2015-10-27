@@ -1,6 +1,6 @@
 define(function(require){
     var $ = require('jquery')
-        highcharts = require('highcharts') 
+        highcharts = require('exporting') 
     ;
     (function(){
             
@@ -116,6 +116,8 @@ define(function(require){
         function scaleGYT() {
             var winHeight; 
             winHeight = $(window).height();
+console.log($(window).width())
+console.log(winHeight )
             var x = 5;
             while(x) {
                 if(winHeight > 900){

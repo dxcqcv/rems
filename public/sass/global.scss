@@ -55,12 +55,15 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .subTitle,
 .my-sub-nav { display: inline-block; vertical-align: top; }
 .subTitle { position:relative; width: 235px; height: 40px; line-height: 40px; text-align: center; background: #e0e1e3 ; color: #5d5d5d; font-size: 17px; }
+
 .rems-logo-tail { width: 0; height: 0; border-bottom:50px solid transparent; border-left: 25px solid #007993; position: absolute; top: 0; right: -25px; }
 .rems-sub-tail { width: 0; height: 0; border-bottom:40px solid transparent; border-left: 20px solid #e0e1e3 ; position: absolute; top: 0; right: -20px; }
+
 .ycjc-offset { margin-left:179px; }
 .nygl-offset { margin-left:179+86px; }
 .pgzd-offset { margin-left:179+86*2px; }
 .pgzdzj-offset { margin-left:179+86*3+15px; }
+
 /* gnhn modal */
 .gnhn-header { background: #fafafa; position: relative;}
 .gnhn-switch-icon {
@@ -255,3 +258,13 @@ div.charts-cont-2-level {
 .pt10r10 {padding: 10px 0 0 10px;}
 .pb10 { padding: 0 0 10px 0; }
 .pr10 { padding-right: 10px;}
+/*if 1024*/
+@media screen and (min-width: 1024px) { 
+    .subTitle { width: 200px;}
+    .ycjc-offset { margin-left:0; }
+    .nygl-offset { margin-left:0; }
+    .pgzd-offset { margin-left:0; }
+    .pgzdzj-offset { margin-left:0; }
+    .jgfx-date-box { width: 139px; }
+    .jgfx-top-right {display: none;}
+}

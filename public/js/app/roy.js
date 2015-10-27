@@ -40,9 +40,11 @@ define(function(require){
                 switch(this.mySectionId) {
                     case 'login':
                         this.myCont.removeClass('one-nav'); 
+                        this.myCont.removeClass('two-nav one-nav');
                         break;
                     case 'index':
                         this.subNav.addClass('hide'); 
+                        this.myCont.removeClass('two-nav').addClass('one-nav');
                         this.mainNav.empty();
                         break; 
                     default: 

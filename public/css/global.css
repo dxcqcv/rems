@@ -408,3 +408,26 @@ div.charts-cont-2-level {
 
 .pr10 {
   padding-right: 10px; }
+
+/*if 1024*/
+@media screen and (min-width: 1024px) {
+  .subTitle {
+    width: 200px; }
+
+  .ycjc-offset {
+    margin-left: 0; }
+
+  .nygl-offset {
+    margin-left: 0; }
+
+  .pgzd-offset {
+    margin-left: 0; }
+
+  .pgzdzj-offset {
+    margin-left: 0; }
+
+  .jgfx-date-box {
+    width: 139px; }
+
+  .jgfx-top-right {
+    display: none; } }
