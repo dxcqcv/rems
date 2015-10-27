@@ -3,7 +3,7 @@ define(function(require) {
       , datapicker = require('bootstrap-datetimepicker.min')
       , bootstrap = require('bootstrap')
       , jsonpPath= require('app/getJsonp')
-	  , highcharts = require('highcharts')
+	  , highcharts = require('exporting')
       ;
     (function() {
     //弹出层

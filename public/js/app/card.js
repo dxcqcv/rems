@@ -1,7 +1,7 @@
 define(function(require){
     var 
       $ = require('jquery')
-      , highcharts = require('highcharts')
+      , highcharts = require('exporting')
       ;
     (function(){
             var cardButton = $('.card-button-resize');

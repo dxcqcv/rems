@@ -102,4 +102,10 @@ router.get('/sfgl', function(req, res) {
 router.get('/xmxxgl', function(req, res) {
     res.render('xmxxgl', { title: 'Home' });
 });
+router.get('/mkfx', function(req, res) {
+    res.render('mkfx', { title: 'Home' });
+});
+router.get('/jzfx', function(req, res) {
+    res.render('jzfx', { title: 'Home' });
+});
 module.exports = router;
