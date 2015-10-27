@@ -1,5 +1,6 @@
 <% include header-top.html %>
 <link rel="stylesheet" href="/css/sjjc.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
 <% include header-bottom.html %>
 
 
@@ -9,14 +10,12 @@
             <div class="panel panel-default h100 mg0">
                 <div class="panel-body m100 h100 pr pd0">
 					<div class="btn-group sjjc-left-dropdown">
-						<button type="button" class="btn btn-default botton_all" data-toggle="dropdown">
-							选择设备类型 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu menu_li" role="menu">
-							<li><a href="#">全部类型设备</a></li>
-							<li><a href="#">能源站</a></li>
-							<li><a href="#">太阳能光热系统</a></li>
-						</ul>
+
+                        <select class="form-control selectpicker" id="">
+                          <option>全部类型设备</option>
+                          <option>能源站</option>
+                          <option>太阳能光热系统</option>
+                        </select>
 					</div>
 					<div class="rode_li h100 sjjc-left-list">
 						<ul class="rodr">

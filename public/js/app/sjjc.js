@@ -1,8 +1,12 @@
 ;define(function(require){
     var $ = require('jquery')
       , exporting = require('exporting')
+      , selectpicker = require('bootstrap-select')
     ;
     (function(){
+      //下拉选择
+      $('.selectpicker').selectpicker({
+      });
     	$('.btn_coin').on('click', function() {
             $('#gytModal').modal({
                 backdrop: 'static' 
