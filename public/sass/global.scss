@@ -51,7 +51,7 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 }
 .my-right { background: pink;}
 .my-left { background: green;}
-.my-section { height: 100%; min-height: 100%; background: #ddd;}
+.my-section { overflow: auto; height: 100%; min-height: 100%; background: #ddd;}
 .subTitle,
 .my-sub-nav { display: inline-block; vertical-align: top; }
 .subTitle { position:relative; width: 235px; height: 40px; line-height: 40px; text-align: center; background: #e0e1e3 ; color: #5d5d5d; font-size: 17px; }
@@ -259,7 +259,7 @@ div.charts-cont-2-level {
 .pb10 { padding: 0 0 10px 0; }
 .pr10 { padding-right: 10px;}
 /*if 1024*/
-@media (max-width: 1024px)  { 
+@media (max-width: 1500px)  { 
     .subTitle { width: 200px;}
     .ycjc-offset { margin-left:0; }
     .nygl-offset { margin-left:0; }

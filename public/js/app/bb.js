@@ -1,7 +1,8 @@
 define(function(require) {
 	var $ = require('jquery')
-      , highcharts = require('highcharts')
+      , highcharts = require('exporting')
       , selectpicker = require('bootstrap-select')
+      , bootstrapTable = require('bootstrap-table')
       , datapicker = require('bootstrap-datetimepicker.min')
       ;
 	(function() {
@@ -9,32 +10,42 @@ define(function(require) {
         $(".datepicker").datetimepicker();
     //选择控件
         $('.selectpicker').selectpicker();
-	}());	
+
+//huang
+        var dyrb_Parameter = [
+                                { "name": "吸气压力", "unit": "Mpa", "color": "#4572A7", "lineType": "spline", "lineStyle": "dot" },
+                                {"name":"排气压力", "unit":"Mpa", "color":"#AA4143","lineType":"spline","lineStyle":"dot"},
+                                {"name":"制冷出水温度", "unit":"°C", "color":"#AA4243","lineType":"spline","lineStyle":"dot"},
+                                {"name":"制冷回水温度", "unit":"°C", "color":"#AA4343","lineType":"spline","lineStyle":"dot"},
+                                {"name":"设定温度", "unit":"°C", "color":"#AA4443","lineType":"spline","lineStyle":"dot"},
+                                {"name":"制热出口温度", "unit":"°C", "color":"#AA4543","lineType":"spline","lineStyle":"dot"},
+                                {"name":"制热回水温度", "unit":"°C", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"机组电压", "unit":"V", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"1#机组电流", "unit":"A", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"2#机组电流", "unit":"A", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"集水器压力", "unit":"Mpa", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"使用侧回水压力", "unit":"Mpa", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"使用侧流量", "unit":"m³/h", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"分水器压力", "unit":"Mpa", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"循环侧回水压力", "unit":"Mpa", "color":"#AA4643","lineType":"spline","lineStyle":"dot"},
+                                {"name":"循环侧流量", "unit":"m³/h", "color":"#AA4643","lineType":"spline","lineStyle":"dot"}
+                        ];
+
+
         var dyrb_data = [
-                            ["2014/12/29 0:00",     296.69, 1000,   47.87,  43.74,  14, 13.6,   11.67,  0,  242.04, 0,  481.48, 588.67, 155.06, 516.8,  444.38, 183],
-                            ["2014-12-29 01:00",	296.87,	1000,	48.1,	43.98,	14,	13.6,	11.65,	0,	243.51,	0,	483.12,	590.27,	155.02,	518.31,	442.16,	183.05],
-                            ["2014-12-29 02:00",	296.57,	1000,	47.99,	43.86,	14,	13.6,	11.63,	0,	242.39,	0,	481,	588.39,	155.06,	516.82,	439.79,	183],
-                            ["2014-12-29 03:00",	296.65,	1000,	48.11,	43.98,	14,	13.6,	11.64,	0,	243.19,	0,	481.61,	588.96,	154.91,	517.51,	437.54,	183.3],
-                            ["2014-12-29 04:00",	296.87,	1000,	48.17,	44.06,	14,	13.6,	11.65,	0,	243.33,	0,	481.77,	589.04,	154.98,	517.14,	435.45,	183.13],
-                            ["2014-12-29 05:00",	296.69,	1000,	48.17,	44.04,	14,	13.6,	11.64,	0,	243.02,	0,	481.26,	588.59,	155.02,	515.96,	433.38,	182.98],
-                            ["2014-12-29 06:00",	296.72,	1000,	48.06,	43.93,	14,	13.6,	11.62,	0,	242.24,	0,	478.79,	585.46,	155.31,	519.27,	430.24,	182.83],
-                            ["2014-12-29 07:00",	296.44,	1000,	47.78,	43.67,	14,	13.6,	11.63,	0,	241.57,	0,	475.8,	581.92,	155.28,	518.42,	427.14,	183.77],
-                            ["2014-12-29 08:00",	293.59,	1000,	47.62,	43.08,	14,	13.55,	11.4,	0,	233.11,	52.12,	475.57,	581.48,	155.93,	515.18,	584.19,	183.01],
-                            ["2014-12-29 09:00",	281.61,	1000,	47.6,	42.81,	14,	13.46,	11.32,	0,	160.55,	162.68,	473.96,	580.28,	155.56,	510.67,	577.3,	183.34],
-                            ["2014-12-29 10:00",	280.88,	1000,	47.63,	42.83,	14,	13.4,	11.28,	0,	160.27,	162.12,	475.03,	581.43,	155.66,	508.49,	568.68,	182.99],
-                            ["2014-12-29 11:00",	280.45,	1000,	47.74,	42.92,	14,	13.33,	11.2,	0,	160.86,	162.9,	476.95,	583.28,	155.84,	508.56,	561.62,	183.21],
-                            ["2014-12-29 12:00",	280.15,	1000,	48.12,	43.32,	14,	13.3,	11.2,	0,	162.25,	164.56,	480.8,	587.26,	155.65,	511.27,	555.13,	183.17],
-                            ["2014-12-29 13:00",	282.25,	1000,	48.46,	43.76,	14,	13.3,	11.29,	0,	161.52,	162.45,	485.51,	592.13,	155.57,	514.8,	549.08,	183.07],
-                            ["2014-12-29 14:00",	285.96,	1000,	48.07,	43.81,	14,	13.32,	11.25,	0,	157.94,	157.43,	479.74,	586.17,	155.74,	508.84,	542.49,	183.31],
-                            ["2014-12-29 15:00",	286.42,	1000,	47.92,	43.74,	14,	13.39,	11.21,	0,	157.18,	157.04,	450.58,	557.06,	155.37,	479.97,	536.23,	182.85],
-                            ["2014-12-29 16:00",	286.86,	1000,	47.97,	43.85,	14,	13.4,	11.2,	0,	157.18,	157,	445.81,	552.18,	155.8,	476.55,	530.08,	182.69],
-                            ["2014-12-29 17:00",	287.31,	1000,	48.18,	44.09,	14,	13.4,	11.21,	0,	158.37,	158.16,	475.95,	582.46,	155.76,	508.32,	524.13,	182.96],
-                            ["2014-12-29 18:00",	287.96,	1000,	48.3,	44.26,	14,	13.4,	11.27,	0,	159.26,	159.33,	494.48,	600.81,	155.91,	526.97,	519.22,	182.88],
-                            ["2014-12-29 19:00",	288.07,	1000,	48.28,	44.24,	14,	13.4,	11.3,	0,	158.78,	158.92,	495.7,	602.53,	155.84,	525.46,	515.18,	182.95],
-                            ["2014-12-29 20:00",	298.65,	1000,	48.33,	44.53,	14,	13.49,	11.49,	0,	223.75,	34.24,	498.87,	605.97,	156.16,	530,	510.55,	182.86],
-                            ["2014-12-29 21:00",	299.34,	1000,	48.07,	44.29,	14,	13.5,	11.51,	0,	241.86,	0,	497.41,	604.51,	155.78,	531.31,	505.86,	182.74],
-                            ["2014-12-29 22:00",	298.77,	1000,	48.31,	44.51,	14,	13.55,	11.5,	0,	243.59,	0,	500.97,	608.07,	155.84,	535.3,	501.52,	182.85],
-                            ["2014-12-29 23:00",	298.49,	1000,	48.35,	44.56,	14,	13.6,	11.5,	0,	243.05,	0,	501.71,	608.68,	155.47,	535.66,	497.53,	182.85]
+                    { "date": "2014/12/29 0:00", "P1": 296.69, "P2": 1000, "P3": 47.87, "P4": 43.74, "P5": 14, "P6": 13.6, "P7": 11.67, "P8": 0, "P9": 242.04, "P10": 0, "P11": 481.48, "P12": 588.67, "P13": 155.06, "P14": 516.8, "P15": 444.38, "P16": 183 },
+                    { "date": "2014-12-29 01:00", "P1": 296.87, "P2": 1000, "P3": 48.1, "P4": 43.98, "P5": 14, "P6": 13.6, "P7": 11.65, "P8": 0, "P9": 243.51, "P10": 0, "P11": 483.12, "P12": 590.27, "P13": 155.02, "P14": 518.31, "P15": 442.16, "P16": 183.05},
+                    { "date": "2014-12-29 02:00", "P1": 296.57, "P2": 1000, "P3": 47.99, "P4": 43.86, "P5": 14, "P6": 13.6, "P7": 11.63, "P8": 0, "P9": 242.39, "P10": 0, "P11": 481, "P12": 588.39, "P13": 155.06, "P14": 516.82, "P15": 439.79, "P16": 183},
+                    { "date": "2014-12-29 03:00", "P1": 296.65, "P2": 1000, "P3": 48.11, "P4": 43.98, "P5": 14, "P6": 13.6, "P7": 11.64, "P8": 0, "P9": 243.19, "P10": 0, "P11": 481.61, "P12": 588.96, "P13": 154.91, "P14": 517.51, "P15": 437.54, "P16": 183.3},
+                    { "date": "2014-12-29 04:00", "P1": 296.87, "P2": 1000, "P3": 48.17, "P4": 44.06, "P5": 14, "P6": 13.6, "P7": 11.65, "P8": 0, "P9": 243.33, "P10": 0, "P11": 481.77, "P12": 589.04, "P13": 154.98, "P14": 517.14, "P15": 435.45, "P16": 183.13},
+                    { "date": "2014-12-29 05:00", "P1": 296.69, "P2": 1000, "P3": 48.17, "P4": 44.04, "P5": 14, "P6": 13.6, "P7": 11.64, "P8": 0, "P9": 243.02, "P10": 0, "P11": 481.26, "P12": 588.59, "P13": 155.02, "P14": 515.96, "P15": 433.38, "P16": 182.98 },
+                    { "date": "2014-12-29 06:00", "P1": 296.72, "P2": 1000,	"P3": 48.06, "P4": 43.93, "P5": 14, "P6": 13.6, "P7": 11.62, "P8": 0, "P9": 242.24, "P10":0, "P11": 478.79, "P12": 585.46, "P13": 155.31, "P14": 519.27, "P15":430.24, "P16": 182.83},
+                    { "date": "2014-12-29 07:00", "P1":	296.44, "P2": 1000,	"P3": 47.78, "P4": 43.67, "P5": 14, "P6": 13.6, "P7": 11.63, "P8": 0, "P9": 241.57, "P10":0, "P11": 475.8, "P12": 581.92, "P13": 155.28, "P14": 518.42, "P15":427.14, "P16": 183.77},
+                    { "date": "2014-12-29 08:00", "P1":	293.59, "P2": 1000,	"P3": 47.62, "P4": 43.08, "P5": 14, "P6": 13.55, "P7": 11.4, "P8": 0, "P9": 233.11, "P10":52.12, "P11": 475.57, "P12": 581.48, "P13": 155.93, "P14": 515.18, "P15":584.19, "P16": 183.01},
+                    { "date": "2014-12-29 09:00", "P1":	281.61, "P2": 1000,	"P3": 47.6,	 "P4": 42.81, "P5": 14, "P6": 13.46, "P7": 11.32, "P8": 0, "P9": 160.55, "P10":162.68, "P11": 473.96, "P12": 580.28, "P13": 155.56, "P14": 510.67, "P15":577.3, "P16": 183.34},
+                    { "date": "2014-12-29 10:00", "P1": 280.88, "P2": 1000,	"P3": 47.63, "P4": 42.83, "P5": 14, "P6": 13.4,  "P7": 11.28, "P8": 0, "P9": 160.27, "P10":162.12, "P11": 475.03, "P12": 581.43, "P13": 155.66, "P14": 508.49, "P15":568.68, "P16": 182.99},
+                    { "date": "2014-12-29 11:00", "P1": 280.45, "P2": 1000, "P3": 47.74, "P4": 42.92, "P5": 14, "P6": 13.33, "P7": 11.2, "P8": 0, "P9": 160.86, "P10": 162.9, "P11": 476.95, "P12": 583.28, "P13": 155.84, "P14": 508.56, "P15": 561.62, "P16": 183.21 },
+
         ];
 
         var guolu_data = [
@@ -64,6 +75,7 @@ define(function(require) {
                             ["2014-12-29 23:00",	0,	0.46,	0,	17.39,	0,	0,	37.43,	0,	0,	0.39,	0,	33.27,	0,	0,	66.97,	0,	0,	0.48,	154.4,	28.25,	41.95,	0]    
         ];
 
+        //报表模板选择
         $('#reportTemplateSelect').change(
             function () {
                 //var index = $(this).attr("selectedIndex");
@@ -73,7 +85,7 @@ define(function(require) {
                     $('#tabDyrb').show();
                     $('#tabGlyx').hide();
                     $('#tabYrxt').hide();
-                    $('#btnPopPicture').attr("data-target", "#myModal-dyrb");
+                    //$('#btnPopPicture').attr("data-target", "#myModal-dyrb");
                     //$('#btnPopPicture').data("data-target", "#myModal-dyrb");
                 }
                 else if(index == 1)
@@ -81,7 +93,7 @@ define(function(require) {
                     $('#tabDyrb').hide();
                     $('#tabGlyx').show();
                     $('#tabYrxt').hide();
-                    $('#btnPopPicture').attr("data-target", "#myModal-guolu");
+                    //$('#btnPopPicture').attr("data-target", "#myModal-guolu");
                 }
                 else if (index == 2) {
                     $('#tabDyrb').hide();
@@ -90,14 +102,53 @@ define(function(require) {
                 }
         });
 
-        $(".datepicker").datepicker();
+        //$(".datepicker").datepicker({startView:"decade", minViewMode:"years", format:"yyyy", autoclose:true});
         $('.selectpicker').selectpicker();
 
         $('#tabDyrb').show();
         $('#tabGlyx').hide();
         $('#tabYrxt').hide();
 
+        //$('#hc_dyrb').width($('#div_dyrb').width());
+        //$('#hc_dyrb').height($('#div_dyrb').height());
 
+
+        $('.radDateType').on('click', function () {
+            if (radPickYear.checked == true) {
+                $(".datepicker").datepicker({ startView: "decade", minViewMode: "years", format: "yyyy", autoclose: true });
+
+            }
+            else if (radPickMonth.checked == true) {
+                $('.datepicker').datepicker({ startView: "year", minViewMode: "months", format: "yyyy/mm", autoclose: true });
+
+            }
+            else if (radPickDay.checked == true) {
+                $('.datepicker').datepicker({ startView: "month", minViewMode: "days", format: "yyyy/mm/dd", autoclose: true });
+            }
+        })
+
+        function generateOneLineCheckboxHtml(oneLineData) {
+            var thisLineHtml = '<tr>';
+            var oneColumn = null;
+            for (var i = 0; i < oneLineData.length; i++) {
+                if (i == 0)
+                {
+                    oneColumn = '<td style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;">' +
+                                     '全选<input type="checkbox" id="tchkDyrbPa" />' +
+                                    '</td>';
+                }
+                else
+                {
+                    oneColumn = '<td style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;">' +
+                                        '<input type="checkbox"  id="tchkDyrbP' + i + '"/>' +
+                                    '</td>';
+                }
+
+                thisLineHtml = thisLineHtml + oneColumn;
+            }
+            thisLineHtml = thisLineHtml + '</tr>';
+            return thisLineHtml;
+        }
 
         function generateOneLineHtml(oneLineData)
         {
@@ -115,19 +166,136 @@ define(function(require) {
 
 
 
-        for (var i = 0; i < dyrb_data.length; i++)
-        {
-            $('#tbyDyrb').append(generateOneLineHtml(dyrb_data[i]));
 
-        }
+        $table = $('#tbyDyrb').bootstrapTable({ halign: "center", align: "center", valign: "middle"});
+        $table.bootstrapTable('load', dyrb_data);
+
 
         for (var i = 0; i < guolu_data.length; i++)
         {
             $('#tbyGuolu').append(generateOneLineHtml(guolu_data[i]));
         }
 
-        //图 
-        $(function () {
+
+
+        $('#chkDyrbPa').on('click', function ()
+        {
+            if (chkDyrbPa.checked == true) {
+                chkDyrbP1.checked = true;
+                chkDyrbP2.checked = true;
+                chkDyrbP3.checked = true;
+                chkDyrbP4.checked = true;
+                chkDyrbP5.checked = true;
+                chkDyrbP6.checked = true;
+                chkDyrbP7.checked = true;
+                chkDyrbP8.checked = true;
+                chkDyrbP9.checked = true;
+                chkDyrbP10.checked = true;
+                chkDyrbP11.checked = true;
+                chkDyrbP12.checked = true;
+                chkDyrbP13.checked = true;
+                chkDyrbP14.checked = true;
+                chkDyrbP15.checked = true;
+                chkDyrbP16.checked = true;
+            }
+            else {
+                chkDyrbP1.checked = false;
+                chkDyrbP2.checked = false;
+                chkDyrbP3.checked = false;
+                chkDyrbP4.checked = false;
+                chkDyrbP5.checked = false;
+                chkDyrbP6.checked = false;
+                chkDyrbP7.checked = false;
+                chkDyrbP8.checked = false;
+                chkDyrbP9.checked = false;
+                chkDyrbP10.checked = false;
+                chkDyrbP11.checked = false;
+                chkDyrbP12.checked = false;
+                chkDyrbP13.checked = false;
+                chkDyrbP14.checked = false;
+                chkDyrbP15.checked = false;
+                chkDyrbP16.checked = false;
+            }
+        })
+
+
+        //点击查看图表按钮
+        $('#btnPopChart').on('click', function () {
+
+            var selectParameterIndexes = new Array();
+            var selectParameters = new Array();
+            if (chkDyrbP1.checked == true)
+            {
+                selectParameterIndexes.push(1);
+                selectParameters.push("P1");
+            }
+            if (chkDyrbP2.checked == true) {
+                selectParameterIndexes.push(2);
+                selectParameters.push("P2");
+            }
+            if (chkDyrbP3.checked == true) {
+                selectParameterIndexes.push(3);
+                selectParameters.push("P3");
+            }
+            if (chkDyrbP4.checked == true) {
+                selectParameterIndexes.push(4);
+                selectParameters.push("P4");
+            }
+            if (chkDyrbP5.checked == true) {
+                selectParameterIndexes.push(5);
+                selectParameters.push("P5");
+            }
+            if (chkDyrbP6.checked == true) {
+                selectParameterIndexes.push(6);
+                selectParameters.push("P6");
+            }
+            if (chkDyrbP7.checked == true) {
+                selectParameterIndexes.push(7);
+                selectParameters.push("P7");
+            }
+            if (chkDyrbP8.checked == true) {
+                selectParameterIndexes.push(8);
+                selectParameters.push("P8");
+            }
+            if (chkDyrbP9.checked == true) {
+                selectParameterIndexes.push(9);
+                selectParameters.push("P9");
+            }
+            if (chkDyrbP10.checked == true) {
+                selectParameterIndexes.push(10);
+                selectParameters.push("P10");
+            }
+            if (chkDyrbP11.checked == true) {
+                selectParameterIndexes.push(11);
+                selectParameters.push("P11");
+            }
+            if (chkDyrbP12.checked == true) {
+                selectParameterIndexes.push(12);
+                selectParameters.push("P12");
+            }
+            if (chkDyrbP13.checked == true) {
+                selectParameterIndexes.push(13);
+                selectParameters.push("P13");
+            }
+            if (chkDyrbP14.checked == true) {
+                selectParameterIndexes.push(14);
+                selectParameters.push("P14");
+            }
+            if (chkDyrbP15.checked == true) {
+                selectParameterIndexes.push(15);
+                selectParameters.push("P15");
+            }
+            if (chkDyrbP16.checked == true) {
+                selectParameterIndexes.push(16);
+                selectParameters.push("P16");
+            }
+
+            var xlabels = new Array();
+            //Json方式
+            for (var i = 0; i < dyrb_data.length; i++) {
+                xlabels.push(dyrb_data[i].date);
+            }
+
             $('#hc_dyrb').highcharts({                         //#container
                 //chart: {
                 //    zoomType: 'xy'
@@ -140,384 +308,102 @@ define(function(require) {
                 },
                 xAxis: [{
                     //type: 'datetime',
-                    categories: ['2014/12/29  0:00:00', '2014-12-29 01:00', '2014-12-29 03:00', '2014-12-29 04:00', '2014-12-29 05:00', '2014-12-29 06:00', '2014-12-29 07:00', '2014-12-29 08:00', '2014-12-29 09:00', '2014-12-29 10:00', '2014-12-29 11:00', '2014-12-29 12:00', '2014-12-29 13:00', '2014-12-29 14:00', '2014-12-29 15:00', '2014-12-29 16:00', '2014-12-29 17:00', '2014-12-29 18:00', '2014-12-29 19:00', '2014-12-29 20:00', '2014-12-29 21:00', '2014-12-29 22:00', '2014-12-29 23:00']
+                    categories: xlabels
                 }],
-                yAxis: [
-                    { // No.0 yAxis
-                        gridLineWidth: 0,
-                        title: {
-                            text: '吸气压力',
-                            style: {
-                                color: '#AA4643'
-                            }
-                        },
-                        labels: {
-                            formatter: function() {
-                                return this.value +'Mpa';
-                            },
-                            style: {
-                                color: '#AA4643'
-                            }
-                        },
-                        opposite: true
-                    },
-                    { // No.1 yAxis
-                        gridLineWidth: 0,
-                        title: {
-                            text: '流量',
-                            style: {
-                                color: '#4572A7'
-                            }
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value + 'm³/h';
-                            },
-                            style: {
-                                color: '#4572A7'
-                            }
-                        }
+                tooltip: {
+                    shared: true
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    x: 120,
+                    verticalAlign: 'top',
+                    y: 80,
+                    floating: true,
+                    backgroundColor: '#FFFFFF'
+                }
+            }
+            );
 
-                    },
-                    { // No.2 yAxis
-                    labels: {
-                        formatter: function() {
-                            return this.value +'°C';
-                        },
+            var dyrb_chart = $('#hc_dyrb').highcharts();
+
+            for (var i = 0; i < selectParameterIndexes.length; i++)
+            {
+                  
+                var thisSeriesData = new Array();
+                //原始数据采用Json方式
+                for (var j = 0; j < dyrb_data.length; j++) {
+                    if(selectParameters[i]=="P1")
+                        thisSeriesData.push(dyrb_data[j].P1);
+                    else if(selectParameters[i]=="P2")
+                        thisSeriesData.push(dyrb_data[j].P2);
+                    else if (selectParameters[i] == "P3")
+                        thisSeriesData.push(dyrb_data[j].P3);
+                    else if (selectParameters[i] == "P4")
+                        thisSeriesData.push(dyrb_data[j].P4);
+                    else if (selectParameters[i] == "P5")
+                        thisSeriesData.push(dyrb_data[j].P5);
+                    else if (selectParameters[i] == "P6")
+                        thisSeriesData.push(dyrb_data[j].P6);
+                    else if (selectParameters[i] == "P7")
+                        thisSeriesData.push(dyrb_data[j].P7);
+                    else if (selectParameters[i] == "P8")
+                        thisSeriesData.push(dyrb_data[j].P8);
+                    else if (selectParameters[i] == "P9")
+                        thisSeriesData.push(dyrb_data[j].P9);
+                    else if (selectParameters[i] == "P10")
+                        thisSeriesData.push(dyrb_data[j].P10);
+                    else if (selectParameters[i] == "P11")
+                        thisSeriesData.push(dyrb_data[j].P11);
+                    else if (selectParameters[i] == "P12")
+                        thisSeriesData.push(dyrb_data[j].P12);
+                    else if (selectParameters[i] == "P13")
+                        thisSeriesData.push(dyrb_data[j].P13);
+                    else if (selectParameters[i] == "P14")
+                        thisSeriesData.push(dyrb_data[j].P14);
+                    else if (selectParameters[i] == "P15")
+                        thisSeriesData.push(dyrb_data[j].P15);
+                    else if (selectParameters[i] == "P16")
+                        thisSeriesData.push(dyrb_data[j].P16);
+
+                }
+
+                dyrb_chart.addAxis({
+                    title: {
+                        text: dyrb_Parameter[selectParameterIndexes[i]-1].name,
                         style: {
-                            color: '#89A54E'
+                            color: dyrb_Parameter[selectParameterIndexes[i]-1].color
                         }
                     },
-                    title: {
-                        text: '出水温度',
+                    labels: {
+                        formatter: function () {
+                            return this.value + dyrb_Parameter[selectParameterIndexes[i]-1].unit;
+                        },
                         style: {
-                            color: '#89A54E'
+                            color: dyrb_Parameter[selectParameterIndexes[i]-1].color
                         }
                     },
                     opposite: true
 
-                    },
-                ],
-                tooltip: {
-                    shared: true
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'left',
-                    x: 120,
-                    verticalAlign: 'top',
-                    y: 80,
-                    floating: true,
-                    backgroundColor: '#FFFFFF'
-                },
-                series: [{
-                    name: '吸气压力',
-                    color: '#AA4643',
-                    type: 'spline',
-                    yAxis: 0,
-                    data: [
-296.69,
-296.87,
-296.57,
-296.65,
-296.87,
-296.69,
-296.72,
-296.44,
-293.59,
-281.61,
-280.88,
-280.45,
-280.15,
-282.25,
-285.96,
-286.42,
-286.86,
-287.31,
-287.96,
-288.07,
-298.65,
-299.34,
-298.77,
-298.49
+                }, false, true, true);
 
-                ],
-                    tooltip: {
-                        valueSuffix: 'Mpa'
-                    }
-
-                }, {
-                    name: '流量',
-                    type: 'spline',
-                    color: '#4572A7',
-                    yAxis: 1,
-                    data: [
-183,
-183.05,
-183,
-183.3,
-183.13,
-182.98,
-182.83,
-183.77,
-183.01,
-183.34,
-182.99,
-183.21,
-183.17,
-183.07,
-183.31,
-182.85,
-182.69,
-182.96,
-182.88,
-182.95,
-182.86,
-182.74,
-182.85,
-182.85
-
-                ],
-                    marker: {
-                        enabled: false
-                    },
-                    dashStyle: 'shortdot',
-                    tooltip: {
-                        valueSuffix: 'm³/h'
-                    }
-
-
-                }, {
-                    name: '出水温度',
-                    color: '#89A54E',
-                    type: 'spline',
-                    yAxis: 2,
-                    data: [47.87,
-48.1,
-47.99,
-48.11,
-48.17,
-48.17,
-48.06,
-47.78,
-47.62,
-47.6,
-47.63,
-47.74,
-48.12,
-48.46,
-48.07,
-47.92,
-47.97,
-48.18,
-48.3,
-48.28,
-48.33,
-48.07,
-48.31,
-48.35
-                ],
-                    tooltip: {
-                        valueSuffix: ' °C'
-                    }
-                }]
-            });
-        });
-
-        $(function () {
-            $('#hc_guolu').highcharts({                         //#container
-                //chart: {
-                //    zoomType: 'xy'
-                //},
-                title: {
-                    text: '锅炉运行记录表'
-                },
-                subtitle: {
-                    //text: 'Source: WorldClimate.com'
-                },
-                xAxis: [{
-                    //type: 'datetime',
-                    categories: ['2014/12/29  0:00:00', '2014-12-29 01:00', '2014-12-29 03:00', '2014-12-29 04:00', '2014-12-29 05:00', '2014-12-29 06:00', '2014-12-29 07:00', '2014-12-29 08:00', '2014-12-29 09:00', '2014-12-29 10:00', '2014-12-29 11:00', '2014-12-29 12:00', '2014-12-29 13:00', '2014-12-29 14:00', '2014-12-29 15:00', '2014-12-29 16:00', '2014-12-29 17:00', '2014-12-29 18:00', '2014-12-29 19:00', '2014-12-29 20:00', '2014-12-29 21:00', '2014-12-29 22:00', '2014-12-29 23:00']
-                }],
-                yAxis: [
-                    { // No.0 yAxis
-                        gridLineWidth: 0,
-                        title: {
-                            text: '蒸汽压力',
-                            style: {
-                                color: '#AA4643'
-                            }
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value + 'Mpa';
-                            },
-                            style: {
-                                color: '#AA4643'
-                            }
-                        },
-                        opposite: true
-                    },
-                    { // No.1 yAxis
-                        gridLineWidth: 0,
-                        title: {
-                            text: '进水初温',
-                            style: {
-                                color: '#4572A7'
-                            }
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value + '°C';
-                            },
-                            style: {
-                                color: '#4572A7'
-                            }
+                dyrb_chart.addSeries(
+                    {
+                        name: dyrb_Parameter[selectParameterIndexes[i]-1].name,
+                        color: dyrb_Parameter[selectParameterIndexes[i]-1].color,
+                        type: 'spline',
+                        yAxis: i,
+                        data: thisSeriesData,
+                        tooltip: {
+                            valueSuffix: dyrb_Parameter[selectParameterIndexes[i]-1].unit
                         }
-
-                    },
-                    { // No.2 yAxis
-                        labels: {
-                            formatter: function () {
-                                return this.value + '°C';
-                            },
-                            style: {
-                                color: '#89A54E'
-                            }
-                        },
-                        title: {
-                            text: '排烟初温',
-                            style: {
-                                color: '#89A54E'
-                            }
-                        },
-                        opposite: true
-
-                    },
-                ],
-                tooltip: {
-                    shared: true
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'left',
-                    x: 120,
-                    verticalAlign: 'top',
-                    y: 80,
-                    floating: true,
-                    backgroundColor: '#FFFFFF'
-                },
-                series: [{
-                    name: '蒸汽压力',
-                    color: '#AA4643',
-                    type: 'spline',
-                    yAxis: 0,
-                    data: [
-0.44,
-0.45,
-0.44,
-0.44,
-0.42,
-0.48,
-0.45,
-0.44,
-0.44,
-0.44,
-0.45,
-0.43,
-0.44,
-0.44,
-0.46,
-0.41,
-0.44,
-0.44,
-0.44,
-0.48,
-0.46,
-0.45,
-0.46,
-0.46
-                    ],
-                    tooltip: {
-                        valueSuffix: 'Mpa'
                     }
+                );
+            }
 
-                }, {
-                    name: '进水初温',
-                    type: 'spline',
-                    color: '#4572A7',
-                    yAxis: 1,
-                    data: [
-28.95,
-35.39,
-26.1,
-32.01,
-40.12,
-50.11,
-46.45,
-37.42,
-35.63,
-45.84,
-41.79,
-37.2,
-37.04,
-39.58,
-37.02,
-31.35,
-41.42,
-31.19,
-28.54,
-26.95,
-22.56,
-19.95,
-18.27,
-17.39
-                    ],
-                    marker: {
-                        enabled: false
-                    },
-                    dashStyle: 'shortdot',
-                    tooltip: {
-                        valueSuffix: '°C'
-                    }
+            $('#myModal-dyrb').modal();
+      })
 
-
-                }, {
-                    name: '排烟初温',
-                    color: '#89A54E',
-                    type: 'spline',
-                    yAxis: 2,
-                    data: [
-70.91,
-65.28,
-70.24,
-64.24,
-80.49,
-83.59,
-69.13,
-69.29,
-79.27,
-78.13,
-78.01,
-72.01,
-71.62,
-70.11,
-56.06,
-50.98,
-47.91,
-44.68,
-41.54,
-36.66,
-36.17,
-36,
-36.68,
-37.43
-                    ],
-                    tooltip: {
-                        valueSuffix: '°C'
-                    }
-                }]
-            });
-        });
+	}());	
 
 });

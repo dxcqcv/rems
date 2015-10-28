@@ -3,7 +3,7 @@ define(function(require){
         proto = require('app/highstockMod')
       , moment = require('moment')
       , datapicker = require('bootstrap-datetimepicker.min')
-      , getJsonp = require('app/getJsonp')
+      , jsonpPath = require('app/getJsonp')
       , card = require('app/card') 
       ;
       (function(){
@@ -79,9 +79,11 @@ var nowDate = new Date();
         }
 
 
-
-/* And then I define some stuff that instantiates Highcharts.StockChart objects, e.g.: */
-$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+         localJsonp.start({url:jsonpPath+'stockData.js',jsonpCallback:'callback',done:showStock});
+         localJsonp.start({url:jsonpPath+'stockData2.js',jsonpCallback:'callback2',done:showStock2});
+         localJsonp.start({url:jsonpPath+'stockData3.js',jsonpCallback:'callback3',done:showStock3});
+         localJsonp.start({url:jsonpPath+'stockData4.js',jsonpCallback:'callback4',done:showStock4});
+function showStock(data){
 l1 = new Highcharts.StockChart({
     chart: {
         renderTo: 'nyzhlyl',
@@ -110,10 +112,8 @@ l1 = new Highcharts.StockChart({
         enabled: false
     }
 });
-
-});
-/* And then I define some stuff that instantiates Highcharts.StockChart objects, e.g.: */
-$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+}
+function showStock2(data){
 l2 = new Highcharts.StockChart({
     chart: {
         renderTo: 'jnl',
@@ -142,18 +142,13 @@ l2 = new Highcharts.StockChart({
         enabled: false
     }
 });
-
-});
-/* And then I define some stuff that instantiates Highcharts.StockChart objects, e.g.: */
-$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+}
+function showStock3(data){
 l3 = new Highcharts.StockChart({
     chart: {
         renderTo: 'eyhtjpl',
         type: 'line',
     },
-    credits: {
-        enabled: false
-    },
      yAxis: { // 基线
          title: {
              text: null 
@@ -165,6 +160,9 @@ l3 = new Highcharts.StockChart({
              color: 'red'
          }]
      },
+    credits: {
+        enabled: false
+    },
     series: [{
         id: "data",
         data: data
@@ -174,22 +172,13 @@ l3 = new Highcharts.StockChart({
         enabled: false
     }
 });
-
-});
-/* And then I define some stuff that instantiates Highcharts.StockChart objects, e.g.: */
-$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+}
+function showStock4(data){
 l4 = new Highcharts.StockChart({
     chart: {
         renderTo: 'kzsnylyl',
         type: 'line',
     },
-    credits: {
-        enabled: false
-    },
-    series: [{
-        id: "data",
-        data: data
-    }],
      yAxis: { // 基线
          title: {
              text: null 
@@ -201,13 +190,20 @@ l4 = new Highcharts.StockChart({
              color: 'red'
          }]
      },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        id: "data",
+        data: data
+    }],
     rangeSelector: {
         /* It seems like you'd want to hide Highcharts' own rangeSelector since we're using a custom one*/
         enabled: false
     }
 });
+}
 
-});
 
       }());
 });
