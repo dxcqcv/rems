@@ -23,65 +23,18 @@ define(function(require) {
 
 
     function xcharts(data) {
-    //已经成功	
-  //       var tag;
-
-  //       options.chart.type= 'line';
-  //       options.chart.renderTo = 'gnhnHaodianCharts';
-  //           options.series[0] = data[0];
-  //           options.series[1]= data[1];
-  //           $.each(data[0]['data'], function (key, value) {
-	                  
-  //           		console.log(value);
-	 //                        if ((value - data[1]['data'][key]) > 113) {
-		// 				   		 tag = key; 
-		// 					}; 
-						                       
-	 //                });
-  //           options.tooltip = {
-  //           	useHTML: true,
-
-  //           	formatter:function () {
-	 //                var s = '<b>' + this.x + '</b>';
-	 //                var serie = this.series;
-	 //                var s = '<img src="http://static.bbci.co.uk/frameworks/barlesque/2.45.9/desktop/3.5/img/blq-blocks_grey_alpha.png" height="20" width="40"/>耗电量<br/><b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b><br>';
-  //               s += '<span style="color:' + serie.color + '">' + serie.options.name + '</span>: <b>' + this.y + '</b><br/>';
-
-  //               $.each(serie.options.composition, function(name, value) {
-  //                   s += '<b>' + name + ':</b> ' + value + '<br>';
-  //               });
-	                
-	 //                return s;
-	 //            },
-	 //            shared:false,
-  //       	}
-            
-  //           chart = new Highcharts.Chart(options); 
-
-
-    
-  //   	chart.series[1].data[tag].setState('hover');
-
-		// // If the tooltip.shared=true, the parameter is array of point
-		// //chart.tooltip.refresh([chart.series[1].points[0]]); 
-		// chart.tooltip.refresh(chart.series[1].points[tag]);
-
-
-
-       var tag;
-
+       	var tag;
         options.chart.type= 'line';
         options.chart.renderTo = 'gnhnHaodianCharts';
             options.series[0] = data[0];
             options.series[1]= data[1];
-            $.each(data[0]['data'], function (key, value) {
-	                  
+            $.each(data[0]['data'], function (key, value) { 
             		//console.log(value);
-	                        if ((value[1] - data[1]['data'][key][1]) > 113) {
-						   		 tag = key; 
-							}; 
+                if ((value[1] - data[1]['data'][key][1]) > 113) {
+			   		 tag = key; 
+				}; 
 						                       
-	                });
+	        });
             options.tooltip =  {
         	useHTML: true,
             formatter: function () {
@@ -90,13 +43,13 @@ define(function(require) {
 					var s = '<b>' + '<div style="color:red;background:#e5e5e5;">'+Highcharts.dateFormat('%A, %b %e, %Y', this.x) +'</div>'+ '耗电量</b>';
 	                $.each(this.points, function (key, value) {
 	                	if (key != 2) {
-	                		s += '<br/>: ' + this.series.options.name+ this.y;
+	                		s += '<br/>' + this.series.options.name+ ':'+  this.y;
 	                	};  
 	                });	
             	}else{
 					var s = '<b>' + '<div style="">'+Highcharts.dateFormat('%A, %b %e, %Y', this.x) +'</div>'+ '耗电量</b>';
 	                $.each(this.points, function () {
-	                    s += '<br/>: ' + this.series.options.name+ this.y;
+	                    s += '<br/>' + this.series.options.name+ ':'+ this.y;
 	                });
                 	           		
             	}
