@@ -15,8 +15,8 @@ define(function(require) {
     
     $('#myModal').on('shown.bs.modal', function() {
         localJsonp.start({url:jsonpPath+'modalLines.js',jsonpCallback:'modalLines',done:modalLines});
-        $('#gnhnHaodianCharts').css('visibility', 'hidden');
-        $('#gnhnHaodianCharts').css('visibility', 'initial');  
+        // $('#gnhnHaodianCharts').css('visibility', 'hidden');
+        // $('#gnhnHaodianCharts').css('visibility', 'initial');  
     }); 
   
 
@@ -28,6 +28,7 @@ define(function(require) {
         // options.xAxis.categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         // options.series[0].data = data;
         // chart = new Highcharts.Chart(options); 
+       
 
     $('#gnhnHaodianCharts').highcharts({
             chart: {
