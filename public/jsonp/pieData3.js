@@ -10,7 +10,7 @@ pie3([{
                 sliced: true,
                 selected: true
             }, {
-                name: "天然气<br>314kWh",
+                name: "天然气<br>314kWh<br>",
                 color: '#fff661',
                 y: 62.3
             }])

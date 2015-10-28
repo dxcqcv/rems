@@ -6,7 +6,7 @@ pie2([{
                 },
                 y: 85.5
             }, {
-                name: "地热<br>9kWh",
+                name: "地热<br>9kWh<br>",
                 y: 13,
                 color: '#aee572',
                 sliced: true,
