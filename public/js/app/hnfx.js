@@ -8,24 +8,26 @@ define(function(require) {
     (function() {
     //弹出层
     $('.gnhnIcon').on('click', function() {
-        $("#myModal").modal('show');
-        // localJsonp.start({url:jsonpPath+'modalLines.js',jsonpCallback:'modalLines',done:modalLines});
+        var $this = $(this)
+          , title = $this.data('title')
+          , modal = $("#myModal")
+          ;
+        modal.find('.modal-title').text(title);
+        modal.modal('show');
+
     });
 
-    
-    $('#myModal').on('shown.bs.modal', function() {
+    $('#myModal').on('shown.bs.modal', function(event) {
         localJsonp.start({url:jsonpPath+'xcharts.js',jsonpCallback:'xcharts',done:xcharts});
-        //localJsonp.start({url:jsonpPath+'modalLines.js',jsonpCallback:'modalLines',done:modalLines});
-        // $('#gnhnHaodianCharts').css('visibility', 'hidden');
-        // $('#gnhnHaodianCharts').css('visibility', 'initial');  
     }); 
-  
-
 
     function xcharts(data) {
        	var tag;
-        options.chart.type= 'line';
-        options.chart.renderTo = 'gnhnHaodianCharts';
+        var c = $('.gnhn-modal-charts');    
+        c.each(function(i, e) {
+            options.chart.type= 'line';
+            options.chart.renderTo = e;
+
             options.series[0] = data[0];
             options.series[1]= data[1];
             $.each(data[0]['data'], function (key, value) { 
@@ -39,30 +41,30 @@ define(function(require) {
         	useHTML: true,
             formatter: function () {
             	
-            	if (this.points[0].key == tag) {
-					var s = '<b>' + '<div style="color:red;background:#e5e5e5;">'+Highcharts.dateFormat('%A, %b %e, %Y', this.x) +'</div>'+ '耗电量</b>';
-	                $.each(this.points, function (key, value) {
-	                	if (key != 2) {
-	                		s += '<br/>' + this.series.options.name+ ':'+  this.y;
-	                	};  
-	                });	
-            	}else{
-					var s = '<b>' + '<div style="">'+Highcharts.dateFormat('%A, %b %e, %Y', this.x) +'</div>'+ '耗电量</b>';
-	                $.each(this.points, function () {
-	                    s += '<br/>' + this.series.options.name+ ':'+ this.y;
-	                });
-                	           		
-            	}
+            if (this.points[0].key == tag) {
+                var s = '<b>' + '<div style="color:red;background:#e5e5e5;">'+Highcharts.dateFormat('%A, %b %e, %Y', this.x) +'</div>'+ '耗电量</b>';
+                $.each(this.points, function (key, value) {
+                    if (key != 2) {
+                        s += '<br/>' + this.series.options.name+ ':'+  this.y;
+                    };  
+                });	
+            }else{
+                var s = '<b>' + '<div style="">'+Highcharts.dateFormat('%A, %b %e, %Y', this.x) +'</div>'+ '耗电量</b>';
+                $.each(this.points, function () {
+                    s += '<br/>' + this.series.options.name+ ':'+ this.y;
+                });
+                                
+            }
                 //s+= '<br>差值: ' + ( this.points[0].y - this.points[1].y );
                 return s;
             },
             shared:true,
 
         }
-        chart = new Highcharts.Chart(options); 
-    	//chart.series[1].points[tag].setState('hover');
-		chart.tooltip.refresh([chart.series[1].points[tag], chart.series[0].points[tag]]); 
-        
+            chart = new Highcharts.Chart(options); 
+            //chart.series[1].points[tag].setState('hover');
+            chart.tooltip.refresh([chart.series[1].points[tag], chart.series[0].points[tag]]); 
+        });
     }
     // tooltips
          $('[data-toggle="tooltip"]').tooltip();  
