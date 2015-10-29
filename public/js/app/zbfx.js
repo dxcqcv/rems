@@ -19,6 +19,7 @@ $('#nyzhlylButton button').click(function(e){
     } else {
         candleChart[call]();
     }
+    setDatepickerFromVal($(this));
     $(this).siblings('button').removeClass('active').end().addClass('active');
 });
 $('#jnlButton button').click(function(e){
@@ -31,6 +32,7 @@ $('#jnlButton button').click(function(e){
     } else {
         candleChart[call]();
     }
+    setDatepickerFromVal($(this));
     $(this).siblings('button').removeClass('active').end().addClass('active');
 });
 $('#eyhtjplButton button').click(function(e){
@@ -43,6 +45,7 @@ $('#eyhtjplButton button').click(function(e){
     } else {
         candleChart[call]();
     }
+    setDatepickerFromVal($(this));
     $(this).siblings('button').removeClass('active').end().addClass('active');
 });
 $('#kzsnylylButton button').click(function(e){
@@ -55,6 +58,7 @@ $('#kzsnylylButton button').click(function(e){
     } else {
         candleChart[call]();
     }
+    setDatepickerFromVal($(this));
     $(this).siblings('button').removeClass('active').end().addClass('active');
 });
 var nowDate = new Date();
@@ -202,6 +206,30 @@ l4 = new Highcharts.StockChart({
         enabled: false
     }
 });
+}
+
+function setDatepickerFromVal(el){
+    var fromEl = el.attr('date-pickerfrom');
+    var toEl = el.attr('date-pickerto');
+    var fromTime, toTime;
+    if (el.attr('data-range') == '1d') {
+        fromTime = moment().startOf('day').format("YYYY-MM-DD");
+        toTime = moment().startOf('minute').format("YYYY-MM-DD");
+        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY-MM-DD");
+        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY-MM-DD");
+    }else if (el.attr('data-range') == '1m') {
+        fromTime = moment().startOf('month').format("YYYY-MM-DD");
+        toTime = moment().startOf('minute').format("YYYY-MM-DD");
+        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY-MM-DD");
+        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY-MM-DD");
+        
+    }else{
+        fromTime = moment().startOf('year').format("YYYY-MM-DD");
+        toTime = moment().startOf('minute').format("YYYY-MM-DD");
+        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY-MM-DD");
+        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY-MM-DD");
+    };
+
 }
 
 
