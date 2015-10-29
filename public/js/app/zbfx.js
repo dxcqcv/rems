@@ -104,9 +104,13 @@ l1 = new Highcharts.StockChart({
              color: 'red'
          }]
      },
+
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
@@ -138,6 +142,9 @@ l2 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
@@ -168,6 +175,9 @@ l3 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
@@ -198,6 +208,9 @@ l4 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data

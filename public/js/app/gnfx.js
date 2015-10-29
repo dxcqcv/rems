@@ -37,6 +37,9 @@ define(function(require) {
             title: {
                 text: 'Stacked column chart'
             },
+            exporting: {
+              enabled:false
+            },
             xAxis: {
                 categories: ['Lazada', 'Competitor 1', 'Competitor 2', 'Competitor 3', 'Competitor 4']
             },
@@ -95,9 +98,13 @@ define(function(require) {
             credits: {
                 enabled: false
             },
+            exporting: {
+              enabled:false
+            },
             title: {
                 text: null 
             },
+
             xAxis: {
                 categories: []
             },

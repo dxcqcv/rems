@@ -25,6 +25,9 @@ define(function(require) {
             title: {
                 text: null 
             },
+            exporting: {
+              enabled:false
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,

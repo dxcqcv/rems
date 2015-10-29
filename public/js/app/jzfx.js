@@ -77,6 +77,9 @@ l1 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
@@ -104,6 +107,9 @@ l2 = new Highcharts.StockChart({
              color: 'red'
          }]
      },
+     exporting: {
+              enabled:false
+            },
     credits: {
         enabled: false
     },
