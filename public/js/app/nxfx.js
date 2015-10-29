@@ -3,6 +3,7 @@ define(function(require){
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
       , exporting = require('exporting')
+      , jsonpPath = require('app/getJsonp')
       ;
 
 
@@ -31,6 +32,10 @@ define(function(require){
     }
     $(['/img/xmgl/bg1.jpg','/img/xmgl/bg2.jpg','/img/xmgl/bg3.jpg','/img/xmgl/bg4.jpg']).preload();
       
+     localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
+     function xmgl(data) {
+                 
+     }
 
 
   }());
