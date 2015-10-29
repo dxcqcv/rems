@@ -474,7 +474,7 @@ define(function(require){
         },
         exporting: {
               enabled:false
-            },
+        },
         title: {
             text: null 
         },
