@@ -86,6 +86,9 @@ define(function(require){
                     text: '燃气常压热水锅炉',
                     x: -20 //center
                 },
+                exporting: {
+                      enabled:false
+                },
                 subtitle: {
                     text: '动态属性1h实时数据对比',
                     x: -20

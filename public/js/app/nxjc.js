@@ -23,6 +23,9 @@ define(function(require){
                 title: {
                     text: null,
                 },
+                exporting: {
+              enabled:false
+            },
                 subtitle: {
                     text: null,
                 },
@@ -469,6 +472,9 @@ define(function(require){
         credits: {
             enabled: false
         },
+        exporting: {
+              enabled:false
+            },
         title: {
             text: null 
         },
@@ -536,6 +542,9 @@ $('#gyxtxlSel').on('change', function(){
         credits: {
             enabled: false
         },
+        exporting: {
+              enabled:false
+            },
         title: {
             text: null,
         },

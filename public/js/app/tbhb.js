@@ -22,6 +22,9 @@ define(function(require){
         subtitle: {
             text: ''
         },
+        exporting: {
+              enabled:false
+            },
         xAxis: {
             categories: [
                 '耗气',
@@ -276,6 +279,9 @@ define(function(require){
                 
             ]
         },
+        exporting: {
+              enabled:false
+            },
         yAxis: {
             min: 0,
             title: {
@@ -516,6 +522,9 @@ $('.chart-box1').highcharts({
         subtitle: {
             text: ''
         },
+        exporting: {
+              enabled:false
+            },
         xAxis: {
             categories: [
                 '耗气',
@@ -760,6 +769,9 @@ $('.chart-box5').highcharts({
         subtitle: {
             text: ''
         },
+        exporting: {
+              enabled:false
+            },
         xAxis: {
             categories: [
                 '耗气',
@@ -1008,6 +1020,9 @@ $('.chart-box5').highcharts({
             title : {
                 text : null 
             },
+            exporting: {
+              enabled:false
+            },
 
         yAxis: {
             title: {
@@ -1043,6 +1058,9 @@ $('.chart-box5').highcharts({
 
             title : {
                 text : null 
+            },
+            exporting: {
+              enabled:false
             },
 
         yAxis: {
@@ -1081,6 +1099,9 @@ $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json
             title : {
                 text : null 
             },
+            exporting: {
+              enabled:false
+            },
 
         yAxis: {
             title: {
@@ -1116,6 +1137,9 @@ $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json
 
             title : {
                 text : null 
+            },
+            exporting: {
+              enabled:false
             },
 
         yAxis: {

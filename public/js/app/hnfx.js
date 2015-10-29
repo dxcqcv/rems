@@ -82,6 +82,9 @@ define(function(require) {
             credits: {
                 enabled: false
             },
+            exporting: {
+              enabled:false
+            },
             title: {
                 text: null 
             },

@@ -15,6 +15,9 @@ define(function(require) {
 			title: {
 				text: null
 			},
+            exporting: {
+              enabled:false
+            },
 			tooltip: {
 				shared: true,
 				valueSuffix: ' millions'
@@ -42,6 +45,9 @@ define(function(require) {
 			chart: {
 				type: 'column'
 			},
+            exporting: {
+              enabled:false
+            },
 			title: {
 				text: null
 			},
@@ -95,6 +101,9 @@ define(function(require) {
         chart: {
             type: 'bar'
         },
+        exporting: {
+              enabled:false
+            },
         title: {
             text:null
         },
@@ -122,6 +131,9 @@ define(function(require) {
         title: {
             text:null
         },
+        exporting: {
+              enabled:false
+            },
         xAxis: {
             categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
         },
@@ -146,6 +158,9 @@ define(function(require) {
         title: {
             text:null
         },
+        exporting: {
+              enabled:false
+            },
         xAxis: {
             categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
         },
@@ -170,6 +185,9 @@ define(function(require) {
         title: {
             text:null
         },
+        exporting: {
+              enabled:false
+            },
         xAxis: {
             categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
         },

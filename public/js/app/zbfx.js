@@ -104,16 +104,21 @@ l1 = new Highcharts.StockChart({
              color: 'red'
          }]
      },
+
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
     }],
     rangeSelector: {
         /* It seems like you'd want to hide Highcharts' own rangeSelector since we're using a custom one*/
-        enabled: false
+        enabled: false,
+        format:''
     }
 });
 }
@@ -137,6 +142,9 @@ l2 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
@@ -167,6 +175,9 @@ l3 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
@@ -197,6 +208,9 @@ l4 = new Highcharts.StockChart({
     credits: {
         enabled: false
     },
+    exporting: {
+              enabled:false
+            },
     series: [{
         id: "data",
         data: data
