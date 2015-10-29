@@ -6,7 +6,7 @@ body{min-height: 100%;height: 100%;}
 .uldiv{min-height: 100%;height: 100%;overflow: auto;padding-left: 20px;}
 .bt{position: absolute;width: 185px;}
 .bt img{width: 25px;}
-.btn_se{display: inline-block;}
+.btn_se{display: inline-block;padding-left: 10px;}
 ul li{list-style: none;}
 .img_eld{width: 30px;}
 #mymenu{height: 100%;min-height: 100%;overflow: auto;padding-top: 30px;display: none;}
@@ -14,10 +14,11 @@ li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 112px;}
 .one{padding-left: 2px;}
 .one ul li{padding-left: 20px;}
 .serag{padding-top: 10px!important;display: inline-block;}
-.tab_bord{border: 1px solid #D4D4D4;}
+.tab_bord{border: 1px solid #BDBABA;}
 .rightdiv{height:100%;min-height:100%;display: inline-block;float: right;width: 85%;}
 .tabdiv{margin-top: 10px;height: 100%;min-height: 100%;overflow: auto;}
 .caret{float: right!important;}
 .btn_all{width: 160px!important;text-align: left!important;}
 .group_ul{height: 150px;min-height: 150px;overflow: auto;width: 60px;}
-
+.seardiv{padding-top: 20px;}
+.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;padding-bottom: 5px;}

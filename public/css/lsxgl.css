@@ -13,9 +13,12 @@ ul{margin: 0px 0 0px 3px!important;}
 .tab_top{width: 100%;text-align: left;}
 .caret{float: right;    margin-top: 8px;}
 .but_ul{width: 95%;}
+.tabdivtwo{padding-top: 10px;border-top: 1px solid #DDDDDD;height: 100%;min-height: 100%;position: absolute;width: 85%;}
 .all_xl{padding-top: 10px;}
 .group_ul{height: 150px;min-height: 150px;overflow: auto;width: 60px;}
 .btn_all{width: 168px!important;}
 .tab_input{margin-top: 7px!important;width: 117px!important;display: inline-block;}
-.tab_two2{width:98%;padding-top: 10px; margin: auto; height: 100%;min-height:100%;overflow: auto;border-top:1px solid #DDDDDD ;}
+.tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;overflow: auto;}
 .tab_bord{border: 1px solid #A5A3A3;}
+.jgfx-top-inner p{margin-left: 10px;display: inline-block;    padding-bottom: 5px;}
+.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;margin-left: 1%;    width: 98%;}

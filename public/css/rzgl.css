@@ -1,10 +1,11 @@
 .group_ul{height: 150px;min-height: 150px;overflow: auto;    min-width: 93px!important;}
-		.btn_all{width:100px!important;}
-		.tab_input{margin-top: 7px!important;width: 80px!important;}
-		.tab_two2{position:absolute;width:98%;margin: auto; height: 100%;min-height:100%;margin-top: 15px;overflow: auto;border-top:1px solid #DDDDDD ;}
-		.tab_bord{border: 1px solid #DDDDDD;}
-		.intput{width: 120px!important;}
-		.all_xl{width: 95%;margin: auto;}
-		.tab_input{display: inline-block;}
-		.my-content{overflow: hidden!important;}
-		.tub{float: right;width: 20px;margin-top: 10px;}
+.btn_all{width:100px!important;}
+.tab_input{margin-top: 7px!important;width: 80px!important;}
+.tab_two2{position:absolute;height: 100%;min-height:100%;margin-top: 15px;overflow: auto;border-top:1px solid #DDDDDD ;width: 95%;left: 2%;border: 1px solid #bdbdbd;}
+.tab_bord{border: 1px solid #DDDDDD;}
+.intput{width: 120px!important;}
+.all_xl{width: 95%;padding-top:20px;margin-left: 2%;}
+.tab_input{display: inline-block;}
+.my-content{overflow: hidden!important;}
+.tub{float: right;right: 20px; width: 20px;}
+.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;padding-bottom: 5px;    padding-left: 8px;}

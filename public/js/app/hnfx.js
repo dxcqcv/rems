@@ -10,11 +10,12 @@ define(function(require) {
     $('.gnhnIcon').on('click', function() {
         var $this = $(this)
           , title = $this.data('title')
+          , num = $this.data('num')
           , modal = $("#myModal")
           ;
+        modal.attr('data-num',num);
         modal.find('.modal-title').text(title);
         modal.modal('show');
-
     });
 
     $('#myModal').on('shown.bs.modal', function(event) {

@@ -108,4 +108,7 @@ router.get('/mkfx', function(req, res) {
 router.get('/jzfx', function(req, res) {
     res.render('jzfx', { title: 'Home' });
 });
+router.get('/gysxpz', function(req, res) {
+    res.render('gysxpz', { title: 'Home' });
+});
 module.exports = router;

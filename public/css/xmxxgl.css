@@ -9,12 +9,12 @@ html,body{height: 100%;min-height: 100%;}
 .bt{position: absolute;width: 185px;}
 .bt img{width: 25px;}
 .one ul li{padding-left: 20px;}
-h5{    color: white;    line-height: 32px;    background-color: #3498db;    margin-top: 0px;}
+h5{color: white;line-height: 32px;background-color: #3498db;margin-top: 0px;}
 ul li{list-style: none;}
 .img_eld{width: 30px;}
 #mymenu{height: 100%;min-height: 100%;overflow: auto;padding-top: 30px;}
-li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 112px;}
+.one ul li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 160px;}
 .one{padding-left: 20px;}
 .tab_two2{float: right; width: 84%;overflow: auto;height: 100%;min-height: 100%;}
 .waitab{margin-top: 40px;}
-.tab_bord{border: 1px solid #cdcdcd;}
+.tab_bord{border: 1px solid #cdcdcd;font-size: 14px;}
