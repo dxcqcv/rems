@@ -113,7 +113,8 @@ l1 = new Highcharts.StockChart({
     }],
     rangeSelector: {
         /* It seems like you'd want to hide Highcharts' own rangeSelector since we're using a custom one*/
-        enabled: false
+        enabled: false,
+        format:''
     }
 });
 }
