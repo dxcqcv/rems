@@ -4,6 +4,7 @@ define(function(require){
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
       , highcharts = require('exporting')
+      , options = require('app/highchartsConfig')
       ;
       (function(){
       //日期控件
@@ -12,86 +13,118 @@ define(function(require){
       $('.selectpicker').selectpicker({
       });
       //图表
-      //var option = 
-      $('.chart-box').highcharts({
-         chart: {
-            type: 'column'
-        },
-        title: {
-            text:null 
-        },
-        subtitle: {
-            text:null 
-        },
-        exporting: {
-              enabled:false
-            },
-        xAxis: {
-            categories: [
-                '耗气',
-                '耗电',
-                '耗水',
-                '耗蒸汽'
-                
-            ]
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text:null 
-            }
-        },
-        plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.y:.1f}%'
-                }
-            }
-        },
-        series: [{
+
+      options.chart.type = 'column';
+      options.chart.renderTo = 'qxxxChartBox';
+      options.xAxis.categories = ['耗气','耗电','耗水','耗蒸汽'];
+      options.plotOptions.series.dataLabels.enabled = true;
+      options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
+      options.series = [{
             name: '去年',
             data: [{
                 name: "Microsoft Internet Explorer",
-                y: 56.33,
-                drilldown: "Microsoft Internet Explorer"
+                y: 56.33
             }, {
                 name: "Chrome",
-                y: 24.03,
-                drilldown: "Chrome"
+                y: 24.03
             }, {
                 name: "Firefox",
-                y: 10.38,
-                drilldown: "Firefox"
+                y: 10.38
             }, {
                 name: "Safari",
-                y: 4.77,
-                drilldown: "Safari"
+                y: 4.77
             }]
 
         }, {
             name: '今年',
             data: [{
                 name: "Microsoft Internet Explorer",
-                y: 56.33,
-                drilldown: "Microsoft Internet Explorer"
+                y: 56.33
             }, {
                 name: "Chrome",
-                y: 24.03,
-                drilldown: "Chrome"
+                y: 24.03
             }, {
                 name: "Firefox",
-                y: 10.38,
-                drilldown: "Firefox"
+                y: 10.38
             }, {
                 name: "Safari",
-                y: 4.77,
-                drilldown: "Safari"
+                y: 4.77
             }]
 
-        }]
-    });
+        }];
+
+      chart = new Highcharts.Chart(options); 
+
+      //$('.chart-box').highcharts({
+         //chart: {
+            //type: 'column'
+        //},
+        //title: {
+            //text:null 
+        //},
+        //subtitle: {
+            //text:null 
+        //},
+        //exporting: {
+              //enabled:false
+            //},
+        //xAxis: {
+            //categories: [
+                //'耗气',
+                //'耗电',
+                //'耗水',
+                //'耗蒸汽'
+            //]
+        //},
+        //yAxis: {
+            //min: 0,
+            //title: {
+                //text:null 
+            //}
+        //},
+        //plotOptions: {
+            //series: {
+                //borderWidth: 0,
+                //dataLabels: {
+                    //enabled: true,
+                    //format: '{point.y:.1f}%'
+                //}
+            //}
+        //},
+        //series: [{
+            //name: '去年',
+            //data: [{
+                //name: "Microsoft Internet Explorer",
+                //y: 56.33
+            //}, {
+                //name: "Chrome",
+                //y: 24.03
+            //}, {
+                //name: "Firefox",
+                //y: 10.38
+            //}, {
+                //name: "Safari",
+                //y: 4.77
+            //}]
+
+        //}, {
+            //name: '今年',
+            //data: [{
+                //name: "Microsoft Internet Explorer",
+                //y: 56.33
+            //}, {
+                //name: "Chrome",
+                //y: 24.03
+            //}, {
+                //name: "Firefox",
+                //y: 10.38
+            //}, {
+                //name: "Safari",
+                //y: 4.77
+            //}]
+
+        //}]
+    //});
 
 
      $('.chart-box4').highcharts({

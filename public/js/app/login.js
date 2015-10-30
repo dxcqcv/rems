@@ -1,7 +1,15 @@
 define(function (require) {
     var $ = require('jquery')
+      , api = require('app/getApi')
       ;
     (function(){
+        //demand.start({url:'/api/login.json', done:test});
+        demand.start({url:'/api/gislist.json', done:test});
+        function test(data) {
+           console.log(data) 
+        }
+
+
     }());
 });
 //define(function (require) {

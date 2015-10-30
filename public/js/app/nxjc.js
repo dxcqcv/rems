@@ -6,6 +6,7 @@ define(function(require){
       , datapicker = require('bootstrap-datetimepicker.min')
       , getJsonp = require('app/getJsonp')
       , highcharts = require('app/card') 
+      , options = require('app/highchartsConfig')
       ;
       (function(){
       //下拉选择
@@ -464,33 +465,11 @@ define(function(require){
       //second
         var jsonpPath = '/jsonp/';
         var chart
-      var options = {
-        chart: {
-            renderTo: 'gyxtxl',
-            defaultSeriesType: 'column'
-        },
-        credits: {
-            enabled: false
-        },
-        exporting: {
-              enabled:false
-        },
-        title: {
-            text: null 
-        },
-        xAxis: {
-            categories: []
-        },
-        yAxis: {
-            title: {
-                text: null 
-            }
-        },
-        series: [{}]
-    };
          localJsonp.start({url:jsonpPath+'highchartsJson.js',jsonpCallback:'highchartsJsonp',done:highchartsJsonp});
+            //renderTo: 'gyxtxl',
          function highchartsJsonp(data) {
             options.series[0].data = data;
+            options.chart.renderTo = 'gyxtxl';
             chart = new Highcharts.Chart(options); 
          }
 $('#gyxtxlSel').on('change', function(){
