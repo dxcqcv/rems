@@ -6,7 +6,7 @@ var router = express.Router();
 
 
 /* GET users listing. */
-router.get('/restlogin.json', function(req, res, next) {
+router.post('/login.json', function(req, res, next) {
 	/*
 
 	签名算法：
@@ -18,15 +18,20 @@ router.get('/restlogin.json', function(req, res, next) {
 
 	var today = moment().format('YYYY-MM-DD')
 	//var data = "username:"+"enn_admin"+"password:"+"123456"+today+"*778@#￥5&*（*（{}*&$#";
-	var data = "username:"+"enn_admin"+"password:"+"123456"+today;
+	var data = "username:"+req.body.username+"password:"+req.body.password+today;
 	var Buffer = require("buffer").Buffer;
     var buf = new Buffer(data);
     var str = buf.toString("binary");
     var crypto = require("crypto");
     var d = crypto.createHash("md5").update(str).digest("hex").toUpperCase();
-	request.post({url:'http://117.144.16.98:8080/rems/login.json', form: {username:'enn_admin',password:'123456',sign:d}}, function(error,response,body){
-		
-	    	res.send(body);
+	request.post({url:'http://117.144.16.98:8080/rems/login.json', form: {username:req.body.username,password:req.body.password,sign:d}}, function(error,response,body){
+	    	//res.send(body);
+	    	var result = JSON.parse(body); 
+	    	if (result.status.code == 200) {
+	    		res.redirect('/user/home');
+	    	}else{
+	    		res.redirect('/login');
+	    	}
 	  	
 	})
 });
