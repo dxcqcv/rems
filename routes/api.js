@@ -39,7 +39,7 @@ router.post('/login.json', function(req, res, next) {
 router.get('/gislist.json', function(req, res, next) {
 
 	//request.post({url:'http://10.20.1.3:8080/rems/userInfo/list.json', form: {userKey:'cf76a0b9e6bae5b0a4e416754588328d',password:'123456'}}, function(error,response,body){
-	request.post({url:'http://117.144.16.98:8080/rems/userInfo/list.json', form: {userKey:'f1bfbedfc2132f3ee5350377af98fb4c',password:'123456'}}, function(error,response,body){
+	request.post({url:'http://117.144.16.98:8080/rems/gislist.json', form: {userKey:'f1bfbedfc2132f3ee5350377af98fb4c',password:'123456'}}, function(error,response,body){
 		
 	    	res.send(response);
 	  	
