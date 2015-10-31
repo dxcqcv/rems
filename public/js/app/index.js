@@ -25,8 +25,8 @@ define(function(require){
             },
             couterItems: function(h) {
                 var currentHeight = this.getHeight(); 
-                if (currentHeight > 800) return 4;
-                else if(currentHeight < 800 && currentHeight > 700) return 3;
+                if (currentHeight > 810) return 4;
+                else if(currentHeight < 810 && currentHeight > 700) return 3;
                 else if(currentHeight < 700 && currentHeight > 600) return 2;
                 else if(currentHeight < 600) return 1;
             },

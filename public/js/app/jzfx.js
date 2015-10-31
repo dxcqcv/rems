@@ -25,6 +25,7 @@ $('#nyzhlylButton button').click(function(e){
     }
     $(this).siblings('button').removeClass('active').end().addClass('active');
 });
+
 $('#jnlButton button').click(function(e){
     e.preventDefault();
     // OK, pretty ugly :)
