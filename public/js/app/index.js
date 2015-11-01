@@ -15,10 +15,10 @@ define(function(require){
         }
         Index.prototype = {
             init: function() {
-                this.configMap(); 
                 localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
                 this.switchProject();
                 this.enterProject();
+//                this.configMap(); 
             },
             getHeight: function() {
                 return this.winHeight = $(window).height();
@@ -31,9 +31,18 @@ define(function(require){
                 else if(currentHeight < 600) return 1;
             },
             enterProject: function() {
-                $(document).on('click','.my-index-project-box',function(){
-                    window.location = '/user/xmgl';  
-                }); 
+                $(document)
+                    .on('click','.my-index-enter',function(){
+                        window.location = '/user/xmgl';  
+                    }) 
+                    .on('mouseover','.my-index-enter',function(){
+                        var id = $(this).data('projectid');
+                        $('.maker'+id+'').addClass('map-maker-big');
+                    }).on('mouseleave','.my-index-enter',function(){
+                        var id = $(this).data('projectid');
+                        $('.maker'+id+'').removeClass('map-maker-big');
+                    })
+                ; 
             },
             getNums: function() {
                   var num = [this.couterItems(),this.couterItems()*3];
@@ -77,9 +86,9 @@ define(function(require){
                 $('.carousel-indicators').empty().append(this.str);
                 this.str = '';
             },
-            projectList: function(projectName) {
+            projectList: function(projectName,projectId,longitude, latitude) {
                     return this.str += 
-                        'shangwenlong<div class="my-index-project-box clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-">'+
+                        'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'">'+
                             '<div class="project-list-left">'+
                                 '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
@@ -126,7 +135,7 @@ define(function(require){
                         '</div>';
             },
             projectAll: function() {
-                return this.str += 'shangwenlong<a href="" class="my-index-list-cont triggerNav"></a>';
+                return this.str += 'shangwenlong<span class="my-index-list-cont my-index-enter triggerNav"></span>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
@@ -153,6 +162,7 @@ define(function(require){
                 localData = data;
                 var nums = index.getNums()
                 index.indexProject(nums[0],index.projectList,0); //trigger indexProject
+                index.configMap(localData); 
             },
             indexProject: function(num,fn,type) {
                 var self = this
@@ -165,7 +175,7 @@ define(function(require){
                 this.projectIndicators(len,type);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-                        self.str = fn.call(self, v.projectname); 
+                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude); 
                     });
 
                     self.str = self.str.split('shangwenlong'); // splited by string shangwenlong
@@ -181,7 +191,7 @@ define(function(require){
                 }
                 this.itemsDone = false;
             },
-            configMap: function () {
+            configMap: function (data) {
                  var map = new AMap.Map('allmap', {
                         resizeEnable: true,
                       // 设置中心点
@@ -190,33 +200,46 @@ define(function(require){
                       // 设置缩放级别
                       zoom: 4
                 });
+
                    //在地图中添加ToolBar插件
                 map.plugin(["AMap.ToolBar"], function () {
                   toolBar = new AMap.ToolBar();
                   map.addControl(toolBar);
                 }); 
                 //添加自定义点标记
-                addMarker();
+
+                //localData.length
+                for(var i = 0, l = data.length; i < l; i++)
+                $.each(data, function(i,v){
+                    if(v.state == 1) addMarker(v.longitude, v.latitude, v.projectid,'index-map-maker-building');//state 1 is building
+                    else  addMarker(v.longitude, v.latitude, v.projectid,'');
+                });
                 
                 //添加带文本的点标记覆盖物
-                function addMarker(){ 
+                function addMarker(longitude, latitude,projectid,className){ 
                     //自定义点标记内容   
                     var markerContent = document.createElement("div");
                     markerContent.className = "markerContentStyle";
                     
                     //点标记中的图标
-                    var markerImg = document.createElement("img");
-                     markerImg.className = "markerlnglat";
-                     markerImg.src = "/img/index/icon-map_1.png"; 
-                     markerContent.appendChild(markerImg);
+                    //var markerImg = document.createElement("img");
+                     //markerImg.className = "markerlnglat";
+                     //markerImg.src = "/img/index/icon-map_1.png"; 
+                     //markerContent.appendChild(markerImg);
+                     var markerIcon = document.createElement('span');
+                     markerIcon.className = "glyphicon glyphicon-map-marker index-map-maker maker"+projectid+" " +className;
+                     markerContent.appendChild(markerIcon);
+
                      
                      //点标记中的文本
                      var markerSpan = document.createElement("span");
                      markerSpan.innerHTML = "";
                      markerContent.appendChild(markerSpan);
+
                      var marker = new AMap.Marker({
                         map:map,
-                        position: new AMap.LngLat(116.397428,39.90923), //基点位置
+                        //position: new AMap.LngLat(116.397428,39.90923), //基点位置
+                        position: new AMap.LngLat(longitude,latitude), //基点位置
                         offset: new AMap.Pixel(-18,-36), //相对于基点的偏移位置
                         draggable: true,  //是否可拖动
                         content: markerContent   //自定义点标记覆盖物内容
@@ -226,69 +249,69 @@ define(function(require){
                      marker.setMap(map);  //在地图上添加点
                     
                      //鼠标点击marker弹出自定义的信息窗体
-                    AMap.event.addListener(marker, 'mouseover', function() {
-                        infoWindow.open(map, marker.getPosition());
-                    });
-                    AMap.event.addListener(marker, 'click', function() {
-                        window.location.href="/user/xmgl";
-                    });
+                    //AMap.event.addListener(marker, 'mouseover', function() {
+                        //infoWindow.open(map, marker.getPosition());
+                    //});
+                    //AMap.event.addListener(marker, 'click', function() {
+                        //window.location.href="/user/xmgl";
+                    //});
                     
                 }
 
 
               //实例化信息窗体
-                var infoWindow = new AMap.InfoWindow({
-                    isCustom: true,  //使用自定义窗体
-                    content: createInfoWindow('方恒假日酒店&nbsp;&nbsp;<span style="font-size:11px;color:#F00;">价格:318</span>', "<img src='http://tpc.googlesyndication.com/simgad/5843493769827749134' style='position:relative;float:left;margin:0 5px 5px 0;'>地址：北京市朝阳区阜通东大街6号院3号楼 东北 8.3 公里<br/>电话：010 64733333<br/><a href='http://baike.baidu.com/view/6748574.htm'>详细信息</a>"),
-                    offset: new AMap.Pixel(16, -45)//-113, -140
-                });
+                //var infoWindow = new AMap.InfoWindow({
+                    //isCustom: true,  //使用自定义窗体
+                    //content: createInfoWindow('方恒假日酒店&nbsp;&nbsp;<span style="font-size:11px;color:#F00;">价格:318</span>', "<img src='http://tpc.googlesyndication.com/simgad/5843493769827749134' style='position:relative;float:left;margin:0 5px 5px 0;'>地址：北京市朝阳区阜通东大街6号院3号楼 东北 8.3 公里<br/>电话：010 64733333<br/><a href='http://baike.baidu.com/view/6748574.htm'>详细信息</a>"),
+                    //offset: new AMap.Pixel(16, -45)//-113, -140
+                //});
 
                 //构建自定义信息窗体
-                function createInfoWindow(title, content) {
-                    var info = document.createElement("div");
-                    info.className = "info";
+                //function createInfoWindow(title, content) {
+                    //var info = document.createElement("div");
+                    //info.className = "info";
 
-                    //可以通过下面的方式修改自定义窗体的宽高
-                    //info.style.width = "400px";
+                    ////可以通过下面的方式修改自定义窗体的宽高
+                    ////info.style.width = "400px";
 
-                    // 定义顶部标题
-                    var top = document.createElement("div");
-                    var titleD = document.createElement("div");
-                    var closeX = document.createElement("img");
-                    top.className = "info-top";
-                    titleD.innerHTML = title;
-                    closeX.src = "http://webapi.amap.com/images/close2.gif";
-                    closeX.onclick = closeInfoWindow;
+                    //// 定义顶部标题
+                    //var top = document.createElement("div");
+                    //var titleD = document.createElement("div");
+                    //var closeX = document.createElement("img");
+                    //top.className = "info-top";
+                    //titleD.innerHTML = title;
+                    //closeX.src = "http://webapi.amap.com/images/close2.gif";
+                    //closeX.onclick = closeInfoWindow;
 
-                    top.appendChild(titleD);
-                    top.appendChild(closeX);
-                    info.appendChild(top);
+                    //top.appendChild(titleD);
+                    //top.appendChild(closeX);
+                    //info.appendChild(top);
 
 
-                    // 定义中部内容
-                    var middle = document.createElement("div");
-                    middle.className = "info-middle";
-                    middle.style.backgroundColor = 'white';
-                    middle.innerHTML = content;
-                    info.appendChild(middle);
+                    //// 定义中部内容
+                    //var middle = document.createElement("div");
+                    //middle.className = "info-middle";
+                    //middle.style.backgroundColor = 'white';
+                    //middle.innerHTML = content;
+                    //info.appendChild(middle);
 
-                    // 定义底部内容
-                    var bottom = document.createElement("div");
-                    bottom.className = "info-bottom";
-                    bottom.style.position = 'relative';
-                    bottom.style.top = '0px';
-                    bottom.style.margin = '0 auto';
-                    var sharp = document.createElement("img");
-                    sharp.src = "http://webapi.amap.com/images/sharp.png";
-                    bottom.appendChild(sharp);
-                    info.appendChild(bottom);
-                    return info;
-                }
+                    //// 定义底部内容
+                    //var bottom = document.createElement("div");
+                    //bottom.className = "info-bottom";
+                    //bottom.style.position = 'relative';
+                    //bottom.style.top = '0px';
+                    //bottom.style.margin = '0 auto';
+                    //var sharp = document.createElement("img");
+                    //sharp.src = "http://webapi.amap.com/images/sharp.png";
+                    //bottom.appendChild(sharp);
+                    //info.appendChild(bottom);
+                    //return info;
+                //}
 
-                //关闭信息窗体
-                function closeInfoWindow() {
-                    map.clearInfoWindow();
-                }
+                ////关闭信息窗体
+                //function closeInfoWindow() {
+                    //map.clearInfoWindow();
+                //}
             }
         }
         var index = new Index();
