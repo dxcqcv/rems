@@ -2,7 +2,7 @@
 define(function(require){
     var 
        $ = require('jquery')
-      , highcharts = require('highcharts')
+      , highcharts = require('exporting')
       , selectpicker = require('bootstrap-select')
       , datapicker = require('bootstrap-datetimepicker.min')
       ;

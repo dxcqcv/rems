@@ -12,154 +12,106 @@ define(function(require){
       //下拉选择
       $('.selectpicker').selectpicker({
       });
+
       //图表
       //fourth
-            $('#xitongzhibiao').highcharts({
-                chart: {
-                    type: 'area'
-                },
-        credits: {
-            enabled: false
-        },
-                title: {
-                    text: null,
-                },
-                exporting: {
-              enabled:false
-            },
-                subtitle: {
-                    text: null,
-                },
-                xAxis: {
-                    allowDecimals: false,
-                    labels: {
-                        formatter: function () {
-                            return this.value; // clean, unformatted number for year
-                        }
-                    }
-                },
-                yAxis: {
-                    title: {
-                        //text: 'Nuclear weapon states'
-                        text: null
-                    },
-                    labels: {
-                        formatter: function () {
-                            return this.value / 1000 + 'k';
-                        }
-                    }
-                },
-                tooltip: {
-                    pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-                },
-                plotOptions: {
-                    area: {
-                        pointStart: 1940,
-                        marker: {
-                            enabled: false,
-                            symbol: 'circle',
-                            radius: 2,
-                            states: {
-                                hover: {
-                                    enabled: true
-                                }
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    name: 'USA',
-                    data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
-                        1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
-                        27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
-                        26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
-                        24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586,
-                        22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
-                        10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104]
-                }, {
-                    name: 'USSR/Russia',
-                    data: [null, null, null, null, null, null, null, null, null, null,
-                        5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
-                        4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
-                        15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
-                        33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000, 37000,
-                        35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
-                        21000, 20000, 19000, 18000, 18000, 17000, 16000]
-                }]
-            });
-      //var noBorder = { 
-        //states:{
-            //hover:{
-                //halo: {
-                    //size: 1
-                //}     
-            //}
-        //}
-      //};
-		//Highcharts.setOptions({
-			//colors: ['#8edce7', '#e8ebeb']
-		//});
-        //// Create the chart for completion
-        //var chart_completion = new Highcharts.Chart({
-            //chart: {
-                //renderTo: 'pieChart4',
-                //type: 'pie',
-                //events: {
-                    //click: function(event) {
-                       ////console.log(event.currentTarget.options.plotOptions)
-                       ////event.currentTarget.options.plotOptions.pie.shadow = true;
-                    //}
-                //},
-                //margin: [0,0,0,0]
-                ////,
-                ////height: 100,
-                ////width: 100
+      var noBorder = { 
+        states:{
+            hover:{
+                halo: {
+                    size: 1
+                }     
+            }
+        }
+      };
+        Highcharts.setOptions({
+            //colors: ['#8edce7', '#e8ebeb']
+            colors: ['#1ca6c5', '#e8ebeb']
+        });
+        
+        //function tbhbHngn(id,xData,sData) {
+              //options.chart.type = 'column';
+              //options.chart.renderTo = id;
+              //options.xAxis.categories = xData;
+              //options.plotOptions.series.dataLabels.enabled = true;
+              //options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
+              //options.series = sData;
 
-            //},
-            //tooltip: {
-                //enabled: false,
-            //},
-            //plotOptions: {
-                //pie: {
-                    ////allowPointSelect: true,
-                    ////shadow: true,
-					//slicedOffset: 0,
-                    //size: '100%',
-                    //dataLabels: {
-                        //enabled: false
-                    //}
-				//},
-                //series: noBorder
-			//}, 
-            //title: {
-                //text: '80%',
+              //chart = new Highcharts.Chart(options); 
+        //}
+            title: {
+                text: '80%',
                     //floating: true,
-                    //align: 'center',
-                    //x: 0,
-                    //y: 25,
-                //style: {
-                    //fontSize: '18px'
-                //}
-            //},      
-            //subtitle: {
-				//text: '可再生能源<br>利用率',
-				//align: 'center',
-				//verticalAlign: 'middle',
-                //style: {
-                    //fontSize: '9.5px'
-                //}
-            //},
-            //credits: {
-			   //enabled: false
-			//},
-            //series: [{
-                //name: 'Browsers',
-                //data: [["MSIE",10],[,2]],
-                //innerSize: '80%',
-                //showInLegend:false,
-                //dataLabels: {
-                    //enabled: false
-                //},
+                    align: 'center',
+                    //y: 175,
+                    y:$('#pieChart4').height() / 2,
+                style: {
+                    fontSize: '32px'
+                }
+            },      
+            subtitle: {
+                text: '可再生能源<br>利用率',
+                align: 'center',
+                    //y: 275,
+                    y:$('#pieChart4').height() / 2 + 120,
+                style: {
+                    fontSize: '14px'
+                }
+            },
+        options.chart.type = 'pie';
+        options.chart.renderTo = 'pieChart4';
+        options.chart.margin = [0,0,0,0];
+        options.plotOptions.pie.size = '80%';
+        options.plotOptions.pie.dataLabels.enabled = false;
+        options.title.text = '80%';
+        options.title.align = 'center';
+        options.title.y = $('#pieChart4').height() / 2;
+        options.title.style.fontSize = '32px';
+        options.subtitle.text = '可再生能源<br>利用率';
+
+        // Create the chart for completion
+        var chart_completion = new Highcharts.Chart({
+            chart: {
+                renderTo: 'pieChart4',
+                type: 'pie',
+                margin: [0,0,0,0]
+
+            },
+            plotOptions: {
+                pie: {
+                    //allowPointSelect: true,
+                    //shadow: true,
+                    //slicedOffset: 0,
+                    size: '80%',
+                    dataLabels: {
+                        enabled: false
+                    }
+                }//,
+//                series: noBorder
+            }, 
+            title: {
+                text: '80%',
+                    //floating: true,
+                    align: 'center',
+                    //y: 175,
+                    y:$('#pieChart4').height() / 2,
+                style: {
+                    fontSize: '32px'
+                }
+            },      
+            subtitle: {
+                text: '可再生能源<br>利用率',
+                align: 'center',
+                    //y: 275,
+                    y:$('#pieChart4').height() / 2 + 120,
+                style: {
+                    fontSize: '14px'
+                }
+            },
+            series: [{
+                data: [["",50],['',50]],
+                innerSize: '85%',
+                //,
                 //states:{
                     //hover: {
                         //enabled: false
@@ -171,7 +123,7 @@ define(function(require){
                            //this.oldTitle = chart_completion.options.title.text;
 
                            //chart_completion.setTitle({
-                                //text: 'New title '
+                                //text: null 
                             //});
                            
                         //},
@@ -182,8 +134,8 @@ define(function(require){
                         //}
                     //}
                 //}
-            //}]
-        //});
+            }]
+        });
 
         //// Create the chart for completion
         //var chart_completion = new Highcharts.Chart({

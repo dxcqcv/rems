@@ -110,6 +110,9 @@ router.get('/jzfx', function(req, res) {
 router.get('/gysxpz', function(req, res) {
     res.render('gysxpz', { title: 'Home' });
 });
+router.get('/zdybbpz', function(req, res) {
+    res.render('zdybbpz', { title: 'Home' });
+});
 
 
 function authentication(req, res) {
