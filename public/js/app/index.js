@@ -1,6 +1,7 @@
 define(function(require){
     var $ = require('jquery')
       , jsonpPath = require('app/getJsonp')
+      , api = require('app/getApi')
     ;
     (function(){
         var localData = null // global data
@@ -15,7 +16,12 @@ define(function(require){
         }
         Index.prototype = {
             init: function() {
-                localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
+                //localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
+                localData != null ? localData : demand.start({url:'/api/gislist.json', done:this.getGislist});
+                // function test(data) {
+
+                //    console.log(data.data.list) 
+                // }
                 this.switchProject();
                 this.enterProject();
 //                this.configMap(); 
@@ -159,7 +165,8 @@ define(function(require){
                 this.itemsDone = true;
             },
             getGislist: function(data) {
-                localData = data;
+                console.log(data);
+                localData = data.status.data.list;
                 var nums = index.getNums()
                 index.indexProject(nums[0],index.projectList,0); //trigger indexProject
                 index.configMap(localData); 
