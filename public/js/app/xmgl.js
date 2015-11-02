@@ -3,22 +3,29 @@
       , jsonpPath = require('app/getJsonp')
     ;
     (function(){
-    $('#xmglImg').hide();
-    $('.one').on('click', function() {
-        $('#xmglVideo').hide();
-        $('#xmglImg').show();
-        $('#xmglImg').attr('src','/img/xmgl/bg3.jpg');         
-    });
-    $('.two').on('click', function() {
-        $('#xmglImg').hide();         
-        $('#xmglVideo').show();
+    $(document).on('click', '#xmglButton > li', function(){
+        var $this = $(this);
+        var path = $this.data('path');
+        var img = $('#xmglImg');
+        var video = $('#xmglVideo');
+        var suffix = path.split('.')[1];
+        $this.siblings('li').removeClass('active').end().addClass('active');
+        if(suffix == 'jpg') {
+            video.addClass('hide');
+            img.removeClass('hide');
+            img.attr('src',path); 
+        } else if(suffix == 'mp4') {
+            img.addClass('hide');
+            video.removeClass('hide');
+            video.children().attr('src',path);
+            video.load();
+        }
     });
 
     //preload img
     $.fn.preload = function() {
         this.each(function(){
             var suffix = this.split('.')[1]
-            console.log(suffix)
             if(suffix=='jpg') $('<img/>')[0].src = this;
             else if(suffix=='mp4') {
             //$('<source>').src = this;
@@ -27,19 +34,20 @@
             }  
         });
     }
-    //$(['/img/xmgl/bg1.jpg','/img/xmgl/bg2.jpg','/img/xmgl/bg3.jpg','/img/xmgl/bg4.jpg', '/img/xmgl/12.mp4', '/img/xmgl/01.mp4']).preload();
       
      localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
      function xmgl(data) {
         var str = '';
         var src = [];
+        var regI = new RegExp('^<li','i');
         $.each(data, function(i,v){
-            str += '<li>' + v.name + '</li>'; 
+            if(i == 0) $('#xmglImg').attr('src',v.path);
+            str += '<li data-path="'+ v.path +'">' + v.name + '</li>'; 
+            str = str.replace(regI, '<li class="active" ');
             src.push(v.path);
         })
         $(src).preload();
         $('#xmglButton').append(str);
-
      }
     }());
 });

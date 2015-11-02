@@ -28,6 +28,7 @@ router.post('/login.json', function(req, res, next) {
 	    	//res.send(body);
 	    	var result = JSON.parse(body); 
 	    	if (result.status.code == 200) {
+            console.log(result.status.data)
 	    		res.redirect('/user/home');
 	    	}else{
 	    		res.redirect('/login');

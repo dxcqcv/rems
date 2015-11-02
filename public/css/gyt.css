@@ -80,7 +80,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: scale(0.5) translate(-50%, -50%);
+  transform: scale(0.3) translate(-50%, -50%);
   transform-origin: 0 0;
   width: 2881px;
   /*height: 1634px;*/ }
