@@ -28,7 +28,16 @@ router.post('/login.json', function(req, res, next) {
 	    	//res.send(body);
 	    	var result = JSON.parse(body); 
 	    	if (result.status.code == 200) {
+<<<<<<< Updated upstream
             console.log(result.status.data)
+=======
+	    		var user = {
+			        username: req.body.username,
+			        password: req.body.password,
+			        token:result.status.data
+			    };
+			    req.session.user = user;
+>>>>>>> Stashed changes
 	    		res.redirect('/user/home');
 	    	}else{
 	    		res.redirect('/login');

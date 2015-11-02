@@ -1,17 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
 router.get('/home', function(req, res) {
-    var user={
-        username:'admin',
-        password:'123456'
-    }
-    res.render('home', { title: 'Home', user: user });
+    authentication(req, res);
+    res.render('home', { title: 'Home', user: req.session.user });
 });
 router.get('/home2', function(req, res) {
     res.render('home2', { title: 'Home' });
@@ -111,4 +110,12 @@ router.get('/jzfx', function(req, res) {
 router.get('/gysxpz', function(req, res) {
     res.render('gysxpz', { title: 'Home' });
 });
+
+
+function authentication(req, res) {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+}
+
 module.exports = router;
