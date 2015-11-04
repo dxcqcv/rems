@@ -234,14 +234,14 @@ function setDatepickerFromVal(el){
     }else if (el.attr('data-range') == '1m') {
         fromTime = moment().startOf('month').format("YYYY-MM-DD");
         toTime = moment().startOf('minute').format("YYYY-MM-DD");
-        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY-MM-DD");
-        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY-MM-DD");
+        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY-MM");
+        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY-MM");
         
     }else{
         fromTime = moment().startOf('year').format("YYYY-MM-DD");
         toTime = moment().startOf('minute').format("YYYY-MM-DD");
-        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY-MM-DD");
-        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY-MM-DD");
+        $("#" + fromEl).data("DateTimePicker").date(fromTime).format("YYYY");
+        $("#" + toEl).data("DateTimePicker").date(toTime).format("YYYY");
     };
 
 }
