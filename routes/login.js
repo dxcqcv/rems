@@ -4,7 +4,10 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   //res.send('login');
-  res.render('login', { title: '用户登录' });
+    if (req.session.user) {
+        res.redirect('/user/home');
+    }
+    res.render('login', { title: '用户登录' });
 })
 .post('/', function(req, res) {
     var user={

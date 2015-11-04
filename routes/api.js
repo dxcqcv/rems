@@ -57,25 +57,30 @@ router.get('/gislist.json', function(req, res, next) {
 
 });
 
-router.get('/clickProject.json', function(req, res, next) {
+router.post('/clickProject.json', function(req, res, next) {
 	request.post({url:'http://10.20.1.3:8080/rems/clickProject.json', form: {userKey:req.session.user.token, projectid:req.body.projectid}}, function(error,response,body){
 	    	res.send(body);	
 	})
 });
 
 router.get('/projectOverview.json', function(req, res, next) {
-	request.post({url:'http://10.20.1.3:8080/rems/projectOverview.json', form: {userKey:req.session.user.token, projectid:req.body.projectid, overviewclass:req.body.overviewclass}}, function(error,response,body){
+	console.log("9898989898");
+	console.log(req.query.projectid);
+
+	request.post({url:'http://10.20.1.3:8080/rems/projectOverview.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, overviewclass:req.query.overviewclass}}, function(error,response,body){
 	    	res.send(body);	
 	})
 });
 
 router.get('/techCheck/equipments.json', function(req, res, next) {
-	request.post({url:'http://10.20.1.3:8080/rems/techCheck/equipments.json', form: {userKey:req.session.user.token, projectid:req.body.projectid, pageid:req.body.pageid}}, function(error,response,body){
+	console.log("9898989898");
+	console.log(req.query.projectid);
+	request.post({url:'http://10.20.1.3:8080/rems/techCheck/equipments.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
 	})
 });
 router.get('/techCheck/equState.json', function(req, res, next) {
-	request.post({url:'http://10.20.1.3:8080/rems/techCheck/equState.json', form: {userKey:req.session.user.token, projectid:req.body.projectid, pageid:req.body.pageid}}, function(error,response,body){
+	request.post({url:'http://10.20.1.3:8080/rems/techCheck/equState.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
 	})
 });
