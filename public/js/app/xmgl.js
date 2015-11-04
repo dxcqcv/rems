@@ -1,6 +1,7 @@
 ;define(function(require){
     var $ = require('jquery')
       , jsonpPath = require('app/getJsonp')
+      , api = require('app/getApi')
     ;
     (function(){
     $(document).on('click', '#xmglButton > li', function(){
@@ -35,8 +36,11 @@
         });
     }
       
-     localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
+     //localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
+     
+     demand.start({url:'/api/projectOverview.json', done:xmgl})
      function xmgl(data) {
+        console.log(data);
         var str = '';
         var src = [];
         var regI = new RegExp('^<li','i');

@@ -16,12 +16,7 @@ define(function(require){
         }
         Index.prototype = {
             init: function() {
-                //localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
-                localData != null ? localData : demand.start({url:'/api/gislist.json', done:this.getGislist});
-                // function test(data) {
-
-                //    console.log(data.data.list) 
-                // }
+                localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
                 this.switchProject();
                 this.enterProject();
 //                this.configMap(); 
@@ -39,10 +34,12 @@ define(function(require){
             enterProject: function() {
                 $(document)
                     .on('click','.my-index-enter',function(){
-                        var pid = $(this).data('projectid'); 
-                        demand.start({url:'/api/clickProject.json',data: {pid:pid}});
-                        window.location = '/user/xmgl';  
-
+                        
+                        var projectid = $(this).attr("data-projectid");
+                        demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
+                            window.location = '/user/xmgl';
+                        }})
+                        
                     }) 
                     .on('mouseover','.my-index-enter',function(){
                         var id = $(this).data('projectid');
@@ -168,8 +165,7 @@ define(function(require){
                 this.itemsDone = true;
             },
             getGislist: function(data) {
-                console.log(data);
-                localData = data.status.data.list;
+                localData = data;
                 var nums = index.getNums()
                 index.indexProject(nums[0],index.projectList,0); //trigger indexProject
                 index.configMap(localData); 
