@@ -6,11 +6,12 @@ pie3([{
             }, {
                 name: "可再生能源<br>71kWh",
                 y: 14.5,
-                color: '#69b813',
-                sliced: true,
-                selected: true
+                color: '#69b813'
+                //,
+                //sliced: true,
+                //selected: true
             }, {
-                name: "天然气<br>314kWh<br>",
+                name: "天然气314kWh<br>",
                 color: '#fff661',
                 y: 62.3
             }])

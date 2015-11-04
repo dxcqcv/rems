@@ -26,7 +26,28 @@
   padding-top: 73px;
   height: 100%;
   }
-
+.jgfx-info-box {
+    background: #189cbb;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.8);
+    padding: 14px 19px;
+    width: 533px; margin: auto; height: 92px;
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); 
+}
+.jgfx-card-title,
+.jgfx-chart-box { background-color: #ddd; }
+.jgfx-total-box {
+    
+}
+.jgfx-info-title { display: inline-block; width: 130px; }
+.jgfx-info-words-sep { padding-left: 56px; }
+.jgfx-info-box-line { font-size: 16px; color: #fff; line-height: 2; }
+.jgfx-bottom-left {
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    padding: 0 0 92px 0;
+}
 .jgfx-bottom-top {
     height: 50%;
 }

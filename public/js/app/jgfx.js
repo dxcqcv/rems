@@ -47,6 +47,11 @@ define(function(require) {
                 data: [{}]
             }]
         };
+        Highcharts.setOptions({
+             chart: {
+             backgroundColor: '#ddd'
+         }
+        });
 
          localJsonp.start({url:jsonpPath+'pieData.js',jsonpCallback:'pie1',done:highchartsJsonp});
          function highchartsJsonp(data) {

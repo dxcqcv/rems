@@ -1,11 +1,26 @@
 define(function(require) {
-
-function showdiv() { 
-			 document.getElementById("bg").style.display ="block";
-			 document.getElementById("tablediv").style.display ="block";
-			 }
-			 function hidediv() {
-			 document.getElementById("bg").style.display ='none';
-			 document.getElementById("tablediv").style.display ='none';
-			 }
+	
+	var $ = require('jquery');
+	$(function(){
+		$("#btnshow").click(function(){
+			$("#bg").css('display','block');
+			$("#tablediv").css('display','block');
+		})
+	});	
+	
+	$(function(){
+		$("#colse").click(function(){
+			$("#bg").css('display','none');
+			$("#tablediv").css('display','none');
+		})
+	});	
+	
+	$(function(){
+		$("#closediv").click(function(){
+			$("#bg").css('display','none');
+			$("#tablediv").css('display','none');
+		})
+	});	
+	
+	
 });

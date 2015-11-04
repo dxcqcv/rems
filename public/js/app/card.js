@@ -7,7 +7,9 @@ define(function(require){
             var cardButton = $('.card-button-resize');
             cardButton.on('click', function(){
                 var $this = $(this)
+                  , multiple = $this.data('multiple')
                   ; 
+                if(multiple == 1) return;
                 if(!$this.hasClass('card-button-resize-small')) {
                     $this.addClass('card-button-resize-small').parents('.my-card').siblings('.my-card').hide()
                            .end()

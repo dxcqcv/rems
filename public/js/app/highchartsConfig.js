@@ -1,4 +1,5 @@
 define(function(require){
+
     var options = {
         chart: {
             renderTo: '',
@@ -11,6 +12,9 @@ define(function(require){
               enabled:false
         },
         plotOptions: {
+            pie: {
+                dataLabels: {}
+            },
             series: {
                 borderWidth: 0,
                 dataLabels: {
@@ -20,7 +24,11 @@ define(function(require){
             }
         },
         title: {
+            style: {},
             text: null 
+        },
+        subtitle: {
+            style: {}
         },
         xAxis: {
             categories: []

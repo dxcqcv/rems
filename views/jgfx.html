@@ -9,6 +9,7 @@
                 <span class="ib jgfx-top-label">查看方式：</span>
                 <div class="jgfx-top-right ib">
                     <div class="btn-group ">
+                        <button type="button" class="btn btn-default ">累计</button>
                         <button type="button" class="btn btn-default active">日</button>
                         <button type="button" class="btn btn-default">月</button>
                         <button type="button" class="btn btn-default">年</button>
@@ -25,333 +26,50 @@
             </div>
         </div>
 		<div class="bottom-cont-jgfx card-wrapper">
-            <div class="jgfx-bottom-top">
-                <div class="my-card col-md-4 col-lg-4 col-xs-4 h100 pb10">
+            <div class="jgfx-bottom-left col-md-6 col-xs-6 col-lg-6 h100">
+                <div class="my-card h100 pb10 jgfx-total-box">
                     <div class="my-card-top pd0">
-                        <div class="card-title jgfx-title">
+                        <div class="card-title jgfx-title jgfx-card-title">
                            <ul class="nav nav-tabs ">
-                                <li class="nor"><a>总体能源结构（总量：504.8kWh）</a></li>
+                                <li class="nor"><a>总体能源结构</a></li>
                            </ul>
                         </div>
                     </div>
-                    <div id="ztnyjg" class="chart-box  chart-box-no-sub"></div>
+                    <div id="ztnyjg" class="chart-box  chart-box-no-sub jgfx-chart-box"></div>
                 </div>
-                <div class="my-card col-md-4 col-lg-4 col-xs-4 h100 pb10">
+                <div class="jgfx-info-box">
+                    <div class="jgfx-info-box-line">
+                        <span class="jgfx-info-words"><span class="jgfx-info-title">当日能源总量：</span><span>1345.8</span><span>kWh</span></span>
+                        <span class="jgfx-info-words jgfx-info-words-sep "><span class="jgfx-info-title">当日天然气：</span><span>1345.8</span><span>kWh</span></span>
+                    </div>
+                    <div class="jgfx-info-box-line">
+                        <span class="jgfx-info-words"><span class="jgfx-info-title">当日可再生能源：</span><span>1345.8</span><span>kWh</span></span>
+                        <span class="jgfx-info-words jgfx-info-words-sep"><span class="jgfx-info-title">当日清洁能源：</span><span>1345.8</span><span>kWh</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="jgfx-bottom-right col-md-6 col-xs-6 col-lg-6 h100 pd0">
+                <div class="my-card h50 pd0">
                     <div class="my-card-top pd0">
-                        <div class="card-title jgfx-title">
+                        <div class="card-title jgfx-title jgfx-card-title">
                            <ul class="nav nav-tabs ">
-                                <li class="nor"><a>清洁能源结构（清洁能源占比：76.8%）</a></li>
+                                <li class="nor"><a>清洁能源结构</a></li>
                            </ul>
                         </div>
                     </div>
-                    <div id="qjnyjg" class="chart-box  chart-box-no-sub"></div>
+                    <div id="qjnyjg" class="chart-box  chart-box-no-sub jgfx-chart-box"></div>
                 </div>
-                <div class="my-card col-md-4 col-lg-4 col-xs-4 h100 pb10">
+                <div class="my-card h50 pd0">
                     <div class="my-card-top pd0">
-                        <div class="card-title jgfx-title">
+                        <div class="card-title jgfx-title jgfx-card-title">
                            <ul class="nav nav-tabs ">
                                 <li class="nor"><a>可再生能源</a></li>
                            </ul>
                         </div>
                     </div>
-                    <div id="kzsny" class="chart-box  chart-box-no-sub"></div>
+                    <div id="kzsny" class="chart-box  chart-box-no-sub jgfx-chart-box"></div>
                 </div>
-            </div>
-            <div class="jgfx-bottom-bottom">
-                <div class="my-card col-md-6 col-lg-6 col-xs-6 h100 pt10l10">
-                    <div class="my-card-top pt10l10">
-                        <div class="card-title jgfx-title-left">
-                           <ul class="nav nav-tabs ">
-                                <li class="nor"><a>耗电设备排名</a></li>
-                           </ul>
-                        </div>
-                    </div>
-                    <div id="hdsbpm" class="chart-box  chart-box-no-sub ">
-                        <div class="jgfxpm-box">
-                            <ul>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">烟气热水余热补燃溴冷机：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 60.1%;">
-                                                <span class="sr-only">60.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">60.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-card col-md-6 col-lg-6 col-xs-6 h100 pt10r10">
-                    <div class="my-card-top pt10r10">
-                        <div class="card-title jgfx-title-left">
-                           <ul class="nav nav-tabs ">
-                                <li class="nor"><a>耗气设备排名</a></li>
-                           </ul>
-                        </div>
-                    </div>
-                    <div id="hqsbpm" class="chart-box  chart-box-no-sub ">
-                        <div class="jgfxpm-box">
-                            <ul>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">烟气热水余热补燃溴冷机：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 60.1%;">
-                                                <span class="sr-only">60.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">60.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                                <li>
-                                    <div class="jgfxpm-left jgfxpm-list">1# 低压热泵：</div>
-                                    <div class="jgfxpm-center jgfxpm-list">
-                                        <div class=" progress cbfx-pm-progress mb0">
-                                            <div class="progress-bar progress-bar-info" style="width: 50.1%;">
-                                                <span class="sr-only">50.1% Complete</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="jgfxpm-right jgfxpm-list">50.1%</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+             
             </div>
         </div>
 	</div>

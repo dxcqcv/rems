@@ -6,11 +6,12 @@ pie2([{
                 },
                 y: 85.5
             }, {
-                name: "地热<br>9kWh<br>",
+                name: "地热9kWh<br>",
                 y: 13,
-                color: '#aee572',
-                sliced: true,
-                selected: true
+                color: '#aee572'
+                //,
+                //sliced: true,
+                //selected: true
             }, {
                 name: "太阳能<br>1kWh",
                 color: '#39bad1',
