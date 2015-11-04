@@ -6,6 +6,7 @@ define(function(require){
     (function(){
         var localData = null // global data
           , isAll = false // check all or not 
+          , map
           ;
 
         function Index(){
@@ -34,20 +35,37 @@ define(function(require){
             enterProject: function() {
                 $(document)
                     .on('click','.my-index-enter',function(){
-                        
+                        var $this = $(this);
+                        var longitude = $this.data('longitude');
+                        var latitude = $this.data('latitude'); 
+                        var isList = $this.data('list');
                         var projectid = $(this).attr("data-projectid");
-                        demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
-                            window.location = '/user/xmgl';
-                        }})
+                        if(isList == 0) {
                         
+                        $this
+                            .attr('data-list',1)
+                            .parent('div.item').siblings('div').find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end().end()
+                            .siblings('div').find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end()
+                            .find('.project-icon').addClass('project-icon-clicked').end()
+                            .find('.project-list-detail').removeClass('hide'); 
+                            map.setZoomAndCenter(10, [longitude, latitude]);
+                            
+                        } else {
+                            demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
+                                window.location = '/user/xmgl';
+                            }});
+                        
+                        }
+
                     }) 
-                    .on('mouseover','.my-index-enter',function(){
-                        var id = $(this).data('projectid');
-                        $('.maker'+id+'').addClass('map-maker-big');
-                    }).on('mouseleave','.my-index-enter',function(){
-                        var id = $(this).data('projectid');
-                        $('.maker'+id+'').removeClass('map-maker-big');
-                    })
+                    // data-longitude="'+longitude+'" data-latitude="'+latitude+'"
+                    //.on('mouseover','.my-index-enter',function(){
+                        //var id = $(this).data('projectid');
+                        //$('.maker'+id+'').addClass('map-maker-big');
+                    //}).on('mouseleave','.my-index-enter',function(){
+                        //var id = $(this).data('projectid');
+                        //$('.maker'+id+'').removeClass('map-maker-big');
+                    //})
                 ; 
             },
             getNums: function() {
@@ -92,20 +110,20 @@ define(function(require){
                 $('.carousel-indicators').empty().append(this.str);
                 this.str = '';
             },
-            projectList: function(projectName,projectId,longitude, latitude) {
+            projectList: function(projectName,projectId,longitude, latitude,industrytypename,address) {
                     return this.str += 
-                        'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'">'+
+                        'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'"  data-list="0">'+
                             '<div class="project-list-left">'+
-                                '<span class="glyphicon glyphicon-map-marker project-icon"></span>'+
+                                '<span class="project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
-                                '<p class="project-loc">湖南省 长沙市长沙县</p>'+
+                                '<p class="project-loc">'+address+'</p>'+
                                 '<span class="pro-left-line"></span>'+
                             '</div>'+
                             '<div class="project-list-img-wrapper">'+
                                 '<div class="project-list-img">'+
                                     '<img src="/img/index/loacationimg00.jpg" class="" alt="">'+
                                 '</div>'+
-                                '<div class="project-list-detail ">'+
+                                '<div class="project-list-detail hide">'+
                                     '<ul>'+
                                         '<li>'+
                                             '<p class="detail-name">能源综合利用率</p>'+
@@ -132,7 +150,7 @@ define(function(require){
                                 '</div>'+
                                 '<div class="pro-type">'+
                                     '<div class="glyphicon glyphicon-home pro-type-icon"></div>'+
-                                    '<div class="pro-type-name">医院m2</div>'+
+                                    '<div class="pro-type-name">'+industrytypename+'/㎡</div>'+
                                 '</div>'+
                                 '<div class="project-circle project-circle-bottom">'+
                                     '<span>建筑</span><span class="pro-num">10.1万</span>'+
@@ -140,8 +158,8 @@ define(function(require){
                             '</div>'+
                         '</div>';
             },
-            projectAll: function() {
-                return this.str += 'shangwenlong<span class="my-index-list-cont my-index-enter triggerNav"></span>';
+            projectAll: function(projectName,projectId) {
+                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav" data-projectid="'+projectId+'" data-list="1"><span class="my-index-list-name">'+projectName+'</span></div>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
@@ -181,7 +199,7 @@ define(function(require){
                 this.projectIndicators(len,type);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude); 
+                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude,v.industrytypename,v.address); 
                     });
 
                     self.str = self.str.split('shangwenlong'); // splited by string shangwenlong
@@ -198,7 +216,7 @@ define(function(require){
                 this.itemsDone = false;
             },
             configMap: function (data) {
-                 var map = new AMap.Map('allmap', {
+                 map = new AMap.Map('allmap', {
                         resizeEnable: true,
                       // 设置中心点
                       center: [116.404, 39.915],
@@ -228,13 +246,13 @@ define(function(require){
                     markerContent.className = "markerContentStyle";
                     
                     //点标记中的图标
-                    //var markerImg = document.createElement("img");
-                     //markerImg.className = "markerlnglat";
-                     //markerImg.src = "/img/index/icon-map_1.png"; 
-                     //markerContent.appendChild(markerImg);
-                     var markerIcon = document.createElement('span');
-                     markerIcon.className = "glyphicon glyphicon-map-marker index-map-maker maker"+projectid+" " +className;
-                     markerContent.appendChild(markerIcon);
+                    var markerImg = document.createElement("img");
+                     markerImg.className = "markerlnglat";
+                     markerImg.src = "/img/index/index-map-icon.png"; 
+                     markerContent.appendChild(markerImg);
+                     //var markerIcon = document.createElement('span');
+                     //markerIcon.className = "glyphicon glyphicon-map-marker index-map-maker maker"+projectid+" " +className;
+                     //markerContent.appendChild(markerIcon);
 
                      
                      //点标记中的文本
