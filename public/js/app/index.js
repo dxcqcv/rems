@@ -39,7 +39,10 @@ define(function(require){
             enterProject: function() {
                 $(document)
                     .on('click','.my-index-enter',function(){
+                        var pid = $(this).data('projectid'); 
+                        demand.start({url:'/api/clickProject.json',data: {pid:pid}});
                         window.location = '/user/xmgl';  
+
                     }) 
                     .on('mouseover','.my-index-enter',function(){
                         var id = $(this).data('projectid');
