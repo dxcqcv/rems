@@ -30,9 +30,9 @@
 
 /*# sourceMappingURL=login.css.map */
 
-.my-login-form{top: 59%!important;left: 51%;}
-.l_pwd{padding: 5px;}
-.l_pwd a{text-decoration: underline;color: cornflowerblue;}
+.my-login-form{top: 60%!important;left: 51%;}
+.l_pwd{padding: 5px;float: right;}
+.l_pwd a{text-decoration: underline;color: #44B6D8;}
 .l_pwd a:hover{cursor:pointer!important;}
 
 .login_footer{    text-align: center;width: 100%; position: absolute; top: 86%; line-height: 28px;}

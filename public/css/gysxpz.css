@@ -6,7 +6,7 @@ html,body{height: 100%;min-height: 100%; min-height: 100%;}
 #mymenu{padding-top: 20px;}
 .one ul li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 120px;}
 .one{padding-left: 10px;}
-h5{color: white;line-height: 32px;background-color: #1294B3;margin-top: 0px;}
+h5{color: white;line-height: 32px;background-color: #1294B3;margin-top: 0px;padding-left: 10px;}
 ul li{list-style: none;}
 .img_eld{width: 35px;}
 .ulli{padding-left: 10px;}
@@ -15,11 +15,12 @@ ul li{list-style: none;}
 .tab_all ul {  background-color: darkgrey;  z-index: 999; }
 .nav-tabs > li {  float: left;  margin-bottom: -1px;  float: right;   }
 .nav-tabs > li a{color: white;}
-.title_head{position: absolute;padding-top: 10px;font-size: 18px;padding-left:10px;color: white;}
+.title_head{position: absolute;padding-top: 6px;font-size: 18px;padding-left:10px;color: white;}
 .one_one, .two_right {  display: inline-block;  float: right;  margin-left: 1em;  width: 6%;  line-height: 2em; }
 .btn_coin{cursor:pointer;}
 .btn_coin:hover{background-image: url(/img/sjjc/uikj.png);}
 .two {  display: none; }
+.form-control{padding: 0px!important;}
 div.sjjc-left-dropdown {  position: absolute;  z-index: 1; }
 .botton_all {width: 85%;  font-size: 100%; }		
 .table_fon tr td span{cursor:pointer;}	

@@ -210,6 +210,9 @@ div.charts-cont-2-level {
 .jgfx-date-box {
   width: 210px; }
 
+.jgfx-top-padding {
+  padding: 8px; }
+
 .gnhn-modal-charts {
   height: 250px; }
 
@@ -344,7 +347,8 @@ div.charts-cont-2-level {
   top: 45px;
   left: 0;
   width: 100%;
-  background: #eee; }
+  background: #eee;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5); }
 
 @media (max-width: 768px) {
   .my-tab-content {

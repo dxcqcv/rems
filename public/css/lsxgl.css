@@ -6,7 +6,7 @@
 .lili{margin-top: 5px;line-height: 25px!important;padding-left: 15px;}
 .classListdiv{min-height: 88%;height: 88%;width: 100%; overflow: auto;}
 ul{margin: 0px 0 0px 3px!important;}
-.lili:hover{background-color: #3498db;border-radius: 5px;cursor:pointer;}
+.lili:hover{background-color: #3498db;border-radius: 5px;cursor:pointer;color: white;}
 .ul_img{width: 10px!important;}
 .tab_all{background: none repeat scroll 0 0 #1092B1;line-height:30px; width:98%;margin-left: 1%; height: 30px;border-radius: 3px; color: #fff; line-height: 28px;}
 .tab_top{width: 100%;text-align: left;}
@@ -21,4 +21,4 @@ ul{margin: 0px 0 0px 3px!important;}
 .tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;overflow: auto;}
 .tab_bord{border: 1px solid #A5A3A3;}
 .jgfx-top-inner p{margin-left: 10px;display: inline-block;}
-.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;margin-left: 1%; width: 98%;height: 50px;}
+.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;margin-left: 1%; width: 98%;}

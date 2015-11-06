@@ -3,7 +3,7 @@ html,body{height: 100%;min-height: 100%;overflow: hidden;}
 	    .alldivl{min-height: 100%;height: 100%;}
 	    .all_xl{width: 98%;margin:auto;padding-top: 10px;}
 		.jgfx-top-inner p{margin-left: 10px;padding-top: 5px;}
-		.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;height: 47px;}
+		.jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;}
 		.top_searf{padding-top: 10px; padding-bottom: 5px;width: 95%;margin: auto;}
 		.btn_sj{margin-bottom: 2px;}
 		.tabdivtwo{width: 98%;position: absolute;left: 1%;padding-top: 10px;height: 90%;min-height: 90%;}
@@ -19,6 +19,8 @@ html,body{height: 100%;min-height: 100%;overflow: hidden;}
 		.sidetype{padding-left: 20px;}
 		.rows2{padding-left: 10px;}
 		.ride{padding-left: 5%;}
+		.titlep{color: white;}
+		.close{padding: 5px!important;}
 		.ridedf{padding-left: 15%;}
 		.divtableji{height: 120px;min-height: 50px;overflow: auto;width: 98%;margin: auto;border: 1px solid darkgrey;}
 		.zgybb{height: 35px;line-height: 35px;background-color: darkcyan;}

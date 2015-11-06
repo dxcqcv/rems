@@ -125,6 +125,7 @@ div.charts-cont-2-level {
     font-size: 16px; color: #363636;
 }
 .jgfx-date-box { width: 210px; }
+.jgfx-top-padding {padding: 8px;}
 .gnhn-modal-charts { height: 250px; }
 .gnhn-modal-title { font-size: 16px; color: #363636; text-align: center; }
 /* 供能耗能小图标 */
@@ -217,6 +218,7 @@ div.charts-cont-2-level {
 .my-tab-content {
     position: absolute; top: 45px; left: 0;
     width: 100%; background: #eee;
+    box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 }
 @media (max-width: 768px){
     .my-tab-content {
