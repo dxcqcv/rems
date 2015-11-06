@@ -263,11 +263,23 @@
 
 /* map */
 .index-map-maker {
-  font-size: 32px;
-  color: #1eaacb; }
+  /*
+      font-size: 32px;
+      color: #1eaacb;
+      */
+  width: 18px;
+  height: 27px;
+  display: inline-block;
+  background: url("../img/index/icon-map_1.png") no-repeat; }
 
 .map-maker-big {
-  font-size: 42px; }
+  /*
+      font-size: 42px;
+      */
+  width: 34px;
+  height: 51px;
+  display: inline-block;
+  background: url("../img/index/index-map-icon.png") no-repeat; }
 
 .index-map-maker-building {
   color: #000; }

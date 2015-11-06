@@ -44,12 +44,14 @@ define(function(require){
                         
                         $this
                             .attr('data-list',1)
-                            .parent('div.item').siblings('div').find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end().end()
-                            .siblings('div').find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end()
+                            .parent('div.item').siblings('div').attr('data-list',0).find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end().end()
+                            .siblings('div').attr('data-list',0).find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end()
                             .find('.project-icon').addClass('project-icon-clicked').end()
                             .find('.project-list-detail').removeClass('hide'); 
                             map.setZoomAndCenter(10, [longitude, latitude]);
                             
+                            //$('.markerlnglat'+projectid+'').attr('src','/img/index/icon-map-icon.png')
+$('.maker'+projectid+'').addClass('map-maker-big');
                         } else {
                             demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
                                 window.location = '/user/xmgl';
@@ -116,7 +118,7 @@ define(function(require){
                             '<div class="project-list-left">'+
                                 '<span class="project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
-                                '<p class="project-loc">'+address+'</p>'+
+                                '<p class="project-loc" title="'+address+'">'+address+'</p>'+
                                 '<span class="pro-left-line"></span>'+
                             '</div>'+
                             '<div class="project-list-img-wrapper">'+
@@ -246,13 +248,13 @@ define(function(require){
                     markerContent.className = "markerContentStyle";
                     
                     //点标记中的图标
-                    var markerImg = document.createElement("img");
-                     markerImg.className = "markerlnglat";
-                     markerImg.src = "/img/index/index-map-icon.png"; 
-                     markerContent.appendChild(markerImg);
-                     //var markerIcon = document.createElement('span');
-                     //markerIcon.className = "glyphicon glyphicon-map-marker index-map-maker maker"+projectid+" " +className;
-                     //markerContent.appendChild(markerIcon);
+                    //var markerImg = document.createElement("img");
+                     //markerImg.className = "markerlnglat"+projectid+"";
+                     //markerImg.src = "/img/index/icon-map_1.png"; 
+                     //markerContent.appendChild(markerImg);
+                     var markerIcon = document.createElement('span');
+                     markerIcon.className = "index-map-maker maker"+projectid+" " +className;
+                     markerContent.appendChild(markerIcon);
 
                      
                      //点标记中的文本

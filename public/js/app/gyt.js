@@ -831,11 +831,11 @@ define(function(require){
         }
         function huanghuaPBFn(){
             //gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
-            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1]);
+            gytSelectFn(true,'#huanghuaBC','直燃机系统',[1]);
             huanghuaArtwork.height(1288);
         }
         function huanghuaPCFn(){
-            gytSelectFn(true,'#huanghuaBC','燃气直燃机燃气热水锅炉系统',[1,2]);
+            gytSelectFn(true,'#huanghuaBC','直燃机系统',[1,2]);
             huanghuaArtwork.height(1288);
         }
         function huanghuaPDFn(){
