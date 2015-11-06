@@ -43,10 +43,10 @@ html, body {
   z-index: 2; }
 
 .one-nav {
-  padding: 52px 0 0; }
+  padding: 41px 0 0; }
 
 .two-nav {
-  padding: 92px 0 0; }
+  padding: 81px 0 0; }
 
 .my-top-brand {
   position: relative;
@@ -58,7 +58,7 @@ html, body {
   width: 32px;
   height: 31px;
   position: absolute;
-  top: 10px;
+  top: 7px;
   left: 15px; }
 
 .my-content {
@@ -94,8 +94,8 @@ html, body {
 .subTitle {
   position: relative;
   width: 235px;
-  height: 40px;
-  line-height: 40px;
+  height: 36px;
+  line-height: 36px;
   text-align: center;
   background: #e0e1e3;
   color: #5d5d5d;
@@ -104,20 +104,20 @@ html, body {
 .rems-logo-tail {
   width: 0;
   height: 0;
-  border-bottom: 50px solid transparent;
-  border-left: 25px solid #007993;
+  border-bottom: 45px solid transparent;
+  border-left: 22.5px solid #007993;
   position: absolute;
   top: 0;
-  right: -25px; }
+  right: -21.5px; }
 
 .rems-sub-tail {
   width: 0;
   height: 0;
-  border-bottom: 40px solid transparent;
-  border-left: 20px solid #e0e1e3;
+  border-bottom: 36px solid transparent;
+  border-left: 18px solid #e0e1e3;
   position: absolute;
   top: 0;
-  right: -20px; }
+  right: -18px; }
 
 .ycjc-offset {
   margin-left: 179px; }
@@ -193,14 +193,14 @@ html, body {
   border-radius: 5px; }
 
 .top-bar-label {
-  line-height: 35px; }
+  line-height: 25px; }
 
 div.bottom-cont {
-  padding: 83px 10px 10px;
+  padding: 76px 10px 10px;
   height: 100%; }
 
 div.charts-cont-2-level {
-  padding: 55px 10px 10px;
+  padding: 48px 10px 10px;
   height: 100%; }
 
 .bottom-title > .nav-tabs > li > a {
@@ -253,8 +253,7 @@ div.charts-cont-2-level {
 
 .card-subtitle {
   background: #fff;
-  padding: 8px 15px;
-  height: 50px;
+  padding: 8px 15px 0;
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-style: none solid; }
@@ -264,9 +263,14 @@ div.charts-cont-2-level {
   color: #646464; }
 
 .card-button-resize {
+  color: #cccccc;
   position: absolute;
   top: 10px;
   right: 12px; }
+
+.card-button-resize:hover {
+  cursor: pointer;
+  color: #0d90ae; }
 
 .navy {
   color: #1a9bb8; }
@@ -276,7 +280,7 @@ div.charts-cont-2-level {
   /*padding-top: 92px;*/
   border: 1px solid #ddd;
   background-color: #fff;
-  padding: 102px 10px 10px;
+  padding: 85px 10px 10px;
   /*top 92+10*/ }
 
 .chart-box-no-sub {
@@ -337,7 +341,7 @@ div.charts-cont-2-level {
 /* 二级导航 */
 .my-tab-content {
   position: absolute;
-  top: 50px;
+  top: 45px;
   left: 0;
   width: 100%;
   background: #eee; }

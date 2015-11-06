@@ -9,8 +9,9 @@ html,body{height: 100%;min-height: 100%; min-height: 100%;}
 		.img_eld{width: 30px;}
 		.bt{position: absolute;width: 170px;}
 		.bt img{width: 25px;}
-		h5{color: white;line-height: 32px;background-color: #3498db;margin-top: 0px;}
+		h5{color: white;line-height: 32px;background-color: #1294B3;margin-top: 0px;}
 		ul li{list-style: none;}
 		.tab_two2{margin:auto;width:100%;overflow: auto;height: 98%;min-height: 100%;}
 		.waitab{padding-top: 10px;}
 		.tab_bord{border: 1px solid #cdcdcd;font-size: 14px;}
+		.tab_bord tr td span{cursor:pointer;}

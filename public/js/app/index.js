@@ -38,7 +38,7 @@ define(function(require){
                         var $this = $(this);
                         var longitude = $this.data('longitude');
                         var latitude = $this.data('latitude'); 
-                        var isList = $this.data('list');
+                        var isList = $this.attr('data-list');
                         var projectid = $(this).attr("data-projectid");
                         if(isList == 0) {
                         
@@ -159,7 +159,7 @@ define(function(require){
                         '</div>';
             },
             projectAll: function(projectName,projectId) {
-                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav" data-projectid="'+projectId+'" data-list="1"><span class="my-index-list-name">'+projectName+'</span></div>';
+                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav" data-projectid="'+projectId+'" data-list="1" data-show="xmgl" data-subshow="xmgl-"><span class="my-index-list-name">'+projectName+'</span></div>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';

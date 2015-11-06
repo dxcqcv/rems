@@ -114,7 +114,10 @@
   color: #16708b;
   font-size: 12px;
   top: 92px;
-  left: 51px; }
+  left: 14px;
+  width: 172px;
+  text-align: center;
+  overflow: hidden; }
 
 .project-list-img {
   width: 150px;

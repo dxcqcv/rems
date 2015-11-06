@@ -9,13 +9,11 @@
 
 				<!--左边-->
 				<div class="all_left">
+					
 					<div class="dropdown all_drop">
-						<button class="btn dropdown-toggle tab_top" type="button" id="dropdownMenu1" data-toggle="dropdown">
-							泛能站体系 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu but_ul" role="menu" aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a href="#" role="menuitem" tabindex="-1">泛能站体系</a></li>
-						</ul>
+						<select class="form-control selectpicker btn_allone" id="">
+								<option>泛能站体系</option>
+								</select>
 					</div>
 					<div class="tab_all">
 						<ul class="list-inline">
@@ -204,7 +202,7 @@
 					<div class="all_xl">
 						<div class="jgfx-top-inner">
 						<p>类型属性：
-							<select class="form-control btn_all">
+							<select class="form-control selectpicker btn_all" id="">
 								<option><a href="">全部属性类型</a></option>
 								<option><a href="">常规</a></option>
 								<option><a href="">系统耗能</a></option>
@@ -226,7 +224,7 @@
 							</select>
 						
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 属性分类：
-						<select class="form-control btn_all">
+						<select class="form-control selectpicker btn_all" id="">
 							<option>全部属性分类</option>
 							<option>静态属性</option>
 							<option>动态属性</option>
@@ -234,7 +232,7 @@
 						
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 属性名称：
 						<input type="text" class="form-control tab_input">
-						<button type="button" class="btn btn-info">查看数据</button>
+						<button type="button" class="btn btn-info btn-sm">查看数据</button>
 						</p>
 					</div>
 					</div>
@@ -781,7 +779,7 @@
 
 		<script>
 			requirejs(['../js/common'], function (common) {
-			                requirejs(['app/nxfx']);
+			                requirejs(['app/lsxgl']);
 			            });
 		</script>
 		<% include footer.html %>

@@ -634,3 +634,11 @@ ul,ol { margin-bottom: 0; }
   background-color: #007993;
 }
 .progress { height: 10px; }
+.input-group-addon,
+.btn { padding: 1.5px 12px; }
+.form-control { height: 25px; }
+.nav > li > a { padding: 6.5px 15px; }
+.my-tab-content .nav > li > a { padding: 8px 15px; }
+.my-nav > li > a { padding: 12.5px 15px; }
+.navbar { min-height: 45px; }
+.navbar-brand { height: 45px; line-height: 15px; }

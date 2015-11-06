@@ -45,3 +45,6 @@
 .loginnav{width: 850px; left: 257px;}
 .module-login .loginnav {left: 28px;bottom: 180px;width: 891px;top: 400px; position: absolute;}
 table {border-spacing: 0; border-collapse: collapse;width: 100%;border-spacing: 0;table-layout: fixed;}
+.input-group-addon, .btn,
+.btn { padding: 6px 12px; } 
+.form-control { height: 34px; }

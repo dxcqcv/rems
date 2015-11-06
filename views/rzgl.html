@@ -8,8 +8,7 @@
 		<div class="all_conten">
 				<div class="all_xl">
 					<div class="jgfx-top-inner">
-					类型属性：
-					<select class="form-control btn_all">
+					操作人：<select class="form-control selectpicker btn_all" id="">
 								<option> 所有人</a></option>
 								<option> 新奥管理者</a></option>
 								<option> 新奥浏览者</a></option>
@@ -28,21 +27,18 @@
 								<option> 吴飞</a></option>
 								<option> 试用账户</a></option>
 								<option> 郑磊</a></option>
-							</select>						
-								
+							</select>	
 					&nbsp;&nbsp;
-					属性分类：<select class="form-control btn_all">
+					日志类型：<select class="form-control selectpicker btn_all" id="">
 								<option>所有类型</option>
 								<option>登录日志</option>
 								<option>务日志</option>
 								<option>错误日志</option>
 							</select>
-					
+							&nbsp;&nbsp;
+					模块：<input type="text" class="form-control tab_input">						
 					&nbsp;&nbsp;
-					属性名称：
-					<input type="text" class="form-control tab_input">						
-					&nbsp;&nbsp;
-					属性分类：<select class="form-control btn_all">
+					操作类型：<select class="form-control selectpicker btn_all" id="">
 								<option>所有类型</option>
 								<option>登录系统</option>
 								<option>退出系统</option>
@@ -52,9 +48,27 @@
 								<option>系统异常</option>
 								<option>未定义类型</option>
 							</select>
-					
 					&nbsp;&nbsp;
-					创建时间：<input class="datepicker intput" data-date-format="mm/dd/yyyy">&nbsp;至&nbsp;<input class="datepicker intput" data-date-format="mm/dd/yyyy">	
+					创建时间：
+                        <div class="jgfx-date-box">
+                            <div class='input-group date datetimepicker1' id="nyzhlylDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="zhi-style">至</p>
+                        <div class="jgfx-date-box">
+                            <div class='input-group date datetimepicker1' id="nyzhlylDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                  	
+
 					<button type="button" class="btn btn-info">搜索</button>
 			    	<div class="btn-group tub"><img src="/img/rzgl/tu.png" ></div>
 				</div>
@@ -456,7 +470,7 @@
 
         <script>
             requirejs(['../js/common'], function (common) {
-                requirejs(['app/nxfx']);
+                requirejs(['app/rzgl']);
             });
         </script>
 <% include footer.html %>

@@ -30,11 +30,11 @@
 html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅黑",Arial,Verdana,sans-serif; }
 .my-wrapper { height: 100%; min-height: 100%; }
 .my-navbar { position: absolute; top: 0; left:0; width: 100%; z-index: 2;}
-.one-nav { padding: 52px 0 0; }
-.two-nav { padding: 92px 0 0; }
+.one-nav { padding: 52-11px 0 0; }
+.two-nav { padding: 92-11px 0 0; }
 
 .my-top-brand {position: relative; padding-left: 60px; margin-right: 25px;}
-.rems-logo { background: url('../img/header/rems-logo.png') no-repeat; width: 32px; height: 31px; position: absolute; top: 10px; left: 15px;}
+.rems-logo { background: url('../img/header/rems-logo.png') no-repeat; width: 32px; height: 31px; position: absolute; top: 7px; left: 15px;}
 
 .my-content {
     height: 100%; box-sizing: border-box;
@@ -54,10 +54,10 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 .my-section { overflow: auto; height: 100%; min-height: 100%; background: #ddd;}
 .subTitle,
 .my-sub-nav { display: inline-block; vertical-align: top; }
-.subTitle { position:relative; width: 235px; height: 40px; line-height: 40px; text-align: center; background: #e0e1e3 ; color: #5d5d5d; font-size: 17px; }
+.subTitle { position:relative; width: 235px; height: 36px; line-height: 36px; text-align: center; background: #e0e1e3 ; color: #5d5d5d; font-size: 17px; }
 
-.rems-logo-tail { width: 0; height: 0; border-bottom:50px solid transparent; border-left: 25px solid #007993; position: absolute; top: 0; right: -25px; }
-.rems-sub-tail { width: 0; height: 0; border-bottom:40px solid transparent; border-left: 20px solid #e0e1e3 ; position: absolute; top: 0; right: -20px; }
+.rems-logo-tail { width: 0; height: 0; border-bottom:45px solid transparent; border-left: 22.5px solid #007993; position: absolute; top: 0; right: -21.5px; }
+.rems-sub-tail { width: 0; height: 0; border-bottom:36px solid transparent; border-left: 18px solid #e0e1e3 ; position: absolute; top: 0; right: -18px; }
 
 .ycjc-offset { margin-left:179px; }
 .nygl-offset { margin-left:179+86px; }
@@ -114,12 +114,12 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
     border: 1px solid #CCC;
     border-radius: 5px;
 }
-.top-bar-label { line-height: 35px;}
+.top-bar-label { line-height: 25px;}
 div.bottom-cont {
-    padding: 83px 10px 10px; height: 100%;
+    padding: 76px 10px 10px; height: 100%;
 }
 div.charts-cont-2-level {
-    padding: 55px 10px 10px; height: 100%;
+    padding: 48px 10px 10px; height: 100%;
 }
 .bottom-title >.nav-tabs > li > a {
     font-size: 16px; color: #363636;
@@ -144,18 +144,19 @@ div.charts-cont-2-level {
     border-style: solid solid none none;
 }
 .card-subtitle { 
-    background: #fff; padding: 8px 15px;  height:50px; box-sizing: border-box;
+    background: #fff; padding: 8px 15px 0;  box-sizing: border-box;
     border: 1px solid #ddd; border-style: none solid;
 }
 .card-subtitle li { font-size: 12px; color: #646464; }
-.card-button-resize { position: absolute; top: 10px; right: 12px; }
+.card-button-resize {  color: #cccccc; position: absolute; top: 10px; right: 12px; }
+.card-button-resize:hover { cursor: pointer; color: #0d90ae; }
 .navy { color: #1a9bb8; }
 .chart-box {
     height: 100%;  
     /*padding-top: 92px;*/
     border: 1px solid #ddd;
     background-color: #fff;
-    padding: 102px 10px 10px; /*top 92+10*/
+    padding: 102-17px 10px 10px; /*top 92+10*/
 }
 .chart-box-no-sub {
     padding: 52px 10px 10px; /* with padding-top 10px */
@@ -214,7 +215,7 @@ div.charts-cont-2-level {
 /*修改bootstrap部分*/
 /* 二级导航 */
 .my-tab-content {
-    position: absolute; top: 50px; left: 0;
+    position: absolute; top: 45px; left: 0;
     width: 100%; background: #eee;
 }
 @media (max-width: 768px){

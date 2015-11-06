@@ -1,20 +1,20 @@
 *{list-style: none;}
-.ziti{padding-left: 15px;}
 .my-wrapper{overflow: hidden!important;}
-.all_drop{border: 1px solid darkgray ;width: 98%;margin: auto;margin-top: 5px;margin-bottom: 5px; border-radius: 5px;}
+.all_drop{width: 98%;margin: auto;margin-top: 5px;margin-bottom: 5px; border-radius: 5px;}
 .all_left{position: absolute; width:15%;height: 100%; min-heigh:100%;display: inline-block;}
 .all_right{ width: 84.5%;height: 100%; min-height: 100%;float: right;display: inline-block;}
-.lili{margin-top: 5px;line-height: 25px!important;}
-.classListdiv{min-height: 100%;height: 100%;width: 100%; overflow: auto;}
+.lili{margin-top: 5px;line-height: 25px!important;padding-left: 15px;}
+.classListdiv{min-height: 88%;height: 88%;width: 100%; overflow: auto;}
 ul{margin: 0px 0 0px 3px!important;}
-.lili:hover{background-color: #3498db;border-radius: 5px;}
+.lili:hover{background-color: #3498db;border-radius: 5px;cursor:pointer;}
 .ul_img{width: 10px!important;}
-.tab_all{background: none repeat scroll 0 0 #3498db;line-height:30px; width:100%; height: 30px;border-radius: 5px; color: #fff; line-height: 28px;}
+.tab_all{background: none repeat scroll 0 0 #1092B1;line-height:30px; width:98%;margin-left: 1%; height: 30px;border-radius: 3px; color: #fff; line-height: 28px;}
 .tab_top{width: 100%;text-align: left;}
 .btn_all{display: inline-block;width: 140px!important;}
 .caret{float: right;    margin-top: 8px;}
 .but_ul{width: 95%;}
-.tabdivtwo{padding-top: 10px;border-top: 1px solid #DDDDDD;height: 100%;min-height: 100%;position: absolute;width: 85%;}
+.tab_bord tr td span{;}
+.tabdivtwo{padding-top: 10px;border-top: 1px solid #DDDDDD;height: 90%;min-height: 90%;position: absolute;width: 85%;}
 .all_xl{padding-top: 10px;}
 .group_ul{height: 150px;min-height: 150px;overflow: auto;width: 60px;}
 .tab_input{margin-top: 7px!important;width: 117px!important;display: inline-block;}

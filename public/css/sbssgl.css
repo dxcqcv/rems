@@ -10,13 +10,15 @@ body{min-height: 100%;height: 100%;}
 ul li{list-style: none;}
 .img_eld{width: 30px;}
 #mymenu{height: 100%;min-height: 100%;overflow: auto;padding-top: 30px;display: none;}
-li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 112px;}
+.active{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 112px;}
 .one{padding-left: 2px;}
+.span2{    display: inline-block;    width: 150px;}
 .one ul li{padding-left: 20px;}
+.tab_bord tr td span{cursor:pointer;}
 .serag{padding-top: 10px!important;display: inline-block;}
 .tab_bord{border: 1px solid #BDBABA;}
 .rightdiv{height:100%;min-height:100%;display: inline-block;float: right;width: 85%;}
-.tabdiv{padding-top: 10px;height: 100%;min-height: 100%;overflow: auto;}
+.tabdiv{padding-top: 10px;height: 87%;min-height: 87%;overflow: auto;}
 .caret{float: right!important;}
 .btn_all{width: 160px!important;text-align: left!important;}
 .group_ul{height: 150px;min-height: 150px;overflow: auto;width: 60px;}

@@ -36,9 +36,9 @@
         });
     }
       
-     //localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
+     localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
      
-     demand.start({url:'/api/projectOverview.json', done:xmgl})
+     //demand.start({url:'/api/projectOverview.json', done:xmgl})
      function xmgl(data) {
         console.log(data);
         var str = '';

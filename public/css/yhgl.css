@@ -2,4 +2,4 @@
 .my-content{overflow: hidden!important;}
 .tab_bord{border: 1px solid #BDBABA;}
 tr td{text-align: center!important;}
-		
+.tab_bord tr td span{cursor:pointer;}		

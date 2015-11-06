@@ -94,7 +94,8 @@ position: absolute;
 }
 .project-loc {
     color: $color; font-size: 12px;
-    top: 92px; left: 51px;
+    top: 92px; left: 14px; width: 172px; text-align: center;
+    overflow: hidden; 
 }
 .project-list-img {
     width: 150px; height: 150px;

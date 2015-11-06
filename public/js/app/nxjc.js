@@ -409,7 +409,9 @@ define(function(require){
         chart: {
             type: 'column'
         },
-
+        exporting: {
+              enabled:false
+            },
         credits: {
             enabled: false
         },
