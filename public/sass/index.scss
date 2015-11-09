@@ -28,6 +28,8 @@
 
 ********************************************************************************************  */
 $color: #16708b;
+$typeColor: rgba(196,222,239,1); 
+$circleColor: rgba(217,229,241,.6);
 .my-map { height: 100%; }
 .my-index-right {
     width: 495px; height: 100%;
@@ -39,6 +41,8 @@ $color: #16708b;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    background: linear-gradient( to left, rgba(194,220,238,.8), rgba(204,226,241,.5));
+    box-shadow: -20px 0px 26px 78px rgba(204, 226, 241, 0.5);
 }
 .project-list-img-wrapper,
 .project-list-right,
@@ -49,16 +53,15 @@ $color: #16708b;
 .project-list-right {
     width: 95px;
 }
-/*
 .project-list-right:after {
-    position: absolute; top: 90px; left: 61px; 
-    content: ''; width: 5px; height: 1px; background: $color;
+    content: ''; width: 5px; height: 5px; border-radius: 100%; background: $color; 
+    position: absolute; top: 86px; right: -12px; 
 }
+
 .project-list-right:before {
-    position: absolute; top: 90px; left: -29px; 
-    content: ''; width: 18px; height: 1px; background: $color;
+    position: absolute; top: 88px; left: -10px; 
+    content: ''; width: 131px; height: 1px; background: $color;
 }
-*/
 .project-circle-top,
 .project-circle-bottom,
 .pro-type,
@@ -95,7 +98,7 @@ position: absolute;
 .project-loc {
     color: $color; font-size: 12px;
     top: 92px; left: 14px; width: 172px; text-align: center;
-    overflow: hidden; 
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;  
 }
 .project-list-img {
     width: 150px; height: 150px;
@@ -130,14 +133,40 @@ position: absolute;
 .project-circle-top {
     top: 22px; left: 0px;
 }
+.project-circle-top:before {
+    content: ''; width: 0; height: 0;
+    border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 7px solid #fff; 
+    bottom: -6px; left: 50%; position: absolute; transform: translateX(-50%);
+    z-index: 2;
+}
+.project-circle-top:after {
+    content: ''; width: 0; height: 0;
+    border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid $circleColor; 
+    bottom: -5px; left: 50%; position: absolute; transform: translateX(-50%);
+    z-index: 3;
+}
 .project-circle-bottom {
     top: 106px; left: 0px;
 }
-.pro-type { color: $color; top: 79px; left: -10px; }
+.project-circle-bottom:before {
+    content: ''; width: 0; height: 0;
+    border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #fff; 
+    top: -6px; left: 50%; position: absolute; transform: translateX(-50%);
+    z-index: 2;
+}
+.project-circle-bottom:after {
+    content: ''; width: 0; height: 0;
+    border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid $circleColor; 
+    top: -5px; left: 50%; position: absolute; transform: translateX(-50%);
+    z-index: 3;
+}
+.pro-type { color: $color; top: 79px; left: -10px; background: $typeColor; }
+/*
 .pro-type:after {
     content: ''; width: 5px; height: 5px; border-radius: 100%; background: $color; 
-    position: absolute; top: 9px; right: -5px; 
+    position: absolute; top: 9px; right: -15px; 
 }
+*/
 .pro-type > div {
     display: inline-block;
     left: -3px;
