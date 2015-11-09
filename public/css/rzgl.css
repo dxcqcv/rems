@@ -7,7 +7,9 @@
 .all_xl{width: 95%;padding-top:10px;margin-left: 2%;}
 .tab_input{display: inline-block;}
 .my-content{overflow: hidden!important;}
-.tub{float: right;right: 20px; width: 20px;}
+.tub{float: right;right: 20px;padding-top: 10px;cursor: pointer;}
 .jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;padding-left: 8px;}
 .jgfx-date-box{display: inline-block;    height: 17px;}
 .zhi-style{display: inline-block;padding: 0px;}
+#rzgl,.even td tr td{text-align: center;}
+

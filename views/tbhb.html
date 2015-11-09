@@ -1,5 +1,5 @@
 <% include header-top.html %>
-      <link rel="stylesheet" href="/css/nxjc.css" media="all">
+      <link rel="stylesheet" href="/css/tbhb.css" media="all">
       <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
       <link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
 <% include header-bottom.html %>
@@ -10,28 +10,17 @@
                 <div class="my-card-top">
                     <div class="card-title  bottom-title">
                        <ul class="nav nav-tabs ">
-                            <li class="nor"><a>耗能</a></li>
+                            <li class="nor"><span>耗能</span></li>
                        </ul>
-                        <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
+                       <div class="tbhb-switch-box">
+                           <ul class="nav nav-tabs brn">
+                                <li class="active"><i class="tbhb-circle"></i><span class="tbhb-words">同比分析</span></li>
+                                <li ><i class="tbhb-circle"></i><span class="tbhb-words">环比分析</span></li>
+                           </ul>
+                       </div>
+                       <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
                     </div>
                     <div class="card-subtitle clearfix">
-                        <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="nyzhlylDate1">
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <p class="pull-right zhi-style">至</p>
-                        <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="nyzhlylDate2">
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
                         <div class="jgfx-top-right pull-right pr10">
                             <div class="btn-group  zoom_controls" id="tbhbHnButton">
                                 <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>

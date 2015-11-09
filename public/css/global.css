@@ -207,6 +207,17 @@ div.charts-cont-2-level {
   font-size: 16px;
   color: #363636; }
 
+.nav-tabs > li > span {
+  font-size: 16px;
+  color: #363636;
+  padding: 6.5px 15px;
+  margin-right: 2px;
+  line-height: 1.42857;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0px 0px;
+  position: relative;
+  display: inline-block; }
+
 .jgfx-date-box {
   width: 210px; }
 
@@ -420,6 +431,12 @@ div.charts-cont-2-level {
 
 .pr10 {
   padding-right: 10px; }
+
+.brn {
+  border: none !important; }
+
+.gray {
+  color: #aaaaaa !important; }
 
 /*if 1024*/
 @media (max-width: 1500px) {

@@ -10,6 +10,9 @@ define(function(require){
       , proto = require('app/highstockMod')
       ;
       (function(){
+      function selectFn(sel,siblings) {
+           $(sel).siblings(siblings).removeClass('active'); 
+      }
       //日期控件
        $('.datetimepicker1').datetimepicker();
       //下拉选择
@@ -102,10 +105,6 @@ function stockWithButton(fn) {
 var nowDate = new Date();
           function setDatetimepicker(id,fn) {
             var dd = fn;
-            console.log(77777,typeof id);
-            console.log(77777,id);
-            console.log(8888,typeof dd);
-            console.log(8888,dd);
            $(id).datetimepicker({format : "YYYY-MM-DD",defaultDate:nowDate}).on('change dp.change', function(id,dd){ console.log(12121,typeof id);console.log(9999,dd);changeDate('#tbhbJnlDate1','#tbhbJnlDate2',dd)});
           }
 

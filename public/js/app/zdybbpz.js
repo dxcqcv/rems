@@ -1,6 +1,11 @@
-define(function(require) {
+define(function(require) {	
+	var $ = require('jquery')
+	, api = require('app/getApi')
+	;
 	
-	var $ = require('jquery');
+	
+	
+	
 	$(function(){
 		$("#btnshow").click(function(){
 			$("#bg").css('display','block');
@@ -21,6 +26,13 @@ define(function(require) {
 			$("#tablediv").css('display','none');
 		})
 	});	
+	
+	demand.start({url:'/api/config/report/list.json',data:{page:0}, done:rzgl})
+		function rzgl(data){
+			console.log(data);
+			
+		}
+	
 	
 	
 });

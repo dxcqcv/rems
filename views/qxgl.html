@@ -17,42 +17,8 @@
 							</tr>
 					</thead>
 					
-					<tbody>
-						<tr class="odd">
-								<td>初级浏览者</td>
-								<td>首页、远程监测、能源管理</td>
-								<td>2014-03-31 00：00：00</td>
-								<td><span><img src="/img/qxgl/sz.png"/></span></td>
-								<td><span><img src="/img/qxgl/write.png"/></span></td>				
-							</tr>
-						<tr class="even">
-								<td>高级浏览者</td>
-								<td>首页、远程监测、能源管理、项目管理浏览（模块配置除外）、配置管理浏览（运行监测配置除外）</td>
-								<td>2014-03-31 00：00：00</td>
-								<td><span><img src="/img/qxgl/sz.png"/></span></td>
-								<td><span><img src="/img/qxgl/write.png"/></span></td>
-							</tr>
-						<tr class="odd">
-								<td>项目级管理者</td>
-								<td>首页、远程监测、能源管理、项目管理（项目信息U、设备CRUD、工艺配置CRUD）、配置管理（新闻配置CRUD、类R、类属性R、运行监测CRUD）</td>
-								<td>2014-03-31 00：00：00</td>
-								<td><span><img src="/img/qxgl/sz.png"/></span></td>
-								<td><span><img src="/img/qxgl/write.png"/></span></td>							
-							</tr>
-						<tr class="even">
-								<td>项目组级管理员</td>
-								<td>首页、远程监测、能源管理、项目管理、配置管理、系统管理（用户管理CRUD、身份R、权限R、导航R、日志R）</td>
-								<td>2014-03-31 00：00：00</td>
-								<td><span><img src="/img/qxgl/sz.png"/></span></td>
-								<td><span><img src="/img/qxgl/write.png"/></span></td>
-							</tr>
-							<tr class="odd">
-								<td>系统级管理员</td>
-								<td>全部权限</td>
-								<td>2014-03-31 00：00：00</td>
-								<td><span><img src="/img/qxgl/sz.png"/></span></td>
-								<td><span><img src="/img/qxgl/write.png"/></span></td>							
-							</tr>
+					<tbody id="qxgl_tab">
+						
 				</tbody>
 			</table>
 		</div>
@@ -61,7 +27,7 @@
 
         <script>
             requirejs(['../js/common'], function (common) {
-                requirejs(['app/nxfx']);
+                requirejs(['app/qxgl']);
             });
         </script>
 <% include footer.html %>
