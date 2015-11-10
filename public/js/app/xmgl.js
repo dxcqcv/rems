@@ -2,8 +2,10 @@
     var $ = require('jquery')
       , jsonpPath = require('app/getJsonp')
       , api = require('app/getApi')
+      , projectid = require('app/checkProjectid')
     ;
     (function(){
+    console.log(projectid)
     $(document).on('click', '#xmglButton > li', function(){
         var $this = $(this);
         var path = $this.data('path');

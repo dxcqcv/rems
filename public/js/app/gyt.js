@@ -1,14 +1,14 @@
 define(function(require){
     var $ = require('jquery')
-        highcharts = require('exporting') 
+      , projectid = require('app/checkProjectid')
+      , highcharts = require('exporting') 
+      , api = require('app/getApi')
     ;
     (function(){
             
         //工艺图
         // 链接VPN数据
-        var demand
-          , $doc = $(document)
-          , projectBoxIndex = 0 // 项目索引 
+        var $doc = $(document)
           , contTitle = $('#contSubTitle') 
           , intervalGYTData1 // 工艺图分钟更新
           , intervalGYTData2 // 工艺图分钟更新
@@ -26,6 +26,12 @@ define(function(require){
           , minsUpdate = 60000 
           , animcursor //切换特效
           , ajaxPath = '/jsonp/'
+          ;
+        var huanghuaArtwork = $('#huanghuaArtwork')
+          , tinghuArtwork = $('#tinghuArtwork')
+          , shenlongchengArtwork = $('#shenlongchengArtwork')
+          , pageid
+          ;
           //判断供冷供热季，1为供冷，0为供热
           if(modeMons >= 5 && modeMons <= 9) {
              globalMode = 1;
@@ -33,6 +39,61 @@ define(function(require){
              globalMode = 0;
           }
 
+        function dd(data) {
+            console.log(data);
+        }
+        function dd2(data) {
+            console.log(data);
+        }
+        function dd3(data) {
+            console.log(data);
+        }
+        /*
+        projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
+         * */
+    projectid = '3';
+        //check project
+        switch(projectid) { //复位为overview
+            case '1': 
+                $('#gytSidebar').removeClass('hide');
+                showMe('#huanghuaArtwork');
+                huanghuaPAFn();
+                buildGytList(['huanghuaPA-A-三联供系统','huanghuaPB-B-直燃机系统','huanghuaPD-C-电制冷系统'])
+                pageid = 100; 
+                break;
+            case '3': 
+                $('#gytSidebar').removeClass('hide');
+                showMe('#tinghuArtwork');
+                tinghuPAFn();
+                buildGytList(['tinghuPA-A-燃气三联供设备','tinghuPB-B-直燃机地源热泵','tinghuPD-C-燃气锅炉'])
+                pageid = 101; 
+                break;
+            case '4': 
+                $('#gytSidebar').removeClass('hide');
+                showMe('#defaultArtwork');
+                shenlongchengPAFn();
+                buildGytList(['shenlongchengPA-A-三联供系统','shenlongchengPB-B-电制冷系统','shenlongchengPC-C-燃气锅炉'])
+                pageid = 102; 
+                break;
+            default: 
+                showMe('#defaultArtwork');
+                $('#gytSidebar').addClass('hide');
+                gytSelectFn(false,'#defaultArtwork','此站工艺图正在构建中。。。');
+        }
+        demand.start({url:'/api/techCheck/equipments.json',data:{projectid:projectid,pageid:pageid}, done:dd});
+        demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid,pageid:pageid}, done:dd2});
+        demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:dd3});
+        function buildGytList(listInfo) {
+            var str = '';
+            var regEx = new RegExp('<li class="list-group-item',i);
+            for(var i = 0, l = listInfo.length; i < l; i++) str += '<li class="list-group-item '+listInfo[i].split('-')[0]+'">'+listInfo[i].split('-')[1]+' <span class="gyt-list-name">'+listInfo[i].split('-')[2]+'</span></li>';
+
+            str = str.replace(regEx,'<li class="list-group-item active');
+            $('#gyt-list').empty().append(str); 
+        }
+function showMe(name) {
+    $(name).siblings('div').addClass('hide').end().removeClass('hide');
+}
         function myTimeoutFn(fn, time,callback) {
             fn();
             checkCallbackFn(callback)
@@ -134,107 +195,6 @@ define(function(require){
             scaleGYT();
         });
 
-        function LocalJsonp() {
-            this.loading = $('#loading')
-        }
-        $.extend(LocalJsonp.prototype, {
-            start: function(opt) {
-                var url = opt.url ? opt.url : 'rems-test.json'
-                  , type = opt.type ? opt.type : 'GET'
-                  , data = opt.data ? opt.data : {}
-                  , timeout = opt.timeout ? opt.timeout : 10000
-                  , currentRequest = null
-                  , done = opt.done ? opt.done : doneFn
-                  , fail = opt.fail ? opt.fail : failFn
-                  , jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
-                  , jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : ''
-                  , self = this;
-
-                currentRequest = $.ajax({
-                    url: url
-                  , type: type
-                  , timeout: timeout
-                  , data: data
-                  , dataType: 'jsonp'
-                  , cache: false
-                  , jsonp: jsonp
-                  , jsonpCallback: jsonpCallback
-                  , crossDomain: true
-                  , mimeType: 'application/json'
-                  , contentType: 'text/plain'
-                  , beforeSend: function() {
-                        if(currentRequest != null) currentRequest.abort();
-                  }
-                })
-                .done(function(data) {
-                    var d = data;
-                    self.loading.addClass('hide');
-                    done(d);
-                })
-                .fail(function(jqXHR, textStatus, errorThrown) {
-                    if(textStatus == 'timeout') {}
-                    fail(jqXHR, textStatus, errorThrown);
-                });
-                //return currentRequest ;
-            }
-        });
-        function Request() {
-            this.loading = $('#loading')
-        }
-        $.extend(Request.prototype, {
-            start: function(opt) {
-                var url = opt.url ? opt.url : 'rems-test.json'
-                  , type = opt.type ? opt.type : 'GET'
-                  , data = opt.data ? opt.data : {}
-                  , timeout = opt.timeout ? opt.timeout : 10000
-                  , currentRequest = null
-                  , done = opt.done ? opt.done : doneFn
-                  , fail = opt.fail ? opt.fail : failFn
-                  , jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
-                  //, jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : '' 
-                  , self = this;
-
-                currentRequest = $.ajax({
-                    url: url
-                  , type: type
-                  , timeout: timeout
-                  , data: data
-                  //, async : false
-                  , dataType: 'jsonp'
-                  , jsonp: jsonp //服务端用于接收callback调用的function名的参数  
-                  //, jsonpCallback: jsonpCallback//callback的function名称,服务端会把名称和data一起传递回来 
-                  , crossDomain: true
-                  , mimeType: 'application/json'
-                  , contentType: 'text/plain'
-                  //, xhrFields: { withCredentials: false }
-                  , beforeSend: function() {
-                        if(currentRequest != null) currentRequest.abort();
-                  }
-                })
-                .done(function(data){
-                    var d = data;
-                    self.loading.addClass('hide');
-                    done(d);
-                })
-                .fail(function(jqXHR, textStatus,errorThrown) {
-                    if(textStatus == 'timeout') { //alert('timeout'); 
-                    }
-                    fail(jqXHR, textStatus,errorThrown);
-                });
-                //return currentRequest ;
-            }
-        });
-        function failFn(jqXHR, textStatus,errorThrown) { console.log('error is ' + jqXHR.statusText + ' textStatus is ' + textStatus + ' errorThrown is ' + errorThrown); }
-        function doneFn() { console.log('done'); }
-        demand = new Request(); // 统一调用ajax
-        localJsonp = new LocalJsonp(); // 调用本地jsonp 
-
-        localJsonp.start({url:ajaxPath+'labellist101.js',jsonpCallback:'labellist',done:testJsonp});
-        function testJsonp(data){
-            //alert(data);
-        }
-        //一些会调函数
-        function setCompelte(){ console.log(1111)}	
 
 
 
@@ -277,9 +237,6 @@ define(function(require){
         }
 
         /* 工艺图 */
-        var huanghuaArtwork = $('#huanghuaArtwork')
-          , tinghuArtwork = $('#tinghuArtwork')
-          , shenlongchengArtwork = $('#shenlongchengArtwork')
         $doc.on('click', '.huanghuaPA', huanghuaPAFn)
             .on('click', '.huanghuaPB', huanghuaPBFn)
             .on('click', '.huanghuaPC', huanghuaPCFn)
@@ -849,7 +806,8 @@ define(function(require){
             tinghuArtwork.height(1341);
         }
         function tinghuPBFn() {
-            gytSelectFn(true,'#tinghuBC','直燃机地源热泵',[1,2]);
+            //gytSelectFn(true,'#tinghuBC','直燃机地源热泵',[1,2]);
+            gytSelectFn(true,'#tinghuBC','直燃机地源热泵',[1]);
             tinghuArtwork.height(1200);
         }
         function tinghuPCFn() {
@@ -857,10 +815,10 @@ define(function(require){
             tinghuArtwork.height(1200); //不同图片的高度
         }
         function tinghuPDFn() {
-            gytSelectFn(true,'#tinghuD','燃气锅炉',[3]);
+            //gytSelectFn(true,'#tinghuD','燃气锅炉',[3]);
+            gytSelectFn(true,'#tinghuD','燃气锅炉',[2]);
             tinghuArtwork.height(1349);
         }
-
         //神农城
         function shenlongchengPAFn() {
             gytSelectFn(true,'#shenlongchengA','三联供系统',[0]);

@@ -126,7 +126,7 @@
         </div>
     </div>
     <!--工艺图侧栏-->
-    <div class="gyt-sidebar">
+    <div id="gytSidebar" class="gyt-sidebar">
         <div class="gyt-sidebar-title">
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
@@ -144,9 +144,10 @@
       <!--artwork start-->
             <div class="xa-con-cent flexmid" id="artwork">
                 <div id="artworkTitle" class="artwork-title">
-                    <div class="atInner">工艺设计图</div>
+                    <div class="atInner"></div>
                 </div>
                 <div id="artworkMain" class="xa-con-cent-main">
+                    <div id="defaultArtwork" class="default-artwork hide"></div>
                     <div id="shenlongchengArtwork" class="shenlongcheng-artwork hide">
                             <!--选择点击区域-->
                         <div id="shenlongchengOverview" class="shenlongcheng-overview artwork-overview ">
@@ -1345,7 +1346,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="artworkBottom" class="xa-con-cent-bottom clearfix ">
+                <div id="artworkBottom" class="xa-con-cent-bottom clearfix hide">
                     <div class="xa-con-cent-bottom-inner">
                         <div id="artworkThumbnail" class="bottom-thumbnail huanghua-thumbnail"></div>
                         <div id="artworkTailsBox" class="tails-box">

@@ -40,7 +40,8 @@ define(function(require){
                         var longitude = $this.data('longitude');
                         var latitude = $this.data('latitude'); 
                         var isList = $this.attr('data-list');
-                        var projectid = $(this).attr("data-projectid");
+                        var projectid = $this.attr("data-projectid");
+                        var title = $this.attr('title');
                         if(isList == 0) {
                         
                         $this
@@ -54,10 +55,11 @@ define(function(require){
                             //$('.markerlnglat'+projectid+'').attr('src','/img/index/icon-map-icon.png')
 $('.maker'+projectid+'').addClass('map-maker-big');
                         } else {
-                            demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
+                            localStorage.setItem('curProjectid', projectid );
+                            localStorage.setItem('curProjectidName', title);
+                            //demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
                                 window.location = '/user/xmgl';
-                            }});
-                        
+                            //}});
                         }
 
                     }) 
@@ -115,7 +117,7 @@ $('.maker'+projectid+'').addClass('map-maker-big');
             },
             projectList: function(projectName,projectId,longitude, latitude,industrytypename,address,buildingarea,supplyarea) {
                     return this.str += 
-                        'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'"  data-list="0">'+
+                        'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'"  data-list="0" title="'+projectName+'">'+
                             '<div class="project-list-left">'+
                                 '<span class="project-icon"></span>'+
                                 '<p class="project-name">'+ projectName +'</p>'+
@@ -162,7 +164,7 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                         '</div>';
             },
             projectAll: function(projectName,projectId) {
-                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav" data-projectid="'+projectId+'" data-list="1" data-show="xmgl" data-subshow="xmgl-"><span class="my-index-list-name">'+projectName+'</span></div>';
+                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav" data-projectid="'+projectId+'" data-list="1" data-show="xmgl" data-subshow="xmgl-" title="'+projectName+'"><span class="my-index-list-name">'+projectName+'</span></div>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';
