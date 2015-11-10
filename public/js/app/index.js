@@ -17,7 +17,8 @@ define(function(require){
         }
         Index.prototype = {
             init: function() {
-                localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
+                //localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
+                localData != null ? localData : demand.start({url:'/api/gislist.json', done:this.getGislist});
                 this.switchProject();
                 this.enterProject();
 //                this.configMap(); 
@@ -112,7 +113,7 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                 $('.carousel-indicators').empty().append(this.str);
                 this.str = '';
             },
-            projectList: function(projectName,projectId,longitude, latitude,industrytypename,address) {
+            projectList: function(projectName,projectId,longitude, latitude,industrytypename,address,buildingarea,supplyarea) {
                     return this.str += 
                         'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'"  data-list="0">'+
                             '<div class="project-list-left">'+
@@ -148,14 +149,14 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                             '</div>'+
                             '<div class="project-list-right">'+
                                 '<div class="project-circle project-circle-top">'+
-                                    '<span>供能</span><span class="pro-num">6.1万</span>'+
+                                    '<span>供能</span><span class="pro-num">'+this.filterWan(supplyarea)+'万</span>'+
                                 '</div>'+
                                 '<div class="pro-type">'+
                                     '<div class="glyphicon glyphicon-home pro-type-icon"></div>'+
                                     '<div class="pro-type-name">'+industrytypename+'/㎡</div>'+
                                 '</div>'+
                                 '<div class="project-circle project-circle-bottom">'+
-                                    '<span>建筑</span><span class="pro-num">10.1万</span>'+
+                                    '<span>建筑</span><span class="pro-num">'+this.filterWan(buildingarea)+'万</span>'+
                                 '</div>'+
                             '</div>'+
                         '</div>';
@@ -166,7 +167,9 @@ $('.maker'+projectid+'').addClass('map-maker-big');
             makeItems: function() {
                         this.str += '<div class="item"></div>';
             },
-            
+            filterWan: function(num) {
+                return (num/10000).toFixed(1); 
+            }, 
             indexItems: function(sum,type) {
                 var
                    k = this.getNums()
@@ -185,8 +188,8 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                 this.itemsDone = true;
             },
             getGislist: function(data) {
-                localData = data;
-                var nums = index.getNums()
+                localData = data.status.data.list;
+                var nums = index.getNums();
                 index.indexProject(nums[0],index.projectList,0); //trigger indexProject
                 index.configMap(localData); 
             },
@@ -201,7 +204,7 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                 this.projectIndicators(len,type);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude,v.industrytypename,v.address); 
+                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude,v.industrytypename,v.address,v.buildingarea,v.supplyarea); 
                     });
 
                     self.str = self.str.split('shangwenlong'); // splited by string shangwenlong

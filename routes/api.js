@@ -51,6 +51,7 @@ router.get('/gislist.json', function(req, res, next) {
 	//request.post({url:'http://117.144.16.98:8080/rems/userInfo/list.json', form: {userKey:'cf76a0b9e6bae5b0a4e416754588328d',password:'123456'}}, function(error,response,body){
 	request.post({url:'http://117.144.16.98:8080/rems/gislist.json', form: {userKey:req.session.user.token}}, function(error,response,body){
 		
+	console.log(req.query.projectid);
 	    	res.send(body);
 	  	
 	})

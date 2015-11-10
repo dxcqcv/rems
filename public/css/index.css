@@ -254,7 +254,7 @@
   top: 79px;
   left: 0px;
   padding-left: 5px;
-  background: #c4deef; }
+  background: #c2dcee; }
 
 /*
 .pro-type:after {
@@ -265,7 +265,8 @@
 .pro-type > div {
   display: inline-block;
   left: 0;
-  padding-left: 5px; }
+  padding-left: 5px;
+  font-size: 12px; }
 
 .my-index-switch {
   width: 56px;
