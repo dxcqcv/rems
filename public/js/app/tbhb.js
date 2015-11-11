@@ -10,8 +10,11 @@ define(function(require){
       , proto = require('app/highstockMod')
       ;
       (function(){
+      $('.tbhb-switch-box').find('li').click(function(){
+            selectFn(this,'li'); 
+      });
       function selectFn(sel,siblings) {
-           $(sel).siblings(siblings).removeClass('active'); 
+           $(sel).siblings(siblings).removeClass('active').end().addClass('active'); 
       }
       //日期控件
        $('.datetimepicker1').datetimepicker();
