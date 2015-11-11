@@ -22,9 +22,10 @@ router.get('/gyjc', function(req, res) {
     res.render('gyt', { title: 'Home' });
 });
 router.get('/xmgl', function(req, res) {
-    req.session.projectid = res.query.projectid ;
-    req.session.title = res.query.title;
-    res.render('xmgl', { title: 'Home', projectid: req.session.projectid, title: req.session.title });
+    
+    req.session.projectid = req.query.projectid ;
+    req.session.title = req.query.title;
+    res.render('xmgl', { title: 'Home', projectid: req.session.projectid, projectTitle: req.session.title });
 });
 router.get('/sjjc', function(req, res) {
     res.render('sjjc', { title: 'Home' });
