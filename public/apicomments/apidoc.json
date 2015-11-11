@@ -3,8 +3,8 @@
   "version": "3.0",
   "description": "UECSS泛能云服务系统简介",
   "title": "UECSS泛能云服务系统API文档",
-  "url" : "https://api.github.com/v1",
-  "sampleUrl": "https://api.github.com/v1",
+  "url" : "http://117.144.16.98:8080",
+  "sampleUrl": "http://117.144.16.98:8080",
   "header": {
     "title": "目录",
     "filename": "header.md"

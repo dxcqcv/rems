@@ -269,10 +269,56 @@ router.get('/clzMng/list.json', function(req, res, next) {
 
 //类属性页面：查询设备属性类
 router.get('/clzpropMng/list.json', function(req, res, next) {
-	request.post({url:'http://117.144.16.98:8080/rems/clzpropMng/list.json', form: {userKey:req.session.user.token, project:req.query.projectid, pageid:req.query.pageid,userid:req.query.userid}}, function(error,response,body){
+	request.post({url:'http://117.144.16.98:8080/rems/clzpropMng/list.json', form: {userKey:req.session.user.token,userid:req.query.userid}}, function(error,response,body){
 	    	res.send(body);	
 	})
 });
+
+//类属性页面：添加设备（加载数据）
+router.get('/clzpropMng/addInput.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/clzpropMng/addInput.json', form: {userKey:req.session.user.token,userid:req.query.userid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+//类属性页面：加载标准类
+router.get('/clzpropMng/loadStandardclass.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/clzpropMng/loadStandardclass.json', form: {userKey:req.session.user.token,typeid:req.query.typeid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+//类属性页面：初始化查询依据
+router.get('/clzpropMng/findByForm.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/clzpropMng/findByForm.json', form: {userKey:req.session.user.token,pclzid:req.query.pclzid,propTypeid:req.query.propTypeid,isdynamic:req.query.isdynamic,propName:req.query.propName}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+//类属性页面：初始化查询依据
+router.get('/clzpropMng/initSelections.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/clzpropMng/initSelections.json', form: {userKey:req.session.user.token,userid:req.query.userid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+
+//类属性管理页面
+router.get('/clzMng/list.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/clzMng/list.json', form: {userKey:req.session.user.token, projectid:req.query.projectid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+//类属性管理页面和标准类管理页面共用：查询设备类
+router.get('/clzMng/page.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/clzMng/page.json', form: {userKey:req.session.user.token}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+
+
 
 
 //用户管理页面：查询所有用户信息

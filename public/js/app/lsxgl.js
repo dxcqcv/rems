@@ -32,12 +32,12 @@ define(function(require) {
   $('#lsx_selectId').change(function(){
         var selected = $(this).find('option:selected').val();
         if(selected == '泛能站体系') {
-            demand.start({url:'/api/clzpropMng/listLeft.json', data:{typeId:1},done:lsx_left})
+            demand.start({url:'/api/clzMng/page.json',done:lsx_left})
             function lsx_left(data){
 					console.log(data);
-					var str;
-					$.each(data.status.data.list,function(i,v){
-		                str +='<ul><li class="lili">'+v.classname+'</li></ul>';
+					var str = "";
+					$.each(data.status.data.classList,function(i,v){
+		                str +='<ul><li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li></ul>';
 		            });
 					$("#lsx_ul").empty().append(str);
 					}
