@@ -18,12 +18,14 @@ define(function(require) {
 		function lsxgl(data){
 			console.log(data);
             var formatname = data.status.data.formatList[0].formatname;
-            var str = '<option>请选择类型</option><option>'+formatname+'</option>';
+            var formatid = data.status.data.formatList[0].formatid;
+            var str = '<option value="">请选择类型</option><option value="'+formatid+'">'+formatname+'</option>';
             $("#lsx_selectId").empty().append(str).selectpicker('refresh');
             str = '';
             $.each(data.status.data.typeList,function(i,v){
-                str +='<option>'+v.typename+'</option>';
+                str +='<option value="'+v.propertytypeid+'">'+v.typename+'</option>';
             });
+            console.log(str);
 			$("#lsxglLxsxSelect").empty().append(str).selectpicker('refresh');
 	
 		}
@@ -31,22 +33,61 @@ define(function(require) {
 
   $('#lsx_selectId').change(function(){
         var selected = $(this).find('option:selected').val();
-        if(selected == '泛能站体系') {
+        if(selected == '1') {
             demand.start({url:'/api/clzMng/page.json',done:lsx_left})
             function lsx_left(data){
 					console.log(data);
 					var str = "";
 					$.each(data.status.data.classList,function(i,v){
-		                str +='<ul><li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li></ul>';
+		                str +='<li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li>';
 		            });
 					$("#lsx_ul").empty().append(str);
 					}
         }
     });
 
+  $('#lsx_ul').on("click", 'li', function(){
+  	var classid = $(this).attr("data-classid");
+  	demand.start({url:'/api/clzpropMng/findByForm.json', data:{pclzid:classid},done:lsx_right})
+            function lsx_right(data){
+					console.log(data);
+					var str = "";
+					$.each(data.status.data.list,function(i,v){
+						str += '<tr class="">';
+						str	+= '<td>'+i+'</td>'
+						str	+= '<td>'+v.classpropertyname+'</td>'
+						str	+= '<td>'+v.classname+'</td>'
+						str	+= '<td>泛能站体系</td>'
+						str	+= '<td>'+v.typename+'</td>'
+						str	+= '<td><span><img src="/img/lsxgl/sz.png"/></span></td>'
+						str	+= '<td><span><img src="/img/lsxgl/write.png"/></span></td>'
+						str	+= '</tr>';
+		    //             str +='<ul><li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li></ul>';
+		            });
+					$("#resultBody").empty().append(str);
+					$("#resultBody tr:even").addClass("even");  
+					$("#resultBody tr:odd").addClass("odd"); 
+			}
+
+  });
+  $("#queryDataBtn").on('click',function(){
+  	var currentTixi = $('#lsx_selectId').val();
+  	console.log(currentTixi);
+  	if (currentTixi == '') {
+  		alert("请在左侧下拉列表选择类型和设备类");
+  	};
+
+  })
+
+
+
 
 
 
 		
 	});	
+
+	
+
+
 });

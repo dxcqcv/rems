@@ -70,7 +70,7 @@
 						
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 属性名称：
 						<input type="text" class="form-control tab_input">
-						<button type="button" class="btn btn-info btn-sm">查看数据</button>
+						<button id="queryDataBtn" type="button" class="btn btn-info btn-sm">查看数据</button>
 						</p>
 					</div>
 					</div>
@@ -89,7 +89,12 @@
 									<td>操作</td>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="resultBody">
+							<tr class="odd" >
+									<td colspan='7'>请选择左侧菜单进行筛选</td>
+									
+								</tr>
+							<!--
 								<tr class="odd">
 									<td>1</td>
 									<td>能源站</td>
@@ -600,6 +605,7 @@
 									<td><span><img src="/img/lsxgl/write.png"/></span></td>
 
 								</tr>
+								-->
 							</tbody>
 						</table>
 
