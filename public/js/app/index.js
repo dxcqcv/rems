@@ -58,7 +58,8 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                             localStorage.setItem('curProjectid', projectid );
                             localStorage.setItem('curProjectidName', title);
                             //demand.start({url:'/api/clickProject.json',data:{projectid:projectid}, done:function(data){
-                                window.location = '/user/xmgl';
+                                window.location = '/user/xmgl?projectid='+projectid+'&title='+title+'';
+
                             //}});
                         }
 

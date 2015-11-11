@@ -34,6 +34,7 @@ router.post('/login.json', function(req, res, next) {
 			        password: req.body.password,
 			        token:result.status.data
 			    };
+
 			    req.session.user = user;
 
 	    		res.redirect('/user/home');
