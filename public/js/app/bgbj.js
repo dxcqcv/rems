@@ -1,6 +1,6 @@
 define(function(require) {
-	var $ = require('jquery'),
-		highcharts = require('highcharts');
+	var $ = require('jquery')
+      ;
 	$(function() {
 					//		打开模板
 					$(".btn_a").click(function() {

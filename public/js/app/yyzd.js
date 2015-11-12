@@ -1,6 +1,6 @@
 define(function(require) {
-	var $ = require('jquery'),
-		highcharts = require('highcharts');
+	var $ = require('jquery')
+      ;
 	$(function() {
 						$(".btn_xq").click(function() {
 							$("#yyzd_top").css('display','none')
