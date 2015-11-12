@@ -14,6 +14,7 @@ define(function(require){
       (function(){
       var chart;
       var chartLines;
+
           tbhbClick('.tbhb-switch-box-top','li','tbhb2',tbhbHngn); 
           tbhbClick('.date-controls-box-top','button','tbhb2',tbhbHngn);
           tbhbClick('.tbhb-switch-box-bottom','li','tbhb3',tbhbLines); 
