@@ -19,6 +19,7 @@ define(function(require) {
                   , fail = opt.fail ? opt.fail : failFn
                   , jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
                   , jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : ''
+                  , parameter = opt.parameter ? opt.parameter : {}
                   , self = this;
 
                 currentRequest = $.ajax({
@@ -33,14 +34,15 @@ define(function(require) {
                   , crossDomain: true
                   , mimeType: 'application/json'
                   , contentType: 'text/plain'
+                  , parameter: parameter  
                   , beforeSend: function() {
                         if(currentRequest != null) currentRequest.abort();
                   }
                 })
                 .done(function(data) {
                     var d = data;
-                    self.loading.addClass('hide');
-                    done(d);
+                    //self.loading.addClass('hide');
+                    done(d,this.parameter);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     if(textStatus == 'timeout') {}
