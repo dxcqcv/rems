@@ -13,7 +13,7 @@
         var video = $('#xmglVideo');
         var suffix = path.split('.')[1];
         $this.siblings('li').removeClass('active').end().addClass('active');
-        if(suffix == 'jpg') {
+        if(suffix == 'jpg' || suffix == 'png') {
             video.addClass('hide');
             img.removeClass('hide');
             img.attr('src',path); 
@@ -41,6 +41,7 @@
      //localJsonp.start({url:jsonpPath+'xmgl.js',jsonpCallback:'xmgl',done:xmgl});
      
      demand.start({url:'/api/projectOverview.json', data:{projectid:1}, done:xmgl})
+
      function xmgl(data) {
         console.log(data);
         var str = '';

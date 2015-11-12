@@ -2,14 +2,14 @@
 <link rel="stylesheet" href="/css/xmgl.css" media="all">
 <% include header-bottom.html %>
 
-<input id="projectid" type="" value="<%= projectid %>">
-<input id="projectTitle" type="" value="<%= projectTitle %>">
+<input id="projectid" type="hidden" value="<%= projectid %>">
+<input id="projectTitle" type="hidden" value="<%= projectTitle %>">
         <!--项目概览-->        
         <div id="xmgl" class="my-section xmgl-wrapper">
             <div class="xmgl-wrapper">
                 <div class="xmgl-cont">
                     <img id="xmglImg" class="" src=""/>
-                    <video id="xmglVideo" width="100%" height="100%" controls preload="auto">
+                    <video id="xmglVideo" class="hide" width="100%" height="100%" controls preload="auto">
                           <source src="" type="video/mp4">
                     </video>
                 </div>
