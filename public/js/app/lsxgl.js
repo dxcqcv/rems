@@ -12,6 +12,13 @@ define(function(require) {
                 backdrop: 'static' 
             });  
         });
+        
+        
+        $(".write").click(function(){
+              $("#bg").css('display','block');
+			$("#tablediv").css('display','block');
+        });
+        
 		
 		
 		demand.start({url:'/api/clzpropMng/list.json', data:{userid:1},done:lsxgl})
@@ -59,8 +66,8 @@ define(function(require) {
 						str	+= '<td>'+v.classname+'</td>'
 						str	+= '<td>泛能站体系</td>'
 						str	+= '<td>'+v.typename+'</td>'
-						str	+= '<td><span><img src="/img/lsxgl/sz.png"/></span></td>'
-						str	+= '<td><span><img src="/img/lsxgl/write.png"/></span></td>'
+						str	+= '<td></td>'
+						str	+= '<td><span class="write"><img src="/img/lsxgl/write.png"/></span><span><img src="/img/lsxgl/sz.png"/></span></td>'
 						str	+= '</tr>';
 		    //             str +='<ul><li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li></ul>';
 		            });

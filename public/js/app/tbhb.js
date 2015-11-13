@@ -2,18 +2,23 @@
 define(function(require){
     var $ = require('jquery')
       , selectpicker = require('bootstrap-select')
-      , moment = require('moment')
       , datapicker = require('bootstrap-datetimepicker.min')
       , options = require('app/highchartsConfig')
       , optionsLines = require('app/highchartsConfigLines')
       , jsonpPath = require('app/getJsonp')
       , proto = require('app/highstockMod')
       , highcharts = require('app/card') 
+      , setDate = require('app/setDate')
       ;
 
       (function(){
-      var chart;
-      var chartLines;
+          var chart;
+          var chartLines;
+          var nowDate = new Date();
+          $('.date-controls-box').children('button').on('click',function(){
+            setDate($(this));       
+          }); 
+          $('.datetimepicker1').datetimepicker({format : "YYYY-MM-DD",defaultDate:nowDate});
 
           tbhbClick('.tbhb-switch-box-top','li','tbhb2',tbhbHngn); 
           tbhbClick('.date-controls-box-top','button','tbhb2',tbhbHngn);

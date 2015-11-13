@@ -1,0 +1,168 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/nxjc.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+<% include header-bottom.html %>
+
+       <!--指标分析-->
+        <div id="" class="my-section card-wrapper">
+            <!--4分格-->
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title  bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>能源综合利用率</a></li>
+                       </ul>
+                        <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="nyzhlylDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="pull-right zhi-style">至</p>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="nyzhlylDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="jgfx-top-right pull-right pr10">
+                            <div class="btn-group  zoom_controls" id="nyzhlylButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" date-pickerfrom="nyzhlylDate1" date-pickerto="nyzhlylDate2">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" date-pickerfrom="nyzhlylDate1" date-pickerto="nyzhlylDate2">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" date-pickerfrom="nyzhlylDate1" date-pickerto="nyzhlylDate2">年</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="nyzhlyl" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title  bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>节能率</a></li>
+                       </ul>
+                        <span class="glyphicon glyphicon-resize-full  card-button-resize" aria-hidden="true"></span>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="jnlDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="pull-right zhi-style">至</p>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="jnlDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="jgfx-top-right pull-right pr10">
+                            <div class="btn-group  zoom_controls" id="jnlButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" date-pickerfrom="jnlDate1" date-pickerto="jnlDate2">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" date-pickerfrom="jnlDate1" date-pickerto="jnlDate2">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" date-pickerfrom="jnlDate1" date-pickerto="jnlDate2">年</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="jnl" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title  bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>二氧化碳减排率</a></li>
+                       </ul>
+                        <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="eyhtjplDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="pull-right zhi-style">至</p>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="eyhtjplDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="jgfx-top-right pull-right pr10">
+                            <div class="btn-group  zoom_controls" id="eyhtjplButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" date-pickerfrom="eyhtjplDate1" date-pickerto="eyhtjplDate2">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" date-pickerfrom="eyhtjplDate1" date-pickerto="eyhtjplDate2">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" date-pickerfrom="eyhtjplDate1" date-pickerto="eyhtjplDate2">年</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="eyhtjpl" class="chart-box charts-cont"></div>
+            </div>
+            <div class="my-card col-md-6 col-lg-6 col-xs-12">
+                <div class="my-card-top">
+                    <div class="card-title  bottom-title">
+                       <ul class="nav nav-tabs ">
+                            <li class="nor"><a>可再生能源利用率</a></li>
+                       </ul>
+                        <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
+                    </div>
+                    <div class="card-subtitle clearfix">
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="kzsnylylDate2">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <p class="pull-right zhi-style">至</p>
+                        <div class="jgfx-date-box pull-right">
+                            <div class='input-group date datetimepicker1' id="kzsnylylDate1">
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="jgfx-top-right pull-right pr10">
+                            <div class="btn-group  zoom_controls" id="kzsnylylButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" date-pickerfrom="kzsnylylDate1" date-pickerto="kzsnylylDate2">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" date-pickerfrom="kzsnylylDate1" date-pickerto="kzsnylylDate2">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" date-pickerfrom="kzsnylylDate1" date-pickerto="kzsnylylDate2">年</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="kzsnylyl" class="chart-box charts-cont"></div>
+            </div>
+        </div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/zbfx']);
+            });
+        </script>
+<% include footer.html %>

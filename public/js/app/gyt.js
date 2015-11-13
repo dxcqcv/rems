@@ -43,15 +43,17 @@ define(function(require){
             console.log(data);
         }
         function dd2(data) {
+            console.log('设备的启停状态');
             console.log(data);
         }
         function dd3(data) {
+            console.log('设备的最新数据');
             console.log(data);
         }
         /*
         projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
          * */
-    projectid = '3';
+    //projectid = '4';
         //check project
         switch(projectid) { //复位为overview
             case '1': 
@@ -70,7 +72,7 @@ define(function(require){
                 break;
             case '4': 
                 $('#gytSidebar').removeClass('hide');
-                showMe('#defaultArtwork');
+                showMe('#shenlongchengArtwork');
                 shenlongchengPAFn();
                 buildGytList(['shenlongchengPA-A-三联供系统','shenlongchengPB-B-电制冷系统','shenlongchengPC-C-燃气锅炉'])
                 pageid = 102; 
@@ -80,8 +82,11 @@ define(function(require){
                 $('#gytSidebar').addClass('hide');
                 gytSelectFn(false,'#defaultArtwork','此站工艺图正在构建中。。。');
         }
+        console.log('projectid ',projectid)
+        console.log('pageid ',pageid)
         demand.start({url:'/api/techCheck/equipments.json',data:{projectid:projectid,pageid:pageid}, done:dd});
-        demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid,pageid:pageid}, done:dd2});
+        //demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid,pageid:pageid}, done:dd2});
+        demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid}, done:dd2});
         demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:dd3});
         function buildGytList(listInfo) {
             var str = '';
@@ -91,9 +96,9 @@ define(function(require){
             str = str.replace(regEx,'<li class="list-group-item active');
             $('#gyt-list').empty().append(str); 
         }
-function showMe(name) {
-    $(name).siblings('div').addClass('hide').end().removeClass('hide');
-}
+        function showMe(name) {
+            $(name).siblings('div').addClass('hide').end().removeClass('hide');
+        }
         function myTimeoutFn(fn, time,callback) {
             fn();
             checkCallbackFn(callback)
