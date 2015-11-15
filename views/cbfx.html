@@ -9,17 +9,17 @@
             <div class="top-bar-inner clearfix">
                 <span class="ib top-bar-label">成本分析</span>
                 <div class="jgfx-date-box ib pull-right">
-                    <div class='input-group date datetimepicker1 '>
+                    <div class='input-group date datetimepicker1 ' id="cbfxDate">
                         <input type='text' class="form-control"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
                 </div>
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-default active">日</button>
-                    <button type="button" class="btn btn-default">月</button>
-                    <button type="button" class="btn btn-default">年</button>
+                <div class="btn-group pull-right dateButtons">
+                    <button type="button" class="btn btn-default active" data-range="1d" data-tar="cbfxDate">日</button>
+                    <button type="button" class="btn btn-default" data-range="1m" data-tar="cbfxDate">月</button>
+                    <button type="button" class="btn btn-default" data-range="1y" data-tar="cbfxDate">年</button>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                        </ul>
                     </div>
                 </div>
-                <div id="" class="chart-box charts-cont-2-level haitwo "></div>
+                <div id="dwgncbbl" class="chart-box charts-cont-2-level haitwo "></div>
             </div>
         </div>
 
