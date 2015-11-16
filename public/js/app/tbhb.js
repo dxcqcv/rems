@@ -16,6 +16,7 @@ define(function(require){
       (function(){
           var chart;
           var chartLines;
+          // 日月年
           $('.date-controls-box').children('button').on('click',function(){
             setDate.changeDate($(this));       
           }); 

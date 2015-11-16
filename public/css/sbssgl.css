@@ -24,3 +24,8 @@ body{min-height: 100%;height: 100%;}
 .group_ul{height: 150px;min-height: 150px;overflow: auto;width: 60px;}
 .seardiv{padding-top: 20px;}
 .jgfx-top-inner{background: #f1f1f1;border: 1px solid #cccccc;border-radius: 5px;padding-bottom: 5px;}
+
+#bg1 {display: none; position: absolute;top: 0%;left: 0%;width: 100%;height: 100%;background-color: black;z-index: 1001;-moz-opacity: 0.2;opacity: .20;filter: alpha(opacity=20);}
+#coliseselect{display: none; position: absolute;left: 40%;width: 20%;height: 20%;top:40%;background-color: white;z-index: 1003;overflow: auto;box-shadow:1px 3px 5px #000;}
+.truep{background-color: #0A8DAD;height: 26px;font-size: 18px;text-align: center;color: white;}
+.truesel,.footerbtnclos{text-align: center;padding-top: 7px;}

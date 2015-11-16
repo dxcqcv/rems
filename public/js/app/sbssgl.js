@@ -21,8 +21,17 @@ define(function(require) {
 		    $(".bt").click(function(){
 		    	$("#mymenu").css('display','block')
 		    })
+				
+//	删除
+		 $(document).on('click','.slcolds',function(){
+        	 $("#bg1").css('display','block');
+			$("#coliseselect").css('display','block');
+        });
 		
-		
+        $("#closedivsel").click(function(){
+        	$("#coliseselect").css('display','none');
+        	$("#bg1").css('display','none');
+        });
 		
 		
 		
