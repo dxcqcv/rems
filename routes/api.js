@@ -336,6 +336,30 @@ router.get('/logInfo/list.json', function(req, res, next) {
 });
 
 
+//工艺属性配置：初始化左侧数据
+router.get('/craftProperty/listLeft.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/craftProperty/listLeft.json', form: {userKey:req.session.user.token,  project:req.query.projectid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+
+
+//项目管理页面：初始化左侧数据
+router.get('/projectmanagement/tree.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/projectmanagement/tree.json', form: {userKey:req.session.user.token}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+//项目管理页面：列表查询 根据左侧树查询
+router.get('/projectmanagement/lists.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/projectmanagement/lists.json', form: {userKey:req.session.user.token, page:req.query.page, id:req.query.id, rating:req.query.rating}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+
 
 
 
