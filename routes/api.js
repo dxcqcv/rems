@@ -360,6 +360,29 @@ router.get('/projectmanagement/lists.json', function(req, res, next) {
 });
 
 
+//同比环比页面：耗能-同比分析
+router.get('/CSInfo/expend/list1.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/CSInfo/expend/list1.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, dateFlag:req.query.dateFlag, dateStar:req.query.dateStar}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+//结构分析页面：结构分析数据查询
+router.get('/structureInfo/list.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/structureInfo/list.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, dateFlag:req.query.dateFlag, dateStar:req.query.dateStar}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+
+//结构分析页面：结构分析数据查询
+router.get('/accessInfo/list.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/accessInfo/list.json', form: {userKey:req.session.user.token}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+
+
 
 
 

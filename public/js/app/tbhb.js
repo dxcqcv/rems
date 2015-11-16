@@ -11,6 +11,7 @@ define(function(require){
       , setDate = require('app/setDate')
       , datetimepickerObj = require('app/dateObj')
       , globalTools = require('app/globalTools')
+      , api = require('app/getApi')
       ;
 
       (function(){
@@ -49,6 +50,7 @@ define(function(require){
 // tbhb top 
          localJsonp.start({url:jsonpPath+'tbhb.js',parameter:{id:'tbhbHaoneng',fn:tbhbHngn},jsonpCallback:'tbhb',done:tbhbCallback});
          localJsonp.start({url:jsonpPath+'tbhb2.js',parameter:{id:'tbhbGongneng',fn:tbhbHngn},jsonpCallback:'tbhb2',done:tbhbCallback});
+         //demand.start({url:'/api/CSInfo/expend/list1.json', data:{projectid:1,dateFlag:1,dateStar:"2015-09-01"},done:tbhbCallback})
 
         function tbhbHngn(id,baseLine,xData,sData) {
               options.chart.type = 'column';
@@ -66,6 +68,7 @@ define(function(require){
         localJsonp.start({url:jsonpPath+'tbhb4.js',parameter:{id:'tbhbJnl',fn:tbhbLines},jsonpCallback:'tbhb4',done:tbhbCallback});
 
         function tbhbCallback(data,parameter) {
+          console.log(data);
            parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData);
         }
         function tbhbLines(id,baseLine,xData,sData) {
