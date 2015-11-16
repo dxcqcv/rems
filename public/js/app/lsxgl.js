@@ -12,13 +12,35 @@ define(function(require) {
                 backdrop: 'static' 
             });  
         });
-        
-        
-        $(".write").click(function(){
-              $("#bg").css('display','block');
+
+//		编辑
+        $(document).on('click','.dd',function(){
+        	 $("#bg").css('display','block');
 			$("#tablediv").css('display','block');
         });
+		
+        $("#closediv").click(function(){
+        	$("#tablediv").css('display','none');
+        	$("#bg").css('display','none');
+        });
         
+		$("#colse").click(function(){
+        	$("#tablediv").css('display','none');
+        	$("#bg").css('display','none');
+        });
+		
+		
+//	删除
+		 $(document).on('click','.slcolds',function(){
+        	 $("#bg1").css('display','block');
+			$("#coliseselect").css('display','block');
+        });
+		
+        $("#closedivsel").click(function(){
+        	$("#coliseselect").css('display','none');
+        	$("#bg1").css('display','none');
+        });
+	
 		
 		
 		demand.start({url:'/api/clzpropMng/list.json', data:{userid:1},done:lsxgl})
@@ -67,7 +89,7 @@ define(function(require) {
 						str	+= '<td>泛能站体系</td>'
 						str	+= '<td>'+v.typename+'</td>'
 						str	+= '<td></td>'
-						str	+= '<td><span class="write"><img src="/img/lsxgl/write.png"/></span><span><img src="/img/lsxgl/sz.png"/></span></td>'
+						str	+= '<td><img class="dd" src="/img/lsxgl/write.png"/><img class="slcolds" src="/img/lsxgl/sz.png"/></td>'
 						str	+= '</tr>';
 		    //             str +='<ul><li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li></ul>';
 		            });
@@ -75,8 +97,8 @@ define(function(require) {
 					$("#resultBody tr:even").addClass("even");  
 					$("#resultBody tr:odd").addClass("odd"); 
 			}
-
   });
+ 
   $("#queryDataBtn").on('click',function(){
   	var currentTixi = $('#lsx_selectId').val();
   	console.log(currentTixi);

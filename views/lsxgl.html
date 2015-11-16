@@ -84,17 +84,9 @@
 					<div class="titlesxgl"> 属性管理 <button type="button" class="close" id="colse"> &times;</button></div>
 					
 						<div class="zgybb">
-							<div>属性名称： <input type="text" class="form-control" id="txtinput" ></div>
-							属性类型：<select class="form-control" id="sxname">
-								<option>dd</option>
-								<option>aw</option>
-								<option>ds</option>
-								<option>we</option>
-								<option>uj</option>
-								</select>
-						
+							<div class="div_hgjn">属性名称：<input type="text" class="form-control" id="txtinput" ></div>
 							
-							<div>属性分类：<select class="form-control" id="sxtype">
+							<div class="div_hgjn">属性类型：<select class="form-control selectpicker btn_all">
 								<option>dd</option>
 								<option>aw</option>
 								<option>ds</option>
@@ -103,13 +95,32 @@
 								</select>
 							</div>
 							
-							<div>属性关联：<select class="form-control" id="sxall">
+							<div class="div_hgjn">属性分类：<select class="form-control selectpicker btn_all">
 								<option>dd</option>
 								<option>aw</option>
 								<option>ds</option>
 								<option>we</option>
 								<option>uj</option>
 								</select>
+							</div>
+							
+							<div class="div_hgjn">属性关联：
+								<select class="form-control selectpicker btn_all">
+									<option>dd</option>
+									<option>aw</option>
+									<option>ds</option>
+									<option>we</option>
+									<option>uj</option>
+								</select>
+							</div>
+							
+							<div class="div_hgjn">排序顺序：
+								<input type="radio" id="asc" name="rankradio" checked="checked" value="1">降序排名
+								<input type="radio" id="asc" name="rankradio" checked="checked" value="1">升序排名
+							</div>
+								
+							<div class="div_hgjn fgrs">备注：
+								<textarea></textarea>
 							</div>
 						</div>
 								
@@ -119,6 +130,17 @@
 						</div>
 					</div>
 				</div>
+				
+				<div id="bg1"></div>
+				<div id="coliseselect">
+					<p class="truep">确定</p>
+					<p class="truesel">确定删除？</p>
+					<div class="footerbtnclos">
+						<button type="button" class="btn btn-info" >确定</button>
+	            		<button type="button" class="btn btn-default" id="closedivsel">关闭</button>
+					</div>
+				</div>
+				
 				
 				</div>
 			</div>
