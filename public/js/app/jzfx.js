@@ -9,14 +9,43 @@ define(function(require){
       , setDate = require('app/setDate')
       , datetimepickerObj = require('app/dateObj')
       , optionsLines = require('app/highchartsConfigLines')
+      , globalTools = require('app/globalTools')
       ;
+
       (function(){
+
+      //localJsonp.start({url:jsonpPath+jsonp+'.js',jsonpCallback:jsonp,done:tbhbGhg3});
+      //localJsonp.start({url:jsonpPath+'.js'});
+      $('#lqlwSel').empty().append(str).selectpicker('refresh');
+
+      $('.selectpicker').selectpicker({});
+
+          tbhbClick('.date-controls-box','button','tbhb3',tbhbLines);
+
       // 日月年
-          $('.date-controls-box').children('button').on('click',function(){
-            setDate.changeDate($(this));       
-          }); 
+          function tbhbClick(name,tag,jsonp,fn) {
+              $(name).find(tag).click(function(){
+                  var $this = $(this)
+                  var charts = $this.parents('.my-card').find('.chart-box').attr('id'); 
+                  localJsonp.start({url:jsonpPath+jsonp+'.js',parameter:{pointer:this,charts:charts,tag:tag,fn:fn},jsonpCallback:jsonp,done:tbhbGhg3});
+              });
+          }
+         function tbhbGhg3(data,parameter) {
+            parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData);
+            globalTools.selectFn(parameter.pointer,parameter.tag); 
+            setDate.changeDate(parameter.pointer);       
+         }
         //时间空间
-          $('.datetimepicker1').datetimepicker(datetimepickerObj);
+          $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',function(){
+                var id = $(this).parents('.my-card').find('.chart-box').attr('id');
+                var jsonpName, dateFn;
+                switch(id) {
+                    case 'nyzhlyl': jsonpName= 'tbhb3'; dateFn = tbhbLines; break; 
+                    case 'jnl': jsonpName= 'tbhb4'; dateFn = tbhbLines; break; 
+                }
+                    localJsonp.start({url:jsonpPath+jsonpName+'.js',parameter:{id:id,fn:dateFn},jsonpCallback:jsonpName,done:tbhbCallback});
+          });
+
           // 图表
           var chartLines;
         localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{id:'nyzhlyl',fn:tbhbLines},jsonpCallback:'tbhb3',done:tbhbCallback});

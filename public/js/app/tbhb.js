@@ -16,10 +16,6 @@ define(function(require){
       (function(){
           var chart;
           var chartLines;
-          // 日月年
-          $('.date-controls-box').children('button').on('click',function(){
-            setDate.changeDate($(this));       
-          }); 
           $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',function(){
                 var id = $(this).parents('.my-card').find('.chart-box').attr('id');
                 var jsonpName, dateFn;
@@ -32,6 +28,7 @@ define(function(require){
                     localJsonp.start({url:jsonpPath+jsonpName+'.js',parameter:{id:id,fn:dateFn},jsonpCallback:jsonpName,done:tbhbCallback});
           });
 
+          // 日月年
           tbhbClick('.tbhb-switch-box-top','li','tbhb2',tbhbHngn); 
           tbhbClick('.date-controls-box-top','button','tbhb2',tbhbHngn);
           tbhbClick('.tbhb-switch-box-bottom','li','tbhb3',tbhbLines); 
@@ -46,6 +43,7 @@ define(function(require){
          function tbhbGhg3(data,parameter) {
             parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData);
             globalTools.selectFn(parameter.pointer,parameter.tag); 
+            setDate.changeDate(parameter.pointer);       
          }
       //图表
 // tbhb top 

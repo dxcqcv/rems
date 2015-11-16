@@ -3,6 +3,7 @@ define(function(require){
       var $ = require('jquery');
     return {
         changeDate: function(el) {
+            var el = $(el);
             var fromEl = el.attr('data-tar');
             var toEl = el.attr('date-pickerto');
             var fromTime, toTime;
