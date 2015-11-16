@@ -64,6 +64,9 @@ define(function(require) {
         var selected = $(this).find('option:selected').val();
         if(selected == '1') {
             demand.start({url:'/api/clzMng/page.json',done:lsx_left})
+        }
+    });
+
             function lsx_left(data){
 					console.log(data);
 					var str = "";
@@ -72,9 +75,6 @@ define(function(require) {
 		            });
 					$("#lsx_ul").empty().append(str);
 					}
-        }
-    });
-
   $('#lsx_ul').on("click", 'li', function(){
   	var classid = $(this).attr("data-classid");
   	demand.start({url:'/api/clzpropMng/findByForm.json', data:{pclzid:classid},done:lsx_right})
