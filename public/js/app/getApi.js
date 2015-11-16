@@ -15,6 +15,7 @@ define(function(require) {
                   , currentRequest = null
                   , done = opt.done ? opt.done : doneFn
                   , fail = opt.fail ? opt.fail : failFn
+                  , parameter = opt.parameter ? opt.parameter : {}
                   ////, jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
                   //, jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : '' 
                   , self = this;
@@ -32,6 +33,7 @@ define(function(require) {
                   //, crossDomain: true
                   , mimeType: 'application/json'
                   , contentType: 'text/plain'
+                  , parameter: parameter  
                   //, xhrFields: { withCredentials: false }
                   , beforeSend: function() {
                         if(currentRequest != null) currentRequest.abort();
@@ -40,7 +42,7 @@ define(function(require) {
                 .done(function(data){
                     var d = data;
                     //self.loading.addClass('hide');
-                    done(d);
+                    done(d,this.parameter);
                 })
                 .fail(function(jqXHR, textStatus,errorThrown) {
                     if(textStatus == 'timeout') { //alert('timeout'); 

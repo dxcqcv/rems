@@ -7,7 +7,11 @@ define(function(require){
             credits: {
                 enabled: false
             },
-
+            yAxis: {
+                title: {
+                    text: null 
+                }
+            },
             title: {
                 text: null
             },

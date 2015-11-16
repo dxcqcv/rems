@@ -9,16 +9,27 @@ define(function(require){
       , proto = require('app/highstockMod')
       , highcharts = require('app/card') 
       , setDate = require('app/setDate')
+      , datetimepickerObj = require('app/dateObj')
+      , globalTools = require('app/globalTools')
       ;
 
       (function(){
           var chart;
           var chartLines;
-          var nowDate = new Date();
           $('.date-controls-box').children('button').on('click',function(){
-            setDate($(this));       
+            setDate.changeDate($(this));       
           }); 
-          $('.datetimepicker1').datetimepicker({format : "YYYY-MM-DD",defaultDate:nowDate});
+          $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',function(){
+                var id = $(this).parents('.my-card').find('.chart-box').attr('id');
+                var jsonpName, dateFn;
+                switch(id) {
+                    case 'tbhbHaoneng': jsonpName= 'tbhb'; dateFn = tbhbHngn; break;
+                    case 'tbhbGongneng': jsonpName= 'tbhb'; dateFn = tbhbHngn; break; 
+                    case 'tbhbNyzhlyl': jsonpName= 'tbhb3'; dateFn = tbhbLines; break; 
+                    case 'tbhbJnl': jsonpName= 'tbhb3'; dateFn = tbhbLines; break; 
+                }
+                    localJsonp.start({url:jsonpPath+jsonpName+'.js',parameter:{id:id,fn:dateFn},jsonpCallback:jsonpName,done:tbhbCallback});
+          });
 
           tbhbClick('.tbhb-switch-box-top','li','tbhb2',tbhbHngn); 
           tbhbClick('.date-controls-box-top','button','tbhb2',tbhbHngn);
@@ -32,124 +43,41 @@ define(function(require){
               });
           }
          function tbhbGhg3(data,parameter) {
-            parameter.fn(parameter.charts,data[0].xData,data[0].sData);
-            selectFn(parameter.pointer,parameter.tag); 
+            parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData);
+            globalTools.selectFn(parameter.pointer,parameter.tag); 
          }
-      function selectFn(sel,siblings) {
-           $(sel).siblings(siblings).removeClass('active').end().addClass('active'); 
-      }
       //图表
-         localJsonp.start({url:jsonpPath+'tbhb.js',jsonpCallback:'tbhb',done:tbhbGhg});
-         function tbhbGhg(data) {
-            tbhbHngn('tbhbHaoneng',data[0].xData,data[0].sData);
-            tbhbHngn('tbhbGongneng',data[0].xData,data[0].sData);
-         }
-        function tbhbHngn(id,xData,sData) {
+// tbhb top 
+         localJsonp.start({url:jsonpPath+'tbhb.js',parameter:{id:'tbhbHaoneng',fn:tbhbHngn},jsonpCallback:'tbhb',done:tbhbCallback});
+         localJsonp.start({url:jsonpPath+'tbhb2.js',parameter:{id:'tbhbGongneng',fn:tbhbHngn},jsonpCallback:'tbhb2',done:tbhbCallback});
+
+        function tbhbHngn(id,baseLine,xData,sData) {
               options.chart.type = 'column';
               options.chart.renderTo = id;
               options.xAxis.categories = xData;
+              //optionsLines.yAxis.plotLines.value = baseLine;
               options.plotOptions.series.dataLabels.enabled = true;
               options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
               options.series = sData;
 
               chart = new Highcharts.Chart(options); 
         }
+// tbhb bottom
+        localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{id:'tbhbNyzhlyl',fn:tbhbLines},jsonpCallback:'tbhb3',done:tbhbCallback});
+        localJsonp.start({url:jsonpPath+'tbhb4.js',parameter:{id:'tbhbJnl',fn:tbhbLines},jsonpCallback:'tbhb4',done:tbhbCallback});
 
-        localJsonp.start({url:jsonpPath+'tbhb3.js',jsonpCallback:'tbhb3',done:tbhbBottom});
-
-        function tbhbBottom(data) {
-            tbhbLines('tbhbNyzhlyl',data[0].xData,data[0].sData);
-            tbhbLines('tbhbJnl',data[0].xData,data[0].sData);
+        function tbhbCallback(data,parameter) {
+           parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData);
         }
-        function tbhbLines(id,xData,sData) {
+        function tbhbLines(id,baseLine,xData,sData) {
               optionsLines.chart.renderTo = id;
+              optionsLines.yAxis.plotLines.value = baseLine;
               optionsLines.xAxis.categories = xData;
               optionsLines.series = sData;
               chartLines = new Highcharts.Chart(optionsLines); 
         }
-         //localJsonp.start({url:jsonpPath+'stockData.js',jsonpCallback:'callback',done:showStock});
 
 
-        //var l1, l2;
-    //function showStock(data) {
-         //l1 = tbhbBottom('tbhbNyzhlyl',data);
-         //l2 = tbhbBottom('tbhbJnl',data);
-//setDatetimepicker('#tbhbJnlDate1',l2);
-//setDatetimepicker('#tbhbJnlDate2',l2);
-    //}
-         //function tbhbBottom(id, data) {
-            //var stockOptions = {
-                //chart: {
-                //renderTo: 'nyzhlyl',
-                //type: 'line',
-            //},
-             //yAxis: { // 基线
-                 //title: {
-                     //text: null 
-                 //},
-                 //plotLines: [{
-                     //value: 125,
-                     //width: 1,
-                     //zIndex: 2,
-                     //color: 'red'
-                 //}]
-             //},
-            //credits: {
-                //enabled: false
-            //},
-            //exporting: {
-                      //enabled:false
-                    //},
-            //series: [{
-                //id: "data",
-                //data: data
-            //}],
-            //rangeSelector: {
-                //[> It seems like you'd want to hide Highcharts' own rangeSelector since we're using a custom one<]
-                //enabled: false
-            //}
-        //}
-         //stockOptions.chart.renderTo = id;   
-         //stockOptions.series.data = data;   
-         //stock = new Highcharts.StockChart(stockOptions); 
-         //return stock;
-            //};
-                        
-
- //日月年
-//$('#nyzhlylButton button').click(function(){ stockWithButton.call(this,l1) });
-//$('#tbhbJnlButton button').click(function(){ stockWithButton.call(this,l2) });
-
-//function stockWithButton(fn) {
-    ////e.preventDefault();
-    //// OK, pretty ugly :)
-    //var call = 'zoom' + $(this).attr('data-range');
-    //// I have two globally accessible charts here:
-    //if ($(this).attr('data-chart') == 'line') {
-        //fn[call]();
-    //} else {
-        //candleChart[call]();
-    //}
-    //$(this).siblings('button').removeClass('active').end().addClass('active');
-//}
-
-          ////时间控件
-//var nowDate = new Date();
-          //function setDatetimepicker(id,fn) {
-            //var dd = fn;
-           //$(id).datetimepicker({format : "YYYY-MM-DD",defaultDate:nowDate}).on('change dp.change', function(id,dd){ console.log(12121,typeof id);console.log(9999,dd);changeDate('#tbhbJnlDate1','#tbhbJnlDate2',dd)});
-          //}
-
-        //function changeDate(date1,date2,fn) {
-            //var from = $(date1).data("DateTimePicker").date().format("YYYY-MM-DD");
-            //var f = moment.utc(from);
-         
-            //var to = $(date2).data("DateTimePicker").date().format("YYYY-MM-DD");
-            //var t = moment.utc(to);
-            //console.log(fn)
-            //fn['zoomWithDate'](f.valueOf(), t.valueOf());
-        
-        //}
 
 //end
       }());

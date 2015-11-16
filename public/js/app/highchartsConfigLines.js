@@ -35,7 +35,14 @@ define(function(require){
         yAxis: {
             title: {
                 text: null 
-            }
+            },
+             plotLines: [{
+                 value: 12,
+                 width: 1,
+                 zIndex: 2,
+                 color: 'red'
+             }]
+
         },
         series: [{}]
     };

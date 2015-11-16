@@ -7,8 +7,8 @@ define(function(require) {
       , optionsStactColumn = require('app/highchartsConfigStactColumn')
       , setDate = require('app/setDate')
       , globalTools = require('app/globalTools')
+      , datetimepickerObj = require('app/dateObj')
       ;
-	$(function() {
     //图表
          var chart, chartCol;
          localJsonp.start({url:jsonpPath+'cbfxLines.js',jsonpCallback:'cbfxLines',parameter:{id:'dwgncbqxCharts'},done:cbfxLinesData});
@@ -34,18 +34,18 @@ define(function(require) {
               chart = new Highcharts.Chart(optionsArea); 
          }
     //时间控件
-       var datetimepickerObj = {
-            format: 'YYYY-MM-DD',
-            defaultDate: new Date() 
-       }
-       $('.datetimepicker1').datetimepicker(datetimepickerObj);
-    });
-	
+       $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',function(){
+         localJsonp.start({url:jsonpPath+'cbfxLines.js',jsonpCallback:'cbfxLines',parameter:{id:'dwgncbqxCharts'},done:cbfxLinesData});
+        });
+
     // button
     $('.dateButtons').children('button').on('click', function(){
         var $this = $(this);
          setDate.changeDate($this);    
          globalTools.selectFn($this,'button'); 
+
+         localJsonp.start({url:jsonpPath+'cbfxLines.js',jsonpCallback:'cbfxLines',parameter:{id:'dwgncbqxCharts'},done:cbfxLinesData});
+
     });
 	
 });
