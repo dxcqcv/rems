@@ -18,7 +18,7 @@
                     <div class="card-subtitle clearfix">
                         <ul class="list-inline pull-left">
                             <li>
-                                <select class="form-control selectpicker" id="">
+                                <select class="form-control selectpicker" id="cchpSel">
                                   <option>热效率</option>
                                   <option>热电比</option>
                                   <option>余热利用率</option>
@@ -26,16 +26,7 @@
                             </li>
                         </ul>
                         <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="nyzhlylDate1">
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <p class="pull-right zhi-style">至</p>
-                        <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="nyzhlylDate2">
+                            <div class='input-group date datetimepicker1' id="cchpDate">
                                 <input type='text' class="form-control"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -43,16 +34,16 @@
                             </div>
                         </div>
                         <div class="jgfx-top-right-none pull-right pr10">
-                            <div class="btn-group  zoom_controls" id="nyzhlylButton">
-                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m">月</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                            <div class="btn-group  zoom_controls date-controls-box" id="nyzhlylButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" data-tar="cchpDate">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" data-tar="cchpDate">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" data-tar="cchpDate">年</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div id="nyzhlyl" class="chart-box charts-cont"></div>
+                <div id="mkfxCCHP" class="chart-box charts-cont"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -65,7 +56,7 @@
                     <div class="card-subtitle clearfix">
                         <ul class="list-inline pull-left">
                             <li>
-                                <select class="form-control selectpicker" id="">
+                                <select class="form-control selectpicker" id="cgtfSel">
                                   <option>冷机热泵</option>
                                   <option>锅炉</option>
                                   <option>溴化锂</option>
@@ -74,16 +65,7 @@
                             </li>
                         </ul>
                         <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="jnlDate1">
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <p class="pull-right zhi-style">至</p>
-                        <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="jnlDate2">
+                            <div class='input-group date datetimepicker1' id="cgtfDate">
                                 <input type='text' class="form-control"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -91,16 +73,16 @@
                             </div>
                         </div>
                         <div class="jgfx-top-right-none pull-right pr10">
-                            <div class="btn-group  zoom_controls" id="jnlButton">
-                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m">月</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                            <div class="btn-group  zoom_controls date-controls-box" id="jnlButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" data-tar="cgtfDate">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" data-tar="cgtfDate">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" data-tar="cgtfDate">年</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div id="jnl" class="chart-box charts-cont"></div>
+                <div id="mkfxCgtf" class="chart-box charts-cont"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -113,23 +95,14 @@
                     <div class="card-subtitle clearfix">
                         <ul class="list-inline pull-left">
                             <li>
-                                <select class="form-control selectpicker" id="">
+                                <select class="form-control selectpicker" id="xntfSel">
                                   <option>蓄能量</option>
                                   <option>释能量</option>
                                 </select>
                             </li>
                         </ul>
                         <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="eyhtjplDate1">
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <p class="pull-right zhi-style">至</p>
-                        <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="eyhtjplDate2">
+                            <div class='input-group date datetimepicker1' id="xntfDate">
                                 <input type='text' class="form-control"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -137,16 +110,16 @@
                             </div>
                         </div>
                         <div class="jgfx-top-right-none pull-right pr10">
-                            <div class="btn-group  zoom_controls" id="eyhtjplButton">
-                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m">月</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                            <div class="btn-group  zoom_controls date-controls-box" id="eyhtjplButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" data-tar="xntfDate">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" data-tar="xntfDate">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" data-tar="xntfDate">年</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div id="eyhtjpl" class="chart-box charts-cont"></div>
+                <div id="mkfxXntf" class="chart-box charts-cont"></div>
             </div>
             <div class="my-card col-md-6 col-lg-6 col-xs-12">
                 <div class="my-card-top">
@@ -159,7 +132,7 @@
                     <div class="card-subtitle clearfix">
                         <ul class="list-inline pull-left">
                             <li>
-                                <select class="form-control selectpicker" id="">
+                                <select class="form-control selectpicker" id="spSel">
                                   <option>冷温水输配</option>
                                   <option>冷却水输配</option>
                                   <option>冷却塔</option>
@@ -167,16 +140,7 @@
                             </li>
                         </ul>
                         <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="kzsnylylDate2">
-                                <input type='text' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <p class="pull-right zhi-style">至</p>
-                        <div class="jgfx-date-box pull-right">
-                            <div class='input-group date datetimepicker1' id="kzsnylylDate1">
+                            <div class='input-group date datetimepicker1' id="spDate">
                                 <input type='text' class="form-control"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -184,16 +148,16 @@
                             </div>
                         </div>
                         <div class="jgfx-top-right-none pull-right pr10">
-                            <div class="btn-group  zoom_controls" id="kzsnylylButton">
-                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d">日</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m">月</button>
-                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y">年</button>
+                            <div class="btn-group  zoom_controls date-controls-box" id="kzsnylylButton">
+                                <button type="button" class="btn btn-default active" data-chart="line" data-range="1d" data-tar="spDate">日</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1m" data-tar="spDate">月</button>
+                                <button type="button" class="btn btn-default" data-chart="line" data-range="1y" data-tar="spDate">年</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div id="kzsnylyl" class="chart-box charts-cont"></div>
+                <div id="mkfxSp" class="chart-box charts-cont"></div>
             </div>
         </div>
         <script>
