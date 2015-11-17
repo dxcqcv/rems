@@ -15,8 +15,10 @@ define(function(require) {
 
 //		编辑
         $(document).on('click','.dd',function(){
-        	 $("#bg").css('display','block');
-			$("#tablediv").css('display','block');
+          $("#currentClasspropertyid").val($(this).attr("data-classpropertyid"));
+
+        	$("#bg").css('display','block');
+          $("#tablediv").css('display','block');
         });
 		
         $("#closediv").click(function(){
@@ -24,9 +26,20 @@ define(function(require) {
         	$("#bg").css('display','none');
         });
         
-		$("#colse").click(function(){
+		    $("#colse").click(function(){
         	$("#tablediv").css('display','none');
         	$("#bg").css('display','none');
+        });
+        $("#saveEditBtn").click(function(){
+          var currentClasspropertyid = $("#currentClasspropertyid").val();
+          var editShuxingName = $("#editShuxingName").val();
+          
+          $(".lsx_tr_"+currentClasspropertyid).find('td').eq(0).empty().append(editShuxingName);
+
+          $("#tablediv").css('display','none');
+          $("#bg").css('display','none');
+          
+          
         });
 		
 		
@@ -82,14 +95,14 @@ define(function(require) {
 					console.log(data);
 					var str = "";
 					$.each(data.status.data.list,function(i,v){
-						str += '<tr class="">';
+						str += '<tr class="lsx_tr_'+v.classpropertyid+'">';
 						str	+= '<td>'+i+'</td>'
 						str	+= '<td>'+v.classpropertyname+'</td>'
 						str	+= '<td>'+v.classname+'</td>'
 						str	+= '<td>泛能站体系</td>'
 						str	+= '<td>'+v.typename+'</td>'
 						str	+= '<td></td>'
-						str	+= '<td><img class="dd" src="/img/lsxgl/write.png"/><img class="slcolds" src="/img/lsxgl/sz.png"/></td>'
+						str	+= '<td><img class="dd" data-classpropertyid="'+v.classpropertyid+'" src="/img/lsxgl/write.png"/><img class="slcolds" src="/img/lsxgl/sz.png"/></td>'
 						str	+= '</tr>';
 		    //             str +='<ul><li class="lili" data-classid="'+v.classid+'" data-classtypeid="'+v.classtypeid+'">'+v.classname+'</li></ul>';
 		            });
