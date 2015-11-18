@@ -14,6 +14,7 @@ define(function(require){
 
       (function(){
 
+// 选择框
           localJsonp.start({url:jsonpPath+'mkfxSel1.js',parameter:{id:'#cchpSel'},jsonpCallback:'mkfxSel1',done:globalTools.selCallback});
           localJsonp.start({url:jsonpPath+'mkfxSel2.js',parameter:{id:'#cgtfSel'},jsonpCallback:'mkfxSel2',done:globalTools.selCallback});
           localJsonp.start({url:jsonpPath+'mkfxSel3.js',parameter:{id:'#xntfSel'},jsonpCallback:'mkfxSel3',done:globalTools.selCallback});

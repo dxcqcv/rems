@@ -4,137 +4,49 @@ define(function(require) {
       , bootstrap = require('bootstrap')
       , jsonpPath= require('app/getJsonp')
 	  , highcharts = require('exporting')
+      , globalTools = require('app/globalTools')
+      , options = require('app/highchartsConfig')
+      , optionsLines = require('app/highchartsConfigLines')
+      , datetimepickerObj = require('app/dateObj')
       ;
     (function() {
     //弹出层
-    $('.gnhnIcon').on('click', function() {
-        $("#myModal").modal('show');
-        // localJsonp.start({url:jsonpPath+'modalLines.js',jsonpCallback:'modalLines',done:modalLines});
-    });
+    $('.gnhnIcon').on('click',globalTools.modalFn);
 
     
     $('#myModal').on('shown.bs.modal', function() {
-        localJsonp.start({url:jsonpPath+'modalLines.js',jsonpCallback:'modalLines',done:modalLines});
+        var num = $(this).attr('data-num'); 
+        switch(num) {
+            case '0':
+                localJsonp.start({url:jsonpPath+'modalLines.js',parameter:{options: optionsLines,color:'transparent' },jsonpCallback:'modalLines',done:globalTools.modalLines});
+                break;
+            case '1':
+                localJsonp.start({url:jsonpPath+'modalLines2.js',parameter:{options: optionsLines,color:'transparent' },jsonpCallback:'modalLines2',done:globalTools.modalLines});
+                break;
+            case '2':
+                localJsonp.start({url:jsonpPath+'modalLines2.js',parameter:{options: optionsLines,color:'transparent' },jsonpCallback:'modalLines2',done:globalTools.modalLines});
+                break;
+            case '3':
+                localJsonp.start({url:jsonpPath+'modalLines2.js',parameter:{options: optionsLines,color:'transparent' },jsonpCallback:'modalLines2',done:globalTools.modalLines});
+                break;
+        }
     }); 
   
 
-
-    function modalLines(data) {
-       
-
-    $('#gnhnHaodianCharts').highcharts({
-            chart: {
-                type: 'column'        
-            },
-            title: {
-                text: 'Stacked column chart'
-            },
-            exporting: {
-              enabled:false
-            },
-            xAxis: {
-                categories: ['Lazada', 'Competitor 1', 'Competitor 2', 'Competitor 3', 'Competitor 4']
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Price Range'
-                }
-            },
-            tooltip: {
-                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-                shared: true
-            },
-            plotOptions: {
-                column: {
-                    stacking: 'percent'
-                }
-            },
-            series: [{
-                name: '100 - 300',
-                data: [5, 3, 4, 7, 2]
-            }, {
-                name: '301 - 500',
-                data: [2, 2, 3, 2, 1]
-            }, {
-                name: '501 - 1000',
-                data: [3, 4, 4, 2, 5]
-            }, {
-                name: '1001 - 3000',
-                data: [3, 4, 4, 2, 5]
-            }, {
-                name: '3001 - 5000',
-                data: [3, 4, 4, 2, 5]
-            }, {
-                name: '5001 - 10000',
-                data: [3, 4, 4, 2, 5]
-            }]
-        });
-        var chart = $('#gnhnHaodianCharts').highcharts();
-
-        
-    }
     // tooltips
          $('[data-toggle="tooltip"]').tooltip();  
     //时间控件
-       $('.datetimepicker1').datetimepicker({
-            format: 'YYYY-MM-DD',
-            defaultDate: new Date()
+       $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',function(){
+             localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:options},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:options},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:options},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:options},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
        });
         //图表
-          var options = {
-            chart: {
-                renderTo: 'drgnsp',
-                defaultSeriesType: 'column'
-            },
-            credits: {
-                enabled: false
-            },
-            exporting: {
-              enabled:false
-            },
-            title: {
-                text: null 
-            },
-
-            xAxis: {
-                categories: []
-            },
-            yAxis: {
-                title: {
-                    text: null 
-                }
-            },
-            series: [{}]
-        };
-         localJsonp.start({url:jsonpPath+'highchartsJson.js',jsonpCallback:'highchartsJsonp',done:highchartsJsonp});
-         localJsonp.start({url:jsonpPath+'highchartsJson2.js',jsonpCallback:'highchartsJsonp2',done:highchartsJsonp2});
-         localJsonp.start({url:jsonpPath+'highchartsJson3.js',jsonpCallback:'highchartsJsonp3',done:highchartsJsonp3});
-         localJsonp.start({url:jsonpPath+'highchartsJson4.js',jsonpCallback:'highchartsJsonp4',done:highchartsJsonp4});
-         function highchartsJsonp(data) {
-            options.chart.renderTo = 'drgnsp';
-            options.series[0].data = data;
-            chart = new Highcharts.Chart(options); 
-         }
-         function highchartsJsonp2(data) {
-            options.chart.renderTo = 'dygnsp';
-            options.series[0].data = data;
-            chart = new Highcharts.Chart(options); 
-         }
-         function highchartsJsonp3(data) {
-            options.chart.renderTo = 'qrgnsp';
-            options.series[0].data = data;
-            chart = new Highcharts.Chart(options); 
-         }
-         function highchartsJsonp4(data) {
-            options.chart.renderTo = 'dngnsp';
-            options.series[0].data = data;
-            chart = new Highcharts.Chart(options); 
-         }
-
-
-
-
+         localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:options},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:options},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:options},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:options},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
 
     }());
 });

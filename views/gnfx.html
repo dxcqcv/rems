@@ -24,7 +24,7 @@
                        <ul class="nav nav-tabs ">
                             <li class="nor"><a>当日供能水平</a></li>
                        </ul>
-                       <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情"  data-title="当日供能水平" data-num="1"></span>
+                       <span class="glyphicon glyphicon-option-horizontal gnhnIcon" aria-hidden="true"  data-toggle="tooltip" data-placement="top" data-original-title="供能详情"  data-title="当日供能水平" data-num="0"></span>
                     </div>
                 </div>
                 <div id="drgnsp" class="chart-box charts-cont-2-level"></div>
@@ -72,10 +72,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">当日供能水平详细</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="gnhnModalBody">
                 <div class="gnhn-modal-block">
                     <p class="gnhn-modal-title">耗电</p>
                     <div class="gnhn-modal-charts" id="gnhnHaodianCharts"></div>
+                </div>
+                <div class="gnhn-modal-block">
+                    <p class="gnhn-modal-title">耗水</p>
+                    <div class="gnhn-modal-charts" id="gnhnHaodianCharts2"></div>
                 </div>
             </div>
             <!--<div class="modal-footer">-->
@@ -87,7 +91,7 @@
 </div>
 	<script>
 		requirejs(['../js/common'], function(common) {
-			requirejs(['app/hnfx'])
+			requirejs(['app/gnfx'])
 		});
 	</script>
 <% include footer.html %>

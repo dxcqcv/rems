@@ -20,11 +20,12 @@ define(function(require) {
            parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
         },
         tbhbLines: function(id,baseLine,xData,sData,options) {
+              var tbhbChartLines
               options.chart.renderTo = id;
               options.yAxis.plotLines.value = baseLine;
               options.xAxis.categories = xData;
               options.series = sData;
-              chartLines = new Highcharts.Chart(options); 
+              tbhbChartLines = new Highcharts.Chart(options); 
         },
         selTabFn: function(data,parameter) {
             parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
@@ -42,6 +43,40 @@ define(function(require) {
                   var charts = $this.parents('.my-card').find('.chart-box').attr('id'); 
                   ajaxFn({url:jsonpPath+jsonp+'.js',parameter:{pointer:this,charts:charts,tag:tag,fn:fn,self:self,options:options,setDateFn:setDateFn},jsonpCallback:jsonp,done:self.tbhbGhg3});
               });
+        },
+        ghnCallback: function (data,parameter) {
+            var ghnChart
+            parameter.options.chart.renderTo = parameter.id;
+            parameter.options.series[0].data = data;
+            ghnChart = new Highcharts.Chart(parameter.options); 
+        },
+        modalLines: function (data,parameter) {
+            var str;
+            var gnfxLines;
+            var body = $('#gnhnModalBody');
+            body.empty();
+            $.each(data, function(i,v) {
+                  str = '<div class="gnhn-modal-block">'+
+                        '<p class="gnhn-modal-title">'+v.title+'</p>'+
+                        '<div class="gnhn-modal-charts" id="gnhnHaodianCharts'+i+'"></div>'+
+                    '</div>';
+                body.append(str);
+                parameter.options.chart.renderTo = "gnhnHaodianCharts"+i;
+                parameter.options.yAxis.plotLines[0].color = parameter.color;
+                parameter.options.xAxis.categories = v.xData;
+                parameter.options.series = v.sData;
+                gnfxLines = new Highcharts.Chart(parameter.options); 
+            });
+        },
+        modalFn: function () {
+            var $this = $(this)
+              , title = $this.data('title')
+              , num = $this.data('num')
+              , modal = $("#myModal")
+              ;
+            modal.attr('data-num',num);
+            modal.find('.modal-title').text(title);
+            modal.modal('show');
         }
     }    
 });
