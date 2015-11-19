@@ -7,6 +7,7 @@ define(function(require){
             var fromEl = el.attr('data-tar');
             var toEl = el.attr('date-pickerto');
             var fromTime, toTime;
+            if(fromEl === undefined) return;
             if (el.attr('data-range') == '1d') {
                 fromTime = moment().startOf('day').format("YYYY-MM-DD");
                 toTime = moment().startOf('minute').format("YYYY-MM-DD");

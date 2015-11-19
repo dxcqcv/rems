@@ -42,7 +42,9 @@ define(function(require) {
              localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:options},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
              localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:options},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
        });
+
         //图表
+
          localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:options},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
          localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:options},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
          localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:options},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});

@@ -18,7 +18,7 @@ define(function(require){
         Index.prototype = {
             init: function() {
                 //localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
-                localData != null ? localData : demand.start({url:'/api/gislist.json', done:this.getGislist});
+                localData != null ? localData : demand.start({url:'/api/gislist_features.json', done:this.getGislist});
                 this.switchProject();
                 this.enterProject();
 //                this.configMap(); 
@@ -42,8 +42,11 @@ define(function(require){
                         var isList = $this.attr('data-list');
                         var projectid = $this.attr("data-projectid");
                         var title = $this.attr('title');
+
+
                         if(isList == 0) {
-                        
+
+
                         $this
                             .attr('data-list',1)
                             .parent('div.item').siblings('div').attr('data-list',0).find('.project-icon').removeClass('project-icon-clicked').end().find('.project-list-detail').addClass('hide').end().end().end()
@@ -53,7 +56,7 @@ define(function(require){
                             map.setZoomAndCenter(10, [longitude, latitude]);
                             
                             //$('.markerlnglat'+projectid+'').attr('src','/img/index/icon-map-icon.png')
-$('.maker'+projectid+'').addClass('map-maker-big');
+$('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('.index-map-maker').removeClass('map-maker-big').end().end().end().addClass('map-maker-big');
                         } else {
                             localStorage.setItem('curProjectid', projectid );
                             localStorage.setItem('curProjectidName', title);
@@ -116,7 +119,7 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                 $('.carousel-indicators').empty().append(this.str);
                 this.str = '';
             },
-            projectList: function(projectName,projectId,longitude, latitude,industrytypename,address,buildingarea,supplyarea) {
+            projectList: function(projectName,projectId,longitude, latitude,industrytypename,address,buildingarea,supplyarea,data1,data2,data3,data4) {
                     return this.str += 
                         'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'"  data-list="0" title="'+projectName+'">'+
                             '<div class="project-list-left">'+
@@ -133,19 +136,19 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                                     '<ul>'+
                                         '<li>'+
                                             '<p class="detail-name">能源综合利用率</p>'+
-                                            '<p class="detail-val">0.38</p>'+
+                                            '<p class="detail-val">'+data1+'</p>'+
                                         '</li>'+
                                         '<li>'+
                                             '<p class="detail-name">可再生能源利用率</p>'+
-                                            '<p class="detail-val">0.38</p>'+
+                                            '<p class="detail-val">'+data2+'</p>'+
                                         '</li>'+
                                         '<li>'+
                                             '<p class="detail-name">累计节能率</p>'+
-                                            '<p class="detail-val">0.38</p>'+
+                                            '<p class="detail-val">'+data3+'</p>'+
                                         '</li>'+
                                         '<li>'+
                                             '<p class="detail-name">CO2减排率</p>'+
-                                            '<p class="detail-val">0.38</p>'+
+                                            '<p class="detail-val">'+data4+'</p>'+
                                         '</li>'+
                                     '</ul>'+
                                 '</div>'+
@@ -191,7 +194,7 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                 this.itemsDone = true;
             },
             getGislist: function(data) {
-                localData = data.status.data.list;
+                localData = data.status.data.gislist;
                 var nums = index.getNums();
                 index.indexProject(nums[0],index.projectList,0); //trigger indexProject
                 index.configMap(localData); 
@@ -207,7 +210,8 @@ $('.maker'+projectid+'').addClass('map-maker-big');
                 this.projectIndicators(len,type);
                 if(this.itemsDone) {
                     $.each(localData, function(i,v){
-                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude,v.industrytypename,v.address,v.buildingarea,v.supplyarea); 
+                        if(v.featureslist.length === 0) v.featureslist.push({datavalue:0},{datavalue:0},{datavalue:0},{datavalue:0});
+                        self.str = fn.call(self, v.projectname,v.projectid,v.longitude, v.latitude,v.industrytypename,v.address,v.buildingarea,v.supplyarea,v.featureslist[0].datavalue,v.featureslist[1].datavalue,v.featureslist[2].datavalue,v.featureslist[3].datavalue); 
                     });
 
                     self.str = self.str.split('shangwenlong'); // splited by string shangwenlong

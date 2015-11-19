@@ -61,6 +61,28 @@ router.get('/gislist.json', function(req, res, next) {
 	})
 
 });
+router.get('/features.json', function(req, res, next) {
+
+
+	request.post({url:'http://117.144.16.98:8080/rems/features.json', form: {userKey:req.session.user.token, projectid:req.query.projectid}}, function(error,response,body){
+		
+	console.log(req.query.projectid);
+	    	res.send(body);
+	  	
+	})
+
+});
+router.get('/gislist_features.json', function(req, res, next) {
+
+
+	request.post({url:'http://117.144.16.98:8080/rems/gislist_features.json', form: {userKey:req.session.user.token}}, function(error,response,body){
+		
+	console.log(req.query.projectid);
+	    	res.send(body);
+	  	
+	})
+
+});
 
 //首页选择项目告知后台projectid的接口
 

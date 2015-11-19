@@ -7,16 +7,16 @@
         <div class="top-bar col-md-12 col-lg-12 col-xs-12">
             <div class="jgfx-top-inner">
                 <span class="ib jgfx-top-label">查看方式：</span>
-                <div class="jgfx-top-right ib">
+                <div class="jgfx-top-right ib date-controls-box">
                     <div class="btn-group ">
-                        <button type="button" class="btn btn-default ">累计</button>
-                        <button type="button" class="btn btn-default active">日</button>
-                        <button type="button" class="btn btn-default">月</button>
-                        <button type="button" class="btn btn-default">年</button>
+                        <button type="button" class="btn btn-default " >累计</button>
+                        <button type="button" class="btn btn-default active" data-range="1d" data-tar="jgfxDate">日</button>
+                        <button type="button" class="btn btn-default" data-range="1m" data-tar="jgfxDate">月</button>
+                        <button type="button" class="btn btn-default" data-range="1y" data-tar="jgfxDate">年</button>
                     </div>
                 </div>
                 <div class="jgfx-date-box ib">
-                    <div class='input-group date datetimepicker1'>
+                    <div class='input-group date datetimepicker1' id="jgfxDate">
                         <input type='text' class="form-control"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
