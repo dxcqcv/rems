@@ -154,10 +154,23 @@ router.get('/projectOverview.json', function(req, res, next) {
 
 /*运行监测页面*/
 //运行监测页面设备查询接口
-router.get('/techCheck/equipments.json', function(req, res, next) {
+router.get('/techCheck/equLabellist.json', function(req, res, next) {
 	console.log("9898989898");
 	console.log(req.query.projectid);
-	request.post({url:'http://117.144.16.98:8080/rems/techCheck/equipments.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
+	request.post({url:'http://117.144.16.98:8080/rems/techCheck/equLabellist.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+//动态列表
+
+router.get('/techCheck/insLabellist.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insLabellist.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+//
+router.get('/techCheck/insDatas.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insDatas.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid,classpropertyid:req.query.classpropertyid}}, function(error,response,body){
 	    	res.send(body);	
 	})
 });

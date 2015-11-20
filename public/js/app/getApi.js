@@ -11,7 +11,7 @@ define(function(require) {
                 var url = opt.url ? opt.url : ''
                   , type = opt.type ? opt.type : 'GET'
                   , data = opt.data ? opt.data : {}
-                  , timeout = opt.timeout ? opt.timeout : 10000
+                  , timeout = opt.timeout ? opt.timeout : 100000
                   , currentRequest = null
                   , done = opt.done ? opt.done : doneFn
                   , fail = opt.fail ? opt.fail : failFn
