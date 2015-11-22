@@ -50,6 +50,7 @@ define(function(require) {
             parameter.options.series[0].data = data;
             ghnChart = new Highcharts.Chart(parameter.options); 
         },
+        //供耗能分析曲线
         modalLines: function (data,parameter) {
             var str;
             var gnfxLines;
@@ -68,6 +69,7 @@ define(function(require) {
                 gnfxLines = new Highcharts.Chart(parameter.options); 
             });
         },
+        //供能分析，耗能分析弹出框
         modalFn: function () {
             var $this = $(this)
               , title = $this.data('title')

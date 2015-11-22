@@ -3,6 +3,7 @@ define(function(require){
       , projectid = require('app/checkProjectid')
       , highcharts = require('exporting') 
       , api = require('app/getApi')
+      , optionsLines = require('app/highchartsConfigLines')
     ;
     (function(){
             
@@ -39,8 +40,33 @@ define(function(require){
              globalMode = 0;
           }
 
-        function dd(data) {
+//optionsLines.xAxis.categories = ['16:20','16:30','16:40','16:50','17:00','17:10'];
+//optionsLines.yAxis.title.text = '温度';
+//optionsLines.yAxis.plotLines[0].value = null;
+//optionsLines.series = [{
+                    //name: '输入热水温度 (°C)',
+                    //data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5]
+                //}];
+        function dd(data,parameter) {
             console.log(data);
+            var sData = [],xData = [],sObj = {name: 'dd'};
+            $.each(data.status.data.list, function(i,v){
+                xData.push(v.rectime);                     
+                sData.push(v.datavalue);
+            });
+
+optionsLines.chart.renderTo = 'gytCharts'; 
+optionsLines.title.text =  '燃气常压热水锅炉';
+optionsLines.subtitle.text = '动态属性1h实时数据对比'; 
+optionsLines.xAxis.categories = xData;
+optionsLines.yAxis.title.text = '温度';
+optionsLines.yAxis.plotLines[0].value = null;
+optionsLines.series = [{
+                    name: '输入热水温度 (°C)',
+                    data: sData 
+                }];
+
+var gytCharts2 = new Highcharts.Chart(optionsLines);
         }
 //huanghuaEquipStatFn(data);
         function dd3(data) {
@@ -147,15 +173,20 @@ function clickPopup(){}
             }
         });
         //工艺图弹出层
-    demand.start({url:'/api/techCheck/insDatas.json',data:{classinstanceid:13,classpropertyid:166}, done:dd});
+        $doc.on('click',':checkbox',function(){
+            var $this = $(this);
+            var instanceid = $this.data('classinstanceid'); 
+            var propertyid = $this.data('classpropertyid');
+            var title = $this.data('title');
+            demand.start({url:'/api/techCheck/insDatas.json',parameter:{title:title},data:{classinstanceid:instanceid ,classpropertyid:propertyid }, done:dd});
+        });
         function popupCallback(data) {
-        console.log(data)
         var str = '', title,modal = $("#gytModal");
         $.each(data.status.data.dynamicProps, function(i,v){
             title = v.classinstancename;
             str += '<li>'+
                     '<div class="checkbox">'+
-                    '<label><input type="checkbox">'+v.classpropertyname+'</label>'+
+                    '<label><input type="checkbox" data-title="'+title+'" data-classinstanceid="'+v.classinstanceid+'" data-classpropertyid="'+v.classpropertyid+'">'+v.classpropertyname+'</label>'+
                     '<span></span>'+
                     '</div>'+
                     '</li>';
@@ -166,51 +197,30 @@ function clickPopup(){}
             });            
         modal.find('.modal-title').text(title);
         //弹出层图表
-            $('#gytCharts').highcharts({
-                title: {
-                    text: '燃气常压热水锅炉',
-                    x: -20 //center
-                },
-                exporting: {
-                      enabled:false
-                },
-                subtitle: {
-                    text: '动态属性1h实时数据对比',
-                    x: -20
-                },
-                xAxis: {
-                    categories: ['16:20','16:30','16:40','16:50','17:00','17:10']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Temperature (°C)'
-                    },
-                    plotLines: [{
-                        value: 0,
-                        width: 1,
-                        color: '#808080'
-                    }]
-                },
-                tooltip: {
-                    valueSuffix: '°C'
-                },
-                series: [{
+        
+optionsLines.chart.renderTo = 'gytCharts'; 
+optionsLines.title.text =  '燃气常压热水锅炉';
+optionsLines.subtitle.text = '动态属性1h实时数据对比'; 
+optionsLines.xAxis.categories = ['16:20','16:30','16:40','16:50','17:00','17:10'];
+optionsLines.yAxis.title.text = '温度';
+optionsLines.yAxis.plotLines[0].value = null;
+optionsLines.series = [{
                     name: '输入热水温度 (°C)',
                     data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5]
-                }]
-        });
-        };
+                }];
+var gytCharts = new Highcharts.Chart(optionsLines);
+        }
         // 缩放工艺图
         function scaleGYT() {
             var winHeight; 
             winHeight = $(window).height();
             var x = 5;
             while(x) {
-                if(winHeight > 900){
-                    $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
-                    return;
-                }  
-                if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) $('.xa-con-cent').css({'transform':'scale(0.'+(x+1)+') translate(-50%, -50%)'}); 
+                //if(winHeight > 900){
+                    //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                    //return;
+                //}  
+                if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'}); 
                 x--;
             }
         }
