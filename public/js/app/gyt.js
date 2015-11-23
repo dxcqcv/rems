@@ -220,6 +220,7 @@ var gytCharts = new Highcharts.Chart(optionsLines);
                     //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
                     //return;
                 //}  
+                if(x <= 3) return; 
                 if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'}); 
                 x--;
             }
