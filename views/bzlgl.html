@@ -10,7 +10,8 @@
 				<div class="jgfx-top-inner">
 					<p>类名称：&nbsp;
 						<input class="form-control btn_one" type="text" placeholder="" id="input1">
-						<button type="button" class="btn btn-info btn-sm">查看数据</button>
+						<button type="button" class="btn btn-info btn-sm" id="btnSeach">查看数据</button>
+						<button type="button" class="btn btn-info btn-sm pull-right" id="btnadd">新增</button>
 					</p>
 				</div>
 			</div>
@@ -18,6 +19,7 @@
 			<div class="button_tab">
 				<div class="diclisy">
 					<table class="table table-striped table-hover tabdivl">
+						<input type="hidden" id="deleteId" />
 						<thead>
 	                        <tr class="even">
 	                            <td class="datalist-no">序号</td>
@@ -50,9 +52,10 @@
 					<div class="titlesxgl"> 属性管理 <button type="button" class="close" id="colse"> &times;</button></div>
 					
 						<div class="zgybb">
-							<div class="div_hgjn sxlj">类名称：<input type="text" class="form-control" id="txtinput" ></div>
+							<input type="hidden" id="currentClasspropertyid" name="currentClasspropertyid">
+							<div class="div_hgjn sxlj">类名称：<input type="text" class="form-control" id="txtinput" name="txtinput" ></div>
 							
-							<div class="div_hgjn">属性类型：<select class="form-control  btn_all btn-sm">
+							<div class="div_hgjn">属性类型：<select class="form-control  btn_all btn-sm" id="edittype">
 									<option>dd</option>
 									<option>aw</option>
 									<option>ds</option>
@@ -61,7 +64,7 @@
 								</select>
 							</div>
 							
-							<div class="div_hgjn">所属父类：<select class="form-control btn_all btn-sm">
+							<div class="div_hgjn">所属父类：<select class="form-control btn_all btn-sm" id="editpane">
 								<option>dd</option>
 								<option>aw</option>
 								<option>ds</option>
@@ -70,7 +73,7 @@
 								</select>
 							</div>
 							
-							<div class="div_hgjn">所属组别：<select class="form-control btn_all btn-sm">
+							<div class="div_hgjn">所属组别：<select class="form-control btn_all btn-sm" id="editrow">
 									<option>dd</option>
 									<option>aw</option>
 									<option>ds</option>
@@ -79,7 +82,7 @@
 								</select>
 							</div>
 							
-							<div class="div_hgjn">所属类别：<select class="form-control  btn_all btn-sm">
+							<div class="div_hgjn">所属类别：<select class="form-control  btn_all btn-sm" id="sditlei">
 									<option>dd</option>
 									<option>aw</option>
 									<option>ds</option>
@@ -88,15 +91,15 @@
 								</select>
 							</div>
 							
-							<div class="div_hgjn sxlj">类图片：<input type="text" class="form-control" id="txtinput" ></div>
+							<div class="div_hgjn sxlj">类图片：<input type="text" class="form-control" id="txtinput"  id="edietimg"></div>
 							
 							<div class="div_hgjn fgrs">备注：
-								<textarea></textarea>
+								<textarea id="edittxet"></textarea>
 							</div>
 						</div>
 								
 						<div class="footerbtn">
-							<button type="button" class="btn btn-info" >保存</button>
+							<button type="button" class="btn btn-info" id="saveEditBtn">保存</button>
 		            		<button type="button" class="btn btn-default" id="closediv">关闭</button>
 						</div>
 					</div>
@@ -104,11 +107,12 @@
 				
 				<div id="bg1"></div>
 				<div id="coliseselect">
+					<input type="hidden" id="currentClasspropertyid" name="currentClasspropertyid">
 					<p class="truep">确定</p>
 					<p class="truesel">注意：该设备类下所含的类属性会被级联删除，</p>
 					<p class="truesel">确认删除？</p>
 					<div class="footerbtnclos">
-						<button type="button" class="btn btn-info" >确定</button>
+						<button type="button" class="btn btn-info" id="btnTrue">确定</button>
 	            		<button type="button" class="btn btn-default" id="closedivsel">关闭</button>
 					</div>
 				</div>
