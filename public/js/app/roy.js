@@ -77,12 +77,12 @@ define(function(require){
                         case 'nygl':
                             this.str = '<li class="active nygl-offset"><a class="jgfx-subnav" data-subshow="nygl-jgfx" href="/user/jgfx">结构分析</a></li><li class=""><a class="hnfx-subnav" data-subshow="nygl-hnfx" href="/user/hnfx">耗能分析</a></li><li class=""><a class="gnfx-subnav" data-subshow="nygl-gnfx" href="/user/gnfx">供能分析</a></li><li><a class="zbfx-subnav" data-subshow="nygl-zbfx" href="/user/zbfx">指标分析</a></li><li><a class="mkfx-subnav" data-subshow="nygl-mkfx" href="/user/mkfx">模块分析</a></li><li><a class="jzfx-subnav" data-subshow="nygl-jzfx" href="/user/jzfx">机组分析</a></li><li><a class="tbhb-subnav" data-subshow="nygl-tbhb" href="/user/tbhb">同比环比</a></li><li><a class="cbfx-subnav" data-subshow="nygl-cbfx" href="/user/cbfx">成本分析</a></li><li><a class="bb-subnav" data-subshow="nygl-bb" href="/user/bb">运行报表</a></li>'; 
                             break;
-                        case 'pgzd':
-                            this.str = '<li class="active pgzd-offset"><a class="zdzn-subnav" data-subshow="pgzd-zdzn" href="/user/zdzn">诊断指南</a></li><li><a class="yyzd-subnav" data-subshow="pgzd-yyzd" href="/user/yyzd">预约诊断</a></li><li><a class="zdbg-subnav" data-subshow="pgzd-zdbg" href="/user/zdbg">诊断报告</a></li>'; 
-                            break;
-                        case 'pgzdzj':
-                            this.str = '<li class="active pgzdzj-offset"><a class="bgbj-subnav" data-subshow="pgzdzj-bgbj" href="/user/bgbj">报告编辑</a></li>';
-                            break;
+                        //case 'pgzd':
+                            //this.str = '<li class="active pgzd-offset"><a class="zdzn-subnav" data-subshow="pgzd-zdzn" href="/user/zdzn">诊断指南</a></li><li><a class="yyzd-subnav" data-subshow="pgzd-yyzd" href="/user/yyzd">预约诊断</a></li><li><a class="zdbg-subnav" data-subshow="pgzd-zdbg" href="/user/zdbg">诊断报告</a></li>'; 
+                            //break;
+                        //case 'pgzdzj':
+                            //this.str = '<li class="active pgzdzj-offset"><a class="bgbj-subnav" data-subshow="pgzdzj-bgbj" href="/user/bgbj">报告编辑</a></li>';
+                            //break;
                         case 'pzym':
                             this.str = '<li class="active"><a class="lsxgl-subnav" data-subshow="pzym-lsxgl" href="/user/lsxgl">类属性管理</a></li><li class=""><a class="bzlgl-subnav" data-subshow="pzym-bzlgl" href="/user/bzlgl">标准类管理</a></li><li class=""><a class="qxgl-subnav" data-subshow="pzym-qxgl" href="/user/qxgl">权限管理</a></li><li class=""><a class="sbssgl-subnav" data-subshow="pzym-sbssgl" href="/user/sbssgl">设备设施管理</a></li><li class=""><a class="rzgl-subnav" data-subshow="pzym-rzgl" href="/user/rzgl">日志管理</a></li><li class=""><a class="yhgl-subnav" data-subshow="pzym-yhgl" href="/user/yhgl">用户管理</a></li><li class=""><a class="sfgl-subnav" data-subshow="pzym-sfgl" href="/user/sfgl">身份管理</a></li><li class=""><a class="xmxxgl-subnav" data-subshow="pzym-xmxxgl" href="/user/xmxxgl">项目信息管理</a></li><li class=""><a class="gysxpz-subnav" data-subshow="pzym-gysxpz" href="/user/gysxpz">工艺属性配置</a></li><li class=""><a class="zdybbpz-subnav" data-subshow="pzym-zdybbpz" href="/user/zdybbpz">自定义报表配置</a></li>'
                             break;
