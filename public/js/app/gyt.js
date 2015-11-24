@@ -3,7 +3,7 @@ define(function(require){
       , projectid = require('app/checkProjectid')
       , highcharts = require('exporting') 
       , api = require('app/getApi')
-      , optionsLines = require('app/highchartsConfigLines')
+      , optionsGyt = require('app/highchartsConfigGyt')
     ;
     (function(){
             
@@ -82,36 +82,35 @@ function dateInit(rectime){
 }
 
         function gytDynamicCharts(data,parameter) {
-            console.log(data);
-            console.log(parameter.title);
-            console.log(parameter.title.length);
-            console.log(parameter.dataLines);
-            console.log(parameter.dataLines.length);
+            console.log(data)
             var linesObj = parameter.dataLines;
-            //var sData = [],xData = [],sObj = {name: 'dd'};
-            var sName = parameter.title;
+            var sName, sA = [];
+            var propertyid = parameter.propertyid;
             $.each(data.status.data.list, function(i,v){
-                //xData.push(v.rectime);                     
-                //sData.push(v.datavalue);
                 for(var i = 0, l = parameter.dataLines.length; i < l; i++) {
-                    var val = checkNullandFixN(v.datavalue,2);
-                    linesObj[i].push([dateInit(v.rectime),parseFloat(val)]); 
+                    if(propertyid[i] == v.classpropertyid) {
+                        var val = checkNullandFixN(v.datavalue,2);
+                        linesObj[i].push([dateInit(v.rectime),parseFloat(val)]); 
+                    }
                 }
             });
+                for(var i = 0, l = parameter.dataLines.length; i < l; i++) {
+                        sName = parameter.title[i];
+                        var sObj = {
+                            name: sName,
+                            data: linesObj[i],
+                        marker: { enabled: false }
+                        };
+                        sA.push(sObj);
+                }
 
-console.log(linesObj);
-optionsLines.chart.renderTo = 'gytCharts'; 
-optionsLines.title.text =  '燃气常压热水锅炉';
-optionsLines.subtitle.text = '动态属性1h实时数据对比'; 
-//optionsLines.xAxis.categories = xData;
-optionsLines.yAxis.title.text = '温度';
-optionsLines.yAxis.plotLines[0].value = null;
-optionsLines.series = [{
-                    name: '输入热水温度 (°C)',
-                    data: linesObj
-                }];
+optionsGyt.chart.renderTo = 'gytCharts'; 
+optionsGyt.title.text =  parameter.title;
+optionsGyt.subtitle.text = '动态属性1h实时数据对比'; 
+optionsGyt.yAxis.title.text = null;
+optionsGyt.series = sA;
 
-var gytCharts2 = new Highcharts.Chart(optionsLines);
+var gytCharts2 = new Highcharts.Chart(optionsGyt);
         }
 //huanghuaEquipStatFn(data);
         function dd3(data) {
@@ -230,19 +229,21 @@ function clickPopup(){}
                     propertyid.push($(allCheck[i]).data('classpropertyid')); 
                 } 
             }
-            console.log(propertyid.length);
+            console.log('propertyid',propertyid);
             for(var j = 0, k = propertyid.length; j < k; j++) {
                 dataLines[j] = []; 
             }
-            demand.start({url:'/api/techCheck/insDatas.json',parameter:{title:title,dataLines: dataLines},data:{classinstanceid:instanceid ,classpropertyid:propertyid.toString() }, done:gytDynamicCharts});
+            demand.start({url:'/api/techCheck/insDatas.json',loadContainer:['.modal-content'],parameter:{title:title,dataLines: dataLines,propertyid:propertyid},data:{classinstanceid:instanceid ,classpropertyid:propertyid.toString() }, done:gytDynamicCharts});
         });
         function popupCallback(data) {
-        var str = '', title,modal = $("#gytModal");
+        var str = '',modTitle, littleTitle,modal = $("#gytModal");
+        console.log(data);
         $.each(data.status.data.dynamicProps, function(i,v){
-            title = v.classpropertyname;
+            modTitle = v.classinstancename;
+            littleTitle = v.classpropertyname;
             str += '<li>'+
                     '<div class="checkbox">'+
-                    '<label><input type="checkbox" data-title="'+title+'" data-classinstanceid="'+v.classinstanceid+'" data-classpropertyid="'+v.classpropertyid+'">'+v.classpropertyname+'</label>'+
+                    '<label><input type="checkbox" data-title="'+littleTitle+'" data-classinstanceid="'+v.classinstanceid+'" data-classpropertyid="'+v.classpropertyid+'">'+v.classpropertyname+'</label>'+
                     '<span></span>'+
                     '</div>'+
                     '</li>';
@@ -251,20 +252,15 @@ function clickPopup(){}
             $('#gytModal').modal({
                 backdrop: 'static' 
             });            
-        modal.find('.modal-title').text(title);
+        modal.find('.modal-title').text(modTitle);
         //弹出层图表
         
-optionsLines.chart.renderTo = 'gytCharts'; 
-optionsLines.title.text =  '燃气常压热水锅炉';
-optionsLines.subtitle.text = '动态属性1h实时数据对比'; 
-optionsLines.xAxis.categories = ['16:20','16:30','16:40','16:50','17:00','17:10'];
-optionsLines.yAxis.title.text = '温度';
-optionsLines.yAxis.plotLines[0].value = null;
-optionsLines.series = [{
-                    name: '输入热水温度 (°C)',
-                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5]
-                }];
-var gytCharts = new Highcharts.Chart(optionsLines);
+optionsGyt.chart.renderTo = 'gytCharts'; 
+optionsGyt.title.text =  '燃气常压热水锅炉';
+optionsGyt.subtitle.text = '动态属性1h实时数据对比'; 
+optionsGyt.yAxis.title.text = '';
+optionsGyt.series = [{}];
+var gytCharts = new Highcharts.Chart(optionsGyt);
         }
         // 缩放工艺图
         function scaleGYT() {

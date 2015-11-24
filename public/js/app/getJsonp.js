@@ -6,9 +6,17 @@ define(function(require) {
     (function(){
         // jsonp method
         function LocalJsonp() {
-            this.loading = $('#loading')
+            this.loading = '<div class="loader-wrapper hide">'+
+                                 '<div class="loader"></div>'+    
+                           '</div>'; 
         }
+
         $.extend(LocalJsonp.prototype, {
+            loader: function(open) {
+                var loader = $('.loader-wrapper');
+                if(open === true) loader.removeClass('hide'); 
+                else loader.addClass('hide');
+            },
             start: function(opt) {
                 var url = opt.url ? opt.url : 'rems-test.json'
                   , type = opt.type ? opt.type : 'GET'
@@ -21,6 +29,7 @@ define(function(require) {
                   , jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : ''
                   , parameter = opt.parameter ? opt.parameter : {}
                   , self = this;
+                this.loader(true); 
 
                 currentRequest = $.ajax({
                     url: url
@@ -35,6 +44,7 @@ define(function(require) {
                   , mimeType: 'application/json'
                   , contentType: 'text/plain'
                   , parameter: parameter  
+                  , loader: self.loading 
                   , beforeSend: function() {
                         if(currentRequest != null) currentRequest.abort();
                   }
@@ -42,6 +52,7 @@ define(function(require) {
                 .done(function(data) {
                     var d = data;
                     //self.loading.addClass('hide');
+                    this.loader(false); 
                     done(d,this.parameter);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {

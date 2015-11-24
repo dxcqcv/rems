@@ -4,9 +4,27 @@ define(function(require) {
       ;
     (function(){
         function Request() {
-            //this.loading = $('#loading')
+            this.loading = '<div class="loader-wrapper hide">'+
+                                 '<div class="loader"></div>'+    
+                           '</div>'; 
         }
         $.extend(Request.prototype, {
+            loader: function(open,container) {
+                var str = '<div class="loader-wrapper ">'+
+                                 '<div class="loader"></div>'+    
+                           '</div>'; 
+                var loader = $('.loader-wrapper');
+                if(open === true) {
+                    loader.removeClass('hide');
+                    $.each(container, function(i,v){
+                    console.log(v);
+                        //$(v).append(this.loading);
+                        $(v).append(str);
+                    });
+                }  
+                else loader.addClass('hide');
+                
+            },
             start: function(opt) {
                 var url = opt.url ? opt.url : ''
                   , type = opt.type ? opt.type : 'GET'
@@ -16,9 +34,13 @@ define(function(require) {
                   , done = opt.done ? opt.done : doneFn
                   , fail = opt.fail ? opt.fail : failFn
                   , parameter = opt.parameter ? opt.parameter : {}
+                  , loadContainer = opt.loadContainer ? opt.loadContainer :[] 
                   ////, jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
                   //, jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : '' 
                   , self = this;
+                
+                    console.log(loadContainer);
+                this.loader(true,loadContainer);
 
                 currentRequest = $.ajax({
                     url: url
@@ -42,6 +64,7 @@ define(function(require) {
                 .done(function(data){
                     var d = data;
                     //self.loading.addClass('hide');
+                    self.loader(false);
                     done(d,this.parameter);
                 })
                 .fail(function(jqXHR, textStatus,errorThrown) {
