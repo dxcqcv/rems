@@ -4,25 +4,33 @@ define(function(require) {
       ;
     (function(){
         function Request() {
-            this.loading = '<div class="loader-wrapper hide">'+
-                                 '<div class="loader"></div>'+    
-                           '</div>'; 
+            var loadingWrapper = document.createElement('div'); 
+            var loadCont = document.createElement('div');
+            loadingWrapper.className = "loader-wrapper"; 
+            loadCont.className = "loader"; 
+            loadingWrapper.appendChild(loadCont);
+            this.loading = loadingWrapper; 
         }
         $.extend(Request.prototype, {
             loader: function(open,container) {
-                var str = '<div class="loader-wrapper ">'+
-                                 '<div class="loader"></div>'+    
-                           '</div>'; 
                 var loader = $('.loader-wrapper');
+                var self = this;
                 if(open === true) {
-                    loader.removeClass('hide');
-                    $.each(container, function(i,v){
-                    console.log(v);
-                        //$(v).append(this.loading);
-                        $(v).append(str);
-                    });
+                    if(loader.length === 0) {
+                        $.each(container, function(i,v){
+                            var box = $(v);
+                            var w = box.width();
+                            var h = box.height();
+                            $(self.loading).width(w).height(h);
+                            box.append(self.loading);
+                        });
+                    } else {
+                        loader.removeClass('hide');
+                    }
                 }  
-                else loader.addClass('hide');
+                else {
+                    loader.addClass('hide');
+                } 
                 
             },
             start: function(opt) {
@@ -39,7 +47,6 @@ define(function(require) {
                   //, jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : '' 
                   , self = this;
                 
-                    console.log(loadContainer);
                 this.loader(true,loadContainer);
 
                 currentRequest = $.ajax({

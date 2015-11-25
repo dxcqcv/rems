@@ -6,16 +6,35 @@ define(function(require) {
     (function(){
         // jsonp method
         function LocalJsonp() {
-            this.loading = '<div class="loader-wrapper hide">'+
-                                 '<div class="loader"></div>'+    
-                           '</div>'; 
+            var loadingWrapper = document.createElement('div'); 
+            var loadCont = document.createElement('div');
+            loadingWrapper.className = "loader-wrapper"; 
+            loadCont.className = "loader"; 
+            loadingWrapper.appendChild(loadCont);
+            this.loading = loadingWrapper; 
         }
 
         $.extend(LocalJsonp.prototype, {
-            loader: function(open) {
+            loader: function(open,container) {
                 var loader = $('.loader-wrapper');
-                if(open === true) loader.removeClass('hide'); 
-                else loader.addClass('hide');
+                var self = this;
+                if(open === true) {
+                    if(loader.length === 0) {
+                        $.each(container, function(i,v){
+                            var box = $(v);
+                            var w = box.width();
+                            var h = box.height();
+                            $(self.loading).width(w).height(h);
+                            box.append(self.loading);
+                        });
+                    } else {
+                        loader.removeClass('hide');
+                    }
+                }  
+                else {
+                    loader.addClass('hide');
+                } 
+                
             },
             start: function(opt) {
                 var url = opt.url ? opt.url : 'rems-test.json'
@@ -28,8 +47,10 @@ define(function(require) {
                   , jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
                   , jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : ''
                   , parameter = opt.parameter ? opt.parameter : {}
+                  , loadContainer = opt.loadContainer ? opt.loadContainer :[] 
                   , self = this;
-                this.loader(true); 
+
+                //this.loader(true,loadContainer);
 
                 currentRequest = $.ajax({
                     url: url
@@ -44,7 +65,6 @@ define(function(require) {
                   , mimeType: 'application/json'
                   , contentType: 'text/plain'
                   , parameter: parameter  
-                  , loader: self.loading 
                   , beforeSend: function() {
                         if(currentRequest != null) currentRequest.abort();
                   }
@@ -52,7 +72,7 @@ define(function(require) {
                 .done(function(data) {
                     var d = data;
                     //self.loading.addClass('hide');
-                    this.loader(false); 
+                    //self.loader(false);
                     done(d,this.parameter);
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {

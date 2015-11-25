@@ -168,7 +168,13 @@ router.get('/techCheck/insLabellist.json', function(req, res, next) {
 	    	res.send(body);	
 	})
 });
-//
+//动态列表对应值
+router.get('/techCheck/insData.json', function(req, res, next) {
+	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insData.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid}}, function(error,response,body){
+	    	res.send(body);	
+	})
+});
+//动态列表对应图表
 router.get('/techCheck/insDatas.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insDatas.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid,classpropertyid:req.query.classpropertyid}}, function(error,response,body){
 	    	res.send(body);	

@@ -104,15 +104,14 @@ function dateInit(rectime){
                         sA.push(sObj);
                 }
 
-optionsGyt.chart.renderTo = 'gytCharts'; 
-optionsGyt.title.text =  parameter.title;
-optionsGyt.subtitle.text = '动态属性1h实时数据对比'; 
-optionsGyt.yAxis.title.text = null;
-optionsGyt.series = sA;
+        optionsGyt.chart.renderTo = 'gytCharts'; 
+        optionsGyt.title.text =  parameter.title;
+        optionsGyt.subtitle.text = '动态属性1h实时数据对比'; 
+        optionsGyt.yAxis.title.text = null;
+        optionsGyt.series = sA;
 
-var gytCharts2 = new Highcharts.Chart(optionsGyt);
+        var gytCharts2 = new Highcharts.Chart(optionsGyt);
         }
-//huanghuaEquipStatFn(data);
         function dd3(data) {
             console.log('设备的最新数据');
             console.log(data);
@@ -159,8 +158,12 @@ var gytCharts2 = new Highcharts.Chart(optionsGyt);
 
 $('.artwork-popup').on('click',function(){
     var classinstanceid = $(this).attr('data-classinstanceid');
+    //设备名
     demand.start({url:'/api/techCheck/insLabellist.json',data:{classinstanceid:classinstanceid}, done:popupCallback});
 });
+function dd(data) {
+    console.log('insData',data);
+}
 
 function clickPopup(){}
 
@@ -171,6 +174,9 @@ function clickPopup(){}
 
             str = str.replace(regEx,'<li class="list-group-item active');
             $('#gyt-list').empty().append(str); 
+
+            //设备值
+            demand.start({url:'/api/techCheck/insData.json',data:{classinstanceid:classinstanceid}, done:dd});
         }
         function showMe(name) {
             $(name).siblings('div').addClass('hide').end().removeClass('hide');
@@ -229,15 +235,17 @@ function clickPopup(){}
                     propertyid.push($(allCheck[i]).data('classpropertyid')); 
                 } 
             }
-            console.log('propertyid',propertyid);
             for(var j = 0, k = propertyid.length; j < k; j++) {
                 dataLines[j] = []; 
             }
-            demand.start({url:'/api/techCheck/insDatas.json',loadContainer:['.modal-content'],parameter:{title:title,dataLines: dataLines,propertyid:propertyid},data:{classinstanceid:instanceid ,classpropertyid:propertyid.toString() }, done:gytDynamicCharts});
+            if(propertyid.length !== 0) {
+                demand.start({url:'/api/techCheck/insDatas.json',loadContainer:['.modal-content'],parameter:{title:title,dataLines: dataLines,propertyid:propertyid},data:{classinstanceid:instanceid ,classpropertyid:propertyid.toString() }, done:gytDynamicCharts});
+            } else {
+                 initGytCharts();   
+            }
         });
         function popupCallback(data) {
         var str = '',modTitle, littleTitle,modal = $("#gytModal");
-        console.log(data);
         $.each(data.status.data.dynamicProps, function(i,v){
             modTitle = v.classinstancename;
             littleTitle = v.classpropertyname;
@@ -254,13 +262,15 @@ function clickPopup(){}
             });            
         modal.find('.modal-title').text(modTitle);
         //弹出层图表
-        
-optionsGyt.chart.renderTo = 'gytCharts'; 
-optionsGyt.title.text =  '燃气常压热水锅炉';
-optionsGyt.subtitle.text = '动态属性1h实时数据对比'; 
-optionsGyt.yAxis.title.text = '';
-optionsGyt.series = [{}];
-var gytCharts = new Highcharts.Chart(optionsGyt);
+             initGytCharts();
+        }
+        function initGytCharts() {
+            optionsGyt.chart.renderTo = 'gytCharts'; 
+            optionsGyt.title.text =  '';
+            optionsGyt.subtitle.text = '动态属性1h实时数据对比'; 
+            optionsGyt.yAxis.title.text = '';
+            optionsGyt.series = [{}];
+            var gytCharts = new Highcharts.Chart(optionsGyt);
         }
         // 缩放工艺图
         function scaleGYT() {
