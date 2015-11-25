@@ -32,7 +32,17 @@ define(function(require) {
             parameter.self.selectFn(parameter.pointer,'li'); 
         },
         tbhbGhg3: function(data,parameter){
+
             parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
+            parameter.self.selectFn(parameter.pointer,parameter.tag); 
+            if(parameter.setDateFn == null) return;
+            parameter.setDateFn.changeDate(parameter.pointer);       
+        },
+        tbhbGhgForApi: function(data,parameter){
+          console.log("(((((((()))))))))))");
+          console.log(data);
+          console.log(parameter);
+            parameter.fn(parameter.charts,data.baseLine,data.xData,data.sData,parameter.options);
             parameter.self.selectFn(parameter.pointer,parameter.tag); 
             if(parameter.setDateFn == null) return;
             parameter.setDateFn.changeDate(parameter.pointer);       
@@ -42,6 +52,32 @@ define(function(require) {
                   var $this = $(this)
                   var charts = $this.parents('.my-card').find('.chart-box').attr('id'); 
                   ajaxFn({url:jsonpPath+jsonp+'.js',parameter:{pointer:this,charts:charts,tag:tag,fn:fn,self:self,options:options,setDateFn:setDateFn},jsonpCallback:jsonp,done:self.tbhbGhg3});
+              });
+        },
+        ajaxClickForApi: function (name,tag,apiUrl,data,fn,ajaxFn,setDateFn,self,options) {
+              $(name).find(tag).click(function(){
+                  var $this = $(this)
+                  if (tag == "button" && $(this).attr("data-range") == '1d') {
+                    data.dateFlag = 1;
+                    data.dateStar = $("#" + ($(this).attr("data-tar"))).data("DateTimePicker").date().format("YYYY-MM-DD");
+
+                  }else if(tag == "button" && $(this).attr("data-range") == '1m'){
+                    data.dateFlag = 2;
+                    data.dateStar = $("#" + ($(this).attr("data-tar"))).data("DateTimePicker").date().format("YYYY-MM");
+                  }
+                  var fxType = $this.closest(".my-card-top").find(".tbhb-switch-box ul .active").text();
+                  if ( fxType == "同比分析"){
+                    apiUrl = "/api/CSInfo/expend/list1.json";
+                  }else if (fxType =="环比分析") {
+                    apiUrl = "/api/CSInfo/expend/list2.json";
+                  }else{
+                    apiUrl = "/api/CSInfo/expend/list1.json";
+                  }
+                
+                
+                  
+                  var charts = $this.parents('.my-card').find('.chart-box').attr('id'); 
+                  ajaxFn({url:apiUrl,data:data,parameter:{pointer:this,charts:charts,tag:tag,fn:fn,self:self,options:options,setDateFn:setDateFn},done:self.tbhbGhgForApi});
               });
         },
         ghnCallback: function (data,parameter) {

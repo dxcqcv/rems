@@ -33,7 +33,7 @@ app.use(cookieParser());
 
 //session配置
 app.use(session({
-    //cookie: { maxAge: 600000 },
+	//cookie: { maxAge: 600000 },
     cookie: { maxAge: 86400000 },
     secret: Settings.COOKIE_SECRET,
     resave: true, 
