@@ -26,19 +26,20 @@ define(function(require){
                     case 'tbhbJnl': jsonpName= 'tbhb3'; dateFn = globalTools.tbhbLines; break; 
                 }
                     localJsonp.start({url:jsonpPath+jsonpName+'.js',parameter:{id:id,fn:dateFn,options:optionsLines},jsonpCallback:jsonpName,done:globalTools.tbhbCallback});
+                    //demand.start({url:'/api/CSInfo/expend/list1.json', parameter:{id:id,fn:dateFn,options:optionsLines},data:{projectid:1,dateFlag:1,dateStar:$(this).val()},done:tbhbHngn2})
           });
 
           // 日月年
-          globalTools.tbhbClick('.tbhb-switch-box-top','li',jsonpPath,'tbhb2',tbhbHngn,localJsonp.start,null,globalTools,optionsLines); 
-          globalTools.tbhbClick('.date-controls-box-top','button',jsonpPath,'tbhb2',tbhbHngn,localJsonp.start,setDate,globalTools,optionsLines);
+          globalTools.ajaxClickForApi('.tbhb-switch-box-top','li','',{projectid:1,dateFlag:"2",dateStar:"2015-11"},tbhbHngn,demand.start,null,globalTools,optionsLines); 
+          globalTools.ajaxClickForApi('.date-controls-box-top','button','',{projectid:1,dateFlag:"",dateStar:""},tbhbHngn,demand.start,setDate,globalTools,optionsLines);
           globalTools.tbhbClick('.tbhb-switch-box-bottom','li',jsonpPath,'tbhb3',globalTools.tbhbLines,localJsonp.start,null,globalTools,optionsLines); 
           globalTools.tbhbClick('.date-controls-box-bottom','button',jsonpPath,'tbhb3',globalTools.tbhbLines,localJsonp.start,setDate,globalTools,optionsLines);
 
       //图表
 // tbhb top 
-         localJsonp.start({url:jsonpPath+'tbhb.js',parameter:{id:'tbhbHaoneng',fn:tbhbHngn},jsonpCallback:'tbhb',done:globalTools.tbhbCallback});
+         //localJsonp.start({url:jsonpPath+'tbhb.js',parameter:{id:'tbhbHaoneng',fn:tbhbHngn},jsonpCallback:'tbhb',done:globalTools.tbhbCallback});
          localJsonp.start({url:jsonpPath+'tbhb2.js',parameter:{id:'tbhbGongneng',fn:tbhbHngn},jsonpCallback:'tbhb2',done:globalTools.tbhbCallback});
-         //demand.start({url:'/api/CSInfo/expend/list1.json', data:{projectid:1,dateFlag:1,dateStar:"2015-09-01"},done:globalTools.tbhbCallback})
+         demand.start({url:'/api/CSInfo/expend/list1.json', parameter:{id:'tbhbHaoneng',fn:tbhbHngn2},data:{projectid:1,dateFlag:1,dateStar:"2015-09-01"},done:tbhbHngn2})
 
         function tbhbHngn(id,baseLine,xData,sData) {
               options.chart.type = 'column';
@@ -47,7 +48,22 @@ define(function(require){
               //optionsLines.yAxis.plotLines.value = baseLine;
               options.plotOptions.series.dataLabels.enabled = true;
               options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
+              console.log(sData);
               options.series = sData;
+
+              chart = new Highcharts.Chart(options); 
+        }
+
+        function tbhbHngn2(data,parameter) {
+
+              options.chart.type = 'column';
+              options.chart.renderTo = parameter.id;
+              options.xAxis.categories = data.xData;
+              //optionsLines.yAxis.plotLines.value = baseLine;
+              options.plotOptions.series.dataLabels.enabled = true;
+              options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
+           
+              options.series = data.sData;
 
               chart = new Highcharts.Chart(options); 
         }
