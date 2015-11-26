@@ -38,6 +38,9 @@
   height: 447px;
   width: 584px; }
 
+.gyt-mod-block-table td {
+  text-align: center; }
+
 /*.no-nav-list li{ */
 /*list-style: none;*/
 /*list-style-image: none;*/

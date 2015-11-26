@@ -2,6 +2,7 @@ define(function(require){
     var $ = require('jquery')
       , projectid = require('app/checkProjectid')
       , highcharts = require('exporting') 
+      , globalTools = require('app/globalTools')
       , api = require('app/getApi')
       , optionsGyt = require('app/highchartsConfigGyt')
     ;
@@ -119,7 +120,7 @@ function dateInit(rectime){
         /*
         projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
          * */
-    //projectid = '4';
+    //projectid = '1';
         //check project
         switch(projectid) { //复位为overview
             case '1': 
@@ -152,17 +153,34 @@ function dateInit(rectime){
         console.log('pageid ',pageid)
 
         demand.start({url:'/api/techCheck/equLabellist.json',data:{projectid:projectid,pageid:pageid}, done:huanghAlabellistFn});
-        //demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid,pageid:pageid}, done:dd2});
         demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid}, done:huanghuaEquipStatFn});
         demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:huanghuaAlabeldataAllFn});
 
 $('.artwork-popup').on('click',function(){
     var classinstanceid = $(this).attr('data-classinstanceid');
     //设备名
-    demand.start({url:'/api/techCheck/insLabellist.json',data:{classinstanceid:classinstanceid}, done:popupCallback});
+    demand.start({url:'/api/techCheck/insLabellist.json',parameter:{classinstanceid:classinstanceid},data:{classinstanceid:classinstanceid}, done:popupCallback});
+    $('#gytModSel').children('li').on('click', function(){
+        var $this = $(this);
+        var dir = $this.data('dir');
+        globalTools.selectFn($this,'li');
+        $(dir).siblings('.gyt-mod-block').addClass('hide').end().removeClass('hide');
+    });
 });
-function dd(data) {
-    console.log('insData',data);
+function getListVal(data) {
+    var allCheck = $('#gytDyList').find(':checkbox');
+    $.each(allCheck,function(i,v){
+        var el = $(v);
+        var propertyid = el.data('classpropertyid');
+        var value = el.parent('label').siblings('span');
+        $.each(data.status.data.list,function(i,v){
+            if(propertyid === v.classpropertyid) {
+                if(v.classpropertyid === 166 && v.datavalue === 1) value.text('开机'); 
+                else if(v.classpropertyid === 166 && v.datavalue === 0) value.text('关机'); 
+                else value.text(v.datavalue1);
+            }
+        });
+    });
 }
 
 function clickPopup(){}
@@ -175,8 +193,6 @@ function clickPopup(){}
             str = str.replace(regEx,'<li class="list-group-item active');
             $('#gyt-list').empty().append(str); 
 
-            //设备值
-            demand.start({url:'/api/techCheck/insData.json',data:{classinstanceid:classinstanceid}, done:dd});
         }
         function showMe(name) {
             $(name).siblings('div').addClass('hide').end().removeClass('hide');
@@ -219,7 +235,7 @@ function clickPopup(){}
             } else {
                 $this.removeClass('gyt-sidebar-sm'); 
                 $('.gyt-sidebar').width('auto'); 
-                $('.gyt-list-name').show()
+                $('.gyt-list-name').show();
             }
         });
         //工艺图弹出层
@@ -244,25 +260,38 @@ function clickPopup(){}
                  initGytCharts();   
             }
         });
-        function popupCallback(data) {
+        function popupCallback(data,parameter) {
         var str = '',modTitle, littleTitle,modal = $("#gytModal");
         $.each(data.status.data.dynamicProps, function(i,v){
             modTitle = v.classinstancename;
             littleTitle = v.classpropertyname;
             str += '<li>'+
                     '<div class="checkbox">'+
-                    '<label><input type="checkbox" data-title="'+littleTitle+'" data-classinstanceid="'+v.classinstanceid+'" data-classpropertyid="'+v.classpropertyid+'">'+v.classpropertyname+'</label>'+
+                    '<label><input type="checkbox" data-title="'+littleTitle+'" data-classinstanceid="'+v.classinstanceid+'"data-classpropertyid="'+v.classpropertyid+'">'+v.classpropertyname+'：</label>'+
                     '<span></span>'+
+                    '<i> '+((v.unitname === "/") ? '' : v.unitname)+'</i>'+
                     '</div>'+
                     '</li>';
         });
         $('#gytDyList').empty().append(str);
+        str = '';
             $('#gytModal').modal({
                 backdrop: 'static' 
             });            
+        str = '<tr>';
+        $.each(data.status.data.staticProps,function(i,v){
+            var val = v.datavalue;
+            if(v.datavalue === null) val = '暂无数据';
+            str += '<td>'+v.classpropertyname+'：'+val+'</td>';
+            if((i+1)%2 === 0) str += '</tr><tr>';
+        });
+        str += '</tr>';
+        $('#gytModTbody').empty().append(str);
         modal.find('.modal-title').text(modTitle);
         //弹出层图表
              initGytCharts();
+        //设备值
+        demand.start({url:'/api/techCheck/insData.json',data:{classinstanceid:parameter.classinstanceid}, done:getListVal});
         }
         function initGytCharts() {
             optionsGyt.chart.renderTo = 'gytCharts'; 
