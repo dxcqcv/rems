@@ -1,0 +1,14 @@
+<% include header-top.html %>
+	<link rel="stylesheet" href="/css/mksjpz.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+	<% include header-bottom.html %>
+        //模块数据配置
+		<div id="" class="my-section">
+        </div>
+		<script>
+			requirejs(['../js/common'], function (common) {
+			                requirejs(['app/mksjpz']);
+			            });
+		</script>
+		<% include footer.html %>

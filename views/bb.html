@@ -1,352 +1,297 @@
 <% include header-top.html %>
-<link rel="stylesheet" href="/css/bb.css" media="all">
-<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
-<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
-<link rel="stylesheet" href="/css/bootstrap-table.css" media="all">
-<% include header-bottom.html %>
-	<!--报表-->
-	<div id="bb" class="my-section bb-wrapper">
-    <div>
-        <div style="padding-top:16px">
-            <div class="toolbar clearfix">
-                <ul class="list-inline fl">
-                    <li>选择报表</li>
-                    <li>
-                        <select class="selectpicker" id="reportTemplateSelect">
-                            <option>地源热泵运行记录表</option>
-                            <option>锅炉运行记录表</option>
-                        </select>
-                    </li>
-                    <li>查看方式：</li>
-                    <li>
-                        <input type="radio" id="radPickYear" class="radDateType" name="inspectmode" />
-                        年
-                    </li>
-                    <li>
-                        <input type="radio" id="radPickMonth" class="radDateType" name="inspectmode" />
-                        月
-                    </li>
-                    <li>
-                        <input type="radio" id="radPickDay" class="radDateType" name="inspectmode" checked="checked" />
-                        日
-                    </li>
-                    <li>
-                        <input class="datepicker" data-date-format="mm/dd/yyyy">
-                    </li>
-                    <li>
-                        <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary">
-                            查看数据
-                        </button>
-                    </li>
-                </ul>
+	<link rel="stylesheet" href="/css/bb.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-table.css" media="all">
+	<% include header-bottom.html %>
+		<!--报表-->
+		<div id="bb" class="my-section bb-wrapper">
+			<div class="alldivback">
+				<div class="allbackli" >
+					<div class="toolbar clearfix">
+						<div class="top-bar-inner clearfix">
+							<ul class="list-inline fl">
+								<li>选择报表</li>
+								<li>
+									<select class="selectpicker" id="reportTemplateSelect">
+										<option>地源热泵运行记录表</option>
+										<option>锅炉运行记录表</option>
+									</select>
+								</li>
+								<li>查看方式：</li>
+							</ul>
+							<div class="btn-group dateButtons">
+								<button type="button" class="btn btn-default active" data-range="1d" data-tar="cbfxDate">日</button>
+								<button type="button" class="btn btn-default" data-range="1m" data-tar="cbfxDate">月</button>
+								<button type="button" class="btn btn-default" data-range="1y" data-tar="cbfxDate">年</button>
+							</div>
+							<div class="jgfx-date-box ib">
+								<div class='input-group date datetimepicker1 ' id="cbfxDate">
+									<input type='text' class="form-control" />
+									<span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-info"> 查看数据</button>
 
-                <ul class="list-inline fr">
-                    <li>
-                        <input type="checkbox" />带图
-                    </li>
+							<ul class="list-inline fr">
+								<li>
+									<input type="checkbox" />带图
+								</li>
+								<li>
+									<button id="btnPopChart" type="button" class="btn btn-info">
+										查看图表
+									</button>
+								</li>
+								<li>
+									<button type="button" title="导出到Excell" class="btn btn-info" aria-label="Left Align">
+										<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-                    <li>
-                        <button id="btnPopChart" type="button" class="btn btn-primary">
-                            查看图表
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" title="导出到Excell" class="btn btn-primary" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<div class="djuhnyu">
 
-        <div id="tabDyrb">
-            <table id="tbyDyrb" class="table table-striped table-bordered table-full-width" style="table-layout: auto;" data-pagination="true" >
+				<div id="tabDyrb">
+					<table id="tbyDyrb" class="table table-striped table-bordered table-full-width" style="table-layout: auto;" data-pagination="true">
+						<thead>
+							<tr><th rowspan="3" data-align="center" data-halign="center" data-valign="middle">时间</th>
+								<th colspan="2" data-align="center" data-halign="center" data-valign="middle">氟系统压力</th>
+								<th colspan="5" data-align="center" data-halign="center" data-valign="middle">工况</th>
+								<th colspan="3" data-align="center" data-halign="center" data-valign="middle">电控系统</th>
+								<th colspan="6" data-align="center" data-halign="center" data-valign="middle">循环水系统</th>
+							</tr>
+							<tr>
+								<th colspan="2" data-align="center" data-halign="center" data-valign="middle">运行压力</th>
+								<th colspan="2" data-align="center" data-halign="center" data-valign="middle">制冷</th>
+								<th rowspan="2" data-align="center" data-halign="center" data-valign="middle">设定温度°C</th>
+								<th colspan="2" data-align="center" data-halign="center" data-valign="middle">制热</th>
+								<th rowspan="2" data-align="center" data-halign="center" data-valign="middle">机组电压</th>
+								<th rowspan="2" data-align="center" data-halign="center" data-valign="middle">1#机组电流A</th>
+								<th rowspan="2" data-align="center" data-halign="center" data-valign="middle">2#机组电流A</th>
+								<th colspan="3" data-align="center" data-halign="center" data-valign="middle">使用侧	</th>
+								<th colspan="3" data-align="center" data-halign="center" data-valign="middle">循环侧</th>
+							</tr>
+							<tr>
+								<th data-align="center" data-halign="center" data-valign="middle">吸气压力Mpa</th>
+								<th data-align="center" data-halign="center" data-valign="middle">排气压力Mpa</th>
+								<th data-align="center" data-halign="center" data-valign="middle">使用侧出水温度°C</th>
+								<th data-align="center" data-halign="center" data-valign="middle">回水温度°C</th>
+								<th data-align="center" data-halign="center" data-valign="middle">地埋侧出口温度°C</th>
+								<th data-align="center" data-halign="center" data-valign="middle">回水温度°C</th>
+								<th data-align="center" data-halign="center" data-valign="middle">集水器压力Mpa</th>
+								<th data-align="center" data-halign="center" data-valign="middle">水泵回水压力Mpa</th>
+								<th data-align="center" data-halign="center" data-valign="middle">流量m³/h</th>
+								<th data-align="center" data-halign="center" data-valign="middle">分水器压力Mpa</th>
+								<th data-align="center" data-halign="center" data-valign="middle">水泵回水压力Mpa</th>
+								<th data-align="center" data-halign="center" data-valign="middle">流量m³/h</th>
+							</tr>
+							<tr>
+								<th data-field="date" data-align="center" data-halign="center" data-valign="middle">全选<input type="checkbox" id="chkDyrbPa" /></th>
+								<th data-field="P1" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP1" /></th>
+								<th data-field="P2" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP2" /></th>
+								<th data-field="P3" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP3" /></th>
+								<th data-field="P4" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP4" /></th>
+								<th data-field="P5" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP5" /></th>
+								<th data-field="P6" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP6" /></th>
+								<th data-field="P7" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP7" /></th>
+								<th data-field="P8" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP8" /></th>
+								<th data-field="P9" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP9" /></th>
+								<th data-field="P10" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP10" /></th>
+								<th data-field="P11" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP11" /></th>
+								<th data-field="P12" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP12" /></th>
+								<th data-field="P13" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP13" /></th>
+								<th data-field="P14" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP14" /></th>
+								<th data-field="P15" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP15" /></th>
+								<th data-field="P16" data-align="center" data-halign="center" data-valign="middle"><input type="checkbox" id="chkDyrbP16" /></th>
+							</tr>
+						</thead>
 
-                <thead>
-                    <tr>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" rowspan="3" data-align="center" data-halign="center" data-valign="middle">
-                            时间
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            氟系统压力
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="5" data-align="center" data-halign="center" data-valign="middle">
-                            工况
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="3" data-align="center" data-halign="center" data-valign="middle">
-                            电控系统
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="6" data-align="center" data-halign="center" data-valign="middle">
-                            循环水系统
-                        </th>
-                    </tr>
-                    <tr>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            运行压力
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            制冷
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" rowspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            设定温度°C
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            制热
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" rowspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            机组电压V
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" rowspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            1#机组电流A
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" rowspan="2" data-align="center" data-halign="center" data-valign="middle">
-                            2#机组电流A
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="3" data-align="center" data-halign="center" data-valign="middle">
-                            使用侧
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" colspan="3" data-align="center" data-halign="center" data-valign="middle">
-                            循环侧
-                        </th>
-                    </tr>
-                    <tr>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            吸气压力Mpa
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            排气压力Mpa
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            使用侧出水温度°C
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            回水温度°C
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            地埋侧出口温度°C
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            回水温度°C
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            集水器压力Mpa
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            水泵回水压力Mpa
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            流量m³/h
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            分水器压力Mpa
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            水泵回水压力Mpa
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-align="center" data-halign="center" data-valign="middle">
-                            流量m³/h
-                        </th>
-                    </tr>
-                    <tr>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="date" data-align="center" data-halign="center" data-valign="middle">
-                            全选<input type="checkbox" id="chkDyrbPa" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P1" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP1" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P2" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP2" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P3" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP3" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P4" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP4" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P5" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP5" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P6" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP6" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P7" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP7" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P8" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP8" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P9" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP9" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P10" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP10" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P11" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP11" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P12" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP12" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P13" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP13" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P14" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP14" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P15" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP15" />
-                        </th>
-                        <th style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;" data-field="P16" data-align="center" data-halign="center" data-valign="middle">
-                            <input type="checkbox" id="chkDyrbP16" />
-                        </th>
-                    </tr>
+					</table>
+				</div>
 
-                </thead>
+				<div id="tabGlyx">
+					<table class="table table-striped table-bordered table-full-width" id="tab" style="table-layout: auto;">
+						<tbody id="tbyGuolu">
+							<tr>
+								<td rowspan="2">时间</td>
+								<td rowspan="2">燃气压力kPa</td>
+								<td colspan="8">1#燃气锅炉</td>
+								<td colspan="8">2#燃气锅炉</td>
+								<td colspan="2">分气缸</td>
+								<td colspan="3">生活热水板换</td>
+							</tr>
+							<tr>
+								<td>蒸汽压力kg/cm²</td>
+								<td>水位刻度</td>
+								<td>进水初温度°C</td>
+								<td>进水中温度°C</td>
+								<td>进水末温度°C</td>
+								<td>排烟初温度°C</td>
+								<td>排烟中温度°C</td>
+								<td>排烟末温度°C</td>
+								<td>蒸汽压力kg/cm²</td>
+								<td>水位刻度</td>
+								<td>进水初温度°C</td>
+								<td>进水中温度°C</td>
+								<td>进水末温度°C</td>
+								<td>排烟初温度°C</td>
+								<td>排烟中温度°C</td>
+								<td>排烟末温度°C</td>
+								<td>蒸汽压力kg/cm²</td>
+								<td>温度°C</td>
+								<td>生活热水出口温度°C</td>
+								<td>生活热水回水温度°C</td>
+								<td>生活热水泵压力kg/cm²</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-            </table>
-        </div>
+				<div id="tabYrxt">
+					<table class="table table-striped table-bordered table-full-width" id="tab" class="divtabledin">
+						<tbody class="sdes">
+							<tr>
+								<td rowspan="2">时间</td>
+								<td colspan="12">燃气余热锅炉</td>
+								<td colspan="8">蒸汽溴冷机</td>
+								<td colspan="4">1#冷温水循环泵</td>
+								<td colspan="4">2#冷温水循环泵</td>
+								<td colspan="4">3#冷温水循环泵</td>
+								<td colspan="4">4#冷温水循环泵</td>
+								<td>软水</td>
+								<td colspan="2">分水器</td>
+								<td colspan="2">集水器</td>
+							</tr>
+							<tr class="trSelected">
+								<td>余热锅炉进口排烟温度°C</td>
+								<td>余热锅炉出口排烟温度°C</td>
+								<td>余热锅炉蒸气压力Mpa</td>
+								<td>余热锅炉给水压力Mpa</td>
+								<td>余热锅炉补水泵频率Hz</td>
+								<td>余热锅炉运行液位%</td>
+								<td>余热锅炉蒸汽流量m³/h</td>
+								<td>消毒中心m³/h</td>
+								<td>洗衣房蒸汽m³/h</td>
+								<td>裙楼三楼食堂m³/h</td>
+								<td>蒸汽溴冷机m³/h</td>
+								<td>蒸汽总累计m³/h</td>
+								<td>冷冻水入口温度°C</td>
+								<td>冷冻水出口温度°C</td>
+								<td>冷却水入口温度°C</td>
+								<td>冷却水出口温度°C</td>
+								<td>高温发生器温度°C</td>
+								<td>低温发生器温度°C</td>
+								<td>溶液浓度%</td>
+								<td>蒸汽热源%</td>
+								<td>泵运行频率Hz</td>
+								<td>泵运行电流A</td>
+								<td>冷温水流量m³/h</td>
+								<td>泵出口压力Mpa</td>
+								<td>泵运行频率Hz</td>
+								<td>泵运行电流A</td>
+								<td>冷温水流量Mpa</td>
+								<td>泵出口压力Mpa</td>
+								<td>泵运行频率Hz</td>
+								<td>泵运行电流A</td>
+								<td>冷温水流量m³/h</td>
+								<td>泵出口压力Mpa</td>
+								<td>泵运行频率Hz</td>
+								<td>泵运行电流A</td>
+								<td>冷温水流量Mpa</td>
+								<td>泵出口压力Mpa</td>
+								<td>水位</td>
+								<td>压力Mpa</td>
+								<td>温度°C</td>
+								<td>压力Mpa</td>
+								<td>温度°C</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-        <div id="tabGlyx">
-            <table class="table table-striped table-bordered table-full-width" id="tab" style="table-layout: auto;">
-                <tbody id="tbyGuolu">
-                    <tr>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" rowspan="2">时间</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" rowspan="2">燃气压力kPa</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="8">1#燃气锅炉</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="8">2#燃气锅炉</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="2">分气缸</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="3">生活热水板换</td></tr><tr><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">蒸汽压力kg/cm²</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">水位刻度</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">进水初温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">进水中温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">进水末温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">排烟初温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">排烟中温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">排烟末温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">蒸汽压力kg/cm²</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">水位刻度</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">进水初温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">进水中温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">进水末温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">排烟初温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">排烟中温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">排烟末温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">蒸汽压力kg/cm²</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">生活热水出口温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">生活热水回水温度°C</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">生活热水泵压力kg/cm²</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+				<!-- Modal:地源热泵图 -->
+				<div class="modal fade" id="myModal-dyrb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">地源热泵运行图</h4>
+							</div>
+							<div class="modal-body" id="div_dyrb" style="width:850px;height:450px">
+								<div id="hc_dyrb" style="width:850px;height:400px">
 
-        <div id="tabYrxt">
-            <table class="table table-striped table-bordered table-full-width" id="tab" style="table-layout: auto;">
-                <tbody>
-                    <tr><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" rowspan="2">时间</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="12">燃气余热锅炉</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="8">蒸汽溴冷机</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="4">1#冷温水循环泵</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="4">2#冷温水循环泵</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="4">3#冷温水循环泵</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="4">4#冷温水循环泵</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">软水</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="2">分水器</td><td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;" colspan="2">集水器</td></tr>
-                    <tr class="trSelected">
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉进口排烟温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉出口排烟温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉蒸气压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉给水压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉补水泵频率Hz</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉运行液位%</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">余热锅炉蒸汽流量m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">消毒中心m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">
-                            洗衣房蒸汽m³/h
-                        </td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">裙楼三楼食堂m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">蒸汽溴冷机m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">蒸汽总累计m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷冻水入口温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷冻水出口温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷却水入口温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷却水出口温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">高温发生器温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">低温发生器温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">溶液浓度%</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">蒸汽热源%</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行频率Hz</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行电流A</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷温水流量m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵出口压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行频率Hz</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行电流A</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷温水流量Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵出口压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行频率Hz</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行电流A</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷温水流量m³/h</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵出口压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行频率Hz</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵运行电流A</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">冷温水流量Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">泵出口压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">水位</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">温度°C</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">压力Mpa</td>
-                        <td style="width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word;">温度°C</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <!-- Modal:地源热泵图 -->
-        <div class="modal fade" id="myModal-dyrb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">地源热泵运行图</h4>
-                    </div>
-                    <div class="modal-body" id="div_dyrb" style="width:850px;height:450px">
-                        <div id="hc_dyrb" style="width:850px;height:400px">
+				<!-- Modal:锅炉运行记录图 -->
+				<div class="modal fade" id="myModal-guolu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-9">
+										<div id="hc_guolu">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="divcolonhy">
+											<div class="input-group" class="divinput">
+												<div>
+													<input type="checkbox" aria-label="..."> 燃气压力
+												</div>
+												<div>
+													<input type="checkbox" checked="checked" aria-label="..."> 蒸汽压力
+												</div>
+												<div>
+													<input type="checkbox" aria-label="..."> 水位刻度
+												</div>
+												<div>
+													<input type="checkbox" checked="checked" aria-label="..."> 进水初温
+												</div>
+												<div>
+													<input type="checkbox" aria-label="..."> 进水中温
+												</div>
+												<div>
+													<input type="checkbox" aria-label="..."> 进水末温
+												</div>
+												<div>
+													<input type="checkbox" checked="checked" aria-label="..."> 排烟初温
+												</div>
+												<div>
+													<input type="checkbox" aria-label="..."> 排烟中温
+												</div>
+											</div>
+										</div>
 
-        <!-- Modal:锅炉运行记录图 -->
-        <div class="modal fade" id="myModal-guolu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div id="hc_guolu">
+									</div>
+								</div>
 
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div style="vertical-align:middle">
-                                    <div class="input-group" style="vertical-align:middle">
-                                        <div>
-                                            <input type="checkbox" aria-label="..."> 燃气压力
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" checked="checked" aria-label="..."> 蒸汽压力
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" aria-label="..."> 水位刻度
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" checked="checked" aria-label="..."> 进水初温
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" aria-label="..."> 进水中温
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" aria-label="..."> 进水末温
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" checked="checked" aria-label="..."> 排烟初温
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" aria-label="..."> 排烟中温
-                                        </div>
-                                    </div>
-                                </div>
+							</div>
 
-                            </div>
-                        </div>
+						</div>
+					</div>
+				</div>
+				</div>
 
+			</div>
 
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-    
-    </div>        
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/bb'])
-		});
-	</script>
-<% include footer.html %>
+		</div>
+		<script>
+			requirejs(['../js/common'], function(common) {
+				requirejs(['app/bb'])
+			});
+		</script>
+		<% include footer.html %>

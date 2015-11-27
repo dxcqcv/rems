@@ -1,12 +1,11 @@
-        .fl {
-            float: left;
-        }
-
-        .fr {
-            float: right;
-        }
-        body{
-            line-height:1.5em;
-        }
-
+.fl {float: left;}
+.fr {float: right;}
+body{line-height:1.5em;}
+.alldivback,.clearfix{background-color: rgba(236, 236, 236, 0.37);}
+.allbackli{padding: 10px;}
+#tabDyrb{background-color: #ffffff;}
+.djuhnyu{padding: 10px;}
 .bb-wrapper { background: #fff; }
+.table td{width: 300px; text-align: center; vertical-align: middle; -ms-word-wrap: break-word}
+.divcolonhy,.divinput{vertical-align:middle}
+.divtabledin{table-layout: auto;}

@@ -39,7 +39,7 @@ define(function(require){
 // tbhb top 
          //localJsonp.start({url:jsonpPath+'tbhb.js',parameter:{id:'tbhbHaoneng',fn:tbhbHngn},jsonpCallback:'tbhb',done:globalTools.tbhbCallback});
          localJsonp.start({url:jsonpPath+'tbhb2.js',parameter:{id:'tbhbGongneng',fn:tbhbHngn},jsonpCallback:'tbhb2',done:globalTools.tbhbCallback});
-         demand.start({url:'/api/CSInfo/expend/list1.json', parameter:{id:'tbhbHaoneng',fn:tbhbHngn2},data:{projectid:1,dateFlag:1,dateStar:"2015-09-01"},done:tbhbHngn2})
+         demand.start({url:'/api/CSInfo/expend/list1.json', parameter:{id:'tbhbHaoneng',fn:tbhbHngn},data:{projectid:1,dateFlag:1,dateStar:"2015-09-01"},done:globalTools.tbhbCallback})
 
         function tbhbHngn(id,baseLine,xData,sData) {
               options.chart.type = 'column';
@@ -54,19 +54,6 @@ define(function(require){
               chart = new Highcharts.Chart(options); 
         }
 
-        function tbhbHngn2(data,parameter) {
-
-              options.chart.type = 'column';
-              options.chart.renderTo = parameter.id;
-              options.xAxis.categories = data.xData;
-              //optionsLines.yAxis.plotLines.value = baseLine;
-              options.plotOptions.series.dataLabels.enabled = true;
-              options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
-           
-              options.series = data.sData;
-
-              chart = new Highcharts.Chart(options); 
-        }
 // tbhb bottom
         localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{id:'tbhbNyzhlyl',fn:globalTools.tbhbLines,options:optionsLines},jsonpCallback:'tbhb3',done:globalTools.tbhbCallback});
         localJsonp.start({url:jsonpPath+'tbhb4.js',parameter:{id:'tbhbJnl',fn:globalTools.tbhbLines,options:optionsLines},jsonpCallback:'tbhb4',done:globalTools.tbhbCallback});

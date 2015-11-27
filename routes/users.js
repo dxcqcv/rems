@@ -116,6 +116,12 @@ router.get('/gysxpz', function(req, res) {
 router.get('/zdybbpz', function(req, res) {
     res.render('zdybbpz', { title: 'Home' });
 });
+router.get('/mksjpz', function(req, res) {
+    res.render('mksjpz', { title: 'Home' });
+});
+router.get('/rhpz', function(req, res) {
+    res.render('rhpz', { title: 'Home' });
+});
 
 
 function authentication(req, res) {

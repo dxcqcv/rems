@@ -3,13 +3,15 @@ define(function(require) {
       , highcharts = require('exporting')
       , selectpicker = require('bootstrap-select')
       , bootstrapTable = require('bootstrap-table')
-      , datapicker = require('bootstrap-datetimepicker.min')
+      , datapicker = require('bootstrap-datetimepicker.min')      
+      , datetimepickerObj = require('app/dateObj')
       ;
 	(function() {
-    //时间控件
-        $(".datepicker").datetimepicker();
+   
     //选择控件
         $('.selectpicker').selectpicker();
+        //时间控件
+       $('.datetimepicker1').datetimepicker(datetimepickerObj);
 
 //huang
         var dyrb_Parameter = [
