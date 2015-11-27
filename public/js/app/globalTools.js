@@ -17,6 +17,7 @@ define(function(require) {
             parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
         },
         tbhbCallback: function(data,parameter) {
+            console.log(parameter.id,data);
            parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
         },
         tbhbLines: function(id,baseLine,xData,sData,options) {

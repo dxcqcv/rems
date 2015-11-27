@@ -19,7 +19,7 @@ router.post('/login.json', function(req, res, next) {
 	secretKey为签名秘钥(*778@#￥5&*（*（{}*&$#)；签名秘钥必须和泛能云服务系统的一致。
 	*/
 
-	var today = moment().format('YYYY-MM-DD')
+	var today = moment().format('YYYY-MM-DD');
 	//var data = "username:"+"enn_admin"+"password:"+"123456"+today+"*778@#￥5&*（*（{}*&$#";
 	var data = "username:"+req.body.username+"password:"+req.body.password+today;
 	var Buffer = require("buffer").Buffer;
@@ -45,7 +45,7 @@ router.post('/login.json', function(req, res, next) {
 	    		res.redirect('/login');
 	    	}
 	  	
-	})
+	});
 });
 /*首页页面*/
 //首页获取项目列表接口 【已通过】
@@ -58,7 +58,7 @@ router.get('/gislist.json', function(req, res, next) {
 	console.log(req.query.projectid);
 	    	res.send(body);
 	  	
-	})
+	});
 
 });
 router.get('/features.json', function(req, res, next) {
@@ -69,7 +69,7 @@ router.get('/features.json', function(req, res, next) {
 	console.log(req.query.projectid);
 	    	res.send(body);
 	  	
-	})
+	});
 
 });
 router.get('/gislist_features.json', function(req, res, next) {
@@ -80,7 +80,7 @@ router.get('/gislist_features.json', function(req, res, next) {
 	console.log(req.query.projectid);
 	    	res.send(body);
 	  	
-	})
+	});
 
 });
 
@@ -92,7 +92,7 @@ router.get('/clickProject.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/clickProject.json', form: {userKey:req.session.user.token, projectid:req.query.projectid}}, function(error,response,body){
 	    	res.send(body);	
 
-	})
+	});
 });
 
 /*项目预览页面*/
@@ -106,9 +106,9 @@ router.get('/projectOverview.json', function(req, res, next) {
 	    	console.log(result);
 	    	if (result.status.code == 200) {
 	    		var realdata = result.status.data.list;
-	    		var xmgl = new Array();
+	    		var xmgl = [];
 	    		for (var i = 0; i < realdata.length; i++) {
-	    			xmgl[i] = new Object();
+	    			xmgl[i] = {};
 	    			if(realdata[i].overviewclass == '1'){
 	    				xmgl[i].name = "项目现状";
 	    			}else if (realdata[i].overviewclass == '2') {
@@ -136,20 +136,20 @@ router.get('/projectOverview.json', function(req, res, next) {
 	    			xmgl[i].path = remoteApiHost + remoteApiPath + realdata[i].datapath;
 	    			
 	    				
-	    		};
+	    		}
 
 	    		var data = {
 			        "xmgl": xmgl
 			        
 			    };
-			    res.send(data)
+			    res.send(data);
 	    			
 
 	    		
 	    	}else{
 	    		res.send("{error:'请求API错误'}");
 	    	}
-	})
+	});
 });
 
 /*运行监测页面*/
@@ -159,75 +159,75 @@ router.get('/techCheck/equLabellist.json', function(req, res, next) {
 	console.log(req.query.projectid);
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/equLabellist.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 //动态列表
 
 router.get('/techCheck/insLabellist.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insLabellist.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 //动态列表对应值
 router.get('/techCheck/insData.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insData.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 //动态列表对应图表
 router.get('/techCheck/insDatas.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/insDatas.json', form: {userKey:req.session.user.token, classinstanceid:req.query.classinstanceid,classpropertyid:req.query.classpropertyid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面设备启停状态接口
 router.get('/techCheck/equState.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/equState.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面验证系统角色名
 router.get('/techCheck/equDatas.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/equDatas.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面供能耗能联合曲线数据
 router.get('/techCheck/multiEnergy.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/multiEnergy.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面单个能源项曲线数据
 router.get('/techCheck/singleEnergy.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/singleEnergy.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面单个能源项分解的设备层级能源项饼图数据
 router.get('/techCheck/energyPie.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/energyPie.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面成本或收益的饼图数据
 router.get('/techCheck/financePie.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/financePie.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //运行监测页面单个能源配额曲线数据
 router.get('/techCheck/singleQuota.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/techCheck/singleQuota.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 /*能效监测页面*/
@@ -235,28 +235,28 @@ router.get('/techCheck/singleQuota.json', function(req, res, next) {
 router.get('/effiCheck/sysindex.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/effiCheck/sysindex.json', form: {userKey:req.session.user.token, projectid:req.query.projectid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //能效检测页面：气象信息监测实时数据（数据曲线）
 router.get('/effiCheck/weatherInfo.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/effiCheck/weatherInfo.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //能效检测页面：气象信息监测即时数据（分钟数据）
 router.get('/effiCheck/weatherInfoNow.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/effiCheck/weatherInfoNow.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //能效检测页面：供能耗能指标量数据
 router.get('/effiCheck/energySourceValue.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/effiCheck/energySourceValue.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, pageid:req.query.pageid}}, function(error,response,body){
 	    	res.send(body);	
-	})
+	});
 });
 
 //能效检测页面：供能耗能能源种类接口 该接口提供项目耗能或者供能的能源种类数据信息
@@ -405,92 +405,86 @@ router.get('/projectmanagement/lists.json', function(req, res, next) {
 router.get('/CSInfo/expend/list1.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/CSInfo/expend/list1.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, dateFlag:req.query.dateFlag, dateStar:req.query.dateStar}}, function(error,response,body){
 	    	//res.send(body);	
-	    	console.log(req.session.user.token)
-			// var result = JSON.parse(body); 
-	  //   	console.log(result);
-	  //   	if (result.status.code == 200) {
-	  //   		var realdata = result.status.data.currentList;
-	  //   		var olddata = result.status.data.oldList;
-	  //   		var sData = new Array();
-	  //   		var sDataElement = new Object();
-	  //   		sDataElement.name = "新"
-	  //   		sDataElement.data = new Array();
+			//console.log(req.session.user.token)
+             var result = JSON.parse(body); 
+             console.log(result);
+             if (result.status.code == 200) {
+                 var realdata = result.status.data.currentList;
+                 var olddata = result.status.data.oldList;
+                 var sData = new Array();
+                 var sDataElement = new Object();
+                 sDataElement.name = "新";
+                 sDataElement.data = new Array();
 
-	  //   		var sDataElementOld = new Object();
-	  //   		sDataElementOld.name = "旧"
-	  //   		sDataElementOld.data = new Array();
+                 var sDataElementOld = new Object();
+                 sDataElementOld.name = "旧";
+                 sDataElementOld.data = new Array();
+                 var temp = new Object();
 
-	  //   		for (var i = 0; i < realdata.length; i++) {
-		 //    		console.log(realdata[i].projectId);
-		 //    			//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-			//      	if (realdata[i].showName == '耗气') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗气";
-			//      		temp.y = parseFloat(realdata[i].dataValue);
-			//      		sDataElement.data.push(temp);
-			//      	}else if (realdata[i].showName == '耗电') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗电";
-			//      		temp.y = parseFloat(realdata[i].dataValue);
-			//      		sDataElement.data.push(temp);
-			//      	}else if (realdata[i].showName == '耗水') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗水";
-			//      		temp.y = parseFloat(realdata[i].dataValue);
-			//      		sDataElement.data.push(temp);
-			//      	}else if (realdata[i].showName == '耗蒸汽') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗蒸汽";
-			//      		temp.y = parseFloat(realdata[i].dataValue);
-			//      		sDataElement.data.push(temp);
-			//      	}
-	    				
-	  //   		};
+                 for (var i = 0; i < realdata.length; i++) {
+                     console.log(realdata[i].projectId);
+                         //按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
+                      if (realdata[i].showName == '耗气') {
+                          //则放在第一个：
+                          temp.name = "耗气";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }else if (realdata[i].showName == '耗电') {
+                          //则放在第一个：
+                          temp.name = "耗电";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }else if (realdata[i].showName == '耗水') {
+                          //则放在第一个：
+                          temp.name = "耗水";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }else if (realdata[i].showName == '耗蒸汽') {
+                          //则放在第一个：
+                          temp.name = "耗蒸汽";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }
+                        
+                 }
 
-	  //   		for (var i = 0; i < olddata.length; i++) {
-		 //    		console.log(olddata[i].projectId);
-		 //    			//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-			//      	if (olddata[i].showName == '耗气') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗气";
-			//      		temp.y = parseFloat(olddata[i].dataValue);
-			//      		sDataElementOld.data.push(temp);
-			//      	}else if (olddata[i].showName == '耗电') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗电";
-			//      		temp.y = parseFloat(olddata[i].dataValue);
-			//      		sDataElementOld.data.push(temp);
-			//      	}else if (olddata[i].showName == '耗水') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗水";
-			//      		temp.y = parseFloat(olddata[i].dataValue);
-			//      		sDataElementOld.data.push(temp);
-			//      	}else if (olddata[i].showName == '耗蒸汽') {
-			//      		//则放在第一个：
-			//      		var temp = new Object();
-			//      		temp.name = "耗蒸汽";
-			//      		temp.y = parseFloat(olddata[i].dataValue);
-			//      		sDataElementOld.data.push(temp);
-			//      	}
-	    				
-	  //   		};
-	  //   		sData.push(sDataElement);
-	  //   		sData.push(sDataElementOld);
-	  //   		var result = new Object();
-	  //   		result.xData = ['耗气','耗电','耗水','耗蒸汽'];
-	  //   		result.sData = sData;
-			//     res.send(result);
-	    		
-	  //   	}else{
-	  //   		res.send("{error:'请求API错误'}");
-	  //   	}
+                 for (var j = 0; j < olddata.length; j++) {
+                     console.log(olddata[j].projectId);
+                         //按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
+                      if (olddata[j].showName == '耗气') {
+                          //则放在第一个：
+                          temp.name = "耗气";
+                          temp.y = parseFloat(olddata[j].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }else if (olddata[j].showName == '耗电') {
+                          //则放在第一个：
+                          temp.name = "耗电";
+                          temp.y = parseFloat(olddata[j].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }else if (olddata[j].showName == '耗水') {
+                          //则放在第一个：
+                          temp.name = "耗水";
+                          temp.y = parseFloat(olddata[j].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }else if (olddata[j].showName == '耗蒸汽') {
+                          //则放在第一个：
+                          temp.name = "耗蒸汽";
+                          temp.y = parseFloat(olddata[j].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }
+                        
+                 }
+                 sData.push(sDataElement);
+                 sData.push(sDataElementOld);
+
+                 var lastResult = new Object();
+                 result.xData = ['耗气','耗电','耗水','耗蒸汽'];
+                 result.sData = sData;
+                 res.send(result);
+                
+             }else{
+                 res.send("{error:'请求API错误'}");
+             }
 
 
 	})
@@ -499,97 +493,98 @@ router.get('/CSInfo/expend/list1.json', function(req, res, next) {
 //同比环比页面：耗能-环比分析
 router.get('/CSInfo/expend/list2.json', function(req, res, next) {
 	request.post({url:'http://117.144.16.98:8080/rems/CSInfo/expend/list2.json', form: {userKey:req.session.user.token, projectid:req.query.projectid, dateFlag:req.query.dateFlag, dateStar:req.query.dateStar}}, function(error,response,body){
-	    		
-			res.send(body);
-			// return false;
-			var result = JSON.parse(body); 
-			
-	    	
-	    	if (result.status.code == 200) {
-	    		var realdata = result.status.data.currentList;
-	    		console.log(realdata);
-	    		var olddata = result.status.data.oldList;
-	    		var sData = new Array();
-	    		var sDataElement = new Object();
-	    		sDataElement.name = "新"
-	    		sDataElement.data = new Array();
+	    	//res.send(body);	
+	    	console.log(req.session.user.token)
+             var result = JSON.parse(body); 
+             console.log(result);
+             if (result.status.code == 200) {
+                 var realdata = result.status.data.currentList;
+                 var olddata = result.status.data.oldList;
+                 var sData = new Array();
+                 var sDataElement = new Object();
+                 sDataElement.name = "新"
+                 sDataElement.data = new Array();
 
-	    		var sDataElementOld = new Object();
-	    		sDataElementOld.name = "旧"
-	    		sDataElementOld.data = new Array();
+                 var sDataElementOld = new Object();
+                 sDataElementOld.name = "旧"
+                 sDataElementOld.data = new Array();
 
-	    		for (var i = 0; i < realdata.length; i++) {
-		    		
-		    			//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-			     	if (realdata[i].showName == '耗气') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗气";
-			     		temp.y = parseFloat(realdata[i].dataValue);
-			     		sDataElement.data.push(temp);
-			     	}else if (realdata[i].showName == '耗电') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗电";
-			     		temp.y = parseFloat(realdata[i].dataValue);
-			     		sDataElement.data.push(temp);
-			     	}else if (realdata[i].showName == '耗水') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗水";
-			     		temp.y = parseFloat(realdata[i].dataValue);
-			     		sDataElement.data.push(temp);
-			     	}else if (realdata[i].showName == '耗蒸汽') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗蒸汽";
-			     		temp.y = parseFloat(realdata[i].dataValue);
-			     		sDataElement.data.push(temp);
-			     	}
-	    		};
+                 for (var i = 0; i < realdata.length; i++) {
+                     console.log(realdata[i].projectId);
+                         //按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
+                      if (realdata[i].showName == '耗气') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗气";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }else if (realdata[i].showName == '耗电') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗电";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }else if (realdata[i].showName == '耗水') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗水";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }else if (realdata[i].showName == '耗蒸汽') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗蒸汽";
+                          temp.y = parseFloat(realdata[i].dataValue);
+                          sDataElement.data.push(temp);
+                      }
+                        
+                 };
 
-	    		for (var i = 0; i < olddata.length; i++) {
-		    		console.log(olddata[i].projectId);
-		    			//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-			     	if (olddata[i].showName == '耗气') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗气";
-			     		temp.y = parseFloat(olddata[i].dataValue);
-			     		sDataElementOld.data.push(temp);
-			     	}else if (olddata[i].showName == '耗电') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗电";
-			     		temp.y = parseFloat(olddata[i].dataValue);
-			     		sDataElementOld.data.push(temp);
-			     	}else if (olddata[i].showName == '耗水') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗水";
-			     		temp.y = parseFloat(olddata[i].dataValue);
-			     		sDataElementOld.data.push(temp);
-			     	}else if (olddata[i].showName == '耗蒸汽') {
-			     		//则放在第一个：
-			     		var temp = new Object();
-			     		temp.name = "耗蒸汽";
-			     		temp.y = parseFloat(olddata[i].dataValue);
-			     		sDataElementOld.data.push(temp);
-			     	}
-	    				
-	    		};
+                 for (var i = 0; i < olddata.length; i++) {
+                     console.log(olddata[i].projectId);
+                         //按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
+                      if (olddata[i].showName == '耗气') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗气";
+                          temp.y = parseFloat(olddata[i].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }else if (olddata[i].showName == '耗电') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗电";
+                          temp.y = parseFloat(olddata[i].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }else if (olddata[i].showName == '耗水') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗水";
+                          temp.y = parseFloat(olddata[i].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }else if (olddata[i].showName == '耗蒸汽') {
+                          //则放在第一个：
+                          var temp = new Object();
+                          temp.name = "耗蒸汽";
+                          temp.y = parseFloat(olddata[i].dataValue);
+                          sDataElementOld.data.push(temp);
+                      }
+                        
+                 };
+                 sData.push(sDataElement);
+                 sData.push(sDataElementOld);
+                 var result = new Object();
+                 result.xData = ['耗气','耗电','耗水','耗蒸汽'];
+                 result.sData = sData;
+                 res.send(result);
+                
+             }else{
+                 res.send("{error:'请求API错误'}");
+             }
 
-	    		sData.push(sDataElement);
-	    		sData.push(sDataElementOld);
-	    		var result = new Object();
-	    		result.xData = ['耗气','耗电','耗水','耗蒸汽'];
-	    		result.sData = sData;
-			    //res.send(result);
-	    		
-	    	}else{
-	    		res.send("{error:'请求API错误'}");
-	    	}
+
 	})
+
+
 });
 
 
