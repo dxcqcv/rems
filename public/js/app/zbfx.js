@@ -64,8 +64,8 @@ define(function(require) {
 			},
 			data: {
 				projectid: 1,
-				dateFlag: 2,
-				dateStar: '2015-09'
+				dateFlag: 1,
+				dateStar: '2015-09-01'
 			},
 			done: res
 		});
@@ -76,7 +76,7 @@ define(function(require) {
 				id: 'zbfxJnl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 1,
+				dateFlag: 2,
 				name: '节能率'
 			},
 			data: {
@@ -94,7 +94,7 @@ define(function(require) {
 				id: 'zbfxEyhtjpl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 1,
+				dateFlag: 2,
 				name: '二氧化碳减排率'
 			},
 			data: {
@@ -112,7 +112,7 @@ define(function(require) {
 				id: 'zbfxKzsnylyl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 1,
+				dateFlag: 2,
 				name: '可再生能源利用率'
 			},
 			data: {
@@ -126,13 +126,13 @@ define(function(require) {
 
 		function res(data, parameter) {
 			var result = data.status.data;
-			console.log(parameter.id);
-			console.log(result);
+			//			console.log(parameter.id);
+			//			console.log(result);
 			var tmp = {};
 			var sData1 = [];
 			var yItem = {};
 			tmp.xData = dateFormater(parameter.dateFlag, result.listX);
-			console.log(tmp.xData);
+			//			console.log(tmp.xData);
 
 			yItem.name = parameter.name;
 			yItem.data = [];
@@ -151,21 +151,32 @@ define(function(require) {
 			if (dateFlag == 1) {
 				var res = [];
 				$.each(data, function(i, v) {
-					res.push(v.substring(11, 13) + '点');
+					var tmp = v.substring(11, 13);
+					if (tmp.substring(0, 1) == '0') {
+						tmp = tmp.substring(1, 2);
+					}
+					res.push(tmp + '点');
 				});
 				return res;
 			}
 			if (dateFlag == 2) {
 				var res = [];
 				$.each(data, function(i, v) {
-					res.push(v.substring(8, 10) + '日');
+					var tmp = v.substring(8, 10);
+					if (tmp.substring(0, 1) == '0') {
+						tmp = tmp.substring(1, 2);
+					}
+					res.push(tmp + '日');
 				});
 				return res;
 			}
 			if (dateFlag == 3) {
 				var res = [];
 				$.each(data, function(i, v) {
-					res.push(v.substring(5, 7) + '月');
+					if (tmp.substring(0, 1) == '0') {
+						tmp = tmp.substring(1, 2);
+					}
+					res.push(tmp + '月');
 				});
 				return res;
 			}
