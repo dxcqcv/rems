@@ -13,6 +13,9 @@ define(function(require) {
 
 	(function() {
 
+		var projectid = 1;
+		var dateFlag = 1;
+		var dateStr = '2015-09-01';
 		// 日月年
 		//		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, demand.start, setDate, globalTools, optionsLines);
 		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, demand.start, setDate, globalTools, optionsLines);
@@ -60,13 +63,13 @@ define(function(require) {
 				id: 'zbfxNyzhlyl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 1,
+				dateFlag: dateFlag,
 				name: '能源综合利用率'
 			},
 			data: {
-				projectid: 1,
-				dateFlag: 1,
-				dateStar: '2015-09-01'
+				projectid: projectid,
+				dateFlag: dateFlag,
+				dateStar: dateStr
 			},
 			done: res
 		});
@@ -77,13 +80,13 @@ define(function(require) {
 				id: 'zbfxJnl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 2,
+				dateFlag: dateFlag,
 				name: '节能率'
 			},
 			data: {
-				projectid: 1,
-				dateFlag: 2,
-				dateStar: '2015-09'
+				projectid: projectid,
+				dateFlag: dateFlag,
+				dateStar: dateStr
 			},
 			jsonpCallback: 'tbhb4',
 			done: res
@@ -95,13 +98,13 @@ define(function(require) {
 				id: 'zbfxEyhtjpl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 2,
+				dateFlag: dateFlag,
 				name: '二氧化碳减排率'
 			},
 			data: {
-				projectid: 1,
-				dateFlag: 2,
-				dateStar: '2015-09'
+				projectid: projectid,
+				dateFlag: dateFlag,
+				dateStar: dateStr
 			},
 			jsonpCallback: 'tbhb5',
 			done: res
@@ -113,18 +116,19 @@ define(function(require) {
 				id: 'zbfxKzsnylyl',
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
-				dateFlag: 2,
+				dateFlag: dateFlag,
 				name: '可再生能源利用率'
 			},
 			data: {
-				projectid: 1,
-				dateFlag: 2,
-				dateStar: '2015-09'
+				projectid: projectid,
+				dateFlag: dateFlag,
+				dateStar: dateStr
 			},
 			jsonpCallback: 'tbhb6',
 			done: res
 		});
 
+		//解析数据，变成HighChar识别的数据格式
 		function res(data, parameter) {
 			var result = data.status.data;
 			var tmp = {};
@@ -145,6 +149,7 @@ define(function(require) {
 			globalTools.tbhbCallback(tmp, parameter);
 		}
 
+		//去掉复杂的日期格式
 		function dateFormater(dateFlag, data) {
 			if (dateFlag == 1) {
 				var res = [];
