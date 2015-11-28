@@ -194,6 +194,7 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                 this.itemsDone = true;
             },
             getGislist: function(data) {
+            console.log(data);
                 localData = data.status.data.gislist;
                 var nums = index.getNums();
                 index.indexProject(nums[0],index.projectList,0); //trigger indexProject
