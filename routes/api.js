@@ -2,7 +2,8 @@ var express = require('express');
 var request = require('request');
 var moment = require('moment');
 var router = express.Router();
-var remoteApiHost = "http://localhost:8080";
+//var remoteApiHost = "http://localhost:8080";
+var remoteApiHost = "http://117.144.16.98:8080";
 var remoteApiPath = "/rems";
 
 
