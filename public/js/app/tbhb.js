@@ -39,7 +39,6 @@ define(function(require){
 // tbhb top 
          //localJsonp.start({url:jsonpPath+'tbhb.js',parameter:{id:'tbhbHaoneng',fn:tbhbHngn},jsonpCallback:'tbhb',done:globalTools.tbhbCallback});
          localJsonp.start({url:jsonpPath+'tbhb2.js',parameter:{id:'tbhbGongneng',fn:tbhbHngn},jsonpCallback:'tbhb2',done:globalTools.tbhbCallback});
-
          demand.start({url:'/api/CSInfo/expend/list1.json', parameter:{id:'tbhbHaoneng',fn:tbhbHngn},data:{projectid:1,dateFlag:1,dateStar:"2015-09-01"},done:globalTools.tbhbCallback})
 
         function tbhbHngn(id,baseLine,xData,sData) {
@@ -49,6 +48,7 @@ define(function(require){
               //optionsLines.yAxis.plotLines.value = baseLine;
               options.plotOptions.series.dataLabels.enabled = true;
               options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
+              console.log(sData);
               options.series = sData;
 
               chart = new Highcharts.Chart(options); 
