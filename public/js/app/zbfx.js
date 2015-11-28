@@ -21,6 +21,7 @@ define(function(require) {
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
 			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
 			var jsonpName, dateFn;
+			console.log($(this).find('input').val());
 			switch (id) {
 				case 'zbfxNyzhlyl':
 					jsonpName = 'tbhb3';
@@ -126,13 +127,10 @@ define(function(require) {
 
 		function res(data, parameter) {
 			var result = data.status.data;
-			//			console.log(parameter.id);
-			//			console.log(result);
 			var tmp = {};
 			var sData1 = [];
 			var yItem = {};
 			tmp.xData = dateFormater(parameter.dateFlag, result.listX);
-			//			console.log(tmp.xData);
 
 			yItem.name = parameter.name;
 			yItem.data = [];
