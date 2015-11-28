@@ -62,13 +62,13 @@ define(function(require){
 
 		function res(data, parameter) {
 			var result = data.status.data;
-			console.log(parameter.id);
-			console.log(result);
+			//console.log(parameter.id);
+			//console.log(result);
 			var tmp = {};
 			var sData1 = [];
 			var yItem = {};
 			tmp.xData = dateFormater(parameter.dateFlag, result.listX);
-			console.log(tmp.xData);
+			//console.log(tmp.xData);
 
 			yItem.name = "能源综合利用率";
 			yItem.data = [];
