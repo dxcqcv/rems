@@ -21,6 +21,7 @@ define(function(require) {
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
 			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
 			var jsonpName, dateFn;
+            console.log($(this).find('input').val());
 			switch (id) {
 				case 'zbfxNyzhlyl':
 					jsonpName = 'tbhb3';
