@@ -3,6 +3,7 @@ define(function(require){
        moment = require('moment')
       , datapicker = require('bootstrap-datetimepicker.min')
       , jsonpPath = require('app/getJsonp')
+      , api = require('app/getApi')
       , card = require('app/card') 
       , setDate = require('app/setDate')
       , datetimepickerObj = require('app/dateObj')
