@@ -958,7 +958,7 @@ router.get('/accessInfo/list.json', function(req, res, next) {
 
 //指标分析页面：指标分析------能源综合利用率------------数据查询
 router.get('/KPIInfo/list1.json', function(req, res, next) {
-
+    //var dateStar =req.query.dateStar;
 	request.post({
 		url: remoteApiHost + '/rems/KPIInfo/list1.json',
 		form: {
@@ -968,9 +968,10 @@ router.get('/KPIInfo/list1.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-		res.send(body);
+        res.send(body);
 	})
 });
+
 
 //指标分析页面：指标分析------节能率------------数据查询
 router.get('/KPIInfo/list2.json', function(req, res, next) {
@@ -983,7 +984,7 @@ router.get('/KPIInfo/list2.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-		res.send(body);
+        res.send(body);
 	})
 });
 
@@ -998,7 +999,7 @@ router.get('/KPIInfo/list3.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-		res.send(body);
+        res.send(body);
 	})
 });
 
@@ -1013,7 +1014,7 @@ router.get('/KPIInfo/list4.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-		res.send(body);
+        res.send(body);
 	})
 });
 

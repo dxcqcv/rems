@@ -16,9 +16,67 @@ define(function(require) {
         selFn: function(data,parameter) {
             parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
         },
+        
+        //解析数据，变成HighChar识别的数据格式
+        formatZbLines:function (data, parameter) {
+            var result = data.status.data;
+            var tmp = {};
+            var sData1 = [];
+            var yItem = {};
+            tmp.xData = parameter.self.dateFormater(parameter.dateFlag, result.listX);
+
+            yItem.name = parameter.name;
+            yItem.data = [];
+            $.each(result.listY, function(i, v) {
+                yItem.data.push(parseFloat(v));
+            });
+
+            sData1.push(yItem)
+
+            tmp.sData = sData1;
+
+            parameter.self.tbhbCallback(tmp, parameter);
+        },
+
+        //去掉复杂的日期格式
+        dateFormater:function (dateFlag, data) {
+            if (dateFlag == 1) {
+                var res = [];
+                $.each(data, function(i, v) {
+                    var tmp = v.substring(11, 13);
+                    if (tmp.substring(0, 1) == '0') {
+                        tmp = tmp.substring(1, 2);
+                    }
+                    res.push(tmp + '点');
+                });
+                return res;
+            }
+            if (dateFlag == 2) {
+                var res = [];
+                $.each(data, function(i, v) {
+                    var tmp = v.substring(8, 10);
+                    if (tmp.substring(0, 1) == '0') {
+                        tmp = tmp.substring(1, 2);
+                    }
+                    res.push(tmp + '日');
+                });
+                return res;
+            }
+            if (dateFlag == 3) {
+                var res = [];
+                $.each(data, function(i, v) {
+                    if (tmp.substring(0, 1) == '0') {
+                        tmp = tmp.substring(1, 2);
+                    }
+                    res.push(tmp + '月');
+                });
+                return res;
+            }
+        },
         tbhbCallback: function(data,parameter) {
             //console.log(parameter.id,data);
            //parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
+           //console.log(data)
            parameter.fn(parameter.id,0,data.xData,data.sData,parameter.options);
         },
         tbhbLines: function(id,baseLine,xData,sData,options) {
@@ -34,11 +92,14 @@ define(function(require) {
             parameter.self.selectFn(parameter.pointer,'li'); 
         },
         tbhbGhg3: function(data,parameter){
+            //parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
 
-            parameter.fn(parameter.charts,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
+            //parameter.fn(parameter.charts,data.baseLine,data.xData,data.sData,parameter.options);
             parameter.self.selectFn(parameter.pointer,parameter.tag); 
             if(parameter.setDateFn == null) return;
-            parameter.setDateFn.changeDate(parameter.pointer);       
+            var datetime = parameter.setDateFn.changeDate(parameter.pointer);       
+
+//console.log(datetime);
         },
         tbhbGhgForApi: function(data,parameter){
           console.log("(((((((()))))))))))");
@@ -49,11 +110,14 @@ define(function(require) {
             if(parameter.setDateFn == null) return;
             parameter.setDateFn.changeDate(parameter.pointer);       
         },
-        tbhbClick: function (name,tag,jsonpPath,jsonp,fn,ajaxFn,setDateFn,self,options) {
+        //name 对象，tag 具体对象，url 地址，data 请求参数
+        tbhbClick: function (name,tag,url,data,fn,ajaxFn,setDateFn,self,options) {
               $(name).find(tag).click(function(){
-                  var $this = $(this)
-                  var charts = $this.parents('.my-card').find('.chart-box').attr('id'); 
-                  ajaxFn({url:jsonpPath+jsonp+'.js',parameter:{pointer:this,charts:charts,tag:tag,fn:fn,self:self,options:options,setDateFn:setDateFn},jsonpCallback:jsonp,done:self.tbhbGhg3});
+                  var $this = $(this);
+                  var parents = $this.parents('.my-card');
+                  var charts = parents.find('.chart-box').attr('id'); 
+                  var datetime = parents.find('.form-control').val();  
+                  ajaxFn.start.call(ajaxFn,{url:url,parameter:{pointer:this,charts:charts,tag:tag,fn:fn,self:self,options:options,setDateFn:setDateFn},data:{projectid: data.projectid,dateFlag: data.dateFlag,dateStar: data.dateStr},done:self.tbhbGhg3});
               });
         },
         ajaxClickForApi: function (name,tag,apiUrl,data,fn,ajaxFn,setDateFn,self,options) {
