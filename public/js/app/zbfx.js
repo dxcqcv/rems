@@ -1,6 +1,7 @@
 define(function(require) {
 	var
 		moment = require('moment'),
+        zh_cn = require('moment-zh-cn'),
 		datapicker = require('bootstrap-datetimepicker.min'),
 		jsonpPath = require('app/getJsonp'),
 		card = require('app/card'),
@@ -22,9 +23,10 @@ define(function(require) {
 
 		//时间空间
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
-			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
+            var $this = $(this); 
+			var id = $this.parents('.my-card').find('.chart-box').attr('id');
 			var jsonpName, dateFn;
-			console.log($(this).find('input').val());
+			console.log($this.find('input').val());
 			switch (id) {
 				case 'zbfxNyzhlyl':
 					jsonpName = 'tbhb3';
