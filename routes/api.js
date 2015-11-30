@@ -2,8 +2,8 @@ var express = require('express');
 var request = require('request');
 var moment = require('moment');
 var router = express.Router();
-//var remoteApiHost = "http://localhost:8080";
-var remoteApiHost = "http://117.144.16.98:8080";
+var remoteApiHost = "http://localhost:8080";
+//var remoteApiHost = "http://117.144.16.98:8080";
 var remoteApiPath = "/rems";
 
 
@@ -649,7 +649,6 @@ router.get('/projectmanagement/lists.json', function(req, res, next) {
 	})
 });
 
-
 //同比环比页面：耗能-同比分析
 router.get('/CSInfo/expend/list1.json', function(req, res, next) {
 	request.post({
@@ -661,91 +660,10 @@ router.get('/CSInfo/expend/list1.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-		//res.send(body);	
-		//console.log(req.session.user.token)
-		var result = JSON.parse(body);
-		console.log(result);
-		if (result.status.code == 200) {
-			var realdata = result.status.data.currentList;
-			var olddata = result.status.data.oldList;
-			var sData = new Array();
-			var sDataElement = new Object();
-			sDataElement.name = "新";
-			sDataElement.data = new Array();
-
-			var sDataElementOld = new Object();
-			sDataElementOld.name = "旧";
-			sDataElementOld.data = new Array();
-			var temp = new Object();
-
-			for (var i = 0; i < realdata.length; i++) {
-				console.log(realdata[i].projectId);
-				//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-				if (realdata[i].showName == '耗气') {
-					//则放在第一个：
-					temp.name = "耗气";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				} else if (realdata[i].showName == '耗电') {
-					//则放在第一个：
-					temp.name = "耗电";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				} else if (realdata[i].showName == '耗水') {
-					//则放在第一个：
-					temp.name = "耗水";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				} else if (realdata[i].showName == '耗蒸汽') {
-					//则放在第一个：
-					temp.name = "耗蒸汽";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				}
-
-			}
-
-			for (var j = 0; j < olddata.length; j++) {
-				console.log(olddata[j].projectId);
-				//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-				if (olddata[j].showName == '耗气') {
-					//则放在第一个：
-					temp.name = "耗气";
-					temp.y = parseFloat(olddata[j].dataValue);
-					sDataElementOld.data.push(temp);
-				} else if (olddata[j].showName == '耗电') {
-					//则放在第一个：
-					temp.name = "耗电";
-					temp.y = parseFloat(olddata[j].dataValue);
-					sDataElementOld.data.push(temp);
-				} else if (olddata[j].showName == '耗水') {
-					//则放在第一个：
-					temp.name = "耗水";
-					temp.y = parseFloat(olddata[j].dataValue);
-					sDataElementOld.data.push(temp);
-				} else if (olddata[j].showName == '耗蒸汽') {
-					//则放在第一个：
-					temp.name = "耗蒸汽";
-					temp.y = parseFloat(olddata[j].dataValue);
-					sDataElementOld.data.push(temp);
-				}
-
-			}
-			sData.push(sDataElement);
-			sData.push(sDataElementOld);
-
-			var lastResult = new Object();
-			result.xData = ['耗气', '耗电', '耗水', '耗蒸汽'];
-			result.sData = sData;
-			res.send(result);
-
-		} else {
-			res.send("{error:'请求API错误'}");
-		}
-
-
+		res.send(body);
 	})
 });
+
 
 //同比环比页面：耗能-环比分析
 router.get('/CSInfo/expend/list2.json', function(req, res, next) {
@@ -758,98 +676,101 @@ router.get('/CSInfo/expend/list2.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-		//res.send(body);	
-		console.log(req.session.user.token)
-		var result = JSON.parse(body);
-		console.log(result);
-		if (result.status.code == 200) {
-			var realdata = result.status.data.currentList;
-			var olddata = result.status.data.oldList;
-			var sData = new Array();
-			var sDataElement = new Object();
-			sDataElement.name = "新"
-			sDataElement.data = new Array();
-
-			var sDataElementOld = new Object();
-			sDataElementOld.name = "旧"
-			sDataElementOld.data = new Array();
-
-			for (var i = 0; i < realdata.length; i++) {
-				console.log(realdata[i].projectId);
-				//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-				if (realdata[i].showName == '耗气') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗气";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				} else if (realdata[i].showName == '耗电') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗电";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				} else if (realdata[i].showName == '耗水') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗水";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				} else if (realdata[i].showName == '耗蒸汽') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗蒸汽";
-					temp.y = parseFloat(realdata[i].dataValue);
-					sDataElement.data.push(temp);
-				}
-
-			};
-
-			for (var i = 0; i < olddata.length; i++) {
-				console.log(olddata[i].projectId);
-				//按照：xData: ['耗气','耗电','耗水','耗蒸汽'] 循环
-				if (olddata[i].showName == '耗气') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗气";
-					temp.y = parseFloat(olddata[i].dataValue);
-					sDataElementOld.data.push(temp);
-				} else if (olddata[i].showName == '耗电') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗电";
-					temp.y = parseFloat(olddata[i].dataValue);
-					sDataElementOld.data.push(temp);
-				} else if (olddata[i].showName == '耗水') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗水";
-					temp.y = parseFloat(olddata[i].dataValue);
-					sDataElementOld.data.push(temp);
-				} else if (olddata[i].showName == '耗蒸汽') {
-					//则放在第一个：
-					var temp = new Object();
-					temp.name = "耗蒸汽";
-					temp.y = parseFloat(olddata[i].dataValue);
-					sDataElementOld.data.push(temp);
-				}
-
-			};
-			sData.push(sDataElement);
-			sData.push(sDataElementOld);
-			var result = new Object();
-			result.xData = ['耗气', '耗电', '耗水', '耗蒸汽'];
-			result.sData = sData;
-			res.send(result);
-
-		} else {
-			res.send("{error:'请求API错误'}");
-		}
-
-
+		res.send(body);
 	})
+});
+
+//同比环比页面：供能-同比分析
+router.get('/CSInfo/provide/list1.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/CSInfo/provide/list1.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//同比环比页面：供能-环比分析
+router.get('/CSInfo/provide/list2.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/CSInfo/provide/list2.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//同比环比页面：能源综合利用率-同比分析
+router.get('/CSInfo/use/list1.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/CSInfo/use/list1.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
 
+//同比环比页面：能源综合利用率-环比分析
+router.get('/CSInfo/use/list2.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/CSInfo/use/list2.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+
+//同比环比页面：节能率-同比分析
+router.get('/CSInfo/saving/list1.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/CSInfo/saving/list1.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+
+//同比环比页面：节能率-环比分析
+router.get('/CSInfo/saving/list2.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/CSInfo/saving/list2.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
 });
 
 
@@ -958,7 +879,7 @@ router.get('/accessInfo/list.json', function(req, res, next) {
 
 //指标分析页面：指标分析------能源综合利用率------------数据查询
 router.get('/KPIInfo/list1.json', function(req, res, next) {
-    //var dateStar =req.query.dateStar;
+	//var dateStar =req.query.dateStar;
 	request.post({
 		url: remoteApiHost + '/rems/KPIInfo/list1.json',
 		form: {
@@ -968,7 +889,7 @@ router.get('/KPIInfo/list1.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-        res.send(body);
+		res.send(body);
 	})
 });
 
@@ -984,7 +905,7 @@ router.get('/KPIInfo/list2.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-        res.send(body);
+		res.send(body);
 	})
 });
 
@@ -999,7 +920,7 @@ router.get('/KPIInfo/list3.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-        res.send(body);
+		res.send(body);
 	})
 });
 
@@ -1014,7 +935,7 @@ router.get('/KPIInfo/list4.json', function(req, res, next) {
 			dateStar: req.query.dateStar
 		}
 	}, function(error, response, body) {
-        res.send(body);
+		res.send(body);
 	})
 });
 
