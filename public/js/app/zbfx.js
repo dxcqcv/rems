@@ -22,9 +22,9 @@ define(function(require) {
         var url, name;
 		// 日月年
 		//		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, demand.start, setDate, globalTools, optionsLines);
-        var dataP = {projectid:1,dateFlag:1,dateStr:'2015-08-01'};
+        //var dataP = {projectid:1,dateFlag:1,dateStr:'2015-08-01'};
 
-		globalTools.realClick('#nyzhlylButton', 'button', setDate, globalTools);
+		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
 
 		//时间空间
         $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
