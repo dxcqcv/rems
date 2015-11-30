@@ -18,25 +18,25 @@ define(function(require) {
         },
         
         //解析数据，变成HighChar识别的数据格式
-        formatZbLines:function (data, parameter) {
-            var result = data.status.data;
-            var tmp = {};
-            var sData1 = [];
-            var yItem = {};
-            tmp.xData = parameter.self.dateFormater(parameter.dateFlag, result.listX);
+        //formatZbLines:function (data, parameter) {
+            //var result = data.status.data;
+            //var tmp = {};
+            //var sData1 = [];
+            //var yItem = {};
+            //tmp.xData = parameter.self.dateFormater(parameter.dateFlag, result.listX);
 
-            yItem.name = parameter.name;
-            yItem.data = [];
-            $.each(result.listY, function(i, v) {
-                yItem.data.push(parseFloat(v));
-            });
+            //yItem.name = parameter.name;
+            //yItem.data = [];
+            //$.each(result.listY, function(i, v) {
+                //yItem.data.push(parseFloat(v));
+            //});
 
-            sData1.push(yItem)
+            //sData1.push(yItem)
 
-            tmp.sData = sData1;
+            //tmp.sData = sData1;
 
-            parameter.self.tbhbCallback(tmp, parameter);
-        },
+            //parameter.self.tbhbCallback(tmp, parameter);
+        //},
 
         //去掉复杂的日期格式
         dateFormater:function (dateFlag, data) {
@@ -65,6 +65,7 @@ define(function(require) {
             if (dateFlag == 3) {
                 var res = [];
                 $.each(data, function(i, v) {
+                    var tmp = v.substring(5, 7);
                     if (tmp.substring(0, 1) == '0') {
                         tmp = tmp.substring(1, 2);
                     }
@@ -118,6 +119,20 @@ define(function(require) {
                   var charts = parents.find('.chart-box').attr('id'); 
                   var datetime = parents.find('.form-control').val();  
                   ajaxFn.start.call(ajaxFn,{url:url,parameter:{pointer:this,charts:charts,tag:tag,fn:fn,self:self,options:options,setDateFn:setDateFn},data:{projectid: data.projectid,dateFlag: data.dateFlag,dateStar: data.dateStr},done:self.tbhbGhg3});
+              });
+        },
+        //name 对象，tag 具体对象，url 地址，data 请求参数
+        realClick: function (name,tag,setDateFn,self) {
+              $(name).find(tag).click(function(){
+                  var $this = $(this);
+                  var parents = $this.parents('.my-card');
+                  var charts = parents.find('.chart-box').attr('id'); 
+                  var datetime = parents.find('.form-control').val();  
+
+            self.selectFn(this,tag); 
+            if(setDateFn == null) return;
+            var datetime = setDateFn.changeDate(this);       
+
               });
         },
         ajaxClickForApi: function (name,tag,apiUrl,data,fn,ajaxFn,setDateFn,self,options) {
