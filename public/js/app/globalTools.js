@@ -77,11 +77,13 @@ define(function(require) {
         tbhbCallback: function(data,parameter) {
             //console.log(parameter.id,data);
            //parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
-           //console.log(data)
-           parameter.fn(parameter.id,0,data.xData,data.sData,parameter.options);
+           if(parameter.unit !== undefined) parameter.fn(parameter.id,0,data.xData,data.sData,parameter.options, parameter.unit);
+           else parameter.fn(parameter.id,0,data.xData,data.sData,parameter.options);
         },
-        tbhbLines: function(id,baseLine,xData,sData,options) {
+        tbhbLines: function(id,baseLine,xData,sData,options,unit) {
               var tbhbChartLines
+              if(unit !== undefined) options.yAxis.title.text = unit;
+              else options.yAxis.title.text = null;
               options.chart.renderTo = id;
               options.yAxis.plotLines.value = baseLine;
               options.xAxis.categories = xData;

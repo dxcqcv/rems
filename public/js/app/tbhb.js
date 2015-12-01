@@ -25,6 +25,7 @@ define(function(require) {
         var initCharts = ['tbhbHnDate','tbhbGnDate','tbhbNyzhlylDate','tbhbJnlDate']; 
         var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
 		var oldDate; //防止重复
+        var unit;
 		var url, name;
 		// 日月年
 
@@ -82,6 +83,7 @@ define(function(require) {
                 case 'tbhbNyzhlyl':
                     if(tabFlag === 1)   url = '/api/CSInfo/use/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/use/list2.json';
+                    unit = 'kWh';
                     dateFn = globalTools.tbhbLines;
                     optionsSel =optionsLines; 
                     charFlag = 2;
@@ -89,6 +91,7 @@ define(function(require) {
                 case 'tbhbJnl':
                     if(tabFlag === 1)   url = '/api/CSInfo/saving/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/saving/list2.json';
+                    unit = 'kWh';
                     dateFn = globalTools.tbhbLines;
                     optionsSel =optionsLines; 
                     charFlag = 2;
@@ -104,6 +107,7 @@ define(function(require) {
                     dateStar: dateStar,
                     dateFlag: dateFlag,
                     self:globalTools,
+                    unit: unit,
                     charFlag: charFlag 
                 },
                 data: {
@@ -118,6 +122,7 @@ define(function(require) {
 			options.chart.type = 'column';
 			options.chart.renderTo = id;
 			options.xAxis.categories = xData;
+            options.yAxis.title.text = 'kWh';
 			//optionsLines.yAxis.plotLines.value = baseLine;
 			options.plotOptions.series.dataLabels.enabled = true;
 			options.plotOptions.series.dataLabels.format = '{point.y:.1f}';
