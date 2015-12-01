@@ -200,6 +200,43 @@ define(function(require) {
             modal.attr('data-num',num);
             modal.find('.modal-title').text(title);
             modal.modal('show');
-        }
+        },
+
+		/*array 去重*/
+		uniq: function(array) {
+			var map = {};
+			var re = [];
+			for (var i = 0, l = array.length; i < l; i++) {
+				if (typeof map[array[i]] == "undefined") {
+					map[array[i]] = 1;
+					re.push(array[i]);
+				}
+			}
+			return re;
+		},
+		//单个对象格式化
+		dateFormterItem: function(dateFlag, dateValue) {
+			if (dateFlag == 1) {
+				var tmp = dateValue.substring(11, 13);
+				if (tmp.substring(0, 1) == '0') {
+					tmp = tmp.substring(1, 2);
+				}
+				return tmp + '点';
+			}
+			if (dateFlag == 2) {
+				var tmp = dateValue.substring(8, 10);
+				if (tmp.substring(0, 1) == '0') {
+					tmp = tmp.substring(1, 2);
+				}
+				return tmp + '日';
+			}
+			if (dateFlag == 3) {
+				var tmp = dateValue.substring(5, 7);
+				if (tmp.substring(0, 1) == '0') {
+					tmp = tmp.substring(1, 2);
+				}
+				return tmp + '月';
+			}
+		}
     }    
 });
