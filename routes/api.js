@@ -2,8 +2,8 @@ var express = require('express');
 var request = require('request');
 var moment = require('moment');
 var router = express.Router();
-//var remoteApiHost = "http://localhost:8080";
-var remoteApiHost = "http://117.144.16.98:8080";
+var remoteApiHost = "http://localhost:8080";
+//var remoteApiHost = "http://117.144.16.98:8080";
 var remoteApiPath = "/rems";
 
 
@@ -939,6 +939,19 @@ router.get('/KPIInfo/list4.json', function(req, res, next) {
 	})
 });
 
+//耗能分析页面：耗能分析数据查询
+router.get('/consumptionEnergyInfo/list.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/consumptionEnergyInfo/list.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
 
 
