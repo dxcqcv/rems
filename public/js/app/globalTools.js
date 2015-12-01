@@ -122,7 +122,7 @@ define(function(require) {
               });
         },
         //name 对象，tag 具体对象，url 地址，data 请求参数
-        realClick: function (name,tag,setDateFn,self) {
+        realClick: function (name,tag,setDateFn,self, callback) {
               $(name).find(tag).click(function(){
                   var $this = $(this);
                   var parents = $this.parents('.my-card');
@@ -130,9 +130,8 @@ define(function(require) {
                   var datetime = parents.find('.form-control').val();  
 
             self.selectFn(this,tag); 
-            if(setDateFn == null) return;
-            var datetime = setDateFn.changeDate(this);       
-
+            if(setDateFn !== null) setDateFn.changeDate(this);       
+            if(callback !== undefined) callback.call(this);
               });
         },
         ajaxClickForApi: function (name,tag,apiUrl,data,fn,ajaxFn,setDateFn,self,options) {

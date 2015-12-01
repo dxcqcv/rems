@@ -2,7 +2,7 @@ define(function(require){
       var moment = require('moment');
 		var datapicker = require('bootstrap-datetimepicker.min');
       var $ = require('jquery');
-              var dateFlag = 0;
+              var dateFlag = 1;
        //var datetimepickerObj2 = {
             //format: 'YYYY',
             //useCurrent: true,

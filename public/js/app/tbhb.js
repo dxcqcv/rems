@@ -2,10 +2,12 @@ define(function(require) {
 	var $ = require('jquery'),
 		selectpicker = require('bootstrap-select'),
         zh_cn = require('moment-zh-cn'),
+        moment = require('moment'),
 		datapicker = require('bootstrap-datetimepicker.min'),
 		options = require('app/highchartsConfig'),
 		optionsLines = require('app/highchartsConfigLines'),
 		jsonpPath = require('app/getJsonp'),
+        projectid = require('app/checkProjectid'),
 		highcharts = require('app/card'),
 		setDate = require('app/setDate'),
 		datetimepickerObj = require('app/dateObj'),
@@ -14,175 +16,117 @@ define(function(require) {
 
 	(function() {
 
-		var projectid = 1;
+		//var projectid = 1;
 		var dateFlag = 1;
-		var dateStar = '2015-09-01';
+		//var dateStar = '2015-09-01';
 		var tabFlag = 1; //(1：同比，2:环比)
-
-		//		var dateStr = moment().format('YYYY-MM-DD');
+        var charFlag; //1-柱形,2-曲线
+        var optionsSel; // options 柱形，optionsLines 曲线
+        var initCharts = ['tbhbHnDate','tbhbGnDate','tbhbNyzhlylDate','tbhbJnlDate']; 
+        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
 		var oldDate; //防止重复
 		var url, name;
 		// 日月年
 
 		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
+        //切换同比环比标签
+		globalTools.realClick('.tbhb-switch-box', 'li', null, globalTools ,function(){
+             var $this = $(this);
+             var id = $this.parents('.tbhb-switch-box').data('dir');
+             var type = $this.attr('data-type');
+             if(type ==='tb') tabFlag = 1;
+             else if(type ==='hb') tabFlag = 2;
+             dateChange.call($('#'+id),this);
+        });
 
-        //$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
-        $('.datetimepicker1').datetimepicker(datetimepickerObj);
+        $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',dateChange);
+       
+        //初始化tbhb
+        for(var i = 0, l = initCharts.length; i < l; i++) {
+             dateChange.call($('#'+initCharts[i]+''),this);
+        }
+
+        function dateChange(ev) {
+            var $this = $(this); 
+            var id = $this.parents('.my-card').find('.chart-box').attr('id');
+            var jsonpName, dateFn;
+            //日或月
+            dateFlag = setDate.getFlag();
+            switch(dateFlag ) {
+                case 1:
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM-DD');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 2: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+            }
+            switch (id) {
+                case 'tbhbHaoneng':
+                    if(tabFlag === 1)   url = '/api/CSInfo/expend/list1.json';    
+                    else if(tabFlag === 2) url = '/api/CSInfo/expend/list2.json';
+                    dateFn = tbhbHngn;
+                    optionsSel = options
+                    charFlag = 1;
+                    break;
+                case 'tbhbGongneng':
+                    if(tabFlag === 1)   url = '/api/CSInfo/provide/list1.json';    
+                    else if(tabFlag === 2) url = '/api/CSInfo/provide/list2.json';
+                    dateFn = tbhbHngn;
+                    optionsSel = options
+                    charFlag = 1;
+                    break;
+                case 'tbhbNyzhlyl':
+                    if(tabFlag === 1)   url = '/api/CSInfo/use/list1.json';    
+                    else if(tabFlag === 2) url = '/api/CSInfo/use/list2.json';
+                    dateFn = globalTools.tbhbLines;
+                    optionsSel =optionsLines; 
+                    charFlag = 2;
+                    break;
+                case 'tbhbJnl':
+                    if(tabFlag === 1)   url = '/api/CSInfo/saving/list1.json';    
+                    else if(tabFlag === 2) url = '/api/CSInfo/saving/list2.json';
+                    dateFn = globalTools.tbhbLines;
+                    optionsSel =optionsLines; 
+                    charFlag = 2;
+                    break;
+            }
+
+            demand.start({
+                url: url,
+                parameter: {
+                    id: id,
+                    fn: dateFn,
+                    options: optionsSel,
+                    dateStar: dateStar,
+                    dateFlag: dateFlag,
+                    self:globalTools,
+                    charFlag: charFlag 
+                },
+                data: {
+                    projectid: projectid,
+                    dateFlag: dateFlag,
+                    dateStar: dateStar
+                },
+                done:res 
+            });
+        }
 		function tbhbHngn(id, baseLine, xData, sData) {
 			options.chart.type = 'column';
 			options.chart.renderTo = id;
 			options.xAxis.categories = xData;
 			//optionsLines.yAxis.plotLines.value = baseLine;
 			options.plotOptions.series.dataLabels.enabled = true;
-			options.plotOptions.series.dataLabels.format = '{point.y:.1f}%';
+			options.plotOptions.series.dataLabels.format = '{point.y:.1f}';
 			options.series = sData;
 
 			chart = new Highcharts.Chart(options);
 		}
 
 		//图表
-		demand.start({
-			url: '/api/CSInfo/expend/list1.json',
-			parameter: {
-				id: 'tbhbHaoneng',
-				fn: tbhbHngn,
-				options: options,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 1
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-
-		demand.start({
-			url: '/api/CSInfo/expend/list2.json',
-			parameter: {
-				id: 'tbhbHaoneng',
-				fn: tbhbHngn,
-				options: options,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 1
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-
-		demand.start({
-			url: '/api/CSInfo/provide/list1.json',
-			parameter: {
-				id: 'tbhbGongneng',
-				fn: tbhbHngn,
-				options: options,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 1
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-		demand.start({
-			url: '/api/CSInfo/provide/list2.json',
-			parameter: {
-				id: 'tbhbGongneng',
-				fn: tbhbHngn,
-				options: options,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 1
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-
-		demand.start({
-			url: '/api/CSInfo/use/list1.json',
-			parameter: {
-				id: 'tbhbNyzhlyl',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 2
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-
-		demand.start({
-			url: '/api/CSInfo/use/list2.json',
-			parameter: {
-				id: 'tbhbNyzhlyl',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 2
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-
-		demand.start({
-			url: '/api/CSInfo/saving/list1.json',
-			parameter: {
-				id: 'tbhbJnl',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 2
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
-
-		demand.start({
-			url: '/api/CSInfo/saving/list2.json',
-			parameter: {
-				id: 'tbhbJnl',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateStar: dateStar,
-				dateFlag: dateFlag,
-				charFlag: 2
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar
-			},
-			done: res
-		})
 
 		function res(result, parameter) {
 			if (parameter.id == 'tbhbNyzhlyl')
@@ -233,9 +177,9 @@ define(function(require) {
 					temp = new Object();
 
 					if (parameter.charFlag == 1)
-						temp.name = realdata[j].showName;
+						temp.name = olddata[j].showName;
 					else
-						temp.name = dateFormter(parameter.dateFlag, realdata[j].rectime);
+						temp.name = dateFormter(parameter.dateFlag, olddata[j].rectime);
 
 					xData.push(temp.name);
 					temp.y = parseFloat(olddata[j].dataValue);
@@ -286,27 +230,6 @@ define(function(require) {
 
 
 
-		// tbhb bottom
-		//		localJsonp.start({
-		//			url: jsonpPath + 'tbhb3.js',
-		//			parameter: {
-		//				id: 'tbhbNyzhlyl',
-		//				fn: globalTools.tbhbLines,
-		//				options: optionsLines
-		//			},
-		//			jsonpCallback: 'tbhb3',
-		//			done: globalTools.tbhbCallback
-		//		});
-		//		localJsonp.start({
-		//			url: jsonpPath + 'tbhb4.js',
-		//			parameter: {
-		//				id: 'tbhbJnl',
-		//				fn: globalTools.tbhbLines,
-		//				options: optionsLines
-		//			},
-		//			jsonpCallback: 'tbhb4',
-		//			done: globalTools.tbhbCallback
-		//		});
 
 
 		/*array 去重*/
