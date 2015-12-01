@@ -9,7 +9,7 @@ define(function(require) {
         selCallback: function(data,parameter) {
           var str; 
           $.each(data,function(i,v){
-              str += '<option>'+v.selName+'</option>'
+              str += '<option id="'+v.id+'">'+v.selName+'</option>'
           });
           $(parameter.id).empty().append(str).selectpicker('refresh');
         },

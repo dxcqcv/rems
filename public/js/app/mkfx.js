@@ -2,6 +2,7 @@ define(function(require){
     var 
        moment = require('moment')
       , selectpicker = require('bootstrap-select')
+      , zh_cn = require('moment-zh-cn')
       , datapicker = require('bootstrap-datetimepicker.min')
       , jsonpPath = require('app/getJsonp')
       , card = require('app/card') 
@@ -21,8 +22,12 @@ define(function(require){
           localJsonp.start({url:jsonpPath+'mkfxSel4.js',parameter:{id:'#spSel'},jsonpCallback:'mkfxSel4',done:globalTools.selCallback});
 
     $('.selectpicker').change(function(){
-        var charts = $(this).parents('.my-card').find('.chart-box').attr('id'); 
-        localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{charts:charts,fn:globalTools.tbhbLines,options:optionsLines},jsonpCallback:'tbhb3',done:globalTools.selFn});
+        var $this = $(this);
+        var selected = $this.find('option:selected').attr('id');
+        var charts = $this.parents('.my-card').find('.chart-box').attr('id'); 
+        console.log(selected)
+
+        //localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{charts:charts,fn:globalTools.tbhbLines,options:optionsLines},jsonpCallback:'tbhb3',done:globalTools.selFn});
     });
       // 日月年
         globalTools.tbhbClick('.date-controls-box','button',jsonpPath,'tbhb3',globalTools.tbhbLines,localJsonp.start,setDate,globalTools,optionsLines);
