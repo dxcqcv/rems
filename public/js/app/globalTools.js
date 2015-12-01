@@ -77,8 +77,8 @@ define(function(require) {
         tbhbCallback: function(data,parameter) {
             //console.log(parameter.id,data);
            //parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
-           if(parameter.unit !== undefined) parameter.fn(parameter.id,0,data.xData,data.sData,parameter.options, parameter.unit);
-           else parameter.fn(parameter.id,0,data.xData,data.sData,parameter.options);
+           if(parameter.unit !== undefined) parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options, parameter.unit);
+           else parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options);
         },
         tbhbLines: function(id,baseLine,xData,sData,options,unit) {
               var tbhbChartLines
@@ -163,9 +163,12 @@ define(function(require) {
               });
         },
         ghnCallback: function (data,parameter) {
+        console.log(data)
             var ghnChart
             parameter.options.chart.renderTo = parameter.id;
-            parameter.options.series[0].data = data;
+            //parameter.options.yAxis.plotLines.value = [10,30];
+            parameter.options.yAxis.plotLines = data.baseLines;
+            parameter.options.series[0].data = data.data;
             ghnChart = new Highcharts.Chart(parameter.options); 
         },
         //供耗能分析曲线

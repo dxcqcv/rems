@@ -1,11 +1,12 @@
 define(function(require) {
 	var $ = require('jquery')
       , datapicker = require('bootstrap-datetimepicker.min')
+      , zh_cn = require('moment-zh-cn')
       , bootstrap = require('bootstrap')
       , jsonpPath= require('app/getJsonp')
 	  , highcharts = require('exporting')
       , globalTools = require('app/globalTools')
-      , options = require('app/highchartsConfig')
+      , optionsBase = require('app/highchartsConfigBase')
       , optionsLines = require('app/highchartsConfigLines')
       , datetimepickerObj = require('app/dateObj')
       ;
@@ -37,18 +38,18 @@ define(function(require) {
          $('[data-toggle="tooltip"]').tooltip();  
     //时间控件
        $('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change',function(){
-             localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:options},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
-             localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:options},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
-             localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:options},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
-             localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:options},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:optionsBase},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:optionsBase},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:optionsBase},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
+             localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:optionsBase},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
        });
 
         //图表
 
-         localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:options},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
-         localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:options},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
-         localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:options},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
-         localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:options},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson.js',parameter:{id:'drgnsp',options:optionsBase},jsonpCallback:'highchartsJsonp',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson2.js',parameter:{id:'dygnsp',options:optionsBase},jsonpCallback:'highchartsJsonp2',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson3.js',parameter:{id:'qrgnsp',options:optionsBase},jsonpCallback:'highchartsJsonp3',done:globalTools.ghnCallback});
+         localJsonp.start({url:jsonpPath+'highchartsJson4.js',parameter:{id:'dngnsp',options:optionsBase},jsonpCallback:'highchartsJsonp4',done:globalTools.ghnCallback});
 
     }());
 });

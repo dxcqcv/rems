@@ -1,8 +1,8 @@
 define(function(require){
-
-    var optionsLines = {
+    var optionsBase = {
         chart: {
             renderTo: '',
+            defaultSeriesType: 'column'
         },
         credits: {
             enabled: false
@@ -10,7 +10,13 @@ define(function(require){
         exporting: {
               enabled:false
         },
+        tooltip: {
+
+        },
         plotOptions: {
+            area: {
+                marker:{} 
+            },
             pie: {
                 dataLabels: {}
             },
@@ -37,9 +43,8 @@ define(function(require){
                 text: null 
             },
              plotLines: [{}]
-
         },
         series: [{}]
     };
-    return  optionsLines;
+    return  optionsBase;
 });
