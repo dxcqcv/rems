@@ -1,6 +1,7 @@
 define(function(require) {
 	var $ = require('jquery'),
 		selectpicker = require('bootstrap-select'),
+        zh_cn = require('moment-zh-cn'),
 		datapicker = require('bootstrap-datetimepicker.min'),
 		options = require('app/highchartsConfig'),
 		optionsLines = require('app/highchartsConfigLines'),
@@ -22,148 +23,11 @@ define(function(require) {
 		var oldDate; //防止重复
 		var url, name;
 		// 日月年
-		//		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, demand.start, setDate, globalTools, optionsLines);
-		//var dataP = {projectid:1,dateFlag:1,dateStr:'2015-08-01'};
 
+		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
 
-		//				globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
-
-		//				//时间空间
-		//				$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
-		//					var $this = $(this);
-		//					var id = $this.parents('.my-card').find('.chart-box').attr('id');
-		//					var jsonpName, dateFn;
-		//					//console.log($this.find('input').val());
-		//					dateFlag = setDate.getFlag();
-		//					switch (dateFlag) {
-		//						case 1:
-		//							dateStr = ev.date.format('YYYY-MM-DD');
-		//							if (oldDate == dateStr) break;
-		//							console.log(dateStr);
-		//							oldDate = dateStr;
-		//							break;
-		//						case 2:
-		//							dateStr = ev.date.format('YYYY-MM');
-		//							if (oldDate == dateStr) break;
-		//							console.log(dateStr);
-		//							oldDate = dateStr;
-		//							break;
-		//					}
-		//					//console.log(ev.date.format('YYYY'));
-		//					//console.log(d);
-		//					switch (id) {
-		//						case 'tbhbHaoneng':
-		//							if (tabFlag == 1)
-		//								url = '/api/CSInfo/expend/list1.json';
-		//							else
-		//								url = '/api/CSInfo/expend/list2.json';
-		//							name = '耗能';
-		//							break;
-		//						case 'zbfxJnl':
-		//							if (tabFlag == 1)
-		//								url = '/api/CSInfo/expend/list1.json';
-		//							else
-		//								url = '/api/CSInfo/expend/list2.json';
-		//							name = '节能率';
-		//							break;
-		//						case 'zbfxEyhtjpl':
-		//							if (tabFlag == 1)
-		//								url = '/api/CSInfo/expend/list1.json';
-		//							else
-		//								url = '/api/CSInfo/expend/list2.json';
-		//							name = '二氧化碳减排率';
-		//							break;
-		//						case 'zbfxKzsnylyl':
-		//							if (tabFlag == 1)
-		//								url = '/api/CSInfo/expend/list1.json';
-		//							else
-		//								url = '/api/CSInfo/expend/list2.json';
-		//							name = '可再生能源利用率';
-		//							break;
-		//					}
-		//					demand.start({
-		//						url: url,
-		//						parameter: {
-		//							id: id,
-		//							fn: globalTools.tbhbLines,
-		//							options: optionsLines,
-		//							dateFlag: dateFlag,
-		//							self: globalTools,
-		//							name: name
-		//						},
-		//						data: {
-		//							projectid: projectid,
-		//							dateFlag: dateFlag,
-		//							dateStar: dateStr
-		//						},
-		//						done: formatZbLines
-		//					});
-		//					//demand.start({
-		//					//url: jsonpPath + jsonpName + '.js',
-		//					//parameter: {
-		//					//id: id,
-		//					//fn: dateFn,
-		//					//options: optionsLines
-		//					//},
-		//					//jsonpCallback: jsonpName,
-		//					//done: globalTools.tbhbCallback
-		//					//});
-		//				});
-		//
-		//
-		//
-		//
-		//				(function() {
-		//					var chart;
-		//					var chartLines;
-		//					$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
-		//						var id = $(this).parents('.my-card').find('.chart-box').attr('id');
-		//						var jsonpName, dateFn;
-		//						switch (id) {
-		//							case 'tbhbHaoneng':
-		//								jsonpName = 'tbhb';
-		//								dateFn = tbhbHngn;
-		//								break;
-		//							case 'tbhbGongneng':
-		//								jsonpName = 'tbhb';
-		//								dateFn = tbhbHngn;
-		//								break;
-		//							case 'tbhbNyzhlyl':
-		//								jsonpName = 'tbhb3';
-		//								dateFn = globalTools.tbhbLines;
-		//								break;
-		//							case 'tbhbJnl':
-		//								jsonpName = 'tbhb3';
-		//								dateFn = globalTools.tbhbLines;
-		//								break;
-		//						}
-		//						localJsonp.start({
-		//							url: jsonpPath + jsonpName + '.js',
-		//							parameter: {
-		//								id: id,
-		//								fn: dateFn,
-		//								options: optionsLines
-		//							},
-		//							jsonpCallback: jsonpName,
-		//							done: globalTools.tbhbCallback
-		//						});
-		//						//demand.start({url:'/api/CSInfo/expend/list1.json', parameter:{id:id,fn:dateFn,options:optionsLines},data:{projectid:1,dateFlag:1,dateStar:$(this).val()},done:tbhbHngn2})
-		//					});
-
-		// 日月年
-		//					globalTools.ajaxClickForApi('.tbhb-switch-box-top', 'li', '', {
-		//						projectid: 1,
-		//						dateFlag: "2",
-		//						dateStar: "2015-11"
-		//					}, tbhbHngn, demand.start, null, globalTools, optionsLines);
-		//					globalTools.ajaxClickForApi('.date-controls-box-top', 'button', '', {
-		//						projectid: 1,
-		//						dateFlag: "",
-		//						dateStar: ""
-		//					}, tbhbHngn, demand.start, setDate, globalTools, optionsLines);
-		//					globalTools.tbhbClick('.tbhb-switch-box-bottom', 'li', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, null, globalTools, optionsLines);
-		//					globalTools.tbhbClick('.date-controls-box-bottom', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, setDate, globalTools, optionsLines);
-
+        //$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
+        $('.datetimepicker1').datetimepicker(datetimepickerObj);
 		function tbhbHngn(id, baseLine, xData, sData) {
 			options.chart.type = 'column';
 			options.chart.renderTo = id;
