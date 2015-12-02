@@ -255,7 +255,7 @@ function clickPopup(){}
                 dataLines[j] = []; 
             }
             if(propertyid.length !== 0) {
-                demand.start({url:'/api/techCheck/insDatas.json',loadContainer:['.modal-content'],parameter:{title:title,dataLines: dataLines,propertyid:propertyid},data:{classinstanceid:instanceid ,classpropertyid:propertyid.toString() }, done:gytDynamicCharts});
+                demand.start({url:'/api/techCheck/insDatas.json',loadContainer:[['.modal-content'],0],parameter:{title:title,dataLines: dataLines,propertyid:propertyid},data:{classinstanceid:instanceid ,classpropertyid:propertyid.toString() }, done:gytDynamicCharts});
             } else {
                  initGytCharts();   
             }

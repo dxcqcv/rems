@@ -12,19 +12,27 @@ define(function(require) {
             this.loading = loadingWrapper; 
         }
         $.extend(Request.prototype, {
-            loader: function(open,container) {
+            loader: function(open,container,padding) {
                 var loader = $('.loader-wrapper');
                 var self = this;
+                var bp = padding;
+
                 if(open === true) {
+console.log(open)
+console.log(loader.length)
                     if(loader.length === 0) {
                         $.each(container, function(i,v){
+                    console.log(loader)
                             var box = $(v);
                             var w = box.width();
                             var h = box.height();
-                            $(self.loading).width(w).height(h);
+                            if(bp === 0) $(self.loading).width(w).height(h).css({'position': 'absolute', top: 0, left: 0, 'z-index': 9});
+                            //else $(self.loading).width(w).height(h).css({'padding':bp});
+                            else $(self.loading).width(w).height(h).children('.loader').css({'top':'30%'});
                             box.append(self.loading);
                         });
                     } else {
+                    console.log(12121)
                         loader.removeClass('hide');
                     }
                 }  
@@ -46,8 +54,10 @@ define(function(require) {
                   ////, jsonp = opt.jsonp ? opt.jsonp : 'callbackparam'
                   //, jsonpCallback = opt.jsonpCallback ? opt.jsonpCallback : '' 
                   , self = this;
-                
-                this.loader(true,loadContainer);
+
+               //console.log(loadContainer[0]) 
+               //console.log(loadContainer[1]) 
+               if(loadContainer[1] !== undefined) this.loader(true,loadContainer[0],loadContainer[1]);
 
                 currentRequest = $.ajax({
                     url: url

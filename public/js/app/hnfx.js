@@ -1,19 +1,22 @@
 define(function(require) {
 	var $ = require('jquery'),
-		zh_cn = require('moment-zh-cn'),
+        zh_cn = require('moment-zh-cn'),
+        moment = require('moment'),
 		datapicker = require('bootstrap-datetimepicker.min'),
 		bootstrap = require('bootstrap'),
-		jsonpPath = require('app/getJsonp'),
+		//jsonpPath = require('app/getJsonp'),
 		highcharts = require('exporting'),
 		globalTools = require('app/globalTools'),
 		options = require('app/highchartsConfig'),
         projectid = require('app/checkProjectid'),
 		api = require('app/getApi'),
+        optionsBase = require('app/highchartsConfigBase'),
 		optionsLines = require('app/highchartsConfigLines'),
 		datetimepickerObj = require('app/dateObj');
 	(function() {
 
-		var dateStar = '2015-09-01';
+		//var dateStar = '2015-09-01';
+        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
 
 		//弹出层
 		$('.gnhnIcon').on('click', globalTools.modalFn);
@@ -73,53 +76,71 @@ define(function(require) {
 		// tooltips
 		$('[data-toggle="tooltip"]').tooltip();
 		//时间控件
-		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
-			localJsonp.start({
-				url: jsonpPath + 'highchartsJson.js',
-				parameter: {
-					id: 'drgnsp',
-					options: options
-				},
-				jsonpCallback: 'highchartsJsonp',
-				done: globalTools.ghnCallback
-			});
-			localJsonp.start({
-				url: jsonpPath + 'highchartsJson2.js',
-				parameter: {
-					id: 'dygnsp',
-					options: options
-				},
-				jsonpCallback: 'highchartsJsonp2',
-				done: globalTools.ghnCallback
-			});
-			localJsonp.start({
-				url: jsonpPath + 'highchartsJson3.js',
-				parameter: {
-					id: 'qrgnsp',
-					options: options
-				},
-				jsonpCallback: 'highchartsJsonp3',
-				done: globalTools.ghnCallback
-			});
-			localJsonp.start({
-				url: jsonpPath + 'highchartsJson4.js',
-				parameter: {
-					id: 'dngnsp',
-					options: options
-				},
-				jsonpCallback: 'highchartsJsonp4',
-				done: globalTools.ghnCallback
-			});
+		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
+            dateStar = ev.date.format('YYYY-MM-DD'); 
+            demand.start({
+                url: '/api/consumptionEnergyInfo/list.json',
+                loadContainer:[['.chart-box'],1],
+                parameter: {
+                    dir: {today:['drgnsp','当日耗能水平'],yestday:['qrgnsp','前日耗能水平'],month:['dygnsp','当月耗能水平'],year:['dngnsp','当年耗能水平']},
+                    id: 'drgnsp',
+                    name: '',
+                    options: optionsBase
+                },
+                data: {
+                    projectid: projectid,
+                    dateStar: dateStar
+                },
+                done: res
+            });
+			//localJsonp.start({
+				//url: jsonpPath + 'highchartsJson.js',
+				//parameter: {
+					//id: 'drgnsp',
+					//options: options
+				//},
+				//jsonpCallback: 'highchartsJsonp',
+				//done: globalTools.ghnCallback
+			//});
+			//localJsonp.start({
+				//url: jsonpPath + 'highchartsJson2.js',
+				//parameter: {
+					//id: 'dygnsp',
+					//options: options
+				//},
+				//jsonpCallback: 'highchartsJsonp2',
+				//done: globalTools.ghnCallback
+			//});
+			//localJsonp.start({
+				//url: jsonpPath + 'highchartsJson3.js',
+				//parameter: {
+					//id: 'qrgnsp',
+					//options: options
+				//},
+				//jsonpCallback: 'highchartsJsonp3',
+				//done: globalTools.ghnCallback
+			//});
+			//localJsonp.start({
+				//url: jsonpPath + 'highchartsJson4.js',
+				//parameter: {
+					//id: 'dngnsp',
+					//options: options
+				//},
+				//jsonpCallback: 'highchartsJsonp4',
+				//done: globalTools.ghnCallback
+			//});
 		});
 
 
 		//图表
 		demand.start({
 			url: '/api/consumptionEnergyInfo/list.json',
+            loadContainer:[['.chart-box'],1],
 			parameter: {
-                dir: {today:'drgnsp',yestday:'qrgnsp',month:'dygnsp',year:'dngnsp'},
+                dir: {today:['drgnsp','当日耗能水平'],yestday:['qrgnsp','前日耗能水平'],month:['dygnsp','当月耗能水平'],year:['dngnsp','当年耗能水平']},
                 id: 'drgnsp',
-				options: options
+                name: '',
+				options: optionsBase
 			},
 			data: {
 				projectid: projectid,
@@ -130,11 +151,10 @@ define(function(require) {
 
 
 		function res(data, parameter) {
-        console.log(data)
 			var result = data.status.data;
 
-			var xData = new Array;
-			var sData = new Array;
+			//var xData = new Array;
+			//var sData = new Array;
 
 			//---------------总的页面----------------------
 			//-------------------当日--------------------
@@ -270,27 +290,27 @@ define(function(require) {
 
 			//---------------详细页面----------------------
 			//-------------------当日--------------------
-			xData = new Array;
-			sData = new Array;
-			var today = data.status.data.today.resList;
-			//console.log(today);
-			$.each(today, function(i, v) {
-				xData.push(globalTools.dateFormterItem(1, v.rectime), v);
-				sData.push(v);
-			});
-			today.xData = xData;
-			//			today.sData = sData;
-			today.line; // 约束性指标
-			today.line1; // 引导性指标
-			var baseLines = [];
-			var line = {};
-			line.vaule = today.line;
-			baseLines.push(line);
-			var line = {};
-			line.vaule = today.line1;
-			baseLines.push(line);
+			//xData = new Array;
+			//sData = new Array;
+			//var today = data.status.data.today.resList;
+			////console.log(today);
+			//$.each(today, function(i, v) {
+				//xData.push(globalTools.dateFormterItem(1, v.rectime), v);
+				//sData.push(v);
+			//});
+			//today.xData = xData;
+			////			today.sData = sData;
+			//today.line; // 约束性指标
+			//today.line1; // 引导性指标
+			//var baseLines = [];
+			//var line = {};
+			//line.vaule = today.line;
+			//baseLines.push(line);
+			//var line = {};
+			//line.vaule = today.line1;
+			//baseLines.push(line);
 
-			today.baseLines = baseLines;
+			//today.baseLines = baseLines;
 
 			//-------------------当日--------------------
 			//globalTools.uniq();();
@@ -340,7 +360,7 @@ define(function(require) {
 		//			jsonpCallback: 'highchartsJsonp4',
 		//			done: globalTools.ghnCallback
 		//		});
-function builtGhPage(data,id,parameter,dateFlag) {
+function builtGhPage(data,info,parameter,dateFlag) {
 			var xData = new Array;
 			//var yestday = data.status.data.yestday;
             var yestday = data;
@@ -365,7 +385,8 @@ function builtGhPage(data,id,parameter,dateFlag) {
 
 			//console.log(yestday);
 			//parameter.id = 'qrgnsp';
-            parameter.id = id;
+            parameter.id = info[0];
+            parameter.name = info[1];
 			globalTools.ghnCallback(yestday, parameter);
 }
 

@@ -168,6 +168,7 @@ div.charts-cont-2-level {
     border: 1px solid #ddd;
     background-color: #fff;
     padding: 102-17px 10px 10px; /*top 92+10*/
+    /*position: relative;*/
 }
 .chart-box-no-sub {
     padding: 52px 10px 10px; /* with padding-top 10px */
@@ -256,7 +257,10 @@ div.charts-cont-2-level {
   vertical-align: middle;
 }
 /* global loading */
-.loader-wrapper{ position: absolute; top: 0; left: 0; z-index: 9; background: rgba(255,255,255,.5); width: 200px; height: 200px; }
+.loader-wrapper{ 
+    /*position: absolute; top: 0; left: 0; z-index: 9;*/
+    position: relative;
+    background: rgba(255,255,255,.5); width: 200px; height: 200px; }
 .loader {
   font-size: 90px;
   text-indent: -9999em;
@@ -264,12 +268,16 @@ div.charts-cont-2-level {
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  margin: -.5em auto;
-  top: 50%;
-  position: relative;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+  position: absolute;
+  top: 50%; left: 50%;
+  /*margin: -.5em auto;*/
+  /*top: 50%;*/
+  /*position: relative;*/
+  /*-webkit-transform: translateZ(0);*/
+  /*-ms-transform: translateZ(0);*/
+  -ms-transform: translateX(-50%) translateY(-50%) translateZ(0);
+  -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0);
+  transform: translateX(-50%) translateY(-50%) translateZ(0);
   -webkit-animation: load6 1.7s infinite ease;
   animation: load6 1.7s infinite ease;
 }

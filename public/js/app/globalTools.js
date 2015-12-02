@@ -165,9 +165,12 @@ define(function(require) {
         ghnCallback: function (data,parameter) {
             var ghnChart
             parameter.options.chart.renderTo = parameter.id;
+            parameter.options.lang.noData = '暂无数据';
             //parameter.options.yAxis.plotLines.value = [10,30];
-            parameter.options.yAxis.plotLines = data.baseLines;
+            parameter.options.yAxis.plotLines[0].value = data.baseLines[0].vaule;
+            parameter.options.yAxis.plotLines[1].value = data.baseLines[1].vaule;
             parameter.options.series[0].data = data.data;
+            parameter.options.series[0].name = parameter.name;
             ghnChart = new Highcharts.Chart(parameter.options); 
         },
         //供耗能分析曲线
