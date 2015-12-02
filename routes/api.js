@@ -954,6 +954,19 @@ router.get('/consumptionEnergyInfo/list.json', function(req, res, next) {
 });
 
 
+//供能分析页面：供能分析数据查询
+router.get('/provideEnergyInfo/list.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/provideEnergyInfo/list.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
 
 
