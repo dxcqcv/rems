@@ -163,7 +163,6 @@ define(function(require) {
               });
         },
         ghnCallback: function (data,parameter) {
-        console.log(data)
             var ghnChart
             parameter.options.chart.renderTo = parameter.id;
             //parameter.options.yAxis.plotLines.value = [10,30];

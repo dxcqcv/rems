@@ -120,7 +120,7 @@ function dateInit(rectime){
         /*
         projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
          * */
-    //projectid = '1';
+    //projectid = '4';
         //check project
         switch(projectid) { //复位为overview
             case '1': 

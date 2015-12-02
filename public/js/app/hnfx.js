@@ -7,12 +7,12 @@ define(function(require) {
 		highcharts = require('exporting'),
 		globalTools = require('app/globalTools'),
 		options = require('app/highchartsConfig'),
+        projectid = require('app/checkProjectid'),
 		api = require('app/getApi'),
 		optionsLines = require('app/highchartsConfigLines'),
 		datetimepickerObj = require('app/dateObj');
 	(function() {
 
-		var projectid = 1;
 		var dateStar = '2015-09-01';
 
 		//弹出层
@@ -117,7 +117,8 @@ define(function(require) {
 		demand.start({
 			url: '/api/consumptionEnergyInfo/list.json',
 			parameter: {
-				id: 'drgnsp',
+                dir: {today:'drgnsp',yestday:'qrgnsp',month:'dygnsp',year:'dngnsp'},
+                id: 'drgnsp',
 				options: options
 			},
 			data: {
@@ -127,7 +128,9 @@ define(function(require) {
 			done: res
 		});
 
+
 		function res(data, parameter) {
+        console.log(data)
 			var result = data.status.data;
 
 			var xData = new Array;
@@ -135,116 +138,129 @@ define(function(require) {
 
 			//---------------总的页面----------------------
 			//-------------------当日--------------------
-			var today = data.status.data.today;
-			var dataItem = [];
-			$.each(today.totalData, function(i, v) {
-				dataItem = new Array;
-				dataItem.push(globalTools.dateFormterItem(1, i));
-				dataItem.push(v);
-				xData.push(dataItem);
-			});
-			today.data = xData;
+            $.each(result,function(i,v){
+            //console.log(i)
+                $.each(parameter.dir, function(k,p){
+                    if(i === k){
+                        switch(i) {
+                            case 'month': builtGhPage(v,p,parameter,2); break;
+                            case 'year': builtGhPage(v,p,parameter,3); break;
+                            default: builtGhPage(v,p,parameter,1);break;
+                        }
+                    }   
+                })
+            });
 
-			var baseLines = [];
-			var line = new Object;
-			line.vaule = today.line; // 约束性指标
-			baseLines.push(line);
-			line = new Object;
-			line.vaule = today.line1; // 引导性指标
-			baseLines.push(line);
+			//var today = data.status.data.today;
+			//var dataItem = [];
+			//$.each(today.totalData, function(i, v) {
+				//dataItem = new Array;
+				//dataItem.push(globalTools.dateFormterItem(1, i));
+				//dataItem.push(v);
+				//xData.push(dataItem);
+			//});
+			//today.data = xData;
 
-			today.baseLines = baseLines;
+			//var baseLines = [];
+			//var line = new Object;
+			//line.vaule = today.line; // 约束性指标
+			//baseLines.push(line);
+			//line = new Object;
+			//line.vaule = today.line1; // 引导性指标
+			//baseLines.push(line);
 
-			console.log(today);
+			//today.baseLines = baseLines;
 
-			globalTools.ghnCallback(today, parameter);
-			//-------------------当日--------------------
+			////console.log(today);
+
+			//globalTools.ghnCallback(today, parameter);
+			////-------------------当日--------------------
 
 
-			//-------------------昨天--------------------
-			xData = new Array;
-			var yestday = data.status.data.yestday;
-			dataItem = new Array;
-			$.each(yestday.totalData, function(i, v) {
-				dataItem = new Array;
-				dataItem.push(globalTools.dateFormterItem(1, i));
-				dataItem.push(v);
-				xData.push(dataItem);
-			});
-			yestday.data = xData;
+			////-------------------昨天--------------------
+			//xData = new Array;
+			//var yestday = data.status.data.yestday;
+			//dataItem = new Array;
+			//$.each(yestday.totalData, function(i, v) {
+				//dataItem = new Array;
+				//dataItem.push(globalTools.dateFormterItem(1, i));
+				//dataItem.push(v);
+				//xData.push(dataItem);
+			//});
+			//yestday.data = xData;
 
-			var baseLines = new Array;
-			var line = new Object;
-			line.vaule = yestday.line; // 约束性指标
-			baseLines.push(line);
-			line = new Object;
-			line.vaule = yestday.line1; // 引导性指标
-			baseLines.push(line);
+			//var baseLines = new Array;
+			//var line = new Object;
+			//line.vaule = yestday.line; // 约束性指标
+			//baseLines.push(line);
+			//line = new Object;
+			//line.vaule = yestday.line1; // 引导性指标
+			//baseLines.push(line);
 
-			yestday.baseLines = baseLines;
+			//yestday.baseLines = baseLines;
 
-			console.log(yestday);
-			parameter.id = 'qrgnsp';
-			globalTools.ghnCallback(yestday, parameter);
+			////console.log(yestday);
+			//parameter.id = 'qrgnsp';
+			//globalTools.ghnCallback(yestday, parameter);
 
-			//-------------------昨天--------------------
+			////-------------------昨天--------------------
 
-			//-------------------当月--------------------
-			var month = data.status.data.month;
-			xData = new Array;
-			sData = new Array;
-			dataItem = new Array;
-			$.each(month.totalData, function(i, v) {
-				dataItem = new Array;
-				dataItem.push(globalTools.dateFormterItem(2, i));
-				dataItem.push(v);
-				xData.push(dataItem);
-			});
-			month.data = xData;
+			////-------------------当月--------------------
+			//var month = data.status.data.month;
+			//xData = new Array;
+			//sData = new Array;
+			//dataItem = new Array;
+			//$.each(month.totalData, function(i, v) {
+				//dataItem = new Array;
+				//dataItem.push(globalTools.dateFormterItem(2, i));
+				//dataItem.push(v);
+				//xData.push(dataItem);
+			//});
+			//month.data = xData;
 
-			var baseLines = new Array;
-			var line = new Object;
-			line.vaule = month.line; // 约束性指标
-			baseLines.push(line);
-			line = new Object;
-			line.vaule = month.line1; // 引导性指标
-			baseLines.push(line);
+			//var baseLines = new Array;
+			//var line = new Object;
+			//line.vaule = month.line; // 约束性指标
+			//baseLines.push(line);
+			//line = new Object;
+			//line.vaule = month.line1; // 引导性指标
+			//baseLines.push(line);
 
-			month.baseLines = baseLines;
+			//month.baseLines = baseLines;
 
-			console.log(month);
-			parameter.id = 'dygnsp';
-			globalTools.ghnCallback(month, parameter);
-			//-------------------当月--------------------
+			////console.log(month);
+			//parameter.id = 'dygnsp';
+			//globalTools.ghnCallback(month, parameter);
+			////-------------------当月--------------------
 
-			//						console.log(month);
+			////						console.log(month);
 
-			//-------------------当年--------------------
-			var year = data.status.data.year;
-			xData = new Array;
-			sData = new Array;
-			dataItem = new Array;
-			$.each(year.totalData, function(i, v) {
-				dataItem = new Array;
-				dataItem.push(globalTools.dateFormterItem(3, i));
-				dataItem.push(v);
-				xData.push(dataItem);
-			});
-			year.data = xData;
+			////-------------------当年--------------------
+			//var year = data.status.data.year;
+			//xData = new Array;
+			//sData = new Array;
+			//dataItem = new Array;
+			//$.each(year.totalData, function(i, v) {
+				//dataItem = new Array;
+				//dataItem.push(globalTools.dateFormterItem(3, i));
+				//dataItem.push(v);
+				//xData.push(dataItem);
+			//});
+			//year.data = xData;
 
-			var baseLines = new Array;
-			var line = new Object;
-			line.vaule = year.line; // 约束性指标
-			baseLines.push(line);
-			line = new Object;
-			line.vaule = year.line1; // 引导性指标
-			baseLines.push(line);
+			//var baseLines = new Array;
+			//var line = new Object;
+			//line.vaule = year.line; // 约束性指标
+			//baseLines.push(line);
+			//line = new Object;
+			//line.vaule = year.line1; // 引导性指标
+			//baseLines.push(line);
 
-			year.baseLines = baseLines;
+			//year.baseLines = baseLines;
 
-			console.log(year);
-			parameter.id = 'dngnsp';
-			globalTools.ghnCallback(year, parameter);
+			////console.log(year);
+			//parameter.id = 'dngnsp';
+			//globalTools.ghnCallback(year, parameter);
 			//-------------------当年--------------------
 
 			//			console.log(year);
@@ -257,7 +273,7 @@ define(function(require) {
 			xData = new Array;
 			sData = new Array;
 			var today = data.status.data.today.resList;
-			console.log(today);
+			//console.log(today);
 			$.each(today, function(i, v) {
 				xData.push(globalTools.dateFormterItem(1, v.rectime), v);
 				sData.push(v);
@@ -324,6 +340,34 @@ define(function(require) {
 		//			jsonpCallback: 'highchartsJsonp4',
 		//			done: globalTools.ghnCallback
 		//		});
+function builtGhPage(data,id,parameter,dateFlag) {
+			var xData = new Array;
+			//var yestday = data.status.data.yestday;
+            var yestday = data;
+			dataItem = new Array;
+			$.each(yestday.totalData, function(i, v) {
+				dataItem = new Array;
+				dataItem.push(globalTools.dateFormterItem(dateFlag, i));
+				dataItem.push(v);
+				xData.push(dataItem);
+			});
+			yestday.data = xData;
+
+			var baseLines = new Array;
+			var line = new Object;
+			line.vaule = yestday.line; // 约束性指标
+			baseLines.push(line);
+			line = new Object;
+			line.vaule = yestday.line1; // 引导性指标
+			baseLines.push(line);
+
+			yestday.baseLines = baseLines;
+
+			//console.log(yestday);
+			//parameter.id = 'qrgnsp';
+            parameter.id = id;
+			globalTools.ghnCallback(yestday, parameter);
+}
 
 	}());
 });
