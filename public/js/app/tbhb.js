@@ -170,7 +170,7 @@ define(function(require) {
 					if (parameter.charFlag == 1)
 						temp.name = realdata[i].showName;
 					else
-						temp.name = dateFormter(parameter.dateFlag, realdata[i].rectime);
+						temp.name = globalTools.dateFormterItem(parameter.dateFlag, realdata[i].rectime);
 					xData.push(temp.name);
 
 					temp.y = parseFloat(realdata[i].dataValue);
@@ -184,7 +184,7 @@ define(function(require) {
 					if (parameter.charFlag == 1)
 						temp.name = olddata[j].showName;
 					else
-						temp.name = dateFormter(parameter.dateFlag, olddata[j].rectime);
+						temp.name = globalTools.dateFormterItem(parameter.dateFlag, olddata[j].rectime);
 
 					xData.push(temp.name);
 					temp.y = parseFloat(olddata[j].dataValue);
@@ -195,15 +195,15 @@ define(function(require) {
 				sData.push(sDataElementOld);
 
 				var lastResult = new Object();
-				xData = uniq(xData);
-				result.xData = uniq(xData);
+				xData = globalTools.uniq(xData);
+				result.xData = globalTools.uniq(xData);
 				result.sData = sData;
 				//							res.send(result);
 
 				var tmp = new Array();
 				var item = {};
 
-				item.xData = uniq(xData);
+				item.xData = globalTools.uniq(xData);
 				item.sData = sData;
 
 				tmp.push(item);
@@ -213,41 +213,6 @@ define(function(require) {
 				else
 					globalTools.tbhbCallback(item, parameter);
 			}
-		}
-
-		function dateFormter(dateFlag, dateValue) {
-			if (dateFlag == 1) {
-				var tmp = dateValue.substring(11, 13);
-				if (tmp.substring(0, 1) == '0') {
-					tmp = tmp.substring(1, 2);
-				}
-				return tmp + '点';
-			}
-			if (dateFlag == 2) {
-				var tmp = dateValue.substring(8, 10);
-				if (tmp.substring(0, 1) == '0') {
-					tmp = tmp.substring(1, 2);
-				}
-				return tmp + '日';
-			}
-		}
-
-
-
-
-
-
-		/*array 去重*/
-		function uniq(array) {
-			var map = {};
-			var re = [];
-			for (var i = 0, l = array.length; i < l; i++) {
-				if (typeof map[array[i]] == "undefined") {
-					map[array[i]] = 1;
-					re.push(array[i]);
-				}
-			}
-			return re;
 		}
 
 		//end
