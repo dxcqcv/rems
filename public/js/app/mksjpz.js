@@ -9,8 +9,51 @@ define(function(require){
       , api = require('app/getApi')
       ;
 
-      (function(){
-      }());
+      $(function(){
+//    	左侧菜单
+      	$("#mymenu ul li").next("ul").hide();
+			$("#mymenu ul li").click(function() {
+				$(this).next("ul").toggle();
+			});
+			
+//			新增
+			$(".btnshow").click(function(){
+				$("#bg").css('display','block');
+				$("#TKtablediv").css('display','block');
+			})
+			
+//			取消按钮
+			$(".closde").click(function(){
+				$("#bg").css('display','none');
+				$("#TKtablediv").css('display','none');
+			})
+			
+//			关闭图标
+			$(".colse").click(function(){
+				$("#bg").css('display','none');
+				$("#TKtablediv").css('display','none');
+			})
+			
+			
+			$(".ulliul>li").mouseover(function() {
+					$(".ulliul>li").each(function(i) {
+						$(this).removeClass("h_nav_over");
+					});
+					$(this).addClass("h_nav_over");
+				}).mouseout(function() {
+					$(this).addClass("h_nav_over");
+				});
+				
+			$(".imgsrc").click(function(){
+				$("#bg1").css('display','block');
+				$("#coliseselect").css('display','block');
+			});
 
+			$("#closedivsel").click(function(){
+				$("#bg1").css('display','none');
+				$("#coliseselect").css("display","none");
+			});
+			
+      }());
 
 });
