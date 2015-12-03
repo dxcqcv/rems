@@ -18,32 +18,17 @@ define(function(require) {
                 var bp = padding;
 
                 if(open === true) {
-console.log(open)
-console.log(loader.length)
-                    //if(loader.length === 0) {
-                    if(this.loading.length === 0) {
                         $.each(container, function(i,v){
-                    console.log(loader)
                             var box = $(v);
                             var w = box.width();
                             var h = box.height();
-$(self.loading).width(w).height(h);
-                            //if(bp === 0) $(self.loading).width(w).height(h).css({'position': 'absolute', top: 0, left: 0, 'z-index': 9});
-                            ////else $(self.loading).width(w).height(h).css({'padding':bp});
-                            //else $(self.loading).width(w).height(h).children('.loader').css({'top':'30%'});
+                            if (bp !== 0) $(self.loading).width(w).height(h).css(bp);
+                            else $(self.loading).width(w).height(h);
                             box.append(self.loading);
                         });
-                    } else {
-console.log(loader.length)
-                    console.log(12121)
-                        //loader.removeClass('hide');
-                        $(this.loading).removeClass('hide');
-                    }
                 }  
                 else {
-                    console.log(6666)
-                    //loader.addClass('hide');
-                    $(this.loading).addClass('hide');
+                        loader.remove();
                 } 
                 
             },

@@ -241,6 +241,10 @@ div.charts-cont-2-level {
   color: #1ca6c5;
   cursor: pointer; }
 
+.disableIcon {
+  color: #000;
+  cursor: default; }
+
 /* global card config */
 .card-wrapper {
   padding: 10px; }

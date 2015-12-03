@@ -181,17 +181,35 @@ define(function(require) {
             body.empty();
             $.each(data, function(i,v) {
                   str = '<div class="gnhn-modal-block">'+
-                        '<p class="gnhn-modal-title">'+v.title+'</p>'+
+                        '<p class="gnhn-modal-title">'+v.name+'</p>'+
                         '<div class="gnhn-modal-charts" id="gnhnHaodianCharts'+i+'"></div>'+
                     '</div>';
                 body.append(str);
                 parameter.options.chart.renderTo = "gnhnHaodianCharts"+i;
                 parameter.options.yAxis.plotLines[0].color = parameter.color;
-                parameter.options.xAxis.categories = v.xData;
-                parameter.options.series = v.sData;
+                parameter.options.xAxis.categories = v.list[0].xData;
+                parameter.options.series = v.list[0].sData;
                 gnfxLines = new Highcharts.Chart(parameter.options); 
             });
         },
+        //modalLines: function (data,parameter) {
+            //var str;
+            //var gnfxLines;
+            //var body = $('#gnhnModalBody');
+            //body.empty();
+            //$.each(data, function(i,v) {
+                  //str = '<div class="gnhn-modal-block">'+
+                        //'<p class="gnhn-modal-title">'+v.title+'</p>'+
+                        //'<div class="gnhn-modal-charts" id="gnhnHaodianCharts'+i+'"></div>'+
+                    //'</div>';
+                //body.append(str);
+                //parameter.options.chart.renderTo = "gnhnHaodianCharts"+i;
+                //parameter.options.yAxis.plotLines[0].color = parameter.color;
+                //parameter.options.xAxis.categories = v.xData;
+                //parameter.options.series = v.sData;
+                //gnfxLines = new Highcharts.Chart(parameter.options); 
+            //});
+        //},
         //供能分析，耗能分析弹出框
         modalFn: function () {
             var $this = $(this)
@@ -199,6 +217,7 @@ define(function(require) {
               , num = $this.data('num')
               , modal = $("#myModal")
               ;
+            if($this.hasClass('disableIcon')) return;
             modal.attr('data-num',num);
             modal.find('.modal-title').text(title);
             modal.modal('show');
