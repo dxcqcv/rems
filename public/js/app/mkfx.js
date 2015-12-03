@@ -20,6 +20,8 @@ define(function(require) {
 
 		var optionid = 10042;
 
+		optionid2 = 10042;
+
 		// 选择框
 		demand.start({
 			url: '/api/moduleAnalysis/listOption.json',
@@ -224,7 +226,7 @@ define(function(require) {
 				projectid: projectid,
 				dateFlag: dateFlag,
 				dateStar: dateStar,
-				optionid1: optionid1,
+				optionid1: optionid,
 				optionid2: optionid2
 			},
 			done: lineResult
