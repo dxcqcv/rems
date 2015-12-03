@@ -1,7 +1,7 @@
 define(function(require) {
 	var $ = require('jquery'),
-        zh_cn = require('moment-zh-cn'),
-        moment = require('moment'),
+		zh_cn = require('moment-zh-cn'),
+		moment = require('moment'),
 		datapicker = require('bootstrap-datetimepicker.min'),
 		bootstrap = require('bootstrap'),
 		//jsonpPath = require('app/getJsonp'),
@@ -10,79 +10,82 @@ define(function(require) {
 		options = require('app/highchartsConfig'),
 		projectid = require('app/checkProjectid'),
 		api = require('app/getApi'),
-        optionsBase = require('app/highchartsConfigBase'),
+		optionsBase = require('app/highchartsConfigBase'),
 		optionsLines = require('app/highchartsConfigLines'),
 		datetimepickerObj = require('app/dateObj');
 	(function() {
 
 		//var dateStar = '2015-09-01';
-        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+		var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
 
 		//弹出层
 		$('.gnhnIcon').on('click', globalTools.modalFn);
 
 		$('#myModal').on('shown.bs.modal', function() {
 			var num = $(this).attr('data-num');
-            var parameter = {options: optionsLines,color: 'transparent'};
-            switch (num) {
-				case '0': 
-                    globalTools.modalLines(todayGroup,parameter);
-                    break;
-				case '1':  
-                    globalTools.modalLines(monthGroup,parameter);
-                    break;
-				case '2':  
-                    globalTools.modalLines(yesterdayGroup,parameter);
-                    break;
-				case '3':  
-                    globalTools.modalLines(yearGroup,parameter);
-                    break;
-            }
+			var parameter = {
+				options: optionsLines,
+				color: 'transparent'
+			};
+			switch (num) {
+				case '0':
+					globalTools.modalLines(todayGroup, parameter);
+					break;
+				case '1':
+					globalTools.modalLines(monthGroup, parameter);
+					break;
+				case '2':
+					globalTools.modalLines(yesterdayGroup, parameter);
+					break;
+				case '3':
+					globalTools.modalLines(yearGroup, parameter);
+					break;
+			}
 			//switch (num) {
-				//case '0':
-					//localJsonp.start({
-						//url: jsonpPath + 'modalLines.js',
-						//parameter: {
-							//options: optionsLines,
-							//color: 'transparent'
-						//},
-						//jsonpCallback: 'modalLines',
-						//done: globalTools.modalLines
-					//});
-					//break;
-				//case '1':
-					//localJsonp.start({
-						//url: jsonpPath + 'modalLines2.js',
-						//parameter: {
-							//options: optionsLines,
-							//color: 'transparent'
-						//},
-						//jsonpCallback: 'modalLines2',
-						//done: globalTools.modalLines
-					//});
-					//break;
-				//case '2':
-					//localJsonp.start({
-						//url: jsonpPath + 'modalLines2.js',
-						//parameter: {
-							//options: optionsLines,
-							//color: 'transparent'
-						//},
-						//jsonpCallback: 'modalLines2',
-						//done: globalTools.modalLines
-					//});
-					//break;
-				//case '3':
-					//localJsonp.start({
-						//url: jsonpPath + 'modalLines2.js',
-						//parameter: {
-							//options: optionsLines,
-							//color: 'transparent'
-						//},
-						//jsonpCallback: 'modalLines2',
-						//done: globalTools.modalLines
-					//});
-					//break;
+			//case '0':
+			//localJsonp.start({
+			//url: jsonpPath + 'modalLines.js',
+			//parameter: {
+			//options: optionsLines,
+			//color: 'transparent'
+			//},
+			//jsonpCallback: 'modalLines',
+			//done: globalTools.modalLines
+			//});
+			//break;
+			//case '1':
+			//localJsonp.start({
+			//url: jsonpPath + 'modalLines2.js',
+			//parameter: {
+			//options: optionsLines,
+			//color: 'transparent'
+			//},
+			//jsonpCallback: 'modalLines2',
+			//done: globalTools.modalLines
+			//});
+			//break;
+			//case '2':
+			//localJsonp.start({
+			//url: jsonpPath + 'modalLines2.js',
+			//parameter: {
+			//options: optionsLines,
+			//color: 'transparent'
+			//},
+			//jsonpCallback: 'modalLines2',
+			//done: globalTools.modalLines
+			//});
+			//break;
+			//case '3':
+			//localJsonp.start({
+			//url: jsonpPath + 'modalLines2.js',
+			//parameter: {
+			//options: optionsLines,
+			//color: 'transparent'
+			//},
+			//jsonpCallback: 'modalLines2',
+			//done: globalTools.modalLines
+			//});
+			//break;
 			//}
 		});
 
@@ -91,57 +94,67 @@ define(function(require) {
 		$('[data-toggle="tooltip"]').tooltip();
 		//时间控件
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
-            dateStar = ev.date.format('YYYY-MM-DD'); 
-            demand.start({
-                url: '/api/consumptionEnergyInfo/list.json',
-                loadContainer:[['.my-card'],{top:'10px',left:'10px'}],
-                parameter: {
-                    dir: {today:['drgnsp','当日耗能水平'],yestday:['qrgnsp','前日耗能水平'],month:['dygnsp','当月耗能水平'],year:['dngnsp','当年耗能水平']},
-                    id: 'drgnsp',
-                    name: '',
-                    options: optionsBase
-                },
-                data: {
-                    projectid: projectid,
-                    dateStar: dateStar
-                },
-                done: res
-            });
+			dateStar = ev.date.format('YYYY-MM-DD');
+			demand.start({
+				url: '/api/consumptionEnergyInfo/list.json',
+				loadContainer: [
+					['.my-card'], {
+						top: '10px',
+						left: '10px'
+					}
+				],
+				parameter: {
+					dir: {
+						today: ['drgnsp', '当日耗能水平'],
+						yestday: ['qrgnsp', '前日耗能水平'],
+						month: ['dygnsp', '当月耗能水平'],
+						year: ['dngnsp', '当年耗能水平']
+					},
+					id: 'drgnsp',
+					name: '',
+					options: optionsBase
+				},
+				data: {
+					projectid: projectid,
+					dateStar: dateStar
+				},
+				done: res
+			});
 			//localJsonp.start({
-				//url: jsonpPath + 'highchartsJson.js',
-				//parameter: {
-					//id: 'drgnsp',
-					//options: options
-				//},
-				//jsonpCallback: 'highchartsJsonp',
-				//done: globalTools.ghnCallback
+			//url: jsonpPath + 'highchartsJson.js',
+			//parameter: {
+			//id: 'drgnsp',
+			//options: options
+			//},
+			//jsonpCallback: 'highchartsJsonp',
+			//done: globalTools.ghnCallback
 			//});
 			//localJsonp.start({
-				//url: jsonpPath + 'highchartsJson2.js',
-				//parameter: {
-					//id: 'dygnsp',
-					//options: options
-				//},
-				//jsonpCallback: 'highchartsJsonp2',
-				//done: globalTools.ghnCallback
+			//url: jsonpPath + 'highchartsJson2.js',
+			//parameter: {
+			//id: 'dygnsp',
+			//options: options
+			//},
+			//jsonpCallback: 'highchartsJsonp2',
+			//done: globalTools.ghnCallback
 			//});
 			//localJsonp.start({
-				//url: jsonpPath + 'highchartsJson3.js',
-				//parameter: {
-					//id: 'qrgnsp',
-					//options: options
-				//},
-				//jsonpCallback: 'highchartsJsonp3',
-				//done: globalTools.ghnCallback
+			//url: jsonpPath + 'highchartsJson3.js',
+			//parameter: {
+			//id: 'qrgnsp',
+			//options: options
+			//},
+			//jsonpCallback: 'highchartsJsonp3',
+			//done: globalTools.ghnCallback
 			//});
 			//localJsonp.start({
-				//url: jsonpPath + 'highchartsJson4.js',
-				//parameter: {
-					//id: 'dngnsp',
-					//options: options
-				//},
-				//jsonpCallback: 'highchartsJsonp4',
-				//done: globalTools.ghnCallback
+			//url: jsonpPath + 'highchartsJson4.js',
+			//parameter: {
+			//id: 'dngnsp',
+			//options: options
+			//},
+			//jsonpCallback: 'highchartsJsonp4',
+			//done: globalTools.ghnCallback
 			//});
 		});
 
@@ -149,11 +162,21 @@ define(function(require) {
 		//图表
 		demand.start({
 			url: '/api/consumptionEnergyInfo/list.json',
-            loadContainer:[['.my-card'],{top:'10px',left:'10px'}],
+			loadContainer: [
+				['.my-card'], {
+					top: '10px',
+					left: '10px'
+				}
+			],
 			parameter: {
-                dir: {today:['drgnsp','当日耗能水平'],yestday:['qrgnsp','前日耗能水平'],month:['dygnsp','当月耗能水平'],year:['dngnsp','当年耗能水平']},
-                id: 'drgnsp',
-                name: '',
+				dir: {
+					today: ['drgnsp', '当日耗能水平'],
+					yestday: ['qrgnsp', '前日耗能水平'],
+					month: ['dygnsp', '当月耗能水平'],
+					year: ['dngnsp', '当年耗能水平']
+				},
+				id: 'drgnsp',
+				name: '',
 				options: optionsBase,
 				moduleFlag: 1 
 			},
@@ -164,11 +187,17 @@ define(function(require) {
 			done: res
 		});
 
-var todayGroup, yesterdayGroup, monthGroup, yearGroup; 
-// 0，1，2，3四分图位置
-var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastyear',3],['month','lastmonth',1]];
+		var todayGroup, yesterdayGroup, monthGroup, yearGroup;
+		// 0，1，2，3四分图位置
+		var popupFilter = [
+			['today', 'yestday', 0],
+			['yestday', 'lastday', 2],
+			['year', 'lastyear', 3],
+			['month', 'lastmonth', 1]
+		];
+
 		function res(data, parameter) {
-                        console.log(data)
+			console.log(data)
 			var result = data.status.data;
 
 			//var xData = new Array;
@@ -177,7 +206,7 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 			//---------------总的页面----------------------
 			//-------------------当日--------------------
 			$.each(result, function(i, v) {
-                //console.log(i)
+				//console.log(i)
 				$.each(parameter.dir, function(k, p) {
 					if (i === k) {
 						switch (i) {
@@ -316,9 +345,9 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 			//-------------------当日详细(需要把今日数据与昨日数据都取出来)--------------------
 			//var today = data.status.data.today.resList;
 			//var yestday = data.status.data.yestday.resList;
-            //var today = data.status.data['today'].resList;
-            //var yestday = data.status.data['yestday'].resList;
-			
+			//var today = data.status.data['today'].resList;
+			//var yestday = data.status.data['yestday'].resList;
+
 			//var todayData = dataFormater(today);
 
 			//var yestdayData = dataFormater(yestday);
@@ -328,27 +357,27 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 
 			//var resMap = [];
 			//$.each(todayData, function(i, v) {
-				//var list2 = new Array;
-				//$.each(yestdayData, function(y, m) {
-					//if (m.name == v.name) {
-						//list2 = v.list;
-						//return false;
-					//}
-				//});
-				//var resList = returnResult(v.list, list2, 1, 1);
-
-				//var item = new Object;
-				//item.name = v.name;
-				//item.list = resList;
-				//resMap.push(item);
-
-				//console.log(resMap);
+			//var list2 = new Array;
+			//$.each(yestdayData, function(y, m) {
+			//if (m.name == v.name) {
+			//list2 = v.list;
+			//return false;
+			//}
 			//});
-            for(var i = 0, l =popupFilter.length; i< l; i++ ) {
-                for(var j = 0, k = 1; j < k; j++) {
-                    builtGhPopup(data,popupFilter[i][j],popupFilter[i][j+1],popupFilter[i][j+2]);
-                }
-            }
+			//var resList = returnResult(v.list, list2, 1, 1);
+
+			//var item = new Object;
+			//item.name = v.name;
+			//item.list = resList;
+			//resMap.push(item);
+
+			//console.log(resMap);
+			//});
+			for (var i = 0, l = popupFilter.length; i < l; i++) {
+				for (var j = 0, k = 1; j < k; j++) {
+					builtGhPopup(data, popupFilter[i][j], popupFilter[i][j + 1], popupFilter[i][j + 2]);
+				}
+			}
 		}
         function builtGhPopup(data,dateNew,dateOld,type){
 //标示是详细页面那个模块的id(1当日详细2当月详细3昨日详细4当年详细)
@@ -369,11 +398,11 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 				var list2 = new Array;
 				$.each(yestdayData, function(y, m) {
 					if (m.name == v.name) {
-						list2 = v.list;
+						list2 = m.list;
 						return false;
 					}
 				});
-				var resList = returnResult(v.list, list2, dateFlag,moduleFlag);
+				var resList = returnResult(v.list, list2, dateFlag, moduleFlag);
 
 				var item = new Object;
 				item.name = v.name;
@@ -381,31 +410,37 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 				resMap.push(item);
 
 			});
-            switch(type) {
-                case 0: 
-                    todayGroup  = resMap; 
-                    if(todayGroup.length === 0 ) checkPopup('#drgnsp',0); else checkPopup('#drgnsp',1);
-                    break;  
-                case 1: 
-                    monthGroup  = resMap; 
-                    if(monthGroup.length === 0 ) checkPopup('#dygnsp',0); else checkPopup('#dygnsp',1);
-                    break;  
-                case 2: 
-                    yesterdayGroup = resMap; 
-                    if(yesterdayGroup.length === 0 ) checkPopup('#qrgnsp',0); else checkPopup('#qrgnsp',1);
-                    break;  
-                case 3: 
-                    yearGroup = resMap; 
-                    if(yearGroup.length === 0 ) checkPopup('#dngnsp',0); else checkPopup('#dngnsp',1);
-                    break;  
-            }
+			switch (type) {
+				case 0:
+					todayGroup = resMap;
+					if (todayGroup.length === 0) checkPopup('#drgnsp', 0);
+					else checkPopup('#drgnsp', 1);
+					break;
+				case 1:
+					monthGroup = resMap;
+					if (monthGroup.length === 0) checkPopup('#dygnsp', 0);
+					else checkPopup('#dygnsp', 1);
+					break;
+				case 2:
+					yesterdayGroup = resMap;
+					if (yesterdayGroup.length === 0) checkPopup('#qrgnsp', 0);
+					else checkPopup('#qrgnsp', 1);
+					break;
+				case 3:
+					yearGroup = resMap;
+					if (yearGroup.length === 0) checkPopup('#dngnsp', 0);
+					else checkPopup('#dngnsp', 1);
+					break;
+			}
 
-        
-        }
-        function checkPopup(id,isShow) {
-            if(isShow === 0) $(id).parent('.my-card').find('.gnhnIcon').addClass('disableIcon').tooltip('destroy');
-            else if(isShow === 1) $(id).parent('.my-card').find('.gnhnIcon').removeClass('disableIcon').tooltip();
-        }
+
+		}
+
+		function checkPopup(id, isShow) {
+			if (isShow === 0) $(id).parent('.my-card').find('.gnhnIcon').addClass('disableIcon').tooltip('destroy');
+			else if (isShow === 1) $(id).parent('.my-card').find('.gnhnIcon').removeClass('disableIcon').tooltip();
+		}
+
 		function returnResult(realdata, olddata, dateFlag, moduleFlag) {
 			var sData = new Array();
 			var xData = new Array();
@@ -540,7 +575,7 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 		//			jsonpCallback: 'highchartsJsonp4',
 		//			done: globalTools.ghnCallback
 		//		});
-function builtGhPage(data,info,parameter,dateFlag) {
+		function builtGhPage(data, info, parameter, dateFlag) {
 			var xData = new Array;
 			//var yestday = data.status.data.yestday;
 			var yestday = data;
@@ -565,8 +600,8 @@ function builtGhPage(data,info,parameter,dateFlag) {
 
 			//console.log(yestday);
 			//parameter.id = 'qrgnsp';
-            parameter.id = info[0];
-            parameter.name = info[1];
+			parameter.id = info[0];
+			parameter.name = info[1];
 			globalTools.ghnCallback(yestday, parameter);
 		}
 
