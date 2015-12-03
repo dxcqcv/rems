@@ -1089,7 +1089,7 @@ router.get('/deviceGroupInfo/list2.json', function(req, res, next) {
 			projectid: req.query.projectid,
 			dateFlag: req.query.dateFlag,
 			dateStar: req.query.dateStar,
-			optionid1: req.query.optionid1
+			optionid1: req.query.optionid1,
 			optionid2: req.query.optionid2
 		}
 	}, function(error, response, body) {
