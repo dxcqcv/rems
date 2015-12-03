@@ -385,8 +385,11 @@ div.charts-cont-2-level {
 
 /* global loading */
 .loader-wrapper {
-  /*position: absolute; top: 0; left: 0; z-index: 9;*/
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  /*position: relative;*/
   background: rgba(255, 255, 255, 0.5);
   width: 200px;
   height: 200px; }
@@ -399,16 +402,16 @@ div.charts-cont-2-level {
   height: 1em;
   border-radius: 50%;
   position: absolute;
+  /*top: 50%; left: 50%;*/
+  margin: -.5em auto;
   top: 50%;
-  left: 50%;
-  /*margin: -.5em auto;*/
-  /*top: 50%;*/
-  /*position: relative;*/
-  /*-webkit-transform: translateZ(0);*/
-  /*-ms-transform: translateZ(0);*/
-  -ms-transform: translateX(-50%) translateY(-50%) translateZ(0);
-  -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0);
-  transform: translateX(-50%) translateY(-50%) translateZ(0);
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  /*-ms-transform: translateX(-50%) translateY(-50%) translateZ(0);*/
+  /*-webkit-transform: translateX(-50%) translateY(-50%) translateZ(0);*/
+  /*transform: translateX(-50%) translateY(-50%) translateZ(0);*/
   -webkit-animation: load6 1.7s infinite ease;
   animation: load6 1.7s infinite ease; }
 

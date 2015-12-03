@@ -1,0 +1,27 @@
+#divleft{position: absolute;overflow: auto; border: 1px solid silver;width: 15%;height: 100%;min-height: 100%;}
+.bt{position: absolute;width: 185px;}
+.bt img{width: 25px;}
+.bt p{color: white;line-height: 32px;background-color: #1294B3;margin-top: 0px;}
+#mymenu{display: none;}
+.one ul li{ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 120px;}
+.one{padding-left: 10px;}
+#aimg{color: white;line-height: 32px;background-color: #1294B3;margin-top: 0px;}
+.img_eld{width: 35px;}
+.ulli{padding-left: 10px;}
+.tab_all {overflow: auto;background-color:white;position: relative;width: 85%;float: right; height: 100%;min-height: 100%; }
+.table_fon tr td {  text-align: center; }
+.tab_all ul {  background-color: darkgrey;  z-index: 999; }
+.nav-tabs > li {  float: left;  margin-bottom: -1px;  float: right;   }
+.nav-tabs > li a{color: white;}
+.iconimg{width: 12px!important;}
+.nonedlp ul li{margin-top: 5px;line-height: 25px!important;padding-left: 15px;}
+.nonedlp li.h_nav_over{background-color: #3498db;border-radius: 5px;cursor:pointer;color: white;}
+#inspan{display: none;padding-left: 10px;}
+
+.tab_all {overflow: auto;background-color:white;position: relative;width: 85%;float: right; height: 100%;min-height: 100%; }
+.title_head{line-height: 39px;font-size: 15px;color: white;padding-left: 10px;}
+.tab_all ul {margin-top: 20px; background-color: darkgrey;z-index: 999; margin-left: 2%;}
+.taballdiv{margin-left: 2%;width: 98%;}
+
+
+

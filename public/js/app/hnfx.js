@@ -306,7 +306,7 @@ define(function(require) {
 			var yestdayData = dataFormater(yestday);
 
 			//			console.log(todayData);
-			console.log(yestdayData);
+			//console.log(yestdayData);
 
 			var resMap = [];
 			$.each(todayData, function(i, v) {
