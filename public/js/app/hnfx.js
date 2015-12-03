@@ -167,7 +167,6 @@ define(function(require) {
 var todayGroup, yesterdayGroup, monthGroup, yearGroup; 
 // 0，1，2，3四分图位置
 var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastyear',3],['month','lastmonth',1]];
-console.log(popupFilter.length);
 		function res(data, parameter) {
                         console.log(data)
 			var result = data.status.data;
@@ -352,6 +351,8 @@ console.log(popupFilter.length);
             }
 		}
         function builtGhPopup(data,dateNew,dateOld,type){
+            var moduleFlag = type +1;
+            var dateFlag =  (moduleFlag === 3) ? 1 : moduleFlag; //当日和前日的dateFlag相同
             var today = data.status.data[''+dateNew+''].resList;
             var yestday = data.status.data[''+dateOld+''].resList;
 			
@@ -371,7 +372,7 @@ console.log(popupFilter.length);
 						return false;
 					}
 				});
-				var resList = returnResult(v.list, list2, 1, 1);
+				var resList = returnResult(v.list, list2, dateFlag,moduleFlag);
 
 				var item = new Object;
 				item.name = v.name;
@@ -379,8 +380,6 @@ console.log(popupFilter.length);
 				resMap.push(item);
 
 			});
-            console.log(type);
-            console.log(resMap);
             switch(type) {
                 case 0: 
                     todayGroup  = resMap; 
@@ -406,7 +405,6 @@ console.log(popupFilter.length);
             if(isShow === 0) $(id).parent('.my-card').find('.gnhnIcon').addClass('disableIcon').tooltip('destroy');
             else if(isShow === 1) $(id).parent('.my-card').find('.gnhnIcon').removeClass('disableIcon').tooltip();
         }
-
 		function returnResult(realdata, olddata, dateFlag, moduleFlag) {
 			var sData = new Array();
 			var xData = new Array();
