@@ -1047,6 +1047,54 @@ router.get('/moduleAnalysis/list4.json', function(req, res, next) {
 	})
 });
 
+//机组分析页面：下拉别表数据查询
+router.get('/deviceGroupInfo/listOption.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/deviceGroupInfo/listOption.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid1: req.query.optionid1,
+			optionid2: req.query.optionid2
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
+//机组分析页面：冷温水或冷却水数据查询
+router.get('/deviceGroupInfo/list1.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/deviceGroupInfo/list1.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid: req.query.optionid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//机组分析页面：泵组数据查询
+router.get('/deviceGroupInfo/list2.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/deviceGroupInfo/list2.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid1: req.query.optionid1
+			optionid2: req.query.optionid2
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
 module.exports = router;

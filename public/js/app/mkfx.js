@@ -20,7 +20,7 @@ define(function(require) {
 
 		var optionid = 10042;
 
-		optionid2 = 10042;
+		var optionid2 = 10042;
 
 		// 选择框
 		demand.start({
