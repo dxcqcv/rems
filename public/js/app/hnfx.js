@@ -155,7 +155,7 @@ define(function(require) {
                 id: 'drgnsp',
                 name: '',
 				options: optionsBase,
-				moduleFlag: 1 //标示是详细页面那个模块的id(1当日详细2当月详细3昨日详细4当年详细)
+				moduleFlag: 1 
 			},
 			data: {
 				projectid: projectid,
@@ -351,6 +351,7 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
             }
 		}
         function builtGhPopup(data,dateNew,dateOld,type){
+//标示是详细页面那个模块的id(1当日详细2当月详细3昨日详细4当年详细)
             var moduleFlag = type +1;
             var dateFlag =  (moduleFlag === 3) ? 1 : moduleFlag && (moduleFlag === 4) ? 3 : moduleFlag; //当日和前日的dateFlag相同
             var today = data.status.data[''+dateNew+''].resList;
