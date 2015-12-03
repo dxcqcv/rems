@@ -352,7 +352,7 @@ var popupFilter = [['today','yestday',0],['yestday','lastday',2],['year','lastye
 		}
         function builtGhPopup(data,dateNew,dateOld,type){
             var moduleFlag = type +1;
-            var dateFlag =  (moduleFlag === 3) ? 1 : moduleFlag; //当日和前日的dateFlag相同
+            var dateFlag =  (moduleFlag === 3) ? 1 : moduleFlag && (moduleFlag === 4) ? 3 : moduleFlag; //当日和前日的dateFlag相同
             var today = data.status.data[''+dateNew+''].resList;
             var yestday = data.status.data[''+dateOld+''].resList;
 			
