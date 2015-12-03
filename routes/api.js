@@ -969,6 +969,84 @@ router.get('/provideEnergyInfo/list.json', function(req, res, next) {
 });
 
 
+//模块分析页面：下拉框数据查询
+router.get('/moduleAnalysis/listOption.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/moduleAnalysis/listOption.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//模块分析页面：CCHP数据查询
+router.get('/moduleAnalysis/list1.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/moduleAnalysis/list1.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid: req.query.optionid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//模块分析页面：常规调峰数据查询
+router.get('/moduleAnalysis/list2.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/moduleAnalysis/list2.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid: req.query.optionid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//模块分析页面：蓄能调峰数据查询
+router.get('/moduleAnalysis/list3.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/moduleAnalysis/list3.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid: req.query.optionid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//模块分析页面：输配数据查询
+router.get('/moduleAnalysis/list4.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/moduleAnalysis/list4.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar,
+			optionid1: req.query.optionid1,
+			optionid2: req.query.optionid2
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
 
 
 module.exports = router;
