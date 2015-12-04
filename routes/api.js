@@ -2,8 +2,8 @@ var express = require('express');
 var request = require('request');
 var moment = require('moment');
 var router = express.Router();
-//var remoteApiHost = "http://localhost:8080";
-var remoteApiHost = "http://117.144.16.98:8080";
+var remoteApiHost = "http://localhost:8080";
+//var remoteApiHost = "http://117.144.16.98:8080";
 var remoteApiPath = "/rems";
 
 
@@ -773,7 +773,7 @@ router.get('/CSInfo/saving/list2.json', function(req, res, next) {
 	})
 });
 
-
+/*
 //结构分析页面：结构分析数据查询
 router.get('/structureInfo/list.json', function(req, res, next) {
 	request.post({
@@ -833,7 +833,7 @@ router.get('/structureInfo/list.json', function(req, res, next) {
 			res.send("{error:'请求API错误'}");
 		}
 	})
-});
+});*/
 
 //成本分析页面：单位供能成本比例
 router.get('/costProfit/costProfitChart.json', function(req, res, next) {
@@ -1096,5 +1096,34 @@ router.get('/deviceGroupInfo/list2.json', function(req, res, next) {
 		res.send(body);
 	})
 });
+
+//能效分析页面：系统指标数据查询
+router.get('/effiCheck/sysindex.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/effiCheck/sysindex.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//结构分析页面：结构分析数据查询
+router.get('/structureInfo/list.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/structureInfo/list.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
 
 module.exports = router;
