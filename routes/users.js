@@ -1,6 +1,21 @@
-var express = require('express');
-var router = express.Router();
 
+ var process = require('child_process');
+ var express = require('express');
+var multer  = require('multer');
+var fs = require('fs');
+var upload = multer({ dest: './data/upload/' })
+var router = express.Router();
+// //直接调用命令
+//     exports.createDir = function (){
+//         process.exec('php -v',
+//           function (error, stdout, stderr) {
+//             if (error !== null) {
+//               console.log('exec error: ' + error);
+//             }else{
+//                 console.log(stdout);
+//             }
+//         });
+//     }
 
 
 /* GET users listing. */
@@ -122,6 +137,45 @@ router.get('/mksjpz', function(req, res) {
 router.get('/rhpz', function(req, res) {
     res.render('rhpz', { title: 'Home' });
 });
+
+
+router.post('/export', function(req, res) {
+
+    process.exec('php /Users/lvwei/Develop/github/rems/shell/excel.php ' + req.body.fileName,
+          function (error, stdout, stderr) {
+            if (error !== null) {
+              console.log('exec error: ' + error);
+            }else{
+                console.log(stdout);
+                res.send(stdout);
+            }
+        });
+    
+});
+
+
+
+router.post('/upload', upload.single('xlsx'), function (req, res, next) {
+ 
+    var tmp_path = req.file.path;
+    // 指定文件上传后的目录 - 示例为"images"目录。 
+    var target_path = req.file.destination;
+    var file_name = req.file.originalname;
+    // 移动文件
+    console.log(req.file);
+    fs.rename(tmp_path, 'data/upload/'+file_name, function(err) {
+        if (err) throw err;
+        // 删除临时文件夹文件, 
+        fs.unlink(tmp_path, function() {
+        if (err) throw err;
+            res.send('File uploaded to: ' + target_path + ' - ' + req.file.size + ' bytes');
+        });
+    });  
+
+
+})
+
+
 
 
 function authentication(req, res) {
