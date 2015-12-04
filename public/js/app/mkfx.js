@@ -7,6 +7,7 @@ define(function(require) {
 		jsonpPath = require('app/getJsonp'),
 		card = require('app/card'),
 		setDate = require('app/setDate'),
+		projectid = require('app/checkProjectid'),
 		datetimepickerObj = require('app/dateObj'),
 		globalTools = require('app/globalTools'),
 		jsonpPath = require('app/getJsonp'),
@@ -14,13 +15,17 @@ define(function(require) {
 		optionsLines = require('app/highchartsConfigLines');
 
 	(function() {
-		var projectid = 1;
 		var dateFlag = 1;
-		var dateStar = '2015-09-01';
+
+        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+        //var dateStar = '2015-09-01'; //初始化查询时间
 
 		var optionid = 10042;
 
 		var optionid2 = 10042;
+
+        var initConfig = [['/api/moduleAnalysis/list1.json','mkfxCCHP'],['/api/moduleAnalysis/list2.json','mkfxCgtf'],['/api/moduleAnalysis/list3.json','mkfxXntf'],['/api/moduleAnalysis/list4.json','mkfxSp']];
+        //var selectList = [['热效率','热电比','热回收率'],['']]
 
 		// 选择框
 		demand.start({
@@ -126,117 +131,139 @@ define(function(require) {
 			//localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{charts:charts,fn:globalTools.tbhbLines,options:optionsLines},jsonpCallback:'tbhb3',done:globalTools.selFn});
 		});
 		// 日月年
-		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, setDate, globalTools, optionsLines);
+		//globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, setDate, globalTools, optionsLines);
+		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
 
 		//时间空间
-		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
+		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
+			dateStar = ev.date.format('YYYY-MM-DD');
 			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
-			var jsonpName, dateFn;
-			switch (id) {
-				case 'mkfxCCHP':
-					jsonpName = 'tbhb3';
-					dateFn = globalTools.tbhbLines;
-					break;
-				case 'mkfxCgtf':
-					jsonpName = 'tbhb4';
-					dateFn = globalTools.tbhbLines;
-					break;
-				case 'mkfxXntf':
-					jsonpName = 'tbhb5';
-					dateFn = globalTools.tbhbLines;
-					break;
-				case 'mkfxSp':
-					jsonpName = 'tbhb6';
-					dateFn = globalTools.tbhbLines;
-					break;
-			}
-			localJsonp.start({
-				url: jsonpPath + jsonpName + '.js',
-				parameter: {
-					id: id,
-					fn: dateFn,
-					options: optionsLines
-				},
-				jsonpCallback: jsonpName,
-				done: globalTools.tbhbCallback
-			});
+            var url;
+            dateFlag = setDate.getFlag();
+			//var jsonpName, dateFn;
+            switch (id) {
+                case 'mkfxCCHP':
+                    url = '/api/moduleAnalysis/list1.json'; 
+                    break;
+                case 'mkfxCgtf':
+                    url = '/api/moduleAnalysis/list2.json'; 
+                    break;
+                case 'mkfxXntf':
+                    url = '/api/moduleAnalysis/list3.json'; 
+                    break;
+                case 'mkfxSp':
+                    url = '/api/moduleAnalysis/list4.json'; 
+                    break;
+            }
+            builtCharts(url,id,dateStar,dateFlag);
+			//localJsonp.start({
+				//url: jsonpPath + jsonpName + '.js',
+				//parameter: {
+					//id: id,
+					//fn: dateFn,
+					//options: optionsLines
+				//},
+				//jsonpCallback: jsonpName,
+				//done: globalTools.tbhbCallback
+			//});
 		});
-
+for(var i = 0, l = initConfig.length; i < l; i++) {
+    for(var j = 0, k = 1; j < k; j++) {
+        builtCharts(initConfig[i][j],initConfig[i][j+1],dateStar,dateFlag);
+    }
+}
+function builtCharts(url, id, dateStar,dateFlag) {
+		demand.start({
+            loadContainer: [['#'+id], 1],
+			url: url,
+			parameter: {
+				id: id,
+				fn: globalTools.tbhbLines,
+				options: optionsLines,
+				dateFlag: dateFlag
+			},
+			data: {
+				projectid: projectid,
+				dateFlag: dateFlag,
+				dateStar: dateStar,
+				optionid: optionid
+			},
+			done: lineResult
+		});
+}
 		// 图表
-		demand.start({
-			url: '/api/moduleAnalysis/list1.json',
-			parameter: {
-				id: 'mkfxCCHP',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateFlag: dateFlag
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar,
-				optionid: optionid
-			},
-			done: lineResult
-		});
+		//demand.start({
+			//url: '/api/moduleAnalysis/list1.json',
+			//parameter: {
+				//id: 'mkfxCCHP',
+				//fn: globalTools.tbhbLines,
+				//options: optionsLines,
+				//dateFlag: dateFlag
+			//},
+			//data: {
+				//projectid: projectid,
+				//dateFlag: dateFlag,
+				//dateStar: dateStar,
+				//optionid: optionid
+			//},
+			//done: lineResult
+		//});
 
-		demand.start({
-			url: '/api/moduleAnalysis/list2.json',
-			parameter: {
-				id: 'mkfxCgtf',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateFlag: dateFlag
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar,
-				optionid: optionid
-			},
-			done: lineResult
-		});
+		//demand.start({
+			//url: '/api/moduleAnalysis/list2.json',
+			//parameter: {
+				//id: 'mkfxCgtf',
+				//fn: globalTools.tbhbLines,
+				//options: optionsLines,
+				//dateFlag: dateFlag
+			//},
+			//data: {
+				//projectid: projectid,
+				//dateFlag: dateFlag,
+				//dateStar: dateStar,
+				//optionid: optionid
+			//},
+			//done: lineResult
+		//});
 
-		demand.start({
-			url: '/api/moduleAnalysis/list3.json',
-			parameter: {
-				id: 'mkfxXntf',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateFlag: dateFlag
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar,
-				optionid: optionid
-			},
-			done: lineResult
-		});
+		//demand.start({
+			//url: '/api/moduleAnalysis/list3.json',
+			//parameter: {
+				//id: 'mkfxXntf',
+				//fn: globalTools.tbhbLines,
+				//options: optionsLines,
+				//dateFlag: dateFlag
+			//},
+			//data: {
+				//projectid: projectid,
+				//dateFlag: dateFlag,
+				//dateStar: dateStar,
+				//optionid: optionid
+			//},
+			//done: lineResult
+		//});
 
-		demand.start({
-			url: '/api/moduleAnalysis/list4.json',
-			parameter: {
-				id: 'mkfxSp',
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateFlag: dateFlag
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar,
-				optionid1: optionid,
-				optionid2: optionid2
-			},
-			done: lineResult
-		});
+		//demand.start({
+			//url: '/api/moduleAnalysis/list4.json',
+			//parameter: {
+				//id: 'mkfxSp',
+				//fn: globalTools.tbhbLines,
+				//options: optionsLines,
+				//dateFlag: dateFlag
+			//},
+			//data: {
+				//projectid: projectid,
+				//dateFlag: dateFlag,
+				//dateStar: dateStar,
+				//optionid1: optionid,
+				//optionid2: optionid2
+			//},
+			//done: lineResult
+		//});
 
 		function lineResult(data, parameter) {
 			var res = new Object;
-			var tmp = data.status.data.list;
-			if (tmp == undefined)
-				return false;
+			var tmp = data.status.data.list  ? data.status.data.list : {};
 			var xData = new Array;
 			var yData = new Array;
 			var sData = new Array;
