@@ -26,6 +26,22 @@ define(function(require) {
 			['month', 'lastmonth', 1]
 		];
 
+var loadConfig = [['.my-card'], 1];
+var url = '/api/consumptionEnergyInfo/list.json';
+var parameterConfig = {
+				dir: {
+					today: ['drgnsp', '当日耗能水平'],
+					yestday: ['qrgnsp', '前日耗能水平'],
+					month: ['dygnsp', '当月耗能水平'],
+					year: ['dngnsp', '当年耗能水平']
+				},
+				id: 'drgnsp',
+				name: '',
+                self: globalTools,
+                popupFilter:popupFilter, 
+todayGroup:todayGroup, yesterdayGroup:yesterdayGroup, monthGroup:monthGroup, yearGroup:yearGroup,
+				options: optionsBase
+			};
 		//弹出层
 		$('.gnhnIcon').on('click', globalTools.modalFn);
 
@@ -68,7 +84,6 @@ define(function(require) {
                     globalTools.modalLines(yearGroup, parameter);
                     break;
             }
-        hnfxData = []; 
 		});
 
 
@@ -78,59 +93,23 @@ define(function(require) {
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
 			dateStar = ev.date.format('YYYY-MM-DD');
 			demand.start({
-				url: '/api/consumptionEnergyInfo/list.json',
-				loadContainer: [
-					['.my-card'], {
-						top: '10px',
-						left: '10px'
-					}
-				],
-				parameter: {
-					dir: {
-						today: ['drgnsp', '当日耗能水平'],
-						yestday: ['qrgnsp', '前日耗能水平'],
-						month: ['dygnsp', '当月耗能水平'],
-						year: ['dngnsp', '当年耗能水平']
-					},
-					id: 'drgnsp',
-					name: '',
-                    self: globalTools,
-                    popupFilter:popupFilter, 
-					options: optionsBase
-				},
+                url: url,
+                loadContainer: loadConfig,
+                parameter: parameterConfig ,
 				data: {
 					projectid: projectid,
 					dateStar: dateStar
 				},
-                done: function(data,parameter){ hnfxData.push(globalTools.gnhnFn(data,parameter)); } 
+                done: function(data,parameter){ hnfxData = []; hnfxData.push(globalTools.gnhnFn(data,parameter)); } 
 			});
 		});
 
 
 		//图表
 		demand.start({
-			url: '/api/consumptionEnergyInfo/list.json',
-			loadContainer: [
-				['.my-card'], {
-					top: '10px',
-					left: '10px'
-				}
-			],
-			parameter: {
-				dir: {
-					today: ['drgnsp', '当日耗能水平'],
-					yestday: ['qrgnsp', '前日耗能水平'],
-					month: ['dygnsp', '当月耗能水平'],
-					year: ['dngnsp', '当年耗能水平']
-				},
-				id: 'drgnsp',
-				name: '',
-                self: globalTools,
-                popupFilter:popupFilter, 
-todayGroup:todayGroup, yesterdayGroup:yesterdayGroup, monthGroup:monthGroup, yearGroup:yearGroup,
-				options: optionsBase
-
-			},
+			url: url,
+			loadContainer: loadConfig,
+			parameter: parameterConfig ,
 			data: {
 				projectid: projectid,
 				dateStar: dateStar

@@ -15,7 +15,7 @@ define(function(require) {
             loader: function(open,container,padding) {
                 var loader = $('.loader-wrapper');
                 var self = this;
-                var bp = padding;
+                var bp = (padding === 0) ? 0 :{ top: '10px',left: '10px'};
 
                 if(open === true) {
                         $.each(container, function(i,v){

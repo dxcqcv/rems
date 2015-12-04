@@ -323,23 +323,19 @@ define(function(require) {
 			});
             switch (type) {
                 case 0:
-                    parameter.todayGroup = resMap;
-                    if (parameter.todayGroup.length === 0) self.checkPopup('#drgnsp', 0);
+                    if (resMap.length === 0) self.checkPopup('#drgnsp', 0);
                     else self.checkPopup('#drgnsp', 1);
                     break;
                 case 1:
-                    parameter.monthGroup = resMap;
-                    if (parameter.monthGroup.length === 0) self.checkPopup('#dygnsp', 0);
+                    if (resMap.length === 0) self.checkPopup('#dygnsp', 0);
                     else self.checkPopup('#dygnsp', 1);
                     break;
                 case 2:
-                    parameter.yesterdayGroup = resMap;
-                    if (parameter.yesterdayGroup.length === 0) self.checkPopup('#qrgnsp', 0);
+                    if (resMap.length === 0) self.checkPopup('#qrgnsp', 0);
                     else self.checkPopup('#qrgnsp', 1);
                     break;
                 case 3:
-                    parameter.yearGroup = resMap;
-                    if (parameter.yearGroup.length === 0) self.checkPopup('#dngnsp', 0);
+                    if (resMap.length === 0) self.checkPopup('#dngnsp', 0);
                     else self.checkPopup('#dngnsp', 1);
                     break;
             }
