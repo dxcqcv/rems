@@ -20,6 +20,7 @@ define(function(require) {
 		var optionid = 470;
 		var optionid1 = 372;
 		var optionid2 = 10140;
+
 		demand.start({
 			url: '/api/deviceGroupInfo/listOption.json',
 			parameter: {
