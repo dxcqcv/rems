@@ -1125,5 +1125,19 @@ router.get('/structureInfo/list.json', function(req, res, next) {
 	})
 });
 
+//成本分析页面：成本分析数据查询
+router.get('/costProfit/costProfitChart.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/costProfit/costProfitChart.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateFlag: req.query.dateFlag,
+			dateStar: req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
 module.exports = router;
