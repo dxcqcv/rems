@@ -836,7 +836,7 @@ router.get('/structureInfo/list.json', function(req, res, next) {
 });*/
 
 //成本分析页面：单位供能成本比例
-router.get('/costProfit/costProfitChart.json', function(req, res, next) {
+/*router.get('/costProfit/costProfitChart.json', function(req, res, next) {
 	request.post({
 		url: remoteApiHost + '/rems/costProfit/costProfitChart.json',
 		form: {
@@ -863,7 +863,7 @@ router.get('/costProfit/costProfitChart.json', function(req, res, next) {
 		}
 	})
 });
-
+*/
 
 //结构分析页面：结构分析数据查询
 router.get('/accessInfo/list.json', function(req, res, next) {
