@@ -2,8 +2,8 @@ var express = require('express');
 var request = require('request');
 var moment = require('moment');
 var router = express.Router();
-//var remoteApiHost = "http://localhost:8080";
-var remoteApiHost = "http://117.144.16.98:8080";
+var remoteApiHost = "http://localhost:8080";
+//var remoteApiHost = "http://117.144.16.98:8080";
 var remoteApiPath = "/rems";
 
 
@@ -1139,5 +1139,21 @@ router.get('/costProfit/costProfitChart.json', function(req, res, next) {
 		res.send(body);
 	})
 });
+
+//----------------------标准类管理----------------------------------------------
+//添加设备（加载数据）（点击添加按钮）
+router.get('/clzMng/addInput.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzMng/addInput.json',
+		form: {
+			userKey: req.session.user.token
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+
+//----------------------标准类管理----------------------------------------------
 
 module.exports = router;
