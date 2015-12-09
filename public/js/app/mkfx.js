@@ -10,7 +10,6 @@ define(function(require) {
 		projectid = require('app/checkProjectid'),
 		datetimepickerObj = require('app/dateObj'),
 		globalTools = require('app/globalTools'),
-		jsonpPath = require('app/getJsonp'),
 		api = require('app/getApi'),
 		optionsLines = require('app/highchartsConfigLines');
 
@@ -42,7 +41,6 @@ define(function(require) {
 		});
 
 		function dropDownList(data, parameter) {
-        console.log(data)
 			$.each(parameter.idList, function(n, y) {
 				parameter.id = y;
 
@@ -189,11 +187,13 @@ define(function(require) {
             }
             return [url,dateOptionid];
         }
+
 for(var i = 0, l = initConfig.length; i < l; i++) {
     for(var j = 0, k = 1; j < k; j++) {
         builtCharts(initConfig[i][j],initConfig[i][j+1],dateStar,dateFlag,initConfig[i][j+2]);
     }
 }
+
 function builtCharts(url, id, dateStar,dateFlag,optionid) {
         var o = optionid[0], o2 = optionid[1];
 		demand.start({

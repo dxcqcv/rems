@@ -5,6 +5,7 @@ define(function(require) {
 		datapicker = require('bootstrap-datetimepicker.min'),
 		card = require('app/card'),
 		setDate = require('app/setDate'),
+		projectid = require('app/checkProjectid'),
 		datetimepickerObj = require('app/dateObj'),
 		globalTools = require('app/globalTools'),
 		jsonpPath = require('app/getJsonp'),
@@ -12,21 +13,23 @@ define(function(require) {
 		api = require('app/getApi'),
 		optionsLines = require('app/highchartsConfigLines');
 
+
 	(function() {
 
-		var projectid = 1;
 		var dateFlag = 1;
 		var dateStar = '2015-09-01';
-		var optionid = 470;
-		var optionid1 = 372;
-		var optionid2 = 10140;
+		var oldDate; //防止重复
+        // optionidTop  冷温水供水温度,optionidBottom 冷却水泵组  
+        var optionidTop = [468], optionidBottom = [358,10099];
+        var lwList = {}, lqList = {}, bottomLqList, bottomLwList, bottomDsLis;
+        var tabId = 0;
 
 		demand.start({
 			url: '/api/deviceGroupInfo/listOption.json',
 			parameter: {
-				id: '#lqlwSel',
+				id: '#lqlwSel1',
 				tabId: 0,
-				idList: ['#lqlwSel', '#bzyxfaSel1']
+				idList: ['#lqlwSel1', '#bzyxfaSel1']
 			},
 			data: {
 				projectid: projectid,
@@ -34,18 +37,31 @@ define(function(require) {
 			done: dropDownList
 		});
 
+
 		function dropDownList(data, parameter) {
+        console.log(data);
+//冷却水循环泵组
+            bottomLqList = data.status.data.list3;
+//冷温水循环泵组
+            bottomLwList = data.status.data.list2;
+//地/水源热泵机组
+		    bottomDsLis = data.status.data.list1;
+
+            lwList = data.status.data.LWlist;
+            lqList = data.status.data.LQlist;
 			$.each(parameter.idList, function(n, y) {
 				parameter.id = y;
 
 				var tmpRes;
 				var res = new Array;
 				var item = new Object;
-				if (parameter.id == '#lqlwSel') {
-					if (parameter.tabId == 0)
+				if (parameter.id == '#lqlwSel1') {
+					if (parameter.tabId == 0) {
 						tmpRes = data.status.data.LWlist;
-					else
+                    }
+					else {
 						tmpRes = data.status.data.LQlist;
+                    }
 				}
 				if (parameter.id == '#bzyxfaSel1') {
 					tmpRes = data.status.data.CSlist;
@@ -59,160 +75,172 @@ define(function(require) {
 				});
 				globalTools.selCallback(res, parameter);
 			});
+        console.log(bottomLqList);
+        console.log(bottomLwList);
+        console.log(bottomDsLis);
+            dropDownList_BZ(bottomLqList);
 		}
+        $('#jzfxTabs').children('li').on('click', function(){
+            var $this = $(this);
+            var flag = $this.data('flag');
+            if(flag === 0){
+                tabId = 0;
+                formatSel(lwList, '#lqlwSel1');
+            } else if(flag === 1) {
+                tabId = 1;
+                formatSel(lqList, '#lqlwSel1');
+            } 
+            globalTools.selectFn($this,'li');
+        });
+        function formatSel(list, selId) {
+            var item = new Object;
+			//var idList = ['#lqlwSel', '#bzyxfaSel1'];
+            var parameter = {}; 
+            var res = [];
+            parameter.id = selId;
+            $.each(list, function(i, v) {
+                item = new Object;
+                item.selName = v.classPropertyname;
+                item.id = v.classPropertyid;
+                res.push(item);
+            });
+            globalTools.selCallback(res, parameter);
+        }
 
+		// 选择框
+
+		$('.selectpicker').change(function() {
+			var $this = $(this);
+            var boxId = $this.attr('id');
+			var selected = $this.find('option:selected');
+
+            var instanceid = selected.attr('data-instanceid');
+            var propertyid = selected.attr('id');
+
+            var parents = $this.parents('.my-card');
+			var charts = parents.find('.chart-box').attr('id');
+            var url, config, selectOptions;
+            dateStar = parents.find('.datetimepicker1').children('input').val();  
+            dateFlag = setDate.getFlag();
+
+
+            if(tabId === 0) {
+                //optionidTop = [propertyid];     
+            } else if(tabId === 1) {
+                //dropDownList_BZ(bottomLqList);
+            }
+            switch(boxId) {
+                case 'bzyxfaSel1': 
+                    if (propertyid == '372') { //冷却水泵组
+                        dropDownList_BZ(bottomLqList);
+                    }
+                    if (propertyid == '353') { //冷温水循环泵组
+                        dropDownList_BZ(bottomLwList);
+                    }
+                    if (propertyid == '341') { //地/水源热泵机组
+                        dropDownList_BZ(bottomDsLis);
+                    } 
+                    break;
+                case 'bzyxfaSel2': 
+                    config = getConf(charts);
+                    url = config[0];
+                    selectOptions = config[1]; 
+
+                    builtCharts(url,charts,tabId,dateStar,dateFlag,selectOptions);
+                    break;
+            } 
+
+		});
 		//根据泵组分析模块的第一个下拉款选择的值，设置第二个下拉框
-		function dropDownList_BZ(id) {
-			var tmpRes;
-			if (id = '372') { //冷却水泵组
-				tmpRes = data.status.data.list3;
-			}
-			if (id = '353') { //冷温水循环泵组
-				tmpRes = data.status.data.list2;
-			}
-			if (id = '341') { //地/水源热泵机组
-				tmpRes = data.status.data.list1;
-			}
+		function dropDownList_BZ(list) {
+        //接口冷却水ID错误
+			var tmpRes = list,parameter = {}, res = [], vid;
 			$.each(tmpRes, function(i, v) {
-				item = new Object;
-				item.selName = v.classPropertyname;
-				item.id = v.classPropertyid;
-				res.push(item);
+                vid = v.classPropertyid;
+                if(vid == 10099 || vid == 10117  || vid == 10087 || vid == 10088 || vid == 10161 || vid == 10162) {
+                    item = new Object;
+                    item.selName = v.classPropertyname;
+                    item.id = vid;
+                    res.push(item);
+                }
 			});
-			//			parameter.id = "#bzyxfaSel2";
-			//			globalTools.selCallback(res, parameter);
+            parameter.id = "#bzyxfaSel2";
+            globalTools.selCallback(res, parameter);
 		}
 
 
-		//		/*localJsonp.start({
-		//			url: jsonpPath + 'jzfxSel1.js',
-		//			parameter: {
-		//				id: '#lqlwSel'
-		//			},
-		//			jsonpCallback: 'jzfxSel1',
-		//			done: globalTools.selCallback
-		//		});
-		//		localJsonp.start({
-		//			url: jsonpPath + 'jzfxSel2.js',
-		//			parameter: {
-		//				id: '#bzyxfaSel1'
-		//			},
-		//			jsonpCallback: 'jzfxSel2',
-		//			done: globalTools.selCallback
-		//		});
-		//		localJsonp.start({
-		//			url: jsonpPath + 'jzfxSel3.js',
-		//			parameter: {
-		//				id: '#bzyxfaSel2'
-		//			},
-		//			jsonpCallback: 'jzfxSel3',
-		//			done: globalTools.selCallback
-		//		});*/
-		//
-		//		/*$('.selectpicker').change(function() {
-		//			var charts = $(this).parents('.my-card').find('.chart-box').attr('id');
-		//			localJsonp.start({
-		//				url: jsonpPath + 'tbhb3.js',
-		//				parameter: {
-		//					charts: charts,
-		//					fn: globalTools.tbhbLines,
-		//					options: optionsLines
-		//				},
-		//				jsonpCallback: 'tbhb3',
-		//				done: globalTools.selFn
-		//			});
-		//		});
-		//		$('#jzfxTabs').children('li').on('click', function() {
-		//			var $this = $(this);
-		//			var flag = $this.data('flag');
-		//			var charts = $this.parents('.my-card').find('.chart-box').attr('id');
-		//			if (flag == 0) {
-		//				localJsonp.start({
-		//					url: jsonpPath + 'jzfxSel1.js',
-		//					parameter: {
-		//						id: '#lqlwSel'
-		//					},
-		//					jsonpCallback: 'jzfxSel1',
-		//					done: globalTools.selCallback
-		//				});
-		//			} else {
-		//				localJsonp.start({
-		//					url: jsonpPath + 'jzfxSel4.js',
-		//					parameter: {
-		//						id: '#lqlwSel'
-		//					},
-		//					jsonpCallback: 'jzfxSel4',
-		//					done: globalTools.selCallback
-		//				});
-		//			}
-		//			//note self is globalTools
-		//			localJsonp.start({
-		//				url: jsonpPath + 'tbhb3.js',
-		//				parameter: {
-		//					pointer: this,
-		//					charts: charts,
-		//					fn: globalTools.tbhbLines,
-		//					self: globalTools,
-		//					options: optionsLines
-		//				},
-		//				jsonpCallback: 'tbhb3',
-		//				done: globalTools.selTabFn
-		//			});
-		//		});*/
-		//
-		//
-		//		//		// 日月年
-		//		//		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, setDate, globalTools, optionsLines);
-		//		//
-		//		//		//时间空间
-		//		//		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
-		//		//			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
-		//		//			var jsonpName, dateFn;
-		//		//			switch (id) {
-		//		//				case 'nyzhlyl':
-		//		//					jsonpName = 'tbhb3';
-		//		//					dateFn = globalTools.tbhbLines;
-		//		//					break;
-		//		//				case 'jnl':
-		//		//					jsonpName = 'tbhb4';
-		//		//					dateFn = globalTools.tbhbLines;
-		//		//					break;
-		//		//			}
-		//		//			localJsonp.start({
-		//		//				url: jsonpPath + jsonpName + '.js',
-		//		//				parameter: {
-		//		//					id: id,
-		//		//					fn: dateFn,
-		//		//					options: optionsLines
-		//		//				},
-		//		//				jsonpCallback: jsonpName,
-		//		//				done: globalTools.tbhbCallback
-		//		//			});
-		//		//		});
+        
+		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
 
+		//时间空间
+		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
+			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
+            var url, dateOptionid, config;
+            dateFlag = setDate.getFlag();
+
+			//dateStar = ev.date.format('YYYY-MM-DD');
+
+            switch(dateFlag) {
+                case 1:
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM-DD');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 2: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 3: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+            }
+
+            config = getConf(id);
+            url = config[0]; dateOptionid = config[1]; 
+            builtCharts(url,id,tabId,dateStar,dateFlag, dateOptionid);
+		});
+
+        function getConf(id) {
+            var url, dateOptionid; 
+            switch (id) {
+                case 'nyzhlyl':
+                    url = '/api/deviceGroupInfo/list1.json'; 
+                    dateOptionid = optionidTop ; 
+                    break;
+                case 'jnl':
+                    url = '/api/deviceGroupInfo/list2.json'; 
+                    dateOptionid = optionidBottom ; 
+                    break;
+            }
+            return [url,dateOptionid];
+        }
+        var initConfig = [['/api/deviceGroupInfo/list1.json','nyzhlyl',[470]],['/api/deviceGroupInfo/list2.json','jnl',[372,10140]]];
+
+for(var i = 0, l = initConfig.length; i < l; i++) {
+    for(var j = 0, k = 1; j < k; j++) {
+        builtCharts(initConfig[i][j],initConfig[i][j+1],tabId,dateStar,dateFlag,initConfig[i][j+2]);
+    }
+}
 		// 图表
-		demand.start({
-			url: '/api/deviceGroupInfo/list1.json',
-			parameter: {
-				id: 'nyzhlyl',
-				tabId: 0,
-				fn: globalTools.tbhbLines,
-				options: optionsLines,
-				dateFlag: dateFlag
-			},
-			data: {
-				projectid: projectid,
-				dateFlag: dateFlag,
-				dateStar: dateStar,
-				optionid: optionid
-			},
-			done: lineResult
-		});
+function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
+    var o, o1,o2,oLength = optionid.length ;
+
+    if(oLength === 1) {
+        o = optionid[0];
+    } else if(oLength === 2) {
+        o1 = optionid[0];
+        o2 = optionid[1];
+    }
 
 		demand.start({
-			url: '/api/deviceGroupInfo/list2.json',
+            loadContainer: [['#'+id], 1],
+			url: url,
 			parameter: {
-				id: 'jnl',
+				id: id,
+				tabId: tabId,
 				fn: globalTools.tbhbLines,
 				options: optionsLines,
 				dateFlag: dateFlag
@@ -221,11 +249,14 @@ define(function(require) {
 				projectid: projectid,
 				dateFlag: dateFlag,
 				dateStar: dateStar,
-				optionid1: optionid1,
-				optionid2: optionid2
+				optionid: o ? o : null,
+				optionid1: o1 ? o1 : null,
+				optionid2: o2 ? o2 : null 
 			},
 			done: lineResult
 		});
+}
+
 
 		function lineResult(data, parameter) {
 			var res = new Object;

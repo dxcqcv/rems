@@ -10,15 +10,25 @@
             <div class="my-card col-md-12 col-lg-12 col-xs-12">
                 <div class="my-card-top">
                     <div class="card-title bottom-title">
+                       <!--<ul class="nav nav-tabs ">-->
+                            <!--<li class="active" data-flag="0"><a>冷温水情况</a></li>-->
+                            <!--<li class="" data-flag="1"><a>冷却水情况</a></li>-->
+                       <!--</ul>-->
                        <ul class="nav nav-tabs " id="jzfxTabs">
-                            <li class="active" data-flag="0"><a>冷温水情况</a></li>
-                            <li class="" data-flag="1"><a>冷却水情况</a></li>
+                            <li class="nor"><span>水循环状态</span></li>
                        </ul>
                     </div>
                     <div class="card-subtitle clearfix">
                         <ul class="list-inline pull-left">
                             <li>
-                                <select class="form-control selectpicker" id="lqlwSel">
+                                <select class="form-control selectpicker" id="lqlwSel1">
+                                  <option>供水温度</option>
+                                  <option>供回水温差</option>
+                                  <option>供水流量</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select class="form-control selectpicker" id="lqlwSel2">
                                   <option>供水温度</option>
                                   <option>供回水温差</option>
                                   <option>供水流量</option>
@@ -49,7 +59,7 @@
                 <div class="my-card-top">
                     <div class="card-title  bottom-title">
                        <ul class="nav nav-tabs ">
-                            <li class="nor"><span>泵组运行方案</span></li>
+                            <li class="nor"><span>泵组运行状态</span></li>
                        </ul>
                     </div>
                     <div class="card-subtitle clearfix">
