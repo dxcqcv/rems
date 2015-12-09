@@ -472,13 +472,13 @@ router.get('/craftProperty/listLeft.json', function(req, res, next) {
 });
 
 
-//标准类管理页面：查询设备类
+/*//标准类管理页面：查询设备类
 router.get('/clzMng/list.json', function(req, res, next) {
 	console.log(req.session.user);
 	// request.post({url:remoteApiHost+'/rems/clzMng/list.json', form: {userKey:req.session.user.token, clzTypeid:req.query.clzTypeid, clzPid:req.query.clzPid, clzName:req.query.clzName, userid:req.query.userid}}, function(error,response,body){
 	//     	res.send(body);	
 	// })
-});
+});*/
 
 
 //类属性页面：查询设备属性类
@@ -551,7 +551,7 @@ router.get('/clzpropMng/initSelections.json', function(req, res, next) {
 
 
 //类属性管理页面
-router.get('/clzMng/list.json', function(req, res, next) {
+/*router.get('/clzMng/list.json', function(req, res, next) {
 	request.post({
 		url: remoteApiHost + '/rems/clzMng/list.json',
 		form: {
@@ -561,7 +561,7 @@ router.get('/clzMng/list.json', function(req, res, next) {
 	}, function(error, response, body) {
 		res.send(body);
 	})
-});
+});*/
 
 //类属性管理页面和标准类管理页面共用：查询设备类
 router.get('/clzMng/page.json', function(req, res, next) {
@@ -1147,6 +1147,85 @@ router.get('/clzMng/addInput.json', function(req, res, next) {
 		url: remoteApiHost + '/rems/clzMng/addInput.json',
 		form: {
 			userKey: req.session.user.token
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//添加设备（添加）添加弹框里的确认
+router.get('/clzMng/add.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzMng/add.json',
+		form: {
+			userKey: req.session.user.token,
+			classname: req.query.classname,
+			parentclassid: req.query.parentclassid,
+			remarks: req.query.remarks,
+			picturepath: req.query.picturepath,
+			classtypeid: req.query.classtypeid,
+			categoryType: req.query.categoryType, //设备级别 （工艺系统） 2015-11-17 16:26:14
+			superiorid: req.query.superiorid //上级设备 （工艺系统） 2015-11-17 16:26:34dictionary_ CategoryType
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//修改设备（加载数据）（点击修改按钮）
+router.get('/clzMng/updateInput.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzMng/updateInput.json',
+		form: {
+			userKey: req.session.user.token,
+			classid: req.query.classid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+
+//修改设备（修改弹框里的确认）
+router.get('/clzMng/update.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzMng/update.json',
+		form: {
+			userKey: req.session.user.token,
+			classid: req.query.classid,
+			classname: req.query.classname,
+			parentclassid: req.query.parentclassid,
+			remarks: req.query.remarks,
+			picturepath: req.query.picturepath,
+			classtypeid: req.query.classtypeid,
+			categoryType: req.query.categoryType, //设备级别 （工艺系统） 2015-11-17 16:26:14
+			superiorid: req.query.superiorid //上级设备 （工艺系统） 2015-11-17 16:26:34dictionary_ CategoryType
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//删除设备
+router.get('/clzMng/delete.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzMng/delete.json',
+		form: {
+			userKey: req.session.user.token,
+			classid: req.query.classid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//条件查询
+router.get('/clzMng/list.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzMng/list.json',
+		form: {
+			userKey: req.session.user.token,
+			clzName: req.query.clzName
 		}
 	}, function(error, response, body) {
 		res.send(body);
