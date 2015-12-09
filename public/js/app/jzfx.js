@@ -20,7 +20,8 @@ define(function(require) {
 		var dateStar = '2015-09-01';
 		var oldDate; //防止重复
         // optionidTop  冷温水供水温度,optionidBottom 冷却水泵组  
-        var optionidTop = [468], optionidBottom = [358,10099];
+        //var optionidTop = [468], optionidBottom = [358,10099];
+        var optionsId
         var lwList = {}, lqList = {}, bottomLqList, bottomLwList, bottomDsLis;
         var tabId = 0;
 
@@ -75,9 +76,9 @@ define(function(require) {
 				});
 				globalTools.selCallback(res, parameter);
 			});
-        console.log(bottomLqList);
-        console.log(bottomLwList);
-        console.log(bottomDsLis);
+        //console.log(bottomLqList);
+        //console.log(bottomLwList);
+        //console.log(bottomDsLis);
             dropDownList_BZ(bottomLqList);
 		}
         $('#jzfxTabs').children('li').on('click', function(){
@@ -114,41 +115,53 @@ define(function(require) {
             var boxId = $this.attr('id');
 			var selected = $this.find('option:selected');
 
-            var instanceid = selected.attr('data-instanceid');
             var propertyid = selected.attr('id');
 
             var parents = $this.parents('.my-card');
 			var charts = parents.find('.chart-box').attr('id');
-            var url, config, selectOptions;
+            var url, config, selectOptions, othersId;
             dateStar = parents.find('.datetimepicker1').children('input').val();  
             dateFlag = setDate.getFlag();
 
+            //if(tabId === 0) {
+                ////optionidTop = [propertyid];     
+            //} else if(tabId === 1) {
+                ////dropDownList_BZ(bottomLqList);
+            //}
 
-            if(tabId === 0) {
-                //optionidTop = [propertyid];     
-            } else if(tabId === 1) {
-                //dropDownList_BZ(bottomLqList);
-            }
-            switch(boxId) {
-                case 'bzyxfaSel1': 
-                    if (propertyid == '372') { //冷却水泵组
+
+//console.log(othersId);
+//console.log(propertyid);
+
+            switch (charts) {
+                case 'nyzhlyl':
+                    //optionidTop = [358,10099];
+                    break;
+                case 'jnl':
+                    if (propertyid == '358') { //冷却水泵组
                         dropDownList_BZ(bottomLqList);
+                        //optionidBottom = [358,10099];
                     }
                     if (propertyid == '353') { //冷温水循环泵组
                         dropDownList_BZ(bottomLwList);
+                        //optionidBottom = [353,10087];
                     }
                     if (propertyid == '341') { //地/水源热泵机组
                         dropDownList_BZ(bottomDsLis);
+                        //optionidBottom = [341,10161];
                     } 
                     break;
-                case 'bzyxfaSel2': 
-                    config = getConf(charts);
-                    url = config[0];
-                    selectOptions = config[1]; 
-
-                    builtCharts(url,charts,tabId,dateStar,dateFlag,selectOptions);
-                    break;
-            } 
+            }
+            // get others options id after set drop down list
+            othersId = $this.parent('li').siblings('li').find('select').find('option:selected').attr('id')
+            // update options id 
+            optionsId = [propertyid,othersId];
+            //console.log(optionsId );
+            config = getConf(charts);
+            url = config[0];
+            selectOptions = config[1]; 
+            //console.log(selectOptions);
+            builtCharts(url,charts,tabId,dateStar,dateFlag,selectOptions);
 
 		});
 		//根据泵组分析模块的第一个下拉款选择的值，设置第二个下拉框
@@ -200,6 +213,18 @@ define(function(require) {
 
             config = getConf(id);
             url = config[0]; dateOptionid = config[1]; 
+            // init date option id
+            if(dateOptionid === undefined) {
+                switch(id) {
+                    case 'nyzhlyl':
+                        dateOptionid = [470];
+                        break;
+                    case 'jnl':
+                        dateOptionid = [358,10099];
+                        break;
+                }
+            }
+            console.log(dateOptionid );
             builtCharts(url,id,tabId,dateStar,dateFlag, dateOptionid);
 		});
 
@@ -208,16 +233,19 @@ define(function(require) {
             switch (id) {
                 case 'nyzhlyl':
                     url = '/api/deviceGroupInfo/list1.json'; 
-                    dateOptionid = optionidTop ; 
+                    //dateOptionid = optionidTop ; 
+                    dateOptionid = optionsId;
                     break;
                 case 'jnl':
                     url = '/api/deviceGroupInfo/list2.json'; 
-                    dateOptionid = optionidBottom ; 
+                    //dateOptionid = optionidBottom ; 
+                    dateOptionid = optionsId;
                     break;
             }
             return [url,dateOptionid];
         }
-        var initConfig = [['/api/deviceGroupInfo/list1.json','nyzhlyl',[470]],['/api/deviceGroupInfo/list2.json','jnl',[372,10140]]];
+        //var initConfig = [['/api/deviceGroupInfo/list1.json','nyzhlyl',[470]],['/api/deviceGroupInfo/list2.json','jnl',[372,10140]]];
+        var initConfig = [['/api/deviceGroupInfo/list1.json','nyzhlyl',[470]],['/api/deviceGroupInfo/list2.json','jnl',[358,10099]]];
 
 for(var i = 0, l = initConfig.length; i < l; i++) {
     for(var j = 0, k = 1; j < k; j++) {
