@@ -3,7 +3,9 @@
  var express = require('express');
 var multer  = require('multer');
 var fs = require('fs');
-var upload = multer({ dest: './data/upload/' })
+var upload = multer({ dest: './data/upload/' });
+var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
+var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
 var router = express.Router();
 // //直接调用命令
 //     exports.createDir = function (){
@@ -141,7 +143,7 @@ router.get('/rhpz', function(req, res) {
 
 router.post('/export', function(req, res) {
 
-    process.exec('php /Users/lvwei/Develop/github/rems/shell/excel.php ' + req.body.fileName,
+    process.exec('php '+shellDir+'excel.php ' + uploadDir + " " + req.body.fileName,
           function (error, stdout, stderr) {
             if (error !== null) {
               console.log('exec error: ' + error);

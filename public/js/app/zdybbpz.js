@@ -15,6 +15,7 @@ define(function(require) {
 		 $("#input-4").fileinput({
 
 		 	language: 'zh', //设置语言
+		 	textEncoding:'UTF-8',
 	        uploadUrl: '/user/upload', //上传的地址
 	        uploadAsync: 'true',
 	        allowedFileExtensions: ['xlsx','xls','jpg'],//接收的文件后缀

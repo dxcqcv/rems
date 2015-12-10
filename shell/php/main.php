@@ -71,6 +71,7 @@ class main{
 	 * </dl>
 	 */
 	public function get_html($options=array()){
+		
 		$options = $this->optimize_options( $options );
 		$this->options = $options;
 
