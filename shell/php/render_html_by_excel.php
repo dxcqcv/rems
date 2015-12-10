@@ -171,7 +171,7 @@ class render_html_by_excel{
 				$tbody .= $tmpRow;
 			}
 		}
-		// var_dump($skipCell);
+		 //var_dump($tbody);die;
 
 		if( !@$options['strip_table_tag'] ){
 			print '<table>'.PHP_EOL;
