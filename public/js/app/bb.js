@@ -2,7 +2,11 @@ define(function(require) {
 	var $ = require('jquery')
       , highcharts = require('exporting')
       , selectpicker = require('bootstrap-select')
+
+	  ,	zh_cn = require('moment-zh-cn')
       , bootstrapTable = require('bootstrap-table')
+      , bsTableLocal = require('bootstrap-table-locale-all.min')
+
       , datapicker = require('bootstrap-datetimepicker.min')      
       , datetimepickerObj = require('app/dateObj')
       ;

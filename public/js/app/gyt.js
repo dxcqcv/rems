@@ -3,6 +3,9 @@ define(function(require){
       , projectid = require('app/checkProjectid')
       , highcharts = require('exporting') 
       , globalTools = require('app/globalTools')
+      , bootstrapTable = require('bootstrap-table')
+
+      //, bsTableLocal = require('bootstrap-table-locale-all.min')
       , api = require('app/getApi')
       , optionsGyt = require('app/highchartsConfigGyt')
     ;
@@ -286,7 +289,29 @@ function clickPopup(){}
             if((i+1)%2 === 0) str += '</tr><tr>';
         });
         str += '</tr>';
-        $('#gytModTbody').empty().append(str);
+        //$('#gytModTbody').empty().append(str);
+        
+        $('#gytModTable').bootstrapTable({
+    columns: [{
+        field: 'id',
+        title: 'Item ID'
+    }, {
+        field: 'name',
+        title: 'Item Name'
+    }, {
+        field: 'price',
+        title: 'Item Price'
+    }],
+    data: [{
+        id: 1,
+        name: 'Item 1',
+        price: '$1'
+    }, {
+        id: 2,
+        name: 'Item 2',
+        price: '$2'
+    }]
+});
         modal.find('.modal-title').text(modTitle);
         //弹出层图表
              initGytCharts();

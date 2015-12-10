@@ -1,7 +1,9 @@
 define(function(require) {
 	var $ = require('jquery'),
 		datapicker = require('bootstrap-datetimepicker.min'),
+		moment = require('moment'),
 		highcharts = require('exporting'),
+		projectid = require('app/checkProjectid'),
 		setDate = require('app/setDate'),
 		globalTools = require('app/globalTools'),
 		jsonpPath = require('app/getJsonp'),
@@ -10,34 +12,71 @@ define(function(require) {
 		api = require('app/getApi'),
 		optionsPie = require('app/highchartsConfigPie');
 	(function() {
-
-		var projectid = 1;
-		var dateFlag = 1;
-		var dateStar = '2015-09-01';
+                         // 日期
+		var dateFlag = 1, dateTips = 1;
+		var oldDate; //防止重复
+		//var dateStar = '2015-09-01';
+        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
 		// 日月年
-		jgfxClick('.date-controls-box', 'button', jsonpPath);
+		//jgfxClick('.date-controls-box', 'button', jsonpPath);
+		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
 
-		function jgfxClick(name, tag, jsonpPath, jsonp, ajaxFn, setDateFn) {
-			$(name).find(tag).click(function() {
-				var $this = $(this);
-				setDate.changeDate($this);
-				globalTools.selectFn($this, 'button');
+		//function jgfxClick(name, tag, jsonpPath, jsonp, ajaxFn, setDateFn) {
+			//$(name).find(tag).click(function() {
+				//var $this = $(this);
+				//setDate.changeDate($this);
+				//globalTools.selectFn($this, 'button');
 
-				buildJgPie([
-					['pieData', 'ztnyjg', 'pie1'],
-					['pieData2', 'kzsny', 'pie2'],
-					['pieData3', 'qjnyjg', 'pie3']
-				]);
-			});
-		}
+                //buildJgPie([
+                    //['pieData', 'ztnyjg', 'pie1'],
+                    //['pieData2', 'kzsny', 'pie2'],
+                    //['pieData3', 'qjnyjg', 'pie3']
+                //]);
+			//});
+		//}
 		//时间控件
-		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function() {
+		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
 
-			buildJgPie([
-				['pieData', 'ztnyjg', 'pie1'],
-				['pieData2', 'kzsny', 'pie2'],
-				['pieData3', 'qjnyjg', 'pie3']
-			]);
+			//buildJgPie([
+				//['pieData', 'ztnyjg', 'pie1'],
+				//['pieData2', 'kzsny', 'pie2'],
+				//['pieData3', 'qjnyjg', 'pie3']
+			//]);
+            
+            var url, dateOptionid, config;
+            dateFlag = setDate.getFlag();
+
+
+            switch(dateFlag) {
+                case 1:
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM-DD');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 2: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 3: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+            }
+            
+            demand.start({
+                url: '/api/structureInfo/list.json',
+                parameter: {
+                    id: 'ztnyjg'
+                },
+                data: {
+                    projectid: projectid,
+                    dateFlag: dateFlag,
+                    dateStar: dateStar
+                },
+                done: resultFormater
+            });
 		});
 		//图表
 		//		buildJgPie([
@@ -72,7 +111,8 @@ define(function(require) {
 		demand.start({
 			url: '/api/structureInfo/list.json',
 			parameter: {
-				id: 'ztnyjg'
+				id: 'ztnyjg',
+                dateTips: dateTips 
 			},
 			data: {
 				projectid: projectid,
@@ -164,7 +204,12 @@ define(function(require) {
 			// zt 总体
 			// qj 清洁
 			// trq 天然气
+            console.log(kzsCount);
+            console.log(zt );
+            console.log(qj);
+            console.log(trq);
 
+            $('.dateTips').text();
 		}
 
 	}());

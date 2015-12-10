@@ -41,15 +41,15 @@
 							</select>
 						
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 属性分类：
-						<select class="form-control selectpicker btn_all" id="">
-							<option>全部属性分类</option>
-							<option>静态属性</option>
-							<option>动态属性</option>
+						<select class="form-control selectpicker btn_all" id="searchPropetyClass">
+							<option value="0">静态属性</option>
+							<option value="1">动态属性</option>
 							</select>
 						
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 属性名称：
-						<input type="text" class="form-control tab_input">
+						<input type="text" class="form-control tab_input" id="searchPropertyName">
 						<button id="queryDataBtn" type="button" class="btn btn-info btn-sm">查看数据</button>
+						<button id="searDataBtn" type="button" class="btn btn-info btn-sm">添加</button>
 						</p>
 					</div>
 					</div>
@@ -81,47 +81,34 @@
 				<div id="bg"></div>
 				<div id="tablediv">
 					<div>
-					<div class="titlesxgl"> 属性管理 <button type="button" class="close" id="colse"> &times;</button></div>
-					
+					<div class="titlesxgl"> 属性管理 <button type="button" class="close" id="editClose"> &times;</button></div>
+				
 						<div class="zgybb">
 							<input type="hidden" id="currentClasspropertyid" name="currentClasspropertyid">
 							<div class="div_hgjn">属性名称：<input type="text" class="form-control" id="editShuxingName" ></div>
 							
 							<div class="div_hgjn">属性类型：<select id="editShuxingType" class="form-control selectpicker btn_all">
-								<option>dd</option>
-								<option>aw</option>
-								<option>ds</option>
-								<option>we</option>
-								<option>uj</option>
 								</select>
 							</div>
 							
 							<div class="div_hgjn">属性分类：<select id="editShuxingClass" class="form-control selectpicker btn_all">
-								<option>dd</option>
-								<option>aw</option>
-								<option>ds</option>
-								<option>we</option>
-								<option>uj</option>
+								<option>静态属性</option>
+								<option>动态属性</option>
 								</select>
 							</div>
 							
 							<div class="div_hgjn">属性关联：
 								<select id="editShuxingRelation" class="form-control selectpicker btn_all">
-									<option>dd</option>
-									<option>aw</option>
-									<option>ds</option>
-									<option>we</option>
-									<option>uj</option>
 								</select>
 							</div>
 							
 							<div class="div_hgjn">排序顺序：
-								<input type="radio" id="asc" name="editShuxingSort" checked="checked" value="1">降序排名
-								<input type="radio" id="asc" name="editShuxingSort" checked="checked" value="1">升序排名
+								<input type="radio" id="asc" name="editShuxingSort"  value="1">降序排名
+								<input type="radio" id="asc" name="editShuxingSort"  value="0">升序排名
 							</div>
 								
 							<div class="div_hgjn fgrs">备注：
-								<textarea></textarea>
+								<textarea id="editRemark"></textarea>
 							</div>
 						</div>
 								
@@ -132,12 +119,55 @@
 					</div>
 				</div>
 				
+				
+				<div id="tabledivbj">
+					<div>
+					<div class="titlesxgl"> 属性管理 <button type="button" class="close" id="addClose"> &times;</button></div>
+					
+						<div class="zgybb">
+							<input type="hidden" id="currentClasspropertyids" name="currentClasspropertyid">
+							<div class="div_hgjn">属性名称：<input type="text" class="form-control" id="editShuxingNames" ></div>
+							
+							<div class="div_hgjn">属性类型：<select id="editShuxingTypes" class="form-control selectpicker btn_all">
+								
+								</select>
+							</div>
+							
+							<div class="div_hgjn">属性分类：<select id="editShuxing" class="form-control selectpicker btn_all">
+								<option value="0">动态属性</option>
+								<option value="1">静态属性</option>
+								</select>
+							</div>
+							
+							<div class="div_hgjn">属性关联：
+								<select id="editRelation" class="form-control selectpicker btn_all">
+									
+								</select>
+							</div>
+							
+							<div class="div_hgjn">排序顺序：
+								<input type="radio" id="asce" name="editShuxingSort" checked="checked" value="1">降序排名
+								<input type="radio" id="asca" name="editShuxingSort" checked="checked" value="0">升序排名
+							</div>
+								
+							<div class="div_hgjn fgrs">备注：
+								<textarea id="addremark"></textarea>
+							</div>
+						</div>
+								
+						<div class="footerbtn">
+							<button type="button" id="addeEditBtn" class="btn btn-info">添加</button>
+		            		<button type="button" class="btn btn-default" id="closedivs">关闭</button>
+						</div>
+					</div>
+				</div>
+				
 				<div id="bg1"></div>
 				<div id="coliseselect">
 					<p class="truep">确定</p>
 					<p class="truesel">确定删除？</p>
 					<div class="footerbtnclos">
-						<button type="button" class="btn btn-info" >确定</button>
+						<button type="button" class="btn btn-info" id="btnDel">确定</button>
 	            		<button type="button" class="btn btn-default" id="closedivsel">关闭</button>
 					</div>
 				</div>

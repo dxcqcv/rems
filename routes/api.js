@@ -500,12 +500,83 @@ router.get('/clzpropMng/addInput.json', function(req, res, next) {
 		url: remoteApiHost + '/rems/clzpropMng/addInput.json',
 		form: {
 			userKey: req.session.user.token,
-			userid: req.query.userid
+			clzid: req.query.clzid
+
+			//userid: req.query.userid
 		}
 	}, function(error, response, body) {
 		res.send(body);
 	})
 });
+
+//类属性页面：修改（获取信息）dm12/9
+router.get('/clzpropMng/updateInput.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzpropMng/updateInput.json',
+		form: {
+			userKey: req.session.user.token,
+			classpropertyid: req.query.classpropertyid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//类属性页面：修改（修改到数据库）dm12/9
+router.get('/clzpropMng/update.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzpropMng/update.json',
+		form: {
+			userKey: req.session.user.token,
+			classid: req.query.classid,
+			classpropertyname: req.query.classpropertyname,
+			isdynamic: req.query.isdynamic,
+			remarks: req.query.remarks,
+			propertytypeid: req.query.propertytypeid,
+			classpropertyid:req.query.classpropertyid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+
+////类属性页面：条件查询 dm12/10
+//router.get('/clzpropMng/findByForm.json', function(req, res, next) {
+//	request.post({
+//		url: remoteApiHost + '/rems/clzpropMng/findByForme.json',
+//		form: {
+//			userKey: req.session.user.token,
+//			pclzid: req.query.clzid,
+//			propTypeid:req.query.propTypeid,
+//			isdynamic:req.query.isdynamic,
+//			propName:req.query.propName
+//		}
+//	}, function(error, response, body) {
+//		res.send(body);
+//	})
+//});
+
+
+
+//类属性页面：添加设备（加载数据到库）dm12/9
+router.get('/clzpropMng/add.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzpropMng/add.json',
+		form: {
+			userKey: req.session.user.token,
+			classid: req.query.classid,
+			classpropertyname: req.query.classpropertyname,
+			isdynamic: req.query.isdynamic,
+			remarks: req.query.remarks,
+			rank: req.query.rank,
+			propertytypeid: req.query.propertytypeid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
 
 //类属性页面：加载标准类
 router.get('/clzpropMng/loadStandardclass.json', function(req, res, next) {
@@ -543,6 +614,19 @@ router.get('/clzpropMng/initSelections.json', function(req, res, next) {
 		form: {
 			userKey: req.session.user.token,
 			userid: req.query.userid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//类属性页面：删除记录  dm12/9
+router.get('/clzpropMng/delete.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/clzpropMng/delete.json',
+		form: {
+			userKey: req.session.user.token,
+			classpropertyid: req.query.classpropertyid
 		}
 	}, function(error, response, body) {
 		res.send(body);

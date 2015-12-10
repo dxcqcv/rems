@@ -15,7 +15,7 @@ require.config({
        'bootstrap-select':{deps:['jquery']},
        'bootstrap-datetimepicker.min':{deps:['jquery','moment']},
        'no-data-to-display': {deps:['highstock']},
-       'exporting': {deps:['jquery', 'no-data-to-display']},
+       'exporting': {deps:['jquery', 'no-data-to-display']}
     }
 });
 // 全局调用

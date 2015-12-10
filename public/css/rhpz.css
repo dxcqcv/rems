@@ -21,7 +21,7 @@
 .tab_all {overflow: auto;background-color:white;position: relative;width: 85%;float: right; height: 100%;min-height: 100%; }
 .title_head{line-height: 39px;font-size: 15px;color: white;padding-left: 10px;}
 .tab_all ul {margin-top: 20px; background-color: darkgrey;z-index: 999; margin-left: 2%;}
-.taballdiv{margin-left: 2%;width: 98%;}
+.taballdiv{margin-left: 2%;width: 98%;font-size: 13px;}
 
 
 

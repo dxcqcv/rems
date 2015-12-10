@@ -10,6 +10,17 @@ define(function(require){
       ;
 
       $(function(){
+      	//下拉选择
+      	 $('.selectpicker').selectpicker({
+      });
+    	$('.btn_coin').on('click', function() {
+            $('#gytModal').modal({
+                backdrop: 'static' 
+            });  		
+        });
+      	
+      	
+      	
 //    	左侧菜单
       	$("#mymenu ul li").next("ul").hide();
 			$("#mymenu ul li").click(function() {
@@ -54,6 +65,11 @@ define(function(require){
 				$("#coliseselect").css("display","none");
 			});
 			
+//			$(".glshpzps").click(function(){
+//				$("#tabdivall").hide();
+//				$("#glszym").show();
+//			})
+//			
       }());
 
 });
