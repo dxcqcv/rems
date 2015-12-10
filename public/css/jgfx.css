@@ -30,7 +30,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   padding: 14px 19px;
-  width: 533px;
+  width: 633px;
   margin: auto;
   height: 92px;
   position: absolute;
@@ -46,13 +46,20 @@
   display: inline-block;
   width: 130px; }
 
+.jgfx-info-words {
+  width: 290px; }
+
 .jgfx-info-words-sep {
-  padding-left: 56px; }
+  padding-left: 0px; }
 
 .jgfx-info-box-line {
   font-size: 16px;
   color: #fff;
   line-height: 2; }
+
+.jgfx-info-box-line > span {
+  display: inline-block;
+  vertical-align: top; }
 
 .jgfx-bottom-left {
   height: 100%;
@@ -105,3 +112,5 @@
 div.bottom-cont-jgfx {
   padding: 93px 20px 20px;
   height: 100%; }
+
+/*# sourceMappingURL=jgfx.css.map */

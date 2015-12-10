@@ -137,7 +137,9 @@ router.get('/mksjpz', function(req, res) {
 router.get('/rhpz', function(req, res) {
     res.render('rhpz', { title: 'Home' });
 });
-
+router.get('/tygjpz', function(req, res) {
+    res.render('tygjpz', { title: 'Home' });
+});
 
 router.post('/export', function(req, res) {
 

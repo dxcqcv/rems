@@ -45,8 +45,12 @@ define(function(require) {
             
             var url, dateOptionid, config;
             dateFlag = setDate.getFlag();
+// 按钮标记
+            dateTips = dateFlag;
 
-
+            if(dateFlag == 0) {
+               dateTips = dateFlag; dateFlag = 3; 
+            } 
             switch(dateFlag) {
                 case 1:
                     if(ev.date === undefined) dateStar = $this.find('input').val();
@@ -64,11 +68,15 @@ define(function(require) {
                     if(oldDate == dateStar) break;
                     oldDate = dateStar;break;
             }
+            if(dateFlag == 0) {
+                dateStar = '';
+            }
             
             demand.start({
                 url: '/api/structureInfo/list.json',
                 parameter: {
-                    id: 'ztnyjg'
+                    id: 'ztnyjg',
+                    dateTips: dateTips 
                 },
                 data: {
                     projectid: projectid,
@@ -204,15 +212,24 @@ define(function(require) {
 			// zt 总体
 			// qj 清洁
 			// trq 天然气
-            console.log(kzsCount);
-            console.log(zt );
-            console.log(qj);
-            console.log(trq);
-
-            $('.dateTips').text();
+            var dateTips = $('.dateTips');
+             switch(parameter.dateTips) {
+                case 0: dateTips.text('累计'); break;
+                case 1: dateTips.text('当日'); break;
+                case 2: dateTips.text('当月'); break;
+                case 3: dateTips.text('当年'); break;
+             }               
+             $('#dateZT').text(formatNum(zt));
+             $('#dateTRQ').text(formatNum(trq));
+             $('#dateKZS').text(formatNum(kzsCount) );
+             $('#dateQJ').text(formatNum(qj));
+            
 		}
 
 	}());
 
+function formatNum(num) {
+    return num.toFixed(2);
+}
 
 });

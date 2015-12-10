@@ -46,6 +46,11 @@ dateFlag = 2;
                 //$("#" + fromEl).attr('data-dd',fromTime);
 //$("#" + fromEl).data("DateTimePicker").destroy();
  //$("#" + fromEl).datetimepicker(datetimepickerObj3)
+ //累计按钮
+            }else if (el.attr('data-range') == 'all') {
+                 
+dateFlag = 0;
+                $("#" + fromEl).data("DateTimePicker").date(d).format("YYYY").viewMode('years');
             }else{
 dateFlag = 3;
                 $("#" + fromEl).data("DateTimePicker").date(d).format("YYYY").viewMode('years');

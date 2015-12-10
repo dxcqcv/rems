@@ -26,22 +26,39 @@ define(function(require) {
         var lwList = {}, lqList = {}, bottomLqList, bottomLwList, bottomDsLis;
         var tabId = 0;
 
+
 		demand.start({
-			url: '/api/deviceGroupInfo/listOption.json',
-			parameter: {
-				id: '#lqlwSel1',
-				tabId: 0,
-				idList: ['#lqlwSel1', '#bzyxfaSel1']
-			},
+			url: '/api/deviceGroupInfo/list2.json',
 			data: {
-				projectid: projectid,
+				projectid: 1,
+				dateFlag: 3,
+				dateStar: '2015',
+				//optionid1: 358,
+				//optionid2: 10099  
+                optionid1: 353,
+                optionid2: 10087  
 			},
-			done: dropDownList
+			done:dd 
 		});
+function dd(data) {
+    console.log(data);
+}
+return;
+		//demand.start({
+			//url: '/api/deviceGroupInfo/listOption.json',
+			//parameter: {
+				//id: '#lqlwSel1',
+				//tabId: 0,
+				//idList: ['#lqlwSel1', '#bzyxfaSel1']
+			//},
+			//data: {
+				//projectid: projectid,
+			//},
+			//done: dropDownList
+		//});
 
 
 		function dropDownList(data, parameter) {
-        console.log(data);
 //冷却水循环泵组
             bottomLqList = data.status.data.list3;
 //冷温水循环泵组
@@ -277,7 +294,7 @@ function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
 				projectid: projectid,
 				dateFlag: dateFlag,
 				dateStar: dateStar,
-				optionid: o ? o : null,
+                optionid: o ? o : null,
 				optionid1: o1 ? o1 : null,
 				optionid2: o2 ? o2 : null 
 			},
@@ -287,6 +304,7 @@ function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
 
 
 		function lineResult(data, parameter) {
+        console.log(12121,data);
 			var res = new Object;
 			var tmp = data.status.data.listX;
 			var xData = new Array;
