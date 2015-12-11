@@ -209,7 +209,7 @@ function builtCharts(url, id, dateStar,dateFlag,optionid) {
 				projectid: projectid,
 				dateFlag: dateFlag,
 				dateStar: dateStar,
-				optionid: o,
+				optionid1: o,
 				optionid2: o2
 			},
 			done: lineResult

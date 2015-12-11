@@ -4,8 +4,11 @@
 var multer  = require('multer');
 var fs = require('fs');
 var upload = multer({ dest: './data/upload/' });
-var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
-var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
+//自己实际路径
+//var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
+//var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
+var shellDir = "c:/Users/Roy/Documents/long/dev/rems/shell/";
+var uploadDir = "c:/Users/Roy/Documents/long/dev/rems/data/upload/";
 var router = express.Router();
 // //直接调用命令
 //     exports.createDir = function (){

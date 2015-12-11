@@ -219,6 +219,7 @@ function clickPopup(){}
           , legendName9 = legendName0+legendName1+legendName5 //当年收益
           , legendName10 = legendName0+legendName2+legendName5 // 当月收益
           , legendName11 = legendName0+legendName3+legendName5 // 当日收益
+          ;
 
         // 日期备用
         var nowdate = new Date();
@@ -291,27 +292,6 @@ function clickPopup(){}
         str += '</tr>';
         $('#gytModTbody').empty().append(str);
         
-        //$('#gytModTable').bootstrapTable({
-    //columns: [{
-        //field: 'id',
-        //title: 'Item ID'
-    //}, {
-        //field: 'name',
-        //title: 'Item Name'
-    //}, {
-        //field: 'price',
-        //title: 'Item Price'
-    //}],
-    //data: [{
-        //id: 1,
-        //name: 'Item 1',
-        //price: '$1'
-    //}, {
-        //id: 2,
-        //name: 'Item 2',
-        //price: '$2'
-    //}]
-//});
         modal.find('.modal-title').text(modTitle);
         //弹出层图表
              initGytCharts();
@@ -1609,6 +1589,7 @@ function clickPopup(){}
 
         }
         function huanghuaEquipStatFn(data) {
+            if(data.length == null ) console.log('黄花设备状态列表为空');
           //, globalMode = 1 // 默认供冷模式
            $.each(data.status.data.list, function(index, value){
                 //黄花D区电冷机17,18
