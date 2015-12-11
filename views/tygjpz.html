@@ -1,0 +1,13 @@
+<% include header-top.html %>
+	<link rel="stylesheet" href="/css/tygjpz.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+	<% include header-bottom.html %>
+		<div id="" class="my-section">
+        </div>
+		<script>
+			requirejs(['../js/common'], function (common) {
+			                requirejs(['app/tygjpz']);
+			            });
+		</script>
+		<% include footer.html %>
