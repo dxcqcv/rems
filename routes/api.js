@@ -1,6 +1,7 @@
 var express = require('express');
 var request = require('request');
 var moment = require('moment');
+var ipaddr = require('ipaddr.js');
 var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 var remoteApiHost = "http://117.144.16.98:8080";
@@ -32,7 +33,8 @@ router.post('/login.json', function(req, res, next) {
         url: remoteApiHost + '/rems/login.json',
           headers: {
             //'User-Agent': 'request'
-            'realUrl':req.ip 
+            //'realUrl':req.ip 
+            'realUrl': ipaddr.process(req.ip).octets.join('.')
           },
 
 
@@ -98,8 +100,8 @@ router.get('/features.json', function(req, res, next) {
 });
 router.get('/gislist_features.json', function(req, res, next) {
 
+console.log(66,ipaddr.process(req.ip).octets.join('.'));
 
-console.log(1111,req.ip);
     request.post({
         url: remoteApiHost + '/rems/gislist_features.json',
         form: {
