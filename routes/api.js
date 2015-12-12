@@ -30,10 +30,13 @@ router.post('/login.json', function(req, res, next) {
     var d = crypto.createHash("md5").update(str).digest("hex").toUpperCase();
     request.post({
         url: remoteApiHost + '/rems/login.json',
+          headers: {
+            //'User-Agent': 'request'
+            'realUrl': remoteApiHost 
+          },
         form: {
             username: req.body.username,
             password: req.body.password,
-            realUrl: remoteApiHost, 
             sign: d
         }
     }, function(error, response, body) {
@@ -60,7 +63,6 @@ router.post('/login.json', function(req, res, next) {
 //首页获取项目列表接口 【已通过】
 
 router.get('/gislist.json', function(req, res, next) {
-
 
     request.post({
         url: remoteApiHost + '/rems/gislist.json',
@@ -95,6 +97,7 @@ router.get('/features.json', function(req, res, next) {
 router.get('/gislist_features.json', function(req, res, next) {
 
 
+console.log(1111,req.ip);
     request.post({
         url: remoteApiHost + '/rems/gislist_features.json',
         form: {
