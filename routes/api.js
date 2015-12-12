@@ -32,8 +32,10 @@ router.post('/login.json', function(req, res, next) {
         url: remoteApiHost + '/rems/login.json',
           headers: {
             //'User-Agent': 'request'
-            'realUrl': remoteApiHost 
+            'realUrl':req.ip 
           },
+
+
         form: {
             username: req.body.username,
             password: req.body.password,
