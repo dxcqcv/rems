@@ -5,10 +5,17 @@ tr td{text-align: center!important;}
 .tab_bord tr td span{cursor:pointer;}	
 .twodivtab{height: 100%;min-height: 100%;overflow: auto;}	
 #bg {display: none; position: absolute;top: 0%;left: 0%;width: 100%;height: 100%;background-color: black;z-index: 1001;-moz-opacity: 0.7;opacity: .70;filter: alpha(opacity=70);}
-#tablediv {display: none;position: absolute;left: 38%;width: 25%;height: 70%;background-color: white;z-index: 1002;overflow: auto;}
+#tablediv {display: none;position: absolute;left: 15%;top:13%;width: 75%;height: 75%;background-color: white;z-index: 1002;overflow: auto;}
 .footerbtn{position: absolute;padding-left: 35%;}	.close{padding-right: 15px!important;}
 .titlesxgl{height: 30px;background-color: #0689AA;font-size: 15px;padding-top: 5px;padding-left: 11px;color: white;}
 #txtinput{width: 140px!important;display: inline-block!important;}	
 .div_hgjn{margin: 20px;}
 .fgrs{padding-left: 27px;}
 .btn_all{display: inline-block;width: 140px!important;}
+#addbtn{margin-bottom:10px;}
+
+.dintopbj{height:300px}
+.zgybb{float: left;  height:100%;    width: 35%;  display: inline-block;}
+.rightdivtop{display: inline-block; height:100%; width: 60%;    float: right;overflow:auto;}
+.footerbtn	{    margin-bottom: 10px;    margin-top: 10px;}
+.divtab{border:1px solid #cccccc;width:98%;height:96%;margin:5px;overflow:auto;}

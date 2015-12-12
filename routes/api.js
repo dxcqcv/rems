@@ -33,6 +33,7 @@ router.post('/login.json', function(req, res, next) {
         form: {
             username: req.body.username,
             password: req.body.password,
+            realUrl: remoteApiHost, 
             sign: d
         }
     }, function(error, response, body) {
@@ -1091,7 +1092,8 @@ router.get('/moduleAnalysis/list2.json', function(req, res, next) {
             projectid: req.query.projectid,
             dateFlag: req.query.dateFlag,
             dateStar: req.query.dateStar,
-            optionid: req.query.optionid
+            optionid1: req.query.optionid1,
+            optionid2: req.query.optionid2
         }
     }, function(error, response, body) {
         res.send(body);
@@ -1318,5 +1320,34 @@ router.get('/clzMng/list.json', function(req, res, next) {
 
 
 //----------------------标准类管理----------------------------------------------
+//----------------------设备设施管理start--------------------------------------------
+//左侧树的加载显示 xusheng 2015.12.10
+router.get('/accessInfo/tree.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/accessInfo/tree.json',
+		form: {
+			userKey: req.session.user.token
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//设备设施管理查询列表 xusheng 2015.12.10
+router.get('/instance/right.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/instance/right.json',
+		form: {
+			userKey: req.session.user.token,
+			pid: req.query.pid,
+			page: req.query.page,
+			clazz: req.query.clazz,
+			keyword: req.query.keyword
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+//----------------------设备设施管理end----------------------------------------------
 
 module.exports = router;

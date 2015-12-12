@@ -1,14 +1,20 @@
 define(function(require) {
 	var $ = require('jquery')
+	, selectpicker = require('bootstrap-select')
     , api = require('app/getApi')
 	;
 	
-	
+	$(function(){
 	//		编辑
-        $(document).on('click','.dd',function(){
+        $(".dd").on('click',function(){
         	 $("#bg").css('display','block');
-			$("#tablediv").css('display','block');
+			 $("#tablediv").css('display','block');
         });
+		
+		$("#addbtn").click(function(){
+			 $("#bg").css('display','block');
+			 $("#tablediv").css('display','block');
+		});
 		
         $("#closediv").click(function(){
         	$("#tablediv").css('display','none');
@@ -19,6 +25,7 @@ define(function(require) {
         	$("#tablediv").css('display','none');
         	$("#bg").css('display','none');
         });
+
 		
 		demand.start({url:'/api/userInfo/list.json', done:qxgl})
 		function qxgl(data){
@@ -30,5 +37,5 @@ define(function(require) {
 			$("#tableid").empty().append(str);			
 		}	
 
-				
-	});	
+	});		
+});	

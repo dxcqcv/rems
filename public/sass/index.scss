@@ -97,6 +97,8 @@ position: absolute;
 .project-name {
     color: $color; font-size: 18px;
     top: 65px; left: 31px;
+    width: 150px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;  
 }
 .project-loc {
     color: $color; font-size: 12px;

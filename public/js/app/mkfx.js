@@ -18,6 +18,7 @@ define(function(require) {
 
         var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
         //var dateStar = '2015-09-01'; //初始化查询时间
+		var oldDate; //防止重复
 
         // optionid2中339为设备名，10107为属性值
 		var optionid = [10065], optionid2 = [10107,339], optionid3 = [10077], optionid4 = [10082,332];
@@ -157,10 +158,29 @@ define(function(require) {
 
 		//时间空间
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
-			dateStar = ev.date.format('YYYY-MM-DD');
+			//dateStar = ev.date.format('YYYY-MM-DD');
 			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
             var url, dateOptionid, config;
             dateFlag = setDate.getFlag();
+
+            switch(dateFlag) {
+                case 1:
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM-DD');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 2: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY-MM');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 3: 
+                    if(ev.date === undefined) dateStar = $this.find('input').val();
+                    else dateStar = ev.date.format('YYYY');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+            }
+
             config = getConf(id);
             url = config[0]; dateOptionid = config[1]; 
             builtCharts(url,id,dateStar,dateFlag, dateOptionid);
@@ -209,6 +229,7 @@ function builtCharts(url, id, dateStar,dateFlag,optionid) {
 				projectid: projectid,
 				dateFlag: dateFlag,
 				dateStar: dateStar,
+				optionid: o,
 				optionid1: o,
 				optionid2: o2
 			},

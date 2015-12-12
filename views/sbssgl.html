@@ -8,65 +8,11 @@
 		<div class="bigdiv">
 			<div class="leftdiv">
 				<div class="bt">
-					<a href="#"><img src="/img/sbssgl/22.png" />全部</a>
+					<a href="#"><img src="/img/sbssgl/22.png"/>全部</a>
 				</div>
 				
 				<div id="mymenu">
-					<div class="uldiv">
-						<ul class="one">
-						<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">华北区</a></li>
-							<ul>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">振西商贸广场</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">廊坊新朝阳广场</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">新奥科技园</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">中国工程院</a></li>
-							</ul>
-					</ul>
-					<ul class="one">
-							<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">华中区</a></li>
-							<ul>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">长沙黄花机场</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">株洲神农城</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">浏阳热力产业园</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">株洲职教城</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">兴隆化工</a></li>
-							</ul>
-						</ul>
-					<ul class="one">
-						<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">华中区</a></li>
-						<ul>
-							<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">长沙黄花机场</a></li>
-							<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">株洲神农城</a></li>
-							<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">浏阳热力产业园</a></li>
-							<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">株洲职教城</a></li>
-							<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">兴隆化工</a></li>
-						</ul>
-					</ul>
-					<ul class="one">
-						<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">华南区</a></li>
-							<ul>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">肇庆新区</a></li>
-							</ul>
-						</ul>
-						<ul class="one">
-							<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">西南区 </a></li>
-						</ul>
-
-					<ul class="one">
-							<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">豫皖区</a></li>
-							<ul>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">民生药业集团医药文化创意产业园</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">大明产业园</a></li>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">新安产业集聚区</a></li>
-							</ul>
-						</ul>
-						<ul class="one">
-							<li><span><img src="/img/sbssgl/未标题-1.png" class="img_eld"></span><a href="#">山东区</a></li>
-							<ul>
-								<li><span><img src="/img/sbssgl/让退.png" class="img_eld"></span><a href="#">中德生态园</a></li>
-							</ul>
-						</ul>
-					</div>
+					
 				</div>
 			</div>
 
@@ -79,7 +25,8 @@
 					</div>
 					<div class="input-append serag">
 						<input class="form-control span2" type="text" placeholder="" id="appendedInputButton">
-						<button class="btn btn-info btn-sm " type="button">搜索</button>					</div>				</div>
+						<button class="btn btn-info btn-sm " type="button">搜索</button>
+						<button type="button" id="addView" class="btn btn-info btn-sm">添加</button>					</div>				</div>
 				</div>
 				<div class="tabdiv">
 					<table class="table table-striped table-hover tab_bord">
@@ -92,14 +39,13 @@
 								<td>备注</td>								<td>操作</td>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="odd">
-								<td colspan='7'>请选择左侧菜单进行筛选</td>
-							</tr>			   			</tbody>					</table>
+						<tbody id="resultBody">
+										   			</tbody>					</table>
 				</div>
 			</div>
 			
 			<!--弹出框-->
+				<!--删除框-->
 				<div id="bg1"></div>
 				<div id="coliseselect">
 					<p class="truep">确定</p>
@@ -109,6 +55,50 @@
 	            		<button type="button" class="btn btn-default" id="closedivsel">关闭</button>
 					</div>
 				</div>
+				
+				
+				
+				
+				<!--编辑框-->
+				<div id="bg"></div>
+				<div id="tablediv">
+					<div>
+						<div class="titlesxgl"> 设备设施管理
+							<button type="button" class="close" id="colse"> &times;</button>
+						</div>
+
+						<div class="zgybb">
+							<input type="hidden" id="saveFlag">
+							<div class="div_hgjn sxlj">设备设施名称：
+								<input type="text" class="form-control" id="txtinput" name="txtinput">
+							</div>
+
+							<div class="div_hgjn sbzldl">设备种类：
+								<select class="form-control  btn_all btn-sm" id="edittype">
+								</select>
+							</div>
+
+							<div class="div_hgjn">设备所属能源站：
+								<select class="form-control btn_all btn-sm" id="editpane">
+								</select>
+							</div>
+
+							<div class="div_hgjn tubiao">图标：
+								<input type="text" class="form-control" id="edietimg">
+							</div>
+
+							<div class="div_hgjn fgrs">备注：
+								<textarea id="edittxet"></textarea>
+							</div>
+						</div>
+
+						<div class="footerbtn">
+							<button type="button" class="btn btn-info" id="saveEditBtn">保存</button>
+							<button type="button" class="btn btn-default" id="closediv">关闭</button>
+						</div>
+					</div>
+				</div>
+
 				
 			
 		</div>

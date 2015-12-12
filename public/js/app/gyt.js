@@ -3,7 +3,7 @@ define(function(require){
       , projectid = require('app/checkProjectid')
       , highcharts = require('exporting') 
       , globalTools = require('app/globalTools')
-      , bootstrapTable = require('bootstrap-table')
+      //, bootstrapTable = require('bootstrap-table')
 
       //, bsTableLocal = require('bootstrap-table-locale-all.min')
       , api = require('app/getApi')
@@ -44,6 +44,10 @@ define(function(require){
              globalMode = 0;
           }
 
+        scaleGYT();
+        $(window).resize(function(){
+            scaleGYT();
+        });
 /*
 用途:检验字符串是否为null
 返回：为null返回为空，否则非空返回1位小数
@@ -316,15 +320,11 @@ function clickPopup(){}
                     //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
                     //return;
                 //}  
-                if(x <= 3) return; 
+                //if(x <= 3) return; 
                 if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'}); 
                 x--;
             }
         }
-        scaleGYT();
-        $(window).resize(function(){
-            scaleGYT();
-        });
 
 
 
@@ -809,6 +809,8 @@ function clickPopup(){}
             //demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:1,pageid:100}, done:huanghuaAlabeldataAllFn});
         }
         function huanghuaAlabeldataAllFn(data) {
+            //console.log(data);
+            if(data.status.data.length ===0) { console.log('工艺图属性名接口列表为空'); return; }
             $.each(data.status.data.list, function(index, value) {
                 if(value.widgetid === 992) {
                     widgetidFn(0,w992,[value.datavalue])
@@ -1589,7 +1591,8 @@ function clickPopup(){}
 
         }
         function huanghuaEquipStatFn(data) {
-            if(data.length == null ) console.log('黄花设备状态列表为空');
+        //console.log(data.status.data.length )
+            if(data.status.data.length == 0) { console.log('工艺图设备状态列表为空'); return;}
           //, globalMode = 1 // 默认供冷模式
            $.each(data.status.data.list, function(index, value){
                 //黄花D区电冷机17,18

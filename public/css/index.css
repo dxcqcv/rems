@@ -122,7 +122,11 @@
   color: #16708b;
   font-size: 18px;
   top: 65px;
-  left: 31px; }
+  left: 31px;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 .project-loc {
   color: #16708b;
@@ -372,3 +376,5 @@
 
 .index-map-maker-building {
   color: #000; }
+
+/*# sourceMappingURL=index.css.map */
