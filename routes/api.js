@@ -1357,4 +1357,36 @@ router.get('/instance/right.json', function(req, res, next) {
 });
 //----------------------设备设施管理end----------------------------------------------
 
+//日志管理：日志管理--列表页面(分页
+router.get('/logInfo/listCondition.json', function (req, res, next) {
+    request.post({
+        url: remoteApiHost + '/rems/logInfo/listCondition.json',
+        form: {
+            userKey: req.session.user.token,
+            page: req.query.page,
+            beginTime: req.query.beginTime,
+            endTime: req.query.endTime,
+            operatetype: req.query.operatetype,
+            type: req.query.type,
+            userid: req.query.userid,
+            module: req.query.module,
+            rows:req.query.rows
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    })
+});
+//日志管理：操作人下拉框
+router.get('/logInfo/userList.json', function (req, res, next) {
+    request.post({
+        url: remoteApiHost + '/rems/logInfo/userList.json',
+        form: {
+            userKey: req.session.user.token
+        }
+    }, function (error, response, body) {
+        res.send(body);
+    })
+});
+
+
 module.exports = router;

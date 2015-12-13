@@ -74,7 +74,6 @@ define(function(require) {
                        spList.push(spObj); 
                     }
                     spList.push({classPropertyid:'10204',classPropertyname:'冷却效率',instanceid:357,instancename:'冷却塔组'});
-                    console.log(spList)
                     tmpRes = spList;
 					//tmpRes = data.status.data.CSlist;
 				}
@@ -155,7 +154,9 @@ define(function(require) {
 		// 日月年
 		//globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, setDate, globalTools, optionsLines);
 		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
-
+ //var aa = [1,2,2,3,3];
+ //var bb = globalTools.uniq(aa);
+ //console.log(bb)
 		//时间空间
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
 			//dateStar = ev.date.format('YYYY-MM-DD');

@@ -1,11 +1,53 @@
 <% include header-top.html %>
+<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
 <link rel="stylesheet" href="/css/zdbg.css" media="all">
 <% include header-bottom.html %>
 	<!--诊断报告-->
 	<div id="zdbg" class="my-section zdbg-wrapper">
 
 		<div id="ZDBG_top">
-			
+            <div class="zdbg-top-bar">
+                <p class="zdbg-top-bar-title">查看方式</p>
+                <div class="zbbg-top-line clearfix">
+                    <ul class="list-inline pull-left">
+                        <li>
+                            <select class="form-control selectpicker" id="">
+                              <option>选择泛能站</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select class="form-control selectpicker" id="">
+                              <option>选择供冷季/供热季</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <div class="jgfx-top-right pull-right pr10">
+                        <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-info">查看数据</button>
+                        <button type="button" id="myButton2" data-loading-text="Loading..." class="btn btn-info">导出报表</button>
+                    </div>
+                    <div class="jgfx-date-box pull-right">
+                        <div class='input-group date datetimepicker1' id="">
+                            <input type='text' class="form-control"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pull-right">
+                        至
+                    </div>
+                    <div class="jgfx-date-box pull-right">
+                        <div class='input-group date datetimepicker1' id="">
+                            <input type='text' class="form-control"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		<!--详情-->
 		<div id="ZDBG_content" class="ZD_alltab">
 			<div class="text">

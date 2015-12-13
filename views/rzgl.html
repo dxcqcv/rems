@@ -8,51 +8,37 @@
 		<div class="all_conten">
 				<div class="all_xl">
 					<div class="jgfx-top-inner">
-					操作人：<select class="form-control selectpicker btn_all" id="">
-								<option> 所有人</a></option>
-								<option> 新奥管理者</a></option>
-								<option> 新奥浏览者</a></option>
-								<option> 任志清</a></option>
-								<option> 刘奇央</a></option>
-								<option> 张开翼</a></option>
-								<option> 陆志军</a></option>
-								<option> 雷军成</a></option>
-								<option> 胡文喆</a></option>
-								<option> 谭小明</a></option>
-								<option> 陈军</a></option>
-								<option> 于佳</a></option>
-								<option> 齐书荣</a></option>
-								<option> 戴国良</a></option>
-								<option> 孙森才</a></option>
-								<option> 吴飞</a></option>
-								<option> 试用账户</a></option>
-								<option> 郑磊</a></option>
+					操作人：<select class="form-control selectpicker btn_all" id="onepope">
+								
 							</select>	
 					&nbsp;&nbsp;
-					日志类型：<select class="form-control selectpicker btn_all" id="">
+					日志类型：<select class="form-control selectpicker btn_all" id="type">
 								<option>所有类型</option>
-								<option>登录日志</option>
-								<option>务日志</option>
-								<option>错误日志</option>
+								<option id="1">登录日志</option>
+								<option id="2">业务日志</option>
+								<option id="3">错误日志</option>
 							</select>
 							&nbsp;&nbsp;
-					模块：<input type="text" class="form-control tab_input">						
+					模块：<input type="text" id="module" class="form-control tab_input">						
 					&nbsp;&nbsp;
-					操作类型：<select class="form-control selectpicker btn_all" id="">
+					操作类型：<select class="form-control selectpicker btn_all" id="operatetype">
 								<option>所有类型</option>
-								<option>登录系统</option>
-								<option>退出系统</option>
-								<option>数据分析</option>
-								<option>数据更新</option>
-								<option>数据导出</option>
-								<option>系统异常</option>
-								<option>未定义类型</option>
+								<option id="数据监测">数据监测</option>
+								<option id="退出系统">退出系统</option>
+								<option id="数据删除">数据删除</option>
+								<option id="数据更新">数据更新</option>
+								<option id="数据导出">数据导出</option>
+								<option id="系统异常">系统异常</option>
+								<option id="登陆系统">登陆系统</option>
+								<option id="数据分析">数据分析</option>
+								<option id="未定义类型">未定义类型</option>
+								
 							</select>
 					&nbsp;&nbsp;
 					创建时间：
                         <div class="jgfx-date-box">
                             <div class='input-group date datetimepicker1' id="nyzhlylDate2">
-                                <input type='text' class="form-control"/>
+                                <input type='text' class="form-control" id="beginTime"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -61,7 +47,7 @@
                         <p class="zhi-style">至</p>
                         <div class="jgfx-date-box">
                             <div class='input-group date datetimepicker1' id="nyzhlylDate1">
-                                <input type='text' class="form-control"/>
+                                <input type='text' class="form-control" id="endTime"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -69,7 +55,7 @@
                         </div>
                   	
 
-					<button type="button" class="btn btn-info">搜索</button>
+					<button type="button" class="btn btn-info" id="rzSelectListBtn">搜索</button>
 			    	<div class="tub"><img src="/img/rzgl/excel.png" ></div>
 				</div>
 			</div>
@@ -82,384 +68,14 @@
 								<td>操作人</td>
 								<td>日志类型</td>
 								<td>模块</td>
-								<td>操作系统</td>
+								<td>操作类型</td>
 								<td>IP</td>
 								<td>日志信息</td>
 								<td>创建时间</td>
 							</tr>
 						</thead>
 						<tbody id="rzgl">
-							<!--<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							<tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr><tr class="odd">
-								<td>新奥管理者</td>
-								<td>登录日志</td>
-								<td>登录日志</td>
-								<td>登录系统</td>
-								<td>117.144.16.98</td>
-								<td></td>
-								<td>创建时间</td>						
-							</tr>-->
+							
 						</tbody>
 					</table>
 				</div>

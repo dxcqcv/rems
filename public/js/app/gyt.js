@@ -312,9 +312,12 @@ function clickPopup(){}
         }
         // 缩放工艺图
         function scaleGYT() {
-            var winHeight; 
+            var winHeight, winWidth; 
             winHeight = $(window).height();
-            var x = 5;
+            winWidth= $(window).width();
+            var x = 5,radio = (winWidth /winHeight );
+            x = 4;
+            console.log(radio);
             while(x) {
                 //if(winHeight > 900){
                     //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
