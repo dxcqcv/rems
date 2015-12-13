@@ -29,12 +29,19 @@ router.post('/login.json', function(req, res, next) {
     var str = buf.toString("binary");
     var crypto = require("crypto");
     var d = crypto.createHash("md5").update(str).digest("hex").toUpperCase();
+    console.log()
+    var realUrl;
+    try {
+        realUrl =  ipaddr.process(req.ip).octets.join('.');
+    } catch (e) {
+        console.log('ip err');
+        realUrl = '127.0.0.1';
+    }
     request.post({
         url: remoteApiHost + '/rems/login.json',
           headers: {
-            //'User-Agent': 'request'
-            //'realUrl':req.ip 
-            'realUrl': ipaddr.process(req.ip).octets.join('.')
+            //'realUrl': ipaddr.process(req.ip).octets.join('.')
+            'realUrl': realUrl 
           },
 
 

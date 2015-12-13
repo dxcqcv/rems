@@ -10,8 +10,10 @@ define(function(require) {
 		api = require('app/getApi'),
 		optionsLines = require('app/highchartsConfigLines'),
 		datapicker = require('bootstrap-datetimepicker.min')
+      , radio = require('bootstrap-radio')
       ;
     (function() {
+    $('input[type="radio"]').radio();
       //下拉选择
       $('.selectpicker').selectpicker({});
 
