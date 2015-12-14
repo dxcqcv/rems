@@ -1,7 +1,9 @@
 <% include header-top.html %>
 <link rel="stylesheet" href="/css/yhgl.css" media="all">
+	<link rel="stylesheet" href="/css/metro.css" media="all">
 <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
 <link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+	<link rel="stylesheet" href="/css/zTreeStyle/metro.css">
 <% include header-bottom.html %>
    <!--用户管理-->
     <div id="" class="my-section">
@@ -22,28 +24,7 @@
 							</tr>
 						</thead>
 						<tbody id="tableid">
-							<tr class="odd">
-								<td>用户名</td>
-								<td>昵称</td>
-								<td>身份</td>
-								<td>公司名称</td>
-								<td>邮箱地址</td>
-								<td>描述</td>
-								<td>创建时间</td>
-								<td>状态</td>
-								<td><span><img src="/img/bzlgl/write.png"/></span><span><img src="/img/bzlgl/sz.png"/></span></td>
-							</tr>
-							<tr class="even">
-								<td>用户名</td>
-								<td>昵称</td>
-								<td>身份</td>
-								<td>公司名称</td>
-								<td>邮箱地址</td>
-								<td>描述</td>
-								<td>创建时间</td>
-								<td>状态</td>
-								<td><span><img src="/img/bzlgl/write.png"/></span><span><img src="/img/bzlgl/sz.png"/></span></td>
-							</tr>
+							
 						</tbody>
 					</table>					
 					<button class="btn btn-info pull-right" id="addbtn">新增</button>
@@ -52,43 +33,56 @@
 				<!--弹出框-->
 				<div id="bg"></div>
 				<div id="tablediv">
-					<div>
-					<div class="titlesxgl"> 属性管理 <button type="button" class="close" id="colse"> &times;</button></div>
+					<div class="allcss">
+					<div class="titlesxgl"> 新增/修改用户 <button type="button" class="close" id="colse"> &times;</button></div>
 					<div class="dintopbj">
 						<div class="zgybb">
-							<div class="div_hgjn">属性名称：<input type="text" class="form-control" id="txtinput" ></div>
+							<div class="div_hgjn namecss">用户名：<input type="text" class="form-control" id="txtinput" ></div>
 							
-							<div class="div_hgjn">属性类型：<input type="text" class="form-control" id="txtinput" >
+							<div class="div_hgjn namecss">新密码：<input type="text" class="form-control" id="txtinput" >
 							</div>
 							
-							<div class="div_hgjn">属性分类：<input type="text" class="form-control" id="txtinput" >
+							<div class="div_hgjn">确认密码：<input type="text" class="form-control" id="txtinput" >
 							</div>
 							
-							<div class="div_hgjn">属性关联：<input type="text" class="form-control" id="txtinput" >
+							<div class="div_hgjn nicheng">昵称：<input type="text" class="form-control" id="txtinput" >
 							</div>
 							
-							<div class="div_hgjn">排序顺序：
-								<input type="radio" id="asc" name="rankradio" checked="checked" value="1">降序排名
-								<input type="radio" id="asc" name="rankradio" checked="checked" value="1">升序排名
+							<div class="div_hgjn">公司名称：<input type="text" class="form-control" id="txtinput" >
 							</div>
 								
-							<div class="div_hgjn fgrs">备注：
-								<textarea></textarea>
+							<div class="div_hgjn">公司地址：<input type="text" class="form-control" id="txtinput" >
 							</div>
+							
+							<div class="div_hgjn">邮箱地址：<input type="text" class="form-control" id="txtinput" >
+							</div>
+							
+							<div class="div_hgjn desc">描述：<input type="text" class="form-control" id="txtinput" >
+							</div>
+							
+							<div class="div_hgjn">身份角色：<select class="form-control selectpicker btn_all bs-select" id="sfzm">
+								<option></option></select>								
+							</div>
+							
+							<div class="div_hgjn">项目角色：<select class="form-control selectpicker btn_all bs-select" id="sfzm">
+								<option></option></select>								
+							</div>
+							
 						</div>
 						
 						<div class="rightdivtop">
 							<div class="divtab">
-							
-							
+							<font>项目权限：</font>
+							<ul id="tree" class="ztree"></ul>
 							</div>
 						</div>
 							</div>	
-						<div class="footerbtn">
+						
+					</div>
+					<div class="footerbtn">
 							<button type="button" class="btn btn-info" >保存</button>
 		            		<button type="button" class="btn btn-default" id="closediv">关闭</button>
 						</div>
-					</div>
 				</div>
 				
 				

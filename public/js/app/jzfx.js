@@ -479,17 +479,17 @@ function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
 				var yData = new Array;
 				
 				var classinstanceidArr=[];
-				var classinstanceidNameArr=[];
+				//var classinstanceidNameArr=[];
 				$.each(tmp,function(i,item){
 					classinstanceidArr.push(item.classinstanceid);
 				});
-				$.each(tmp,function(i,item){
-					classinstanceidNameArr.push(item.classinstancename);
-				});
+				// $.each(tmp,function(i,item){
+					// classinstanceidNameArr.push(item.classinstancename);
+				// });
 		
 				$.unique(classinstanceidArr);
 				
-				$.unique(classinstanceidNameArr);
+				//$.unique(classinstanceidNameArr);
 				for(var i=0;i<classinstanceidArr.length;i++)
 				{
 					var yItem = new Object;
@@ -505,7 +505,7 @@ function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
 					{
 						if(classinstanceidArr[i]==tmp[j].classinstanceid)
 						{
-							yItem.name=classinstanceidNameArr[i];
+							yItem.name=tmp[j].classinstancename;
 							break;
 						}	
 					}

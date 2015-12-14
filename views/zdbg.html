@@ -1,6 +1,5 @@
 <% include header-top.html %>
 <link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
-<link rel="stylesheet" href="/css/bootstrap-radio.css" media="all">
 <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
 <link rel="stylesheet" href="/css/zdbg.css" media="all">
 <% include header-bottom.html %>
@@ -13,21 +12,30 @@
                 <div class="zbbg-top-line clearfix">
                     <ul class="list-inline pull-left">
                         <li>
-                            <select class="form-control selectpicker" id="">
-                              <option>选择泛能站</option>
+                            <span>诊断报告项目选择：</span>
+                        </li>
+                        <li>
+                            <select class="form-control selectpicker" id="zdbgProjectSel">
+                              <option value="0">黄花</option>
+                              <option value="1">亭湖</option>
                             </select>
                         </li>
                         <li>
-                            <input type="radio" name="check" class="radio">
-                            <input type="radio" name="check" class="radio">
+                            <span>报告类型选择：</span>
+                        </li>
+                        <li>
+                            <input type="radio" name="group" id="glj" class="radio cp">
+                            <label for="glj" class="cp">供冷季</label>
+                            <input type="radio"  name="group" id="grj" class="radio cp">
+                            <label for="grj" class="cp">供热季</label>
                         </li>
                     </ul>
                     <div class="jgfx-top-right pull-right pr10">
                         <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-info">查看数据</button>
-                        <button type="button" id="myButton2" data-loading-text="Loading..." class="btn btn-info">导出报表</button>
+                        <!--<button type="button" id="myButton2" data-loading-text="Loading..." class="btn btn-info">导出报表</button>-->
                     </div>
                     <div class="jgfx-date-box pull-right">
-                        <div class='input-group date datetimepicker1' id="">
+                        <div class='input-group date datetimepicker1' id="zdbgStart">
                             <input type='text' class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -39,7 +47,7 @@
                         至
                     </div>
                     <div class="jgfx-date-box pull-right">
-                        <div class='input-group date datetimepicker1' id="">
+                        <div class='input-group date datetimepicker1' id="zdbgEnd">
                             <input type='text' class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>

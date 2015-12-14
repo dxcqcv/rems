@@ -78,25 +78,44 @@
 					<div class="tabdivtop">
 						<ul id="myTab" class="nav nav-tabs ">
 							<span class="title_head">1#燃气发电组</span>
-							<li><a href="#nxglpz" data-toggle="tab">能效管理</a></li>
-							<li><a href="#nxjcpz" data-toggle="tab">能效监测</a></li>
-							<li><a href="#glszym" data-toggle="tab">概览设置</a></li>
-							<li class="active"><a href="#tabdivall" data-toggle="tab">页面参数配置</a></li>
+							<li class="nxgltz"><a href="#nxglpz" data-toggle="tab">能效管理</a></li>
+							<li class="nxjctz"><a href="#nxjcpz" data-toggle="tab">能效监测</a></li>
+							<li class="glsztz"><a href="#glszym" data-toggle="tab" class="glszbt">概览设置</a></li>
+							<li class="active ymcstz"><a href="#tabdivall" data-toggle="tab">页面参数配置</a></li>
 						</ul>
-						<ul id="myTabs">
-							<li><a href="#div_four" data-toggle="tab">基线配置</a></li>
-							<li><a href="#div_three" data-toggle="tab">能源价格配置</a></li>
-							<li><a href="#div_two" data-toggle="tab">运行页面配置</a></li>
-							<li class="active"><a href="#div_one" data-toggle="tab">项目概览</a></li>
+						<!--表单-->
+						<ul class="tab-pane onetab" id="myTabs">
+							<li><a href="#div_four">④基线配置</a></li>
+							<li><a href="#div_three">③能源价格配置</a></li>
+							<li><a href="#div_two">②运行页面配置</a></li>
+							<li class="active"><a href="#div_one">①项目概览</a></li>
 						</ul>
 						
-						<ul  class="tab-pane fade" id="myTabs">
-							<li><a href="#div_four" data-toggle="tab">站点图设置/3D图</a></li
-							<li><a href="#div_four" data-toggle="tab">气象数据</a></li>
-							<li><a href="#div_three" data-toggle="tab">实时监测设置</a></li>
-							<li><a href="#div_two" data-toggle="tab">供能设置</a></li>
-							<li class="active"><a href="#div_one" data-toggle="tab">耗能设置</a></li>
+						<ul  class="tab-pane  twotab" id="myTabs">
+							<li><a href="#div_fiben">⑤站点图设置/3D图</a></li>
+							<li><a href="#div_fors">④气象数据</a></li>
+							<li><a href="#div_threes">③实时监测设置</a></li>
+							<li><a href="#div_twos">②供能设置</a></li>
+							<li class="active"><a href="#div_ones">①耗能设置</a></li>
 						</ul>
+						
+						<ul  class="tab-pane  tabthred" id="myTabs">
+							<li><a href="#nyjgfxpz">⑤气象数据设置</a></li>
+							<li><a href="#xtzbsz">④能源结构分析</a></li>
+							<li><a href="#nxjcpzes">③耗能功能结构换算系数维护</a></li>
+							<li><a href="#div_twosg">②供能结构设置</a></li>
+							<li class="active"><a href="#div_fores">①耗能结构设置</a></li>
+						</ul>
+						
+						<ul  class="tab-pane  tabfjul" id="myTabs">
+							<li><a href="#div_divalltwobot">⑤排名</a></li>
+							<li><a href="#div_divalltwoes">⑤设备成本</a></li>
+							<li><a href="#div_divalltwos">④系统成本</a></li>
+							<li><a href="#div_divalltwoss">③设备能效</a></li>
+							<li><a href="#div_divalltwoee">②系统指标</a></li>
+							<li class="active"><a href="#div_foreesd">①系统能效</a></li>
+						</ul>
+						
 					</div>
 					
 					
@@ -513,7 +532,14 @@
 									</select>
 								</div>
 								<button class="btn btn-info pull-right btnshow">新增</button></div>
-															   
+									</div>
+						</div>		
+										
+										
+						<div id="div_fiben">
+							<div class="borfey">
+							    <font class="fontsixed">站点图设置/3D图</font>		
+										
 									<table class="table table-striped table-bordered table-hover table_fon">
 										<thead class="sssbgl_thead">
 		                                <tr class="even">
@@ -740,7 +766,7 @@
 							</div>
 						</div>
 						
-						<div id="div_divalltwo">
+						<div id="div_divalltwoee">
 							<div class="borfey">
 							    <font class="fontsixed">系统指标设置</font>
 							    <div>
@@ -760,7 +786,7 @@
 						</div>
 						
 						
-						<div id="div_divalltwo">
+						<div id="div_divalltwoss">
 							<div class="borfey">
 							    <font class="fontsixed">设备能效设置</font>
 							    <div>
@@ -806,7 +832,7 @@
 </div>
 						</div>
 						
-						<div id="div_divalltwo">
+						<div id="div_divalltwos">
 							<div class="borfey">
 							    <font class="fontsixed">系统成本设置</font>
 							    <div>
@@ -825,9 +851,9 @@
 							</div>
 						</div>
 						
-						<div id="div_divalltwo">
+						<div id="div_divalltwoes">
 							<div class="borfey">
-							    <font class="fontsixed">系统成本设置</font>
+							    <font class="fontsixed">设备成本设置</font>
 							    <div>
 							   <div class="btn-group  btn_se">
 									<select class="form-control selectpicker btn_all" id="xmglpzselect">
@@ -861,9 +887,9 @@
 							</div>
 						</div>
 						
-						<div id="div_divalltwo">
+						<div id="div_divalltwobot">
 							<div class="borfey">
-							    <font class="fontsixed">系统成本设置</font>
+							    <font class="fontsixed">排名设置</font>
 							    <div>
 								   <div class="btn-group  btn_se">
 										<select class="form-control selectpicker btn_all" id="xmglpzselect">

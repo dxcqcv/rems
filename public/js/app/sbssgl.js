@@ -9,7 +9,7 @@ define(function(require) {
 		ReloadTable();
 		//添加
         $("#addView").on('click',function(){
-        	$("#bg1").css('display','block');
+        	$("#bg").css('display','block');
 			$("#tablediv").css('display','block');	
         })
 		
@@ -22,6 +22,38 @@ define(function(require) {
                 backdrop: 'static' 
             });  		
         });
+        
+        
+        //编辑数据点击事件
+			//打开 编辑框
+			$(".dd").click(function(){
+				$("#bg").show();
+				$("#tablediv").show();
+			})
+		
+		    //关闭编辑框	
+
+			$("#closediv").click(function() {
+				$("#bg").hide();
+				$("#tablediv").hide();
+			})
+		    
+					
+			//	删除数据点击事件
+			//打开删除对话框
+			$("#slcolds").click(function() {
+				$("#bg").show();
+				$("#coliseselect").show();
+			});
+			
+			//		关闭删除对话框
+			$("#closedivsel").click(function() {
+				$("#coliseselect").css('display', 'none');
+				$("#bg1").css('display', 'none');
+			});
+		
+        
+        
 		
 		//左侧菜单点击事件
 		$("#mymenu ul li").next("ul").hide();
@@ -31,35 +63,6 @@ define(function(require) {
 		$(".bt").click(function(){
 			$("#mymenu").css('display','block');
 		});
-		    
-		    
-			//编辑数据点击事件
-			//打开 编辑框
-			$("#eidtdiv").click(function() {
-				$("#bg").css('display', 'block');
-				$("#tablediv").css('display', 'block');
-			
-			})
-			
-			//关闭编辑框	
-			$("#closediv").click(function() {
-				$("#bg").css('display', 'none');
-				$("#tablediv").css('display', 'none');
-			})
-		    
-					
-			//	删除数据点击事件
-			//打开删除对话框
-			$("#coliseselect").click(function() {
-				$("#bg1").css('display', 'block');
-				$("#coliseselect").css('display', 'block');
-			});
-			
-			//		关闭删除对话框
-			$("#closedivsel").click(function() {
-				$("#coliseselect").css('display', 'none');
-				$("#bg1").css('display', 'none');
-			});
 		
 		
 		
@@ -98,7 +101,7 @@ function ReloadTable()
 					str	+= '<td>'+v[5]+'</td>'
 					str	+= '<td><span><img src="<img src="/img/bzlgl/下载.png" class="class_img"/></span></td>'
 					str	+= '<td>'+v[7]+'</td>'
-					str	+= '<td><img class="dd" data-classpropertyid="'+v[0]+'" src="/img/lsxgl/write.png"/><img class="slcolds" src="/img/lsxgl/sz.png"/></td>'
+					str	+= '<td><span><img class="dd" data-classpropertyid="'+v[0]+'" src="/img/sbssgl/write.png"/></span><span><img class="slcolds" src="/img/sbssgl/sz.png"/></span></td>'
 					str	+= '</tr>';
 				});
 				$("#resultBody").empty().append(str);
@@ -109,7 +112,7 @@ function ReloadTable()
 		}});
 }
 
-//获取右侧Tree
+//获取左侧Tree
 function GetLeftTree()
 {
 	demand.start({url:'/api/accessInfo/tree.json', data:null,done:function(data){

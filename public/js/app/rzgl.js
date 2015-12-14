@@ -89,7 +89,7 @@ define(function(require) {
 				return;
 			}
 			$.each(data.status.data.logs.datas, function(i, v) {
-				str += '<tr><td>' + v.usershowname + '</td><td>' + v.type + '</td><td>' + v.module + '</td><td>' + v.operatetype + '</td><td>' + v.userip + '</td><td>' + v.message + '</td><td>' + v.createdate + '</td></tr>';
+				str += '<tr><td>' + v.usershowname + '</td><td>' + v.type + '</td><td>' + v.showModule + '</td><td>' + v.operatetype + '</td><td>' + v.userip + '</td><td>' + v.showMessage + '</td><td>' + v.cDate + '</td></tr>';
 			});
 			$("#rzgl").empty().append(str);
 		}

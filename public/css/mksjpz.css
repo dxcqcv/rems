@@ -10,13 +10,14 @@
 #tabdivall,.tab_all,#glszym,#nxjcpz,#nxglpz{background-color:white;position: relative; margin: 10px; width: 80%;float: right; height: 100%;min-height: 100%;font-size: 12px; }
 .tabdivtop{position: absolute;width: 100%;z-index: 99;background-color: #ccc;}
 #tabdivall,#glszym,#nxjcpz,#nxglpz{position: absolute; height: 100%;min-height: 100%;width: 99%;padding-top: 80px;overflow: auto;}
-#myTab,#myTabs{  background-color: darkgrey;  z-index: 999; }
+#myTab,#myTabs,#myTabes{  background-color: darkgrey;  z-index: 999; }
+#myTabes{display: none;}
 #myTabs li{display: inline-block;line-height: 30px;padding-left: 10px;float: right;padding-right: 10px;}
 .nav-tabs > li {  float: left;  margin-bottom: -1px;  float: right;   }
 .nav-tabs > li a{color: white;}
 .title_head{position: absolute;padding-top: 6px;font-size: 18px;padding-left:10px;color: white;}
 .table_fon { border: 1px solid #DDDDDE;text-align: center!important;}
-#div_one,#div_two,#div_three,#div_four{padding-top: 10px;padding-left: 15px;padding-right: 15px;margin-bottom: 15px;}
+#div_one,#div_two,#div_three,#div_four,#div_fiben{padding-top: 10px;padding-left: 15px;padding-right: 15px;margin-bottom: 15px;}
 #div_two,#div_three,#div_four{padding-top: 30px;}
 .widthtd{width: 15%;}
 .widthtds{width: 14%;}
@@ -28,7 +29,6 @@
 .ulliul li.h_nav_over{background-color: #3498db;border-radius: 5px;cursor:pointer;color: white;}
 
 .teotabs{display: none;}
-
 
 .btn_se{display: inline-block;margin-bottom: 10px;}
 .btn_all{width: 160px!important;text-align: left!important;}
@@ -58,9 +58,11 @@
 .truesel,.footerbtnclos{text-align: center;padding-top: 15px;}
 #div_ones,#div_twos,#div_threes,#div_fors,#div_fores,#div_twosg,#nxjcpzes,#xtzbsz,#nyjgfxpz{margin-bottom: 15px;padding-top: 10px;padding-left: 15px;padding-right: 15px;}
 #div_twos,#div_threes,#div_fors{padding-top: 30px;}
-#div_foreesd,#div_divalltwo{padding-top: 10px;padding-left: 15px;padding-right: 15px;margin-bottom: 15px;}
+#div_foreesd,#div_divalltwo,#div_divalltwos,#div_divalltwoee,#div_divalltwoss,#div_divalltwobot{padding-top: 10px;padding-left: 15px;padding-right: 15px;margin-bottom: 15px;}
 .ullispanpz{display: inline-block;}
 .ullispanpz li{display: inline-block;padding-left: 20px;}
 .lxjulli li{display: inline-block;padding: 5px;}
 .lxjulli ul li:hover{border: 1px solid darkcyan;}
 .lxjulli{width: 33%;display: inline-flex;margin-left: 2%;margin-bottom: 10px;}
+
+.twotab,.tabthred,.tabfjul{display: none;}

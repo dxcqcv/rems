@@ -12,6 +12,8 @@ require.config({
     },
     shim: {
        'bootstrap':{deps:['jquery']},
+       'jquery.ztree.all-3.5.min':{deps:['jquery']},
+
        'bootstrap-select':{deps:['jquery']},
        'bootstrap-datetimepicker.min':{deps:['jquery','moment']},
        'no-data-to-display': {deps:['highstock']},

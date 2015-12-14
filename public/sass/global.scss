@@ -355,6 +355,8 @@ div.charts-cont-2-level {
 .pr10 { padding-right: 10px;}
 .brn { border: none!important; }
 .gray { color: #aaaaaa!important;}
+input.radio { display: inline-block; vertical-align: sub; }
+.cp { cursor: pointer; }
 /*if 1024*/
 @media (max-width: 1500px)  { 
     .subTitle { width: 200px;}

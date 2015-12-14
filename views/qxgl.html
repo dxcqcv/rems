@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/css/qxgl.css" media="all">
 <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
 <link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+	<link rel="stylesheet" href="/css/zTreeStyle/metro.css">
 <% include header-bottom.html %>
    <!--权限管理-->
     <div id="" class="my-section">
@@ -21,7 +22,32 @@
 						
 				</tbody>
 			</table>
+			<button class="btn btn-info pull-right btnright" id="addbtn">添加</button>
 		</div>
+
+
+				<!--弹框-->
+				<div id="bg"></div>
+				<div id="tablediv">
+					<div class="allcss">
+					<div class="titlesxgl"> 新增/修改用户 <button type="button" class="close" id="colse"> &times;</button></div>
+					<div class="dintopbj">
+							<div class="div_hgjn">角色名称：<input type="text" class="form-control" id="txtinput" >
+							</div>
+							<div class="div_hgjn desc">描述：<input type="text" class="form-control" id="txtinput" >
+							</div>
+							<div class="div_hgjn treediv"><font>功能权限：</font><div class="divtab">
+											<ul id="tree" class="ztree"></ul>
+										</div>
+							</div>
+							
+						
+					</div>
+					<div class="footerbtn">
+							<button type="button" class="btn btn-info" >保存</button>
+		            		<button type="button" class="btn btn-default" id="closediv">关闭</button>
+						</div>
+				</div>
 
     </div>	
 

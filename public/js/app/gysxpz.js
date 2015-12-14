@@ -30,8 +30,17 @@ define(function(require) {
 		
 		}());
 
-
+		//打开删对话框
+		$(".closed").click(function(){
+			$("#bg").show();
+			$("#coliseselect").show();
+		})
 		
+		//关闭删除对话框
+		$("#closedddivsel").click(function(){
+			$("#bg").hide();
+			$("#coliseselect").hide();
+		})
 
 
 });

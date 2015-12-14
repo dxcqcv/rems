@@ -513,6 +513,13 @@ div.charts-cont-2-level {
 .gray {
   color: #aaaaaa !important; }
 
+input.radio {
+  display: inline-block;
+  vertical-align: sub; }
+
+.cp {
+  cursor: pointer; }
+
 /*if 1024*/
 @media (max-width: 1500px) {
   .subTitle {
@@ -535,3 +542,5 @@ div.charts-cont-2-level {
 
   .jgfx-top-right-none {
     display: none; } }
+
+/*# sourceMappingURL=global.css.map */

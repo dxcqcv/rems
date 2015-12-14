@@ -18,7 +18,34 @@ define(function(require){
                 backdrop: 'static' 
             });  		
         });
+      	//菜单跳转
+      	$(".ymcstz").click(function(){
+      		$(".onetab").show();
+      		$(".twotab").hide();
+      		$(".tabthred").hide();
+      		$(".tabfjul").hide();
+      	})
       	
+      	$(".glsztz").click(function(){
+      		$(".onetab").hide();
+      		$(".tabthred").hide();
+      		$(".tabfjul").hide();
+      		$(".twotab").show();
+      	})
+      	
+      	$(".nxjctz").click(function(){
+      		$(".onetab").hide();
+      		$(".twotab").hide();
+      		$(".tabthred").show();
+      		$(".tabfjul").hide();
+      	})
+      	
+      	$(".nxgltz").click(function(){
+      		$(".onetab").hide();
+      		$(".twotab").hide();
+      		$(".tabthred").hide();
+      		$(".tabfjul").show();
+      	})
       	
       	
 //    	左侧菜单
@@ -65,11 +92,8 @@ define(function(require){
 				$("#coliseselect").css("display","none");
 			});
 			
-//			$(".glshpzps").click(function(){
-//				$("#tabdivall").hide();
-//				$("#glszym").show();
-//			})
-//			
+	
+			
       }());
 
 });

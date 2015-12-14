@@ -1,4 +1,21 @@
-         .tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;overflow: auto;border:1px solid #DDDDDD ;padding-top: 20px;}
-		.tab_bord{border:1px solid #BDB9B9;}
-		tr td{text-align: center!important;}	
-		.tab_bord tr td span{cursor:pointer;}
+ .tab_two2{width:98%;margin: auto; height: 100%;min-height:100%;overflow: auto;border:1px solid #DDDDDD ;padding-top: 20px;}
+.tab_bord{border:1px solid #BDB9B9;}
+tr td{text-align: center!important;}	
+.tab_bord tr td span{cursor:pointer;}
+		
+#bg {display: none; position: absolute;top: 0%;left: 0%;width: 100%;height: 100%;background-color: black;z-index: 1001;-moz-opacity: 0.7;opacity: .70;filter: alpha(opacity=70);}
+#tablediv {display: none;position: absolute;left:30%;top:10%;width: 35%;height: 85%;background-color: white;z-index: 1002;overflow: auto;}	
+.dintopbj{height:360px;margin-left: 40px;}
+.titlesxgl{height: 30px;background-color: #0689AA;font-size: 15px;padding-top: 5px;padding-left: 11px;color: white;}
+.footerbtn	{padding-top:45px;padding-left: 40%;}
+#tree{overflow:auto;}
+.desc{padding-left: 27px;}
+#txtinput{width:318px!important;display: inline-block!important;}	
+.div_hgjn{margin-top: 10px;}
+.treediv{height: 90%;}
+font{position: absolute;}
+.divtab{border:1px solid #cccccc;width:73%;height:96%;margin-left:70px;overflow:auto;display: inline-block;}
+.btnright{margin-bottom: 10px;margin-right: 10px;}
+
+
+
