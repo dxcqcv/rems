@@ -49,11 +49,19 @@
         var regI = new RegExp('^<li','i');
         //$.each(data.xmgl, function(i,v){
         $.each(data, function(i,v){
-            if(i == 0) $('#xmglImg').attr('src',v.path);
-            str += '<li data-path="'+ v.path +'">' + v.name + '</li>'; 
-            str = str.replace(regI, '<li class="active" ');
-            src.push(v.path);
-        })
+            if( v.projectid == projectid ) {
+                //$('.noXmgl').addClass('hide');
+                    //$('.xmgl-wrapper').removeClass('hide');
+                $.each(v.source, function(i,v){
+                    if(i == 0) $('#xmglImg').attr('src',v.path);
+                    str += '<li data-path="'+ v.path +'">' + v.name + '</li>'; 
+                    str = str.replace(regI, '<li class="active" ');
+                    src.push(v.path);
+                });
+            }
+            //else { $('.noXmgl').removeClass('hide');
+                    //$('.xmgl-wrapper').addClass('hide'); }
+        });
         $(src).preload();
         $('#xmglButton').append(str);
      }

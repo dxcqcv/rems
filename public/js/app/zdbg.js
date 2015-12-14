@@ -12,107 +12,109 @@ define(function(require) {
 		datapicker = require('bootstrap-datetimepicker.min')
       ;
     (function() {
-    //var month = moment().month(8).format('M');
-    //var year = moment().year();
-    //var day = moment().day(1).format('D');
-    //console.log(year)
-    //console.log(month)
-    //console.log(day)
-    var year = new Date();
-    var fivMonth = new Date(year.setMonth(4));
-    var tenMonth = new Date(year.setMonth(9));
-    var eleMonth =  new Date(year.setMonth(10));
+    var zdbgStart = $('#zdbgStart'), zdbgEnd = $('#zdbgEnd');
+    function dateOptions() {
+        var year = new Date();
+        var fivMonth = new Date(year.setMonth(4));
+        var tenMonth = new Date(year.setMonth(9));
+        var eleMonth =  new Date(year.setMonth(10));
 
-    var current = new Date();
-    var nextYearStamp = current.setFullYear(current.getFullYear()+1);
-    var nextYear = new Date(nextYearStamp);
-    var fourMonth = new Date(nextYear.setMonth(3));
 
-    //var max = new Date(year.getFullYear()+1,year.setMonth(2),0)
-    //console.log(nextYear.setMonth(2) )
+        var current = new Date();
+        var nextYearStamp = current.setFullYear(current.getFullYear()+1);
+        var nextYear = new Date(nextYearStamp);
+        var fourMonth = new Date(nextYear.setMonth(3));
 
-       var datetimepickerObjGrj = {
-            format: 'YYYY-MM-DD',
-            locale: 'zh-cn',
-            defaultDate: new Date(),
-            minDate:  eleMonth.setDate(1),
-            maxDate:  fourMonth.setDate(30),
-       };
-       var datetimepickerObjGrjUF = {
-            format: 'YYYY-MM-DD',
-            locale: 'zh-cn',
-            defaultDate: new Date(),
-            minDate:  eleMonth.setDate(1),
-            maxDate:  fourMonth.setDate(30),
-            useCurrent: false
-       };
-       var datetimepickerObjGlj = {
-            format: 'YYYY-MM-DD',
-            locale: 'zh-cn',
-            defaultDate: new Date(),
-            minDate:  fivMonth.setDate(1),
-            maxDate:  tenMonth.setDate(31),
-       };
-       var datetimepickerObjGljUF = {
-            format: 'YYYY-MM-DD',
-            locale: 'zh-cn',
-            defaultDate: new Date(),
-            minDate:  fivMonth.setDate(1),
-            maxDate:  tenMonth.setDate(31),
-            useCurrent: false
-       };
+        var sr1 = eleMonth.setDate(1);
+        var sr30 = fourMonth.setDate(30);
+
+        var sl1 = fivMonth.setDate(1);
+        var sl31 = tenMonth.setDate(31);
+           var datetimepickerObjGrj = {
+                format: 'YYYY-MM-DD',
+                locale: 'zh-cn',
+                defaultDate: sr30,
+                minDate:  sr1,
+                maxDate:  sr30,
+           };
+           var datetimepickerObjGrjUF = {
+                format: 'YYYY-MM-DD',
+                locale: 'zh-cn',
+                defaultDate: sr1,
+                minDate:  sr1,
+                maxDate:  sr30,
+                useCurrent: false
+           };
+           var datetimepickerObjGlj = {
+                format: 'YYYY-MM-DD',
+                locale: 'zh-cn',
+                defaultDate: sl31,
+                minDate:  sl1,
+                maxDate:  sl31,
+           };
+           var datetimepickerObjGljUF = {
+                format: 'YYYY-MM-DD',
+                locale: 'zh-cn',
+                defaultDate: sl1,
+                minDate:  sl1,
+                maxDate:  sl31,
+                useCurrent: false
+           };
+           return [datetimepickerObjGrj, datetimepickerObjGrjUF, datetimepickerObjGlj, datetimepickerObjGljUF ]; 
+    }
     var dateStar,dateEnd;
+
     $('.radio').on('click', function(){
         var $this = $(this), id = $this.attr('id');
+        var dateOptions = dateOptions();
         if( $this.prop('checked') && id === 'glj' ) { 
             console.log('供冷及'); 
-            setDatePick(id,0,datetimepickerObjGlj,datetimepickerObjGljUF);
+//zdbgStart.data('DateTimePicker').destroy();
+//zdbgEnd.data('DateTimePicker').destroy();
+            //setDatePick(id,0,datetimepickerObjGlj,datetimepickerObjGljUF);
+
+        zdbgStart.data("DateTimePicker").options(dateOptions[2]);
+        zdbgEnd.data("DateTimePicker").options(dateOptions[3]);
         }
         else if( $this.prop('checked') && id === 'grj' ) { 
             console.log('供热及'); 
+//zdbgStart.data('DateTimePicker').destroy();
+//zdbgEnd.data('DateTimePicker').destroy();
+            setDatePick(id,1,datetimepickerObjGrj,datetimepickerObjGrjUF);
         }
     });
 function setDatePick(id,groupType,startObj,endObj){
-console.log(1212)
+//
+    zdbgStart.datetimepicker(startObj);
+    zdbgEnd.datetimepicker(endObj);
     $('#'+id).prop('checked',true);        
     groupType = groupType;
-
-    $('#zdbgStart').datetimepicker(startObj).on('dp.change', function(ev) {
-        dateStar = ev.date.format('YYYY-MM-DD');
-       $('#zdbgEnd').data("DateTimePicker").maxDate(ev.date); 
-    });
-    $('#zdbgEnd').datetimepicker(endObj).on('dp.change', function(ev) {
-        dateEnd = ev.date.format('YYYY-MM-DD');
-       $('#zdbgStart').data("DateTimePicker").minDate(ev.date); 
-    });
 }
     //获取当前月
     var m = moment().format('M'), groupType;//季节判断
-    var zdbgStart = $('#zdbgStart'), zdbgEnd = $('#zdbgEnd');
+    var dateOptions = dateOptions();
     if(m >= 5 && m <= 10 ) {// 供冷季
         $('#glj').prop('checked',true);        
         groupType = 0;
-		$('#zdbgStart').datetimepicker(datetimepickerObjGlj).on('dp.change', function(ev) {
-            dateStar = ev.date.format('YYYY-MM-DD');
-           $('#zdbgEnd').data("DateTimePicker").maxDate(ev.date); 
-        });
-		$('#zdbgEnd').datetimepicker(datetimepickerObjGljUF).on('dp.change', function(ev) {
-            dateEnd = ev.date.format('YYYY-MM-DD');
-           $('#zdbgStart').data("DateTimePicker").minDate(ev.date); 
-        });
+        //setDatePick(1,0,datetimepickerObjGlj,datetimepickerObjGljUF);
+        zdbgStart.datetimepicker(dateOptions[2]);
+        zdbgEnd.datetimepicker(dateOptions[3]);
     } else { //供热季 
         $('#grj').prop('checked',true);        
         groupType = 1;
         //时间控件
-		$('#zdbgStart').datetimepicker(datetimepickerObjGrj).on('dp.change', function(ev) {
-            dateStar = ev.date.format('YYYY-MM-DD');
-           $('#zdbgEnd').data("DateTimePicker").maxDate(ev.date); 
-        });
-		$('#zdbgEnd').datetimepicker(datetimepickerObjGrjUF).on('dp.change', function(ev) {
-            dateEnd = ev.date.format('YYYY-MM-DD');
-           $('#zdbgStart').data("DateTimePicker").minDate(ev.date); 
-        });
+        //setDatePick(1,1,datetimepickerObjGrj,datetimepickerObjGrjUF);
+        zdbgStart.datetimepicker(dateOptions[0]);
+        zdbgEnd.datetimepicker(dateOptions[1]);
     }
+        zdbgStart.on('dp.change', function(ev) {
+            dateStar = ev.date.format('YYYY-MM-DD');
+           zdbgEnd.data("DateTimePicker").maxDate(ev.date); 
+        });
+        zdbgEnd.on('dp.change', function(ev) {
+            dateEnd = ev.date.format('YYYY-MM-DD');
+           zdbgStart.data("DateTimePicker").minDate(ev.date); 
+        });
       //下拉框默认值
       var zdbgStr = '', zdbgProjectSel = $('#zdbgProjectSel') ;
       switch(projectid) {

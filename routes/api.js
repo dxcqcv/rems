@@ -108,7 +108,7 @@ router.get('/features.json', function(req, res, next) {
 });
 router.get('/gislist_features.json', function(req, res, next) {
 
-console.log(66,ipaddr.process(req.ip).octets.join('.'));
+//console.log(66,ipaddr.process(req.ip).octets.join('.'));
 
     request.post({
         url: remoteApiHost + '/rems/gislist_features.json',
