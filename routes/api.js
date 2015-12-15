@@ -1458,5 +1458,67 @@ router.get('/runReport/list.json', function(req, res, next) {
 
 //----------------------报表end----------------------------------------------
 
+//----------------------远程监测（能效监测）start------------------------------------
+
+//能效监测(耗能) xusheng 2015.12.13
+router.get('/effiCheck/list1.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/effiCheck/list1.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateStar:req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//能效监测(供能) xusheng 2015.12.13
+router.get('/effiCheck/list2.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/effiCheck/list2.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateStar:req.query.dateStar
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//能效监测(工艺耗能下拉框) xusheng 2015.12.13
+router.get('/effiCheck/list3.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/effiCheck/list3.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//能效监测(工艺耗能查询) xusheng 2015.12.13
+router.get('/effiCheck/list4.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/effiCheck/list4.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			dateStar:req.query.dateStar,
+			optionid1:req.query.optionid1,
+			optionid2:req.query.optionid2
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+
+//----------------------远程监测（能效监测）end------------------------------------
+
 
 module.exports = router;

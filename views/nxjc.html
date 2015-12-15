@@ -1,6 +1,7 @@
 <% include header-top.html %>
 <link rel="stylesheet" href="/css/nxjc.css" media="all">
 <link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
 <% include header-bottom.html %>
 
        <!--能效监测-->
@@ -15,15 +16,15 @@
                         <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
                     </div>
                     <div class="card-subtitle clearfix">
-                        <ul class="list-inline ">
+						<ul class="list-inline ">
                             <li>
                                 <select class="form-control selectpicker" id="gnxxSel">
-                                  <option>供冷</option>
-                                  <option>供热</option>
+                                  <option value="0">供冷</option>
+                                  <option value="1">供热</option>
                                 </select>
                             </li>
-                            <li>供冷量：<span class="navy">1234Kwh</span></li>
-                        </ul>
+                            <li id="li_gnxxSel">供冷量：<span class="navy" id="spGonglengCount">1234Kwh</span></li>
+                        </ul> 
                     </div>
                 </div>
                 <div id="gongnengCharts" class="chart-box charts-cont"></div>
@@ -53,15 +54,15 @@
                         <span class="glyphicon glyphicon-resize-full card-button-resize" aria-hidden="true"></span>
                     </div>
                     <div class="card-subtitle clearfix">
-                        <ul class="list-inline ">
+                       <ul class="list-inline ">
                             <li>
                                 <select class="form-control selectpicker" id="hnxxSel">
-                                  <option>耗气</option>
-                                  <option>耗水</option>
-                                  <option>耗电</option>
+                                  <option value="0">耗气</option>
+                                  <option value="1">耗水</option>
+                                  <option value="2">耗电</option>
                                 </select>
                             </li>
-                            <li>耗气量：<span class="navy">1234Kwh</span></li>
+                            <li id="li_hnxxSel">耗气量：<span class="navy" id="spHaonengCount">1234Kwh</span></li>
                         </ul>
                     </div>
                 </div>
@@ -86,7 +87,7 @@
                                   <option>5</option>
                                 </select>
                             </li>
-                            <li>瞬时效率：<span class="navy">15%</span></li>
+                            <li>瞬时效率：<span class="navy" id="spgyxtxlSel">0%</span></li>
                         </ul>
                     </div>
                 </div>
