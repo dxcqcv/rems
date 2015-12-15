@@ -1,57 +1,61 @@
 <% include header-top.html %>
-<link rel="stylesheet" href="/css/cbfx.css" media="all">
-<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
-<% include header-bottom.html %>
-    	<!--成本分析-->
-	<div id="cbfx" class="my-section">
+	<link rel="stylesheet" href="/css/cbfx.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css" media="all">
+	<% include header-bottom.html %>
+		<!--成本分析-->
+		<div id="cbfx" class="my-section">
 
-        <div class="top-bar col-md-12 col-lg-12 col-xs-12">
-            <div class="top-bar-inner clearfix">
-                <span class="ib top-bar-label">成本分析</span>
-                <div class="jgfx-date-box ib pull-right">
-                    <div class='input-group date datetimepicker1 ' id="cbfxDate">
-                        <input type='text' class="form-control"/>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-                <div class="btn-group pull-right dateButtons">
-                    <button type="button" class="btn btn-default active" data-range="1d" data-tar="cbfxDate">日</button>
-                    <button type="button" class="btn btn-default" data-range="1m" data-tar="cbfxDate">月</button>
-                    <button type="button" class="btn btn-default" data-range="1y" data-tar="cbfxDate">年</button>
-                </div>
-            </div>
-        </div>
+			<div class="top-bar col-md-12 col-lg-12 col-xs-12">
+				<div class="top-bar-inner clearfix">
+					<span class="ib top-bar-label">成本分析</span>
 
-		<div class="bottom-cont card-wrapper pt63">
-            <div class="my-card col-md-12 col-lg-12 col-xs-12">
-                <div class="my-card-top">
-                    <div class="card-title bottom-title">
-                       <ul class="nav nav-tabs ">
-                            <li class="nor"><a>单位供能成本曲线</a></li>
-                       </ul>
-                    </div>
-                </div>
-                <div id="dwgncbqxCharts" class="chart-box charts-cont-2-level  haichar"></div>
-            </div>
-            <div class="my-card col-md-12 col-lg-12 col-xs-12">
-                <div class="my-card-top">
-                    <div class="card-title bottom-title">
-                       <ul class="nav nav-tabs ">
-                            <li class="nor"><a>单位供能成本比例</a></li>
-                       </ul>
-                    </div>
-                </div>
-                <div id="dwgncbbl" class="chart-box charts-cont-2-level haitwo "></div>
-            </div>
-        </div>
+					<div class="jgfx-date-box pull-right">
+						<div class='input-group date datetimepicker1' id="nyzhlylDate1">
+							<input type='text' class="form-control" />
+							<span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="jgfx-top-right pull-right pr10">
+						<div class="btn-group  zoom_controls date-controls-box" id="nyzhlylButton">
+							<button type="button" class="btn btn-default active" data-chart="line" data-range="1d" datanum="1" data-tar="nyzhlylDate1">日</button>
+							<button type="button" class="btn btn-default" data-chart="line" data-range="1m" datanum="2" data-tar="nyzhlylDate1">月</button>
+							<button type="button" class="btn btn-default" data-chart="line" data-range="1y" datanum="3" data-tar="nyzhlylDate1">年</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="bottom-cont card-wrapper pt63">
+				<div class="my-card col-md-12 col-lg-12 col-xs-12">
+					<div class="my-card-top">
+						<div class="card-title bottom-title">
+							<ul class="nav nav-tabs ">
+								<li class="nor"><a>单位供能成本曲线</a></li>
+							</ul>
+						</div>
+					</div>
+					<div id="dwgncbqxCharts" class="chart-box charts-cont-2-level  haichar"></div>
+				</div>
+				<div class="my-card col-md-12 col-lg-12 col-xs-12">
+					<div class="my-card-top">
+						<div class="card-title bottom-title">
+							<ul class="nav nav-tabs ">
+								<li class="nor"><a>单位供能成本比例</a></li>
+							</ul>
+						</div>
+					</div>
+					<div id="dwgncbbl" class="chart-box charts-cont-2-level haitwo "></div>
+				</div>
+			</div>
 
 		</div>
-	</div>
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/cbfx'])
-		});
-	</script>
-<% include footer.html %>
+		</div>
+		<script>
+			requirejs(['../js/common'], function(common) {
+				requirejs(['app/cbfx'])
+			});
+		</script>
+		<% include footer.html %>
