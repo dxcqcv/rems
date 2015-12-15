@@ -85,9 +85,9 @@ date_default_timezone_set('Asia/ShangHai');
 /** PHPExcel_IOFactory */
 require_once dirname(__FILE__) . '/vendor/phpoffice/phpexcel/Classes/PHPExcel/IOFactory.php';
  
-//$string = "a1,a2,a3,,,,,,,,,,,,a15;,,,,,,,,,,b11,b12,b13,b14,b15;c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15";
-$filename = $argv[1];
-$string = $argv[2];
+$string = "22,11,33,44,55,,,,,,,,,,a15;,,,,,,,,,,b11,b12,b13,b14,b15;c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15";
+// $filename = $argv[1];
+// $string = $argv[2];
 $new_arr = explode(";",$string);
 //print_r(count($new_arr));die;
 // Check prerequisites
@@ -120,6 +120,22 @@ if (!file_exists(dirname(__FILE__) . "/111.xls")) {
 	        //echo $column.$row.":".$new_arr[$row-5])[$tag]."<br />";
 	    }   
 	}
+
+
+
+
+$objDrawing = new PHPExcel_Worksheet_Drawing();
+$objDrawing->setName('avatar');
+$objDrawing->setDescription('avatar');
+$objDrawing->setPath("/Users/lvwei/Develop/github/rems/exported_charts/c2df7d70c7df330cbf1ccd70d1324e43/chart.png");
+$objDrawing->setHeight(700);
+$objDrawing->setWidth(900);
+$objDrawing->setCoordinates('A12');
+$objDrawing->setWorksheet($sheet);
+
+
+
+
 }
 
 
@@ -150,6 +166,11 @@ function getalphnum($char){
 // header('Pragma: public');
 // header('Expires: 30');
 // header('Cache-Control: public');
+
+
+
+
+
  $objWriter->save("result.xls");
 
 

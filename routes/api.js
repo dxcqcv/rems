@@ -1338,30 +1338,30 @@ router.get('/clzMng/list.json', function(req, res, next) {
 //----------------------设备设施管理start--------------------------------------------
 //左侧树的加载显示 xusheng 2015.12.10
 router.get('/accessInfo/tree.json', function(req, res, next) {
-	request.post({
-		url: remoteApiHost + '/rems/accessInfo/tree.json',
-		form: {
-			userKey: req.session.user.token
-		}
-	}, function(error, response, body) {
-		res.send(body);
-	})
+    request.post({
+        url: remoteApiHost + '/rems/accessInfo/tree.json',
+        form: {
+            userKey: req.session.user.token
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    })
 });
 
 //设备设施管理查询列表 xusheng 2015.12.10
 router.get('/instance/right.json', function(req, res, next) {
-	request.post({
-		url: remoteApiHost + '/rems/instance/right.json',
-		form: {
-			userKey: req.session.user.token,
-			pid: req.query.pid,
-			page: req.query.page,
-			clazz: req.query.clazz,
-			keyword: req.query.keyword
-		}
-	}, function(error, response, body) {
-		res.send(body);
-	})
+    request.post({
+        url: remoteApiHost + '/rems/instance/right.json',
+        form: {
+            userKey: req.session.user.token,
+            pid: req.query.pid,
+            page: req.query.page,
+            clazz: req.query.clazz,
+            keyword: req.query.keyword
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    })
 });
 //----------------------设备设施管理end----------------------------------------------
 
@@ -1395,6 +1395,68 @@ router.get('/logInfo/userList.json', function (req, res, next) {
         res.send(body);
     })
 });
+
+
+
+//----------------------报表开始start----------------------------------------------
+//添加报表：
+//http://localhost:3000/api/config/report/add.json?reportId=3&reportName=lvwei&header=%3Cheader%3E%3C/header%3E&codes=i:i:i:&dateStr=2&isShow=1&chartType=1&chartAddress=11
+router.get('/config/report/add.json', function(req, res, next) {
+    request.post({
+        url: remoteApiHost + '/rems/config/report/add.json',
+        form: {
+            userKey: req.session.user.token,
+            
+            reportName: req.query.reportName,
+            header: req.query.header,
+            codes:req.query.codes,
+            dateStr:req.query.dateStr,
+            isShow:req.query.isShow,
+            chartType:req.query.chartType,
+            chartAddress:req.query.chartAddress
+        }
+    }, function(error, response, body) {
+        ////此处修改excel文件名为id.xslx
+        // fs.rename(__dirname + '/test', __dirname + '/fsDir', function (err) {
+        //    if(err) {
+        //         console.error(err);
+        //         return;
+        //    }
+        //     console.log('重命名成功')
+        // });
+
+        res.send(body);
+    })
+});
+//自定义报表配置：查询报表
+router.get('/config/report/list.json', function(req, res, next) {
+    request.post({
+        url: remoteApiHost + '/rems/config/report/list.json',
+        form: {
+            userKey: req.session.user.token,
+            reportName: req.query.reportName
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    })
+});
+
+//运行报表：查询报表的数据：
+router.get('/runReport/list.json', function(req, res, next) {
+    request.post({
+        url: remoteApiHost + '/rems/runReport/list.json',
+        form: {
+            userKey: req.session.user.token,
+            reportid: req.query.reportid,
+            dateStar: req.query.dateStar,
+            dateFlag: req.query.dateFlag
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    })
+});
+
+//----------------------报表end----------------------------------------------
 
 
 module.exports = router;

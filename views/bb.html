@@ -45,7 +45,7 @@
 									</button>
 								</li>
 								<li>
-									<button type="button" title="导出到Excell" class="btn btn-info" aria-label="Left Align">
+									<button id="exportExcelBtn" type="button" title="导出到Excell" class="btn btn-info" aria-label="Left Align">
 										<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
 									</button>
 								</li>
@@ -289,6 +289,11 @@
 			</div>
 
 		</div>
+
+		<div id="exporttmp" style="display:none;"></div>
+		<!--<script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    -->
 		<script>
 			requirejs(['../js/common'], function(common) {
 				requirejs(['app/bb'])

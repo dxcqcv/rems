@@ -100,7 +100,7 @@ class render_html_by_excel{
 				}
 
 				// var_dump($colIdx); //← $colIdx は1から始まります
-				$cellTagName = 'td';
+				$cellTagName = 'th';
 				if( $rowIdx <= $options['header_row'] || $colIdx <= $options['header_col'] ){
 					$cellTagName = 'th';
 				}
@@ -186,9 +186,9 @@ class render_html_by_excel{
 			print $thead;
 			print '</thead>'.PHP_EOL;
 		}
-		print '<tbody>'.PHP_EOL;
+		print '<thead>'.PHP_EOL;
 		print $tbody;
-		print '</tbody>'.PHP_EOL;
+		print '</thead>'.PHP_EOL;
 
 		if( !@$options['strip_table_tag'] ){
 			print '</table>'.PHP_EOL;

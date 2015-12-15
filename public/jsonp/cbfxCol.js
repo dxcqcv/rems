@@ -1,12 +1,12 @@
 cbfxColumn(
 {
-				name: 'John',
+				name: '耗电',
 				data: [5, 3, 4, 7, 2, 6, 7],
 			}, {
-				name: 'Joe',
+				name: '耗气',
 				data: [3, 4, 4, 2, 5, 6, 2],
 			}, {
-				name: 'Jane',
+				name: '耗水',
 				data: [2, 5, 3, 2, 1, 2, 3],
 			}
 );

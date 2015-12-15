@@ -319,15 +319,31 @@ function clickPopup(){}
             console.log('height',winHeight );
             var x = 5,radio = (winWidth /winHeight );
             x = 4;
-            if(winHeight >= 800 && winWidth >= 1477) {
+            if(winHeight > 800 && winWidth > 1477) {
                 setTransform(4);
-            } else if(winHeight >= 627 && winHeight < 800 && winWidth >= 1141 && winWidth < 1477){
+            } else {
                 setTransform(3);
-            } else if(winHeight >= 458 && winHeight < 627 && winWidth >= 860 && winWidth < 1141) {
-                setTransform(2);
-            } else if(winHeight < 458 && winWidth < 860) {
-                setTransform(1);
-            }
+            } 
+            //else if(winHeight >= 627 && winHeight < 800 && winWidth >= 1141 && winWidth < 1477){
+                //setTransform(2.7);
+            //} else if(winHeight <= 600  && winWidth <= 1280) {
+                //setTransform(2.1);
+            //} else if(winHeight <= 768  && winWidth <= 1024) {
+                //setTransform(2.1);
+            //} else if(winHeight <= 600 && winWidth <= 800 ) {
+                //setTransform(1.7);
+            //}
+            //
+            //if(winHeight >= 800 || winWidth >= 1477) {
+                //setTransform(4);
+            //} else if(winHeight >= 627 && winHeight < 800 || winWidth >= 1141 && winWidth < 1477){
+                //setTransform(2.5);
+            //} else if(winHeight >= 458 && winHeight < 627 || winWidth >= 860 && winWidth < 1141) {
+                //setTransform(2);
+            //} else if(winHeight < 458 || winWidth < 860) {
+                //setTransform(1);
+            //}
+            //
             //console.log(radio);
             //while(x) {
                 ////if(winHeight > 900){
