@@ -15,9 +15,11 @@ require.config({
        'jquery.ztree.all-3.5.min':{deps:['jquery']},
 
        'bootstrap-select':{deps:['jquery']},
+       'bootstrap-table':{deps:['jquery','bootstrap']},
        'bootstrap-datetimepicker.min':{deps:['jquery','moment']},
        'no-data-to-display': {deps:['highstock']},
-       'exporting': {deps:['jquery', 'no-data-to-display']}
+       'exporting': {deps:['jquery', 'no-data-to-display']},
+       'bootstrap-table-locale-all.min': {deps:['bootstrap-table']},
     }
 });
 // 全局调用

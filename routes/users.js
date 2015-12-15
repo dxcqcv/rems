@@ -5,11 +5,13 @@ var multer  = require('multer');
 var fs = require('fs');
 var upload = multer({ dest: './data/upload/' });
 //自己实际路径
-//var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
-//var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
-var shellDir = "c:/Users/Roy/Documents/long/dev/rems/shell/";
-var uploadDir = "c:/Users/Roy/Documents/long/dev/rems/data/upload/";
+var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
+var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
+// var shellDir = "c:/Users/Roy/Documents/long/dev/rems/shell/";
+// var uploadDir = "c:/Users/Roy/Documents/long/dev/rems/data/upload/";
 var router = express.Router();
+var nhe = require('node-highcharts-exporter');
+var rmdir   = require('rimraf');
 // //直接调用命令
 //     exports.createDir = function (){
 //         process.exec('php -v',
@@ -146,6 +148,7 @@ router.get('/tygjpz', function(req, res) {
     res.render('tygjpz', { title: 'Home' });
 });
 
+
 router.post('/export', function(req, res) {
 
     process.exec('php '+shellDir+'excel.php ' + uploadDir + " " + req.body.fileName,
@@ -178,9 +181,38 @@ router.post('/upload', upload.single('xlsx'), function (req, res, next) {
             res.send('File uploaded to: ' + target_path + ' - ' + req.file.size + ' bytes');
         });
     });  
-
-
 })
+
+
+router.post('/exportChartPic', upload.single('png'), function(req, res) {
+    // var highchartsExportRequest = req.body;
+    // console.log(highchartsExportRequest.type);
+
+    
+
+    // // Set a custom directory to export charts to
+    var customExportPath = require('path').dirname(require.main.filename) + '/exported_charts';
+    nhe.config.set('processingDir', customExportPath);
+
+    // Assume this is executed inside the POST handler for a server 
+    // running on http://localhost:3000/export 
+    var highchartsExportRequest = req.body;
+    
+    nhe.exportChart(highchartsExportRequest, function(error, exportedChartInfo){
+        if(error){ // Send an error response
+            res.send(error);
+        }
+        else{ // Send the file back to client
+            console.log(exportedChartInfo.filePath);
+            res.download(exportedChartInfo.filePath, function(){
+                // Optional, remove the directory used for intermediate
+                // exporting steps
+                //rmdir(exportedChartInfo.parentDir, function(err){});
+            });
+        }
+    });
+    
+});
 
 
 

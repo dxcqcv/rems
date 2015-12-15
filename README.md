@@ -24,3 +24,8 @@ db.createUser(
 [mongodb ref link](https://docs.mongodb.org/manual/reference/configuration-options/)
 6. rerun node app.js
 
+
+##报表配置：
+安装 npm install highcharts-exporter
+php环境；
+

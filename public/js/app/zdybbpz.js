@@ -7,11 +7,38 @@ define(function(require) {
 	
 	
 	$(function(){
+
+
+		//获取报表的列表：
+        demand.start({url:'/api/config/report/list.json', data:{reportName:""},done:addBbSelect})
+        function addBbSelect(data){
+            console.log(data);
+            //var str = '<option value="">请选择报表</option>';
+            var str = '';
+            $.each(data.status.data.list, function(i, item) {
+                //str += '<option value="' + item.id + '">' + item.name + '</option>';
+                str += '<tr class="odd">';
+				str += '<td>' + item.id + '</td>';
+				str += '<td>' + item.name + '</td>';
+				str += '<td></td>';
+				str += '<td></td>';
+				str += '<td></td>';
+				str += '<td><span><img src="/img/zdybbpz/sz.png"/></span><span><img src="/img/zdybbpz/write.png"/></span></td></tr>';			
+								
+            });
+            $("#bbListTbody").empty().append(str);
+        }
+
+
 		$("#btnshow").click(function(){
+			$("#modalBbType").val("add");
 			$("#bg").css('display','block');
 			$("#tablediv").css('display','block');
 		})
 
+
+
+		// 上传excle后并解析成html 
 		 $("#input-4").fileinput({
 
 		 	language: 'zh', //设置语言
@@ -58,14 +85,96 @@ define(function(require) {
             function(data) 
             {
                 //输出结果
+                //查询到table中的
+                $("#bbHeaderInput").val(data);
                 $(".divtableji").empty().append(data);
+
+                var cellWidth = $(".divtableji table colgroup").find("col").eq(0).width();
+                
+               	var colNumber = Math.round(100/cellWidth);
+               	var htmlInputString = "<tr id='codesTr'>";
+               	for (var i = 0; i < colNumber; i++) {
+               		htmlInputString += '<td width="'+cellWidth+'%"><input type=text style="width:100%"></td> ';
+               	};
+               	htmlInputString += "</tr>";
+               	$(".divtableji table thead").append(htmlInputString);
+                console.log("iok");
+
             });
 
 		});
 
 
 
+
+		//点击保存报表：
+		$("#saveBbBtn").click(function(){
+			alert("jjjj");
+			console.log($("#codesTr input").length);
+			var codes = "";
+			$("#codesTr input").each(function(){
+				codes += $(this).val() + ';';  
+			});
+
+			console.log();
+			
+			// 
+			var dateString = $("#dateStrY").val() + "," + $("#dateStrM").val()+ "," + $("#dateStrD").val();
+
+
+			var reportName = $("#bbName").val();
+			var header = $("#bbHeaderInput").val();
+			var codes = codes;
+			var dateStr = dateString;
+			var isShow = $("#isShow").val();
+			var chartType = $("#chartType").val();
+			var chartAddress = $("#chartAddress").val();
+			//如果添加新报表
+			var modalBbType = $("#modalBbType").val();
+			if (modalBbType == "add") {
+				demand.start({
+					url:'/api/config/report/add.json',
+					data:{
+						reportName:reportName,
+						header:header,
+						codes:codes,
+						dateStr:dateStr,
+						isShow:isShow,
+						chartType:chartType,
+						chartAddress:chartAddress
+
+					},
+					done:saveNewbb
+					//此处的如果接口添加成功之后 添加到此页面列表中 
+				});
+
+			}else{
+				//如果更新报表
+				demand.start({
+					url:'/api/config/report/update.json',
+					data:{
+						reportName:reportName,
+						header:header,
+						codes:codes,
+						dateStr:dateStr,
+						isShow:isShow,
+						chartType:chartType,
+						chartAddress:chartAddress
+
+					},
+					done:bb_left
+					//此处的如果接口添加成功之后 更新到此页面列表中 
+				});
+			}
+			//获取以下参数 然后传递到后台的添加报表的接口中：
+
+		})
+
 	});	
+
+	function saveNewbb(data){
+		console.log(data);
+	}
 	
 	$(function(){
 		$("#colse").click(function(){

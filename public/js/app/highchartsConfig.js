@@ -9,7 +9,7 @@ define(function(require){
             enabled: false
         },
         exporting: {
-              enabled:false
+              enabled:true
         },
         tooltip: {
 
