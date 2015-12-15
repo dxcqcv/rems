@@ -59,7 +59,8 @@ define(function(require) {
 		function loaddata() {
 			demand.start({
 				loadContainer: [
-					['#dwgncbqxCharts', '#dwgncbbl'], 1
+					//['#dwgncbqxCharts', '#dwgncbbl'], 1
+                    ['#cbfx'], 1
 				],
 				url: '/api/costProfit/costProfitChart.json',
 				parameter: {
@@ -77,6 +78,7 @@ define(function(require) {
 
 		function cbfxLinesData(data, parameter) {
 			console.log(data);
+            if(data.status.data.curve.length ===0) return;
 			// 单位供能成本曲线
 			var curveY = data.status.data.curve;
 			var sData = new Array;

@@ -15,6 +15,7 @@ define(function(require) {
             loader: function(open,container,padding) {
                 var loader = $('.loader-wrapper');
                 var self = this;
+                //加间距
                 var bp = (padding === 0) ? 0 :{ top: '10px',left: '10px'};
 
                 if(open === true) {

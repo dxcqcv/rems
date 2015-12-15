@@ -151,6 +151,10 @@ function dateInit(rectime){
                 buildGytList(['shenlongchengPA-A-三联供系统','shenlongchengPB-B-电制冷系统','shenlongchengPC-C-燃气锅炉'])
                 pageid = 102; 
                 break;
+            case '6': 
+                $('#gytSidebar').removeClass('hide');
+                showMe('#zhaoqingArtwork');
+                buildGytList(['zhaoqingPA-A-三联供系统'])
             default: 
                 showMe('#defaultArtwork');
                 $('#gytSidebar').addClass('hide');
