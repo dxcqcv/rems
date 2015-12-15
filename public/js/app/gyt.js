@@ -315,18 +315,36 @@ function clickPopup(){}
             var winHeight, winWidth; 
             winHeight = $(window).height();
             winWidth= $(window).width();
+            console.log('width',winWidth);
+            console.log('height',winHeight );
             var x = 5,radio = (winWidth /winHeight );
             x = 4;
-            console.log(radio);
-            while(x) {
-                //if(winHeight > 900){
-                    //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
-                    //return;
-                //}  
-                //if(x <= 3) return; 
-                if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'}); 
-                x--;
+            if(winHeight >= 800 && winWidth >= 1477) {
+                setTransform(4);
+            } else if(winHeight >= 627 && winHeight < 800 && winWidth >= 1141 && winWidth < 1477){
+                setTransform(3);
+            } else if(winHeight >= 458 && winHeight < 627 && winWidth >= 860 && winWidth < 1141) {
+                setTransform(2);
+            } else if(winHeight < 458 && winWidth < 860) {
+                setTransform(1);
             }
+            //console.log(radio);
+            //while(x) {
+                ////if(winHeight > 900){
+                    ////$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                    ////return;
+                ////}  
+                ////if(x <= 3) return; 
+                ////hight > 800 and height < 900, 8 9-4, 7 8-3, 6 7, 5 6, 4 5, 3 4,
+                ////width > 
+                //if(winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) {
+                    //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                //}  
+                //x--;
+            //}
+        }
+        function setTransform(v) {
+            $('.xa-con-cent').css({'transform':'scale(0.'+(v)+') translate(-50%, -50%)'});
         }
 
 
