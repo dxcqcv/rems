@@ -1520,5 +1520,74 @@ router.get('/effiCheck/list4.json', function(req, res, next) {
 
 //----------------------远程监测（能效监测）end------------------------------------
 
+//得到用户名
+router.get('/forget/getUname.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/forget/getUname.json',
+		form: {
+			userKey: req.session.user.token,
+			userName: req.query.userName
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+//发送邮件
+router.get('/emailInfo/sendEmail.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/emailInfo/sendEmail.json',
+		form: {
+			userKey: req.session.user.token,
+			username: req.query.userName,
+			email: req.query.email
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+//检查验证码
+router.get('/forget/checkCode.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/forget/checkCode.json',
+		form: {
+			userKey: req.session.user.token,
+			username: req.query.userName,
+			code: req.query.code
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+//修改密码
+router.get('/forget/updatePwd.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/forget/updatePwd.json',
+		form: {
+			userKey: req.session.user.token,
+			username: req.query.username,
+			password: req.query.password,
+			mid: req.query.mid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+//远程监测-〉数据监测页面
+//点击左侧的classInstance查询该classInstance的property
+router.get('/datamonitor/value.json', function (req, res, next) {
+    request.post({
+        url: remoteApiHost + '/rems/datamonitor/value.json',
+        form: {
+            userKey: req.session.user.token,
+            projectid: req.query.projectid,
+            instanceid: req.query.instanceid,
+        }
+    }, function (error, response, body) {
+        //var list = JSON.parse(body).status.data.list;
+        //res.send(list);
+        res.send(body);
+    })
+});
+
 
 module.exports = router;

@@ -9,7 +9,8 @@
 					<p>请填写你需要找回 的账号：</p>
 					<p><input type="email" class="form-control inpyt" id="name" placeholder="请输入您的用户名/邮箱"></p>
 					<p><input type="email" class="form-control inpy2" id="pwd" placeholder="请输入验证码">
-						<input class="form-control inpyl" type="text" placeholder="Readonly input here…" readonly>&nbsp;&nbsp;<a href="#" class="tz">看不清？</a><span class="tishi">您输入的验证码有误！</span></p>
+						
+						<input class="form-control inpyl" type="text" id="checkCode" placeholder="Readonly input here…" readonly>&nbsp;&nbsp;<a href="#" id="shuaxin" class="tz">看不清？</a><span class="tishi">您输入的验证码有误！</span></p>
 						<button type="button" class="btn btn-info next_1">下一步</button>
 				</div>
 			</div>
@@ -18,16 +19,16 @@
 			<div class="all2" id="two_div">
 				<img src="/img//forgotten/pwd2.png" class="pwd_img2" />
 				<div class="all_div">
-				<p class="tan_name">您正在找回的账号是<span>Ael123</span></p>
+				<p class="tan_name">您正在找回的账号是<span class="spanUserName"></span></p>
 				<p>为了您的账号安全，请完成下方身份验证找回密码</p>
 				<p><span class="clp">验证方式：</span><input type="email" class="form-control inpyt3" id="elems" placeholder="密保邮箱ghdash.@sina.com"></p>
 					<div class="two_di">
 						<p><button type="button" class="btn btn-default btn-lg active inpy4" id="yzm1" placeholder="邮箱验证码">发送验证码</button>
-							<button type="button" class="btn btn-default btn-lg active  btn_blac">重新发送<span>（60）</span></button>
-							<span>发送成功，<a href="#">立即进入邮箱</a></span>		
+							
+							<span class="tishi" id="shouTextTrue">发送成功，<a href="#">立即进入邮箱</a></span>		
 						</p>
-						<p><input type="email" class="form-control inpyt5" id="name" placeholder="邮箱验证码"></p>
-						<button type="button" class="btn btn-info next_2">确定</button>
+						<p><input type="email" class="form-control inpyt5" id="emailCode" placeholder="邮箱验证码"></p>
+						<button type="button" class="btn btn-info next_2" >确定</button>
 					</div>
 				</div>
 			</div>
@@ -35,17 +36,18 @@
 			<!--3-->
 			<div class="all3" id="three_div">
 				<img src="/img//forgotten/pwd3.png" class="pwd_img3" />
-				<p class="tan_name1">您正在找回的账号是<span>Ael123</span></p>
-				<p class="tan_pwd">新密码：<input type="email" class="form-control inpyt6" name="newpwdd" id="newpwd"></p>	
-				<p>确认新密码：<input type="email" class="form-control inpyt7" id="newpwd_true"></p>
+				<p class="tan_name1">您正在找回的账号是<span class="spanUserName"></span></p>
+				<p class="tan_pwd">新密码：<input type="password" class="form-control inpyt6" name="newpwdd" maxlength="16" id="newpwd"></p>	
+				<p>确认新密码：<input type="password" class="form-control inpyt7" maxlength="16" id="newpwd_true"></p>
 				<button type="button" class="btn btn-info next_3">确定</button>
 			</div>
 			
 			<div class="all_tx" id="four_div">
 				<img src="/img//forgotten/pwd3.png" class="pwd_img3" />
 				<div class="ens_tab">
-				<p><img src="/img//forgotten/ok.png" />恭喜，百度账号<span>dhggsdh</span>重置密码成功</p>
-					<button type="button" class="btn btn-info next_4">直接登录</button>
+				<p><img src="/img//forgotten/ok.png" />恭喜，账号<span  class="spanUserName"></span>重置密码成功</p>
+					<form  method="post" action="/login">
+					<button type="submit" class="btn btn-info next_4">直接登录</button></form>
 				</div>
 			</div>
 			

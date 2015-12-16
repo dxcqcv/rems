@@ -49,8 +49,27 @@ router.get('/xmgl', function(req, res) {
     req.session.title = req.query.title;
     res.render('xmgl', { title: 'Home', projectid: req.session.projectid, projectTitle: req.session.title });
 });
-router.get('/sjjc', function(req, res) {
-    res.render('sjjc', { title: 'Home' });
+//router.get('/sjjc', function(req, res) {
+    //res.render('sjjc', { title: 'Home' });
+//});
+//黄忠修改
+router.get('/sjjc', function (req, res) {
+
+    request.post({
+        url: remoteApiHost + '/rems/clzMng/list.json',
+        form: {
+            userKey: req.session.user.token,
+        }
+    }, function (error, response, body) {
+        var list = JSON.parse(body).status.data.classList;
+        //res.send(body);
+        res.render('sjjc', { title: 'Home', classList: list, projectid: req.session.projectid });
+        //res.render('sjjc', { title: 'Home', deviceClasses: body });
+        //res.render('sjjc', { title: 'Home'});
+        
+    });
+
+    //res.render('sjjc', { title: 'Home', projectid: 'helloworld' });                    
 });
 router.get('/cbfx', function(req, res) {
     res.render('cbfx', { title: 'Home' });

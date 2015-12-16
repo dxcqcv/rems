@@ -82,7 +82,7 @@
 .xa-con-cent {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 54%;
   transform: scale(0.25) translate(-50%, -50%);
   transform-origin: 0 0;
   width: 2881px;
@@ -2288,11 +2288,16 @@
 /*中德*/
 /*.zhongde-a { width: 1024px; height: 726px;}*/
 .zhongde-a {
-  width: 2500px;
-  height: 1772px; }
+  width: 2000px;
+  height: 1418px; }
 
 .zhongde-sanliangong {
-  background: url("../images/zdBg2.png") no-repeat; }
+  background: url("../images/zdBg4.png") no-repeat;
+  margin-left: 414px; }
+
+.zhongde-artwork {
+  width: 2000px;
+  height: 1418px; }
 
 /*神农城*/
 .shenlongcheng-mark {

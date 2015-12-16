@@ -143,7 +143,7 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                                             '<p class="detail-val">'+data2+'</p>'+
                                         '</li>'+
                                         '<li>'+
-                                            '<p class="detail-name">累计节能率</p>'+
+                                            '<p class="detail-name">节能率</p>'+
                                             '<p class="detail-val">'+data3+'</p>'+
                                         '</li>'+
                                         '<li>'+

@@ -127,7 +127,7 @@ function dateInit(rectime){
         /*
         projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
          * */
-    //projectid = '4';
+    //projectid = '5';
         //check project
         switch(projectid) { //复位为overview
             case '1': 
@@ -151,10 +151,19 @@ function dateInit(rectime){
                 buildGytList(['shenlongchengPA-A-三联供系统','shenlongchengPB-B-电制冷系统','shenlongchengPC-C-燃气锅炉'])
                 pageid = 102; 
                 break;
+            case '5': 
+                $('#gytSidebar').removeClass('hide');
+                showMe('#zhongdeArtwork');
+                zhongdePAFn();
+                buildGytList(['zhongdePA-A-三联供系统'])
+                pageid = 9; 
+                break;
             case '6': 
                 $('#gytSidebar').removeClass('hide');
                 showMe('#zhaoqingArtwork');
-                buildGytList(['zhaoqingPA-A-三联供系统'])
+                buildGytList(['zhaoqingPA-A-乙二醇系统','zhaoqingPB-B-冷冻水系统','zhaoqingPC-C-冷却水系统',])
+                pageid = 9; 
+                break;
             default: 
                 showMe('#defaultArtwork');
                 $('#gytSidebar').addClass('hide');
@@ -163,9 +172,11 @@ function dateInit(rectime){
         console.log('projectid ',projectid)
         console.log('pageid ',pageid)
 
+if(pageid !==9){
         demand.start({url:'/api/techCheck/equLabellist.json',data:{projectid:projectid,pageid:pageid}, done:huanghAlabellistFn});
         demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid}, done:huanghuaEquipStatFn});
         demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:huanghuaAlabeldataAllFn});
+} 
 
 $('.artwork-popup').on('click',function(){
     var classinstanceid = $(this).attr('data-classinstanceid');
@@ -321,8 +332,8 @@ function clickPopup(){}
             winWidth= $(window).width();
             console.log('width',winWidth);
             console.log('height',winHeight );
-            var x = 5,radio = (winWidth /winHeight );
-            x = 4;
+            //var x = 5,radio = (winWidth /winHeight );
+            var x = 4;
             //if(winHeight > 800 && winWidth > 1477) {
                 //setTransform(4);
             //} else {
@@ -354,17 +365,36 @@ function clickPopup(){}
                     //$('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
                     //return;
                 //}  
-                if(x == 2) return; 
+                //console.log(x)
+                //if(x == 2) return; 
                 //hight > 800 and height < 900, 8 9-4, 7 8-3, 6 7, 5 6, 4 5, 3 4,
                 //width > 
+            console.log('min',parseInt((x+4)*100));
+            console.log('max',parseInt((x+5)*100));
                 if( winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) {
+            console.log('min',parseInt((x+4)*100));
+            console.log('max',parseInt((x+5)*100));
                 //if(winWidth < 800 ) {
                     //x = 1.5;    
                 //}
-                    $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                    if(x >= 2) {
+                        console.log('up',x)
+                        $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                    } else {
+                        console.log('down',x)
+                    }
+        console.log(9999);
                 }  
                 x--;
             }
+                        if(!(winHeight <= 380 && winWidth<= 733)) {
+                        console.log(888)
+                        
+                            $('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
+                        } else {
+                        console.log(555)
+                            $('.xa-con-cent').css({'transform':'scale(0.15) translate(-50%, -50%)'});
+                        }
         }
         //function setTransform(v) {
             //$('.xa-con-cent').css({'transform':'scale(0.'+(v)+') translate(-50%, -50%)'});
@@ -996,6 +1026,11 @@ function clickPopup(){}
             //gytSelectFn(true,'#tinghuD','燃气锅炉',[3]);
             gytSelectFn(true,'#tinghuD','燃气锅炉',[2]);
             tinghuArtwork.height(1349);
+        }
+        //中德
+        function zhongdePAFn() {
+            gytSelectFn(true,'#zhongdeA','三联供系统',[0]);
+            shenlongchengArtwork.height(1418);
         }
         //神农城
         function shenlongchengPAFn() {
