@@ -4,7 +4,8 @@ var moment = require('moment');
 var ipaddr = require('ipaddr.js');
 var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
-var remoteApiHost = "http://117.144.16.98:8080";
+//var remoteApiHost = "http://117.144.16.98:8080";
+var remoteApiHost = "http://10.20.1.144:8080";
 var remoteApiPath = "/rems";
 
 
@@ -1588,6 +1589,50 @@ router.get('/datamonitor/value.json', function (req, res, next) {
         res.send(body);
     })
 });
+//----------------------远程监测（数据监测）开始------------------------------------
+//数据监测(数据监测设备实例) 
+router.get('/datamonitor/leftInfo.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/datamonitor/leftInfo.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			classid: req.query.classid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 
+
+//点击左侧获得右侧属性
+router.get('/datamonitor/value.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/datamonitor/value.json',
+		form: {
+			userKey: req.session.user.token,
+			projectid: req.query.projectid,
+			instanceid: req.query.instanceid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//点击曲线图标获得属性
+router.get('/datamonitor/lineValue.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/datamonitor/lineValue.json',
+		form: {
+			userKey: req.session.user.token,
+			instanceid: req.query.instanceid,
+			propertyid: req.query.propertyid,
+			dateSta: req.query.dateSta
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+//----------------------远程监测（数据监测）结束------------------------------------
 
 module.exports = router;

@@ -120,6 +120,44 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                 this.str = '';
             },
             projectList: function(projectName,projectId,longitude, latitude,industrytypename,address,buildingarea,supplyarea,data1,data2,data3,data4) {
+                    var img = '<img src="/img/index/loacationimg00.jpg" class="" alt="">';
+                    switch(projectId) {
+                        case '1': 
+                            img = '<img src="/img/index/HHJC.jpg" class="" alt="">';
+                            break;
+                        case '3': 
+                            img = '<img src="/img/index/THYY.jpg" class="" alt="">';
+                            break;
+                        case '4': 
+                            img = '<img src="/img/index/shnch.jpg" class="" alt="">';
+                            break;
+                        case '6': 
+                            img = '<img src="/img/index/ZQ2.jpg" class="" alt="">';
+                            break;
+                            //中德1号站
+                        case '10': 
+                            img = '<img src="/img/index/ZQ2.jpg" class="" alt="">';
+                            break;
+                            //中德4号站
+                        case '17': 
+                            img = '<img src="/img/index/ZQ2.jpg" class="" alt="">';
+                            break;
+                            //新奥生态城
+                        case '24': 
+                            img = '<img src="/img/index/ENNSTC.jpg" class="" alt="">';
+                            break;
+                            //株洲职教城
+                        case '5': 
+                            img = '<img src="/img/index/ZZZJC.jpg" class="" alt="">';
+                            break;
+                            //民生药业
+                        case '7': 
+                            img = '<img src="/img/index/MSYY.jpg" class="" alt="">';
+                            break;
+                        default:
+                            //img = '<img src="/img/index/loacationimg00.jpg" class="" alt="">';
+                            img = '<img src="/img/index/loacationimg00.jpg" class="" alt="">';
+                    }
                     return this.str += 
                         'shangwenlong<div class="my-index-project-box my-index-enter clearfix triggerNav" data-show="xmgl" data-subshow="xmgl-" data-projectid="'+projectId+'" data-longitude="'+longitude+'" data-latitude="'+latitude+'"  data-list="0" title="'+projectName+'">'+
                             '<div class="project-list-left">'+
@@ -130,7 +168,7 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                             '</div>'+
                             '<div class="project-list-img-wrapper">'+
                                 '<div class="project-list-img">'+
-                                    '<img src="/img/index/loacationimg00.jpg" class="" alt="">'+
+                                    img+ 
                                 '</div>'+
                                 '<div class="project-list-detail hide">'+
                                     '<ul>'+

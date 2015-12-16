@@ -127,7 +127,7 @@ function dateInit(rectime){
         /*
         projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
          * */
-    //projectid = '5';
+    projectid = '5';
         //check project
         switch(projectid) { //复位为overview
             case '1': 
@@ -369,8 +369,6 @@ function clickPopup(){}
                 //if(x == 2) return; 
                 //hight > 800 and height < 900, 8 9-4, 7 8-3, 6 7, 5 6, 4 5, 3 4,
                 //width > 
-            console.log('min',parseInt((x+4)*100));
-            console.log('max',parseInt((x+5)*100));
                 if( winHeight > parseInt((x+4)*100) && winHeight < parseInt((x+5)*100)) {
             console.log('min',parseInt((x+4)*100));
             console.log('max',parseInt((x+5)*100));
@@ -382,19 +380,28 @@ function clickPopup(){}
                         $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
                     } else {
                         console.log('down',x)
+                        
+                        if(!(winHeight < 534) ) {
+                            $('.xa-con-cent').css({'transform':'scale(0.25) translate(-50%, -50%)'});
+                        } else {
+                            $('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
+                        }
                     }
         console.log(9999);
                 }  
                 x--;
             }
-                        if(!(winHeight <= 380 && winWidth<= 733)) {
-                        console.log(888)
-                        
-                            $('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
-                        } else {
-                        console.log(555)
+                        if(winHeight <= 380 && winWidth<= 733) {
                             $('.xa-con-cent').css({'transform':'scale(0.15) translate(-50%, -50%)'});
                         }
+                        //if(!(winHeight <= 380 && winWidth<= 733)) {
+                        //console.log(888)
+                        
+                            //$('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
+                        //} else {
+                        //console.log(555)
+                            //$('.xa-con-cent').css({'transform':'scale(0.15) translate(-50%, -50%)'});
+                        //}
         }
         //function setTransform(v) {
             //$('.xa-con-cent').css({'transform':'scale(0.'+(v)+') translate(-50%, -50%)'});

@@ -1,133 +1,212 @@
-;define(function(require){
-    var $ = require('jquery')
-      , exporting = require('exporting')
-      , api = require('app/getApi')
-      , selectpicker = require('bootstrap-select')
-      , projectid = require('app/checkProjectid')
-    ;
-    (function(){
-      //下拉选择
-        $('#classTypeList').selectpicker({
-        });
+define(function(require) {
+	var $ = require('jquery'),
+		exporting = require('exporting'),
+		selectpicker = require('bootstrap-select'),
+		zh_cn = require('moment-zh-cn'),
+		moment = require('moment'),
+		datapicker = require('bootstrap-datetimepicker.min'),
+		bootstrap = require('bootstrap'),
+		globalTools = require('app/globalTools'),
+		options = require('app/highchartsConfig'),
+		projectid = require('app/checkProjectid'),
+		api = require('app/getApi'),
+		optionsBase = require('app/highchartsConfigBase'),
+		optionsLines = require('app/highchartsConfigLines'),
+		datetimepickerObj = require('app/dateObj');
 
-        $('#classList').selectpicker({
-        });
+	(function() {
 
-        $('#classList').change(function ()
-      {
-          var url = '/api/datamonitor/leftInfo.json';
-          //var classid = 2;
-          var classid = $('#classList').find("option:selected").attr("value");;  //获取Select选择的Value
-          demand.start({
-              url: url,
-              parameter: {
-              },
-              data: {
-                  projectid: projectid,
-                  classid: classid
-              },
-              done: onClassSelectChanged
-          });
-      });
+		var dateSta = moment().format('YYYY-MM-DD');
+		//下拉选择
+		$('#classTypeList').selectpicker({});
 
-        function onClassSelectChanged(result, parameter) {
-          //var oneLi = "<li>黄花机场js</li>";
-          //$('.rodr').append(oneLi);
+		var selectedCategorytype = 0;
+		var ltftInstanceid = 2;
 
-          $('#classInstanceList').empty();
+		var classArr = new Array;
+		var classinstanceArr = new Array;
 
-          var classInstancelist = result.status.data.list;
+		//查询所有的设备类数据
+		demand.start({
+			url: '/api/clzMng/list.json',
+			done: function(data) {
+				classArr = data.status.data.classList;
+			}
+		});
 
-          if (classInstancelist != null)
-          {
-              for (var i = 0; i < classInstancelist.length; i++) {
-                  var oneLi = '<li>' + classInstancelist[i].classinstancename + '</li>';
-                  $('#classInstanceList').append(oneLi);
-                  $('#classInstanceList>li').last().data("instanceId", classInstancelist[i].classinstanceid);
-              }
-              $('#classInstanceList>li').on('click', function () {
+		//查询项目下的所有设备实例数据
+		demand.start({
+			url: '/api/datamonitor/leftInfo.json',
+			data: {
+				projectid: projectid,
+				classid: 0
+			},
+			done: function(data) {
+				classinstanceArr = data.status.data.list;
+				leftinfoSet(classinstanceArr);
+			}
+		});
 
-                  var url = '/api/datamonitor/value.json';
-                  var instanceId = $(this).data("instanceId");
-                  demand.start({
-                      url: url,
-                      parameter: {
-                      },
-                      data: {
-                          projectid: projectid,
-                          instanceid: instanceId
-                      },
-                      done: onInstancePropertyReceived
-                  });
-              });
-          }
+		//工艺级别改变时，取得ID
+		$('#classTypeList').change(function() {
+			selectedCategorytype = $(this).find('option:selected').attr('id');
+			resultSet(selectedCategorytype);
+		});
 
+		//根据选择的工艺级别，对设备实例信息进行筛选
+		function resultSet(category) {
+			if (category == 0) { //所有
+				leftinfoSet(classinstanceArr);
+			} else {
+				var resultArr = new Array;
+
+				var classIdArr = new Array;
+				$.each(classArr, function(i, x) {
+					if (parseFloat(category) == x.categorytype) {
+						classIdArr.push(x);
+					}
+				});
+				$.each(classIdArr, function(x, y) {
+					$.each(classinstanceArr, function(m, n) {
+						if (y.classid == n.classid) {
+							resultArr.push(n);
+						}
+					});
+				});
+				leftinfoSet(resultArr);
+			}
 		}
 
-        function onInstancePropertyReceived(result, parameter)
-        {
-            $('#tbyDynamicProperty').empty();
-            $('#tbyStaticProperty').empty();
-            var dynamicPropertylist = result.status.data.lists[0];
-            var staticPropertylist = result.status.data.lists[0];
-            if (dynamicPropertylist != null) {
-                for (var i = 0; i < dynamicPropertylist.length; i++) {
-                    var oneTr = '<tr class="row"> <td>' + dynamicPropertylist[i].propertyname + '</td> <td>' + dynamicPropertylist[i].datavalue + dynamicPropertylist[i].unitname + '</td></tr>';
-                    $('#tbyDynamicProperty').append(oneTr);
-                }
-            }
-            if (staticPropertylist != null) {
-                for (var i = 0; i < staticPropertylist.length; i++) {
-                    var oneTr = '<tr class="row"> <td>' + staticPropertylist[i].propertyname + '</td> <td>' + staticPropertylist[i].datavalue + staticPropertylist[i].unitname + '</td></tr>';
-                    $('#tbyDynamicProperty').append(oneTr);
-                }
-            }
-        };
+		//根据查询的结果，生成页面数据
+		function leftinfoSet(dataArr) {
+			$('#classInstanceList').empty();
+			$.each(dataArr, function(i, v) {
+				var oneLi = '<li class="classinstance" classid=' + v.classid + ' id=' + v.classinstanceid + '>' + v.classinstancename + '</li>';
+				$('#classInstanceList').append(oneLi);
+			});
+		}
 
-      //$('#classInstanceList>li').on('click', function () {
-      //    var instanceId = 1;
-      //});
+		//选择设备实例，查询设备实例的属性信息
+		$(document).on('click', '.classinstance', function() {
+			var classinstanceid = $(this).attr("id");
+			var classinstancename = $(this).text();
+			var classid = $(this).attr("classid");
 
-    	$('.btn_coin').on('click', function() {
-            $('#gytModal').modal({
-                backdrop: 'static' 
-            });  		
-        });
+			ltftInstanceid = classinstanceid;
 
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-        // Create the chart
-        $('.sjjc-charts').highcharts('StockChart', {
+			$(this).css("background-color", "#3498db").css("color", "white").css("border-radius", "5px");
+			$(this).siblings().css("background-color", "").css("color", "black");
+
+			demand.start({
+				url: '/api/datamonitor/value.json',
+				data: {
+					projectid: projectid,
+					instanceid: classinstanceid
+				},
+				done: function(data) {
+					rightInfoSet(classid, data.status.data, classinstancename);
+				}
+			});
+		});
+
+		//根据查询的结果，生成页面
+		function rightInfoSet(classid, data, classinstancename) {
+			$('#tbyDynamicProperty').empty();
+			$('#tbyStaticProperty').empty();
+
+			$('#DynamicTitle').text(classinstancename);
+			$('#StaticTitle').text(classinstancename);
+			//动态属性
+			$.each(data.lists, function(i, v) {
 
 
-            rangeSelector : {
-                selected : 1
-            },
+				var oneTr = "";
+				if (parseFloat(v.datavalue1) > 0) {
+					oneTr += '<tr class="row"> <td>' + v.propertyname + '<span class="btn_coin" id=' + v.propertyid + ' name=' + v.propertyname + '> <img src = "/img/sjjc/uill.png"> </span></td > <td> ' + v.datavalue1 + v.unitname + '</td></tr>';
+				} else {
+					oneTr += '<tr class="row"> <td>' + v.propertyname + '</td> <td>' + v.datavalue1 + v.unitname + '</td></tr>';
+				}
+				$('#tbyDynamicProperty').append(oneTr);
+			});
 
-            title : {
-                text : null 
-            },
+			//静态属性
+			if (classid == 2) { //能源涨级别的静态数据
+				var v = data.infos[0];
+				var item = data.design;
+				var oneTr = "";
+				oneTr += '<tr class="row"><td>项目类型</td> <td>' + v.industryclassname + '</td></tr>';
+				oneTr += '<tr class="row"><td>供冷期</td> <td>' + v.coldingstart + "--" + v.coldingend + '</td></tr>';
+				oneTr += '<tr class="row"><td>供热期</td> <td>' + v.heatingstart + "--" + v.heatingend + '</td></tr>';
+				oneTr += '<tr class="row"><td>所属行业</td> <td>' + v.industrytypename + '</td></tr>';
+				oneTr += '<tr class="row"><td>投资单位</td> <td>' + v.investcompany + '</td></tr>';
+				oneTr += '<tr class="row"><td>商业模式</td> <td>' + v.businesstypename + '</td></tr>';
+				oneTr += '<tr class="row"><td>设计单位</td> <td>' + v.designcompany + '</td></tr>';
+				oneTr += '<tr class="row"><td>运营商</td> <td>' + v.carrieroperator + '</td></tr>';
+				oneTr += '<tr class="row"><td>项目地址</td> <td>' + v.address + '</td></tr>';
+				oneTr += '<tr class="row"><td>供能/建设</td> <td>' + v.supplyarea + "㎡/" + v.buildingarea + '㎡</td></tr>';
+				oneTr += '<tr class="row"><td>建筑单位</td> <td>' + v.buildcompany1 + '</td></tr>';
 
-        yAxis: {
-            title: {
-                //text: 'Temperature (°C)'
-                text: null 
-            },
-            plotLines: [{
-                value: 125,
-                width: 1,
-                //color: '#808080'
-                zIndex: 2,
-                color: 'red'
-            }]
-        },
-            series : [{
-                name : 'AAPL',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
-    });
-    }());
+				$.each(item, function(i, m) {
+					oneTr += '<tr class="row"><td>' + m.conitemname + '</td> <td>' + m.loadvalue + m.unitname + '</td></tr>';
+				});
+				$('#tbyStaticProperty').append(oneTr);
+			} else {
+				var staticData = data.staticLists;
+
+				$.each(staticData, function(i, v) {
+					var oneTr = '<tr class="row"> <td>' + v.propertyname + '</td> <td>' + v.datavalue1 + '</td></tr>';
+					$('#tbyStaticProperty').append(oneTr);
+				});
+			}
+		}
+
+		//点击图标，显示曲线图
+		$(document).on('click', '.btn_coin', function() {
+			var propertyId = $(this).attr("id");
+			var propertyName = $(this).attr("name");
+			$('#gytModal').modal({
+				backdrop: 'static'
+			});
+			demand.start({
+				url: '/api/datamonitor/lineValue.json',
+				parameter: {
+					id: 'sjjcCharts',
+					fn: globalTools.tbhbLines,
+					options: optionsLines,
+					self: globalTools,
+					name: propertyName
+				},
+				data: {
+					instanceid: ltftInstanceid,
+					propertyid: propertyId,
+					dateSta: dateSta
+				},
+				done: formatZbLines
+			});
+		});
+
+		//解析数据，变成HighChar识别的数据格式
+		function formatZbLines(data, parameter) {
+			var result = data.status.data.list;
+			var tmp = {};
+			var sData1 = [];
+			var yItem = {};
+			yItem.name = parameter.name;
+			yItem.data = [];
+
+			var tmpX = new Array;
+			$.each(result, function(i, v) {
+				tmpX.push(v.rectime);
+				yItem.data.push(v.datavalue);
+			});
+
+			tmp.xData = globalTools.dateFormater(1, tmpX);
+			sData1.push(yItem)
+			tmp.sData = sData1;
+			globalTools.tbhbCallback(tmp, parameter);
+		}
+
+
+	}());
+
 });

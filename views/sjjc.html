@@ -1,106 +1,95 @@
 <% include header-top.html %>
-<link rel="stylesheet" href="/css/sjjc.css" media="all">
-<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
-<% include header-bottom.html %>
+	<link rel="stylesheet" href="/css/sjjc.css" media="all">
+	<link rel="stylesheet" href="/css/bootstrap-select.css" media="all">
+	<% include header-bottom.html %>
 
+		<!--数据监测-->
+		<div id="sjjc" class="my-section">
+			<!--两栏-->
+			<div id="index" class="index_all">
+				<div class="panel panel-default h100 mg0">
+					<div class="panel-body m100 h100 pr pd0">
 
-	<!--数据监测-->
-	<div id="sjjc" class="my-section">
-		<!--两栏--><div id="index" class="index_all">
-            <div class="panel panel-default h100 mg0">
-                <div class="panel-body m100 h100 pr pd0">
+						<div class="btn-group sjjc-left-dropdown">
+							<select class="form-control selectpicker" id="classTypeList">
+								<option id="0">全部类型</option>
+								<option id="1">主系统</option>
+								<option id="2">子系统</option>
+								<option id="3">机组</option>
+								<option id="4">设备</option>
+							</select>
+						</div>
 
-                    <div class="btn-group sjjc-left-dropdown">
-                        <select class="form-control selectpicker" id="classTypeList">
-                            <option value="1">全部类型</option>
-                            <option value="2">子系统</option>
-                            <option value="3">机组</option>
-                            <option value="4">设备</option>
-                        </select>
-                    </div>
-
-                    <div>
-
-                        <select class="form-control selectpicker" id="classList">
-                            <% for(j=0;j<classList.length;j++) { %>
-                                <option value="<%= classList[j].classid %>"> <%= classList[j].classname %> </option>
-                                <% } %>
-                        </select>
-
-                    </div>
-
-
-					<div class="rode_li h100 sjjc-left-list" >
-                        <ul class="rodr" id="classInstanceList">
-                                <!--<li><a href="#"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>黄花机场1#泛能站</a></li>-->
-                        </ul>
-					</div>
-                </div>
-            </div>
-
-		</div>
-
-		<div id="second" class="tab_all">
-			<ul id="myTab" class="nav nav-tabs ">
-				<li class="active"><a href="#dtsx" data-toggle="tab">动态属性</a></li>
-				<li><a href="#jtsx" data-toggle="tab">静态属性</a></li>
-			</ul>
-			<div id="myTabContent" class="tab-content">
-				<div class="tab-pane fade in active" id="dtsx">
-					<div class="panel-body panel_all pd0">
-						<table class="table table-hover table-striped table_fon">
-							<thead>
-								<tr class="row">
-									<td class="col-md-6">参数</td>
-									<td class="col-md-6">值</td>
-								</tr>
-							</thead>
-							<tbody id="tbyDynamicProperty">
-
-							</tbody>
-						</table>
+						<div class="rode_li h100 sjjc-left-list">
+							<ul class="rodr" id="classInstanceList">
+								<!--<li><a href="#"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>黄花机场1#泛能站</a></li>-->
+							</ul>
+						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="jtsx">
-					<div class="panel-body panel_all pd0">
-						<table class="table table-hover table-striped table_fon">
-							<thead>
-								<tr class="row">
-									<td class="col-md-6">参数</td>
-									<td class="col-md-6">值</td>
-								</tr>
-							</thead>
-							<tbody tbyStaticProperty>
 
-							</tbody>
-						</table>
+			</div>
+
+			<div id="second" class="tab_all">
+				<ul id="myTab" class="nav nav-tabs ">
+					<li><a href="#jtsx" data-toggle="tab">静态属性</a></li>
+					<li class="active"><a href="#dtsx" data-toggle="tab">动态属性</a></li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade in active" id="dtsx">
+						<div class="panel-body panel_all pd0">
+							<table class="table table-hover table-striped table_fon">
+								<thead>
+									<tr class="row">
+										<td class="col-md-6">参数</td>
+										<td class="col-md-6" id="DynamicTitle">
+										</td>
+									</tr>
+								</thead>
+								<tbody id="tbyDynamicProperty">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="jtsx">
+						<div class="panel-body panel_all pd0">
+							<table class="table table-hover table-striped table_fon">
+								<thead>
+									<tr class="row">
+										<td class="col-md-6">参数</td>
+										<td class="col-md-6" id="StaticTitle"></td>
+									</tr>
+								</thead>
+								<tbody id="tbyStaticProperty">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--弹出框-->
+			<div id="gytModal" class="modal fade bs-example-modal-lg">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">运行参数详细</h4>
+						</div>
+						<div class="modal-body" style="height: 487px;">
+							<div id="sjjcCharts" class="sjjc-charts" style="height: 457px; width: 870px;"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-	
-	<!--弹出框-->
-    <div id="gytModal" class="modal fade bs-example-modal-lg">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">运行参数详细</h4>
-                </div>
-                <div class="modal-body" style="height: 487px;">
-                    <div id="sjjcCharts" class="sjjc-charts" style="height: 457px; width: 870px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-	</div>
 
-	
-	<script>
-		requirejs(['../js/common'], function(common) {
-			requirejs(['app/sjjc'])
-		});
-	</script>
-	
-	<% include footer.html %>
+		<script>
+			requirejs(['../js/common'], function(common) {
+				requirejs(['app/sjjc'])
+			});
+		</script>
+
+		<% include footer.html %>
