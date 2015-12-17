@@ -44,7 +44,7 @@ define(function(require){
              globalMode = 0;
           }
 
-    //projectid = '1';
+    //projectid = '4';
         scaleGYT();
         $(window).resize(function(){
             scaleGYT();
@@ -151,7 +151,8 @@ function dateInit(rectime){
                 buildGytList(['shenlongchengPA-A-三联供系统','shenlongchengPB-B-电制冷系统','shenlongchengPC-C-燃气锅炉'])
                 pageid = 102; 
                 break;
-            case '5': 
+            case '17': 
+            case '10': 
                 $('#gytSidebar').removeClass('hide');
                 showMe('#zhongdeArtwork');
                 zhongdePAFn();
@@ -379,7 +380,10 @@ function clickPopup(){}
                     if(x >= 2) {
                         console.log('up',x);
                         //if(winHeight <= 653 && winWidth <=1024 ) {
-                        if(winHeight <= 767 && winWidth <=1024 ) {
+                        if(winHeight <= 653 && winWidth <=1366){
+                                $('.xa-con-cent').css({'transform':'scale(0.3) translate(-50%, -50%)'});
+                        }
+                        else if(winHeight <= 767 && winWidth <=1024 ) {
                         console.log(1024);
                             if(projectid ==6) {
                         console.log(666);
@@ -392,7 +396,11 @@ function clickPopup(){}
                                 $('.xa-con-cent').css({'transform':'scale(0.25) translate(-50%, -50%)'});
                             }
                         } else {
-                            $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                            if(projectid ==6) {
+                                $('.xa-con-cent').css({'transform':'scale(0.4) translate(-50%, -50%)'});
+                            } else {
+                                $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                            }
                         }
                     } else {
                         console.log('down',x);

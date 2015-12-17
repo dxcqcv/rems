@@ -112,9 +112,16 @@ a:hover {
   margin-left: 1em;
   width: 6%;
   line-height: 2em; }
-.btn_coin{cursor:pointer;}
+ 
+ /*bug修改开始*/
+.btn_coin{ cursor:pointer; width:18px; height:18px; display:inline-block; background:url(../img/sjjc/uill.png) no-repeat left center;
+margin-left:10px; position:relative; top:4px;}
 
-.btn_coin:hover{background-image: url(/img/sjjc/uikj.png);}
+.btn_coin:hover{background: url(/img/sjjc/uikj.png) no-repeat left center;}
+
+#classInstanceList li{ white-space:nowrap;text-overflow:ellipsis;}
+
+/*bug修改结束*/
 
 .two {
   display: none; }

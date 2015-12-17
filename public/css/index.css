@@ -313,6 +313,36 @@
   margin: 5px;
   position: relative; }
 
+.my-index-list-def {
+  background: url("../img/index/index_project03.png") no-repeat; }
+
+.my-index-list-hh {
+  background: url("../img/index/HHJC.jpg") no-repeat; }
+
+.my-index-list-th {
+  background: url("../img/index/THYY.jpg") no-repeat; }
+
+.my-index-list-snc {
+  background: url("../img/index/shnch.jpg") no-repeat; }
+
+.my-index-list-zq {
+  background: url("../img/index/ZQ2.jpg") no-repeat; }
+
+.my-index-list-zd1 {
+  background: url("../img/index/ZD1.jpg") no-repeat; }
+
+.my-index-list-zd4 {
+  background: url("../img/index/ZD1.jpg") no-repeat; }
+
+.my-index-list-xastc {
+  background: url("../img/index/ENNSTC.jpg") no-repeat; }
+
+.my-index-list-zzzjc {
+  background: url("../img/index/ZZZJC.jpg") no-repeat; }
+
+.my-index-list-msyy {
+  background: url("../img/index/MSYY.jpg") no-repeat; }
+
 .my-index-list-name {
   font-size: 12px;
   color: #fff;

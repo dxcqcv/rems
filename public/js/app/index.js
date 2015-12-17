@@ -207,7 +207,45 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                         '</div>';
             },
             projectAll: function(projectName,projectId) {
-                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav" data-projectid="'+projectId+'" data-list="1" data-show="xmgl" data-subshow="xmgl-" title="'+projectName+'"><span class="my-index-list-name">'+projectName+'</span></div>';
+                var img = 'my-index-list-def';
+                    switch(projectId) {
+                        case '1': 
+                            img = 'my-index-list-hh';
+                            break;
+                        case '3': 
+                            img = 'my-index-list-th';
+                            break;
+                        case '4': 
+                            img = 'my-index-list-snc';
+                            break;
+                            //肇庆
+                        case '6': 
+                            img = 'my-index-list-zq';
+                            break;
+                            //中德1号站
+                        case '10': 
+                            img = 'my-index-list-zd1';
+                            break;
+                            //中德4号站
+                        case '17': 
+                            img = 'my-index-list-zd4';
+                            break;
+                            //新奥生态城
+                        case '24': 
+                            img = 'my-index-list-xastc';
+                            break;
+                            //株洲职教城
+                        case '5': 
+                            img = 'my-index-list-zzzjc';
+                            break;
+                            //民生药业
+                        case '7': 
+                            img = 'my-index-list-msyy';
+                            break;
+                        default:
+                            img = 'my-index-list-def';
+                    }
+                return this.str += 'shangwenlong<div class="my-index-list-cont my-index-enter triggerNav '+ img+'" data-projectid="'+projectId+'" data-list="1" data-show="xmgl" data-subshow="xmgl-" title="'+projectName+'"><span class="my-index-list-name">'+projectName+'</span></div>';
             },
             makeItems: function() {
                         this.str += '<div class="item"></div>';

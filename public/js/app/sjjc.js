@@ -14,20 +14,27 @@ define(function(require) {
 		optionsLines = require('app/highchartsConfigLines'),
 		datetimepickerObj = require('app/dateObj');
 
+	$(function(){
+	   $(".btn_coin").mouseover(function(e) {
+		   alert(4)
+        $(this).css("background", "url(../img/sjjc/uikj.png) no-repeat left center");
+    });
+	  })		
+
 	(function() {
 
 		var dateSta = moment().format('YYYY-MM-DD');
 		//下拉选择
 		$('#classTypeList').selectpicker({});
 
-//hover 控制
-$("#table1 tbody tr span img").hover(function(){
-    		$(this).attr("src","/img/sjjc/uikj.png");
-    	},
-    	function(){
-    		$(this).attr("src","/img/sjjc/uill.png");
-    		
-    	});
+		//hover 控制
+//		$("#table1 tbody tr span img").hover(function(){
+//		    		$(this).attr("src","/img/sjjc/uikj.png");
+//		    	},
+//		    	function(){
+//		    		$(this).attr("src","/img/sjjc/uill.png");
+//		    		
+//		    	});
 
 
 		var selectedCategorytype = 0;
@@ -118,7 +125,14 @@ $("#table1 tbody tr span img").hover(function(){
 				}
 			});
 		});
-
+		function f1(obj)
+			{
+				alert("a");
+			}
+			function f2(obj)
+			{
+				alert("b");
+			}
 		//根据查询的结果，生成页面
 		function rightInfoSet(classid, data, classinstancename) {
 			$('#tbyDynamicProperty').empty();
@@ -126,19 +140,23 @@ $("#table1 tbody tr span img").hover(function(){
 
 			$('#DynamicTitle').text(classinstancename);
 			$('#StaticTitle').text(classinstancename);
+			
+	
 			//动态属性
 			$.each(data.lists, function(i, v) {
 
 
 				var oneTr = "";
 				if (parseFloat(v.datavalue1) > 0) {
-					oneTr += '<tr class="row"> <td>' + v.propertyname + '<span class="btn_coin" id=' + v.propertyid + ' name=' + v.propertyname + '> <img src = "/img/sjjc/uill.png"> </span></td > <td> ' + v.datavalue1 + v.unitname + '</td></tr>';
+					oneTr += '<tr class="row"> <td>' + v.propertyname + '<span class="btn_coin" id=' + v.propertyid + ' name=' + v.propertyname + '></span></td > <td> ' + v.datavalue1 + v.unitname + '</td></tr>';
 				} else {
 					oneTr += '<tr class="row"> <td>' + v.propertyname + '</td> <td>' + v.datavalue1 + v.unitname + '</td></tr>';
 				}
 				$('#tbyDynamicProperty').append(oneTr);
 			});
+			
 
+			
 			//静态属性
 			if (classid == 2) { //能源涨级别的静态数据
 				var v = data.infos[0];

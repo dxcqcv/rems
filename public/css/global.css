@@ -531,11 +531,8 @@ input.radio {
 .cp {
   cursor: pointer; }
 
-/*if 1024x768*/
+/*if 1500*/
 @media (max-width: 1500px) {
-  .subTitle {
-    width: 80px; }
-
   .ycjc-offset {
     margin-left: 0; }
 
@@ -553,6 +550,10 @@ input.radio {
 
   .jgfx-top-right-none {
     display: none; } }
+/*if 1366*/
+@media (max-width: 1200px) {
+  .subTitle {
+    width: 80px; } }
 /*if 800x600*/
 @media (max-width: 900px) {
   .rems-top-words {

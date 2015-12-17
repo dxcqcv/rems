@@ -2567,7 +2567,7 @@
   /*width:1636px
   width: 1436px;
   */
-  width: 1160px;
+  width: 1460px;
   height: 100px;
   text-align: right;
   vertical-align: bottom;
@@ -2620,6 +2620,12 @@
 
 .zhengqi-icon {
   background: url("../images/legend-icon-zhengqi.png") repeat-x; }
+
+.dian-icon {
+  background: url("../images/legend-icon-dian.png") repeat-x; }
+
+.yiercheng-icon {
+  background: url("../images/legend-icon-yiercheng.png") repeat-x; }
 
 /*A区进线*/
 .test72 {

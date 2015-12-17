@@ -35,10 +35,10 @@
 .l_pwd a{text-decoration: underline;color: #44B6D8;}
 .l_pwd a:hover{cursor:pointer!important;}
 
-.login_footer{    text-align: center;width: 100%; position: absolute; top: 86%; line-height: 28px;}
+.login_footer{ text-align: center;width: 100%; position:fixed; top:85%; line-height: 28px;}
 .login_footer span {font-size: 12px;vertical-align: middle;}
 
-.conteny{position: absolute;top: 65%; left: 50%; transform: translateX(-50%);}
+.conteny{position: relative;top: 65%; left: 70%; transform: translateX(-50%);}
 .qlwj,.ycfw,.yhty{border-right: 1px solid silver;}
 .tleft{padding: 0px 10px;}
 .putform {border-collapse: collapse;width: 100%;table-layout: auto; width: 279px;}
@@ -48,3 +48,17 @@ table {border-spacing: 0; border-collapse: collapse;width: 100%;border-spacing: 
 .input-group-addon, .btn,
 .btn { padding: 6px 12px; } 
 .form-control { height: 34px; }
+
+
+/*bug修改*/
+@media screen and (min-width:1920px){
+	.login_footer{ top:74%;}
+	
+	}
+
+
+
+
+
+
+

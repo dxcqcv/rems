@@ -363,15 +363,18 @@ float: right!important;
 .gray { color: #aaaaaa!important;}
 input.radio { display: inline-block; vertical-align: sub; }
 .cp { cursor: pointer; }
-/*if 1024x768*/
+/*if 1500*/
 @media (max-width: 1500px)  { 
-    .subTitle { width: 80px;}
     .ycjc-offset { margin-left:0; }
     .nygl-offset { margin-left:0; }
     .pgzd-offset { margin-left:0; }
     .pgzdzj-offset { margin-left:0; }
     .jgfx-date-box { width: 139px; }
     .jgfx-top-right-none {display: none;}
+}
+/*if 1366*/
+@media (max-width: 1200px)  { 
+    .subTitle { width: 80px;}
 }
 /*if 800x600*/
 @media (max-width: 900px)  { 
