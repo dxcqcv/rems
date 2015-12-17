@@ -36,7 +36,7 @@
 .gyt-charts {
   background: #000;
   height: 447px;
-  width: 584px; }
+  /*width: 584px;  */ }
 
 .gyt-mod-block-table td {
   text-align: center; }
@@ -1803,7 +1803,8 @@
 .tinghu-artwork {
   /*width: 1935px;*/
   width: 1651px;
-  height: 1718px; }
+  height: 1718px;
+  margin-left: 300px; }
 
 .tinghu-overview {
   background: url("../images/tinghu-gyt.png") no-repeat;
@@ -2300,12 +2301,12 @@
   left: 0; }
 
 .zhongde-lengqueta {
-  top: 0;
-  left: 0; }
+  top: 550px;
+  left: 50px; }
 
 .zhongde-diyuanrebeing {
-  top: 0;
-  left: 0; }
+  top: 950px;
+  left: 700px; }
 
 .zhonde-dianzhilengji {
   top: 700px;
@@ -2318,6 +2319,31 @@
 .zhongde-artwork {
   width: 2000px;
   height: 1418px; }
+
+/*肇庆*/
+.zhaoqing-a {
+  width: 2000px;
+  height: 1126px; }
+
+.zhaoqing-yec {
+  background: url("../images/zhaoqingYec.png") no-repeat;
+  margin-left: 414px; }
+
+.zhaoqing-b {
+  width: 2000px;
+  height: 1188px; }
+
+.zhaoqing-lqs {
+  background: url("../images/zhaoqingLqs.png") no-repeat;
+  margin-left: 414px; }
+
+.zhaoqing-c {
+  width: 2000px;
+  height: 1108px; }
+
+.zhaoqing-lds {
+  background: url("../images/zhaoqingLds.png") no-repeat;
+  margin-left: 414px; }
 
 /*神农城*/
 .shenlongcheng-mark {
@@ -2378,7 +2404,8 @@
   /*
       background: url('../images/shenlongcheng-sanliangong.png') no-repeat; 
       */
-  background: url("../images/shengnongcheng-sanlianggong.gif") no-repeat; }
+  background: url("../images/shengnongcheng-sanlianggong.gif") no-repeat;
+  margin-left: 200px; }
 
 .shenlongcheng-ranqiguolu {
   background: url("../images/shengnongcheng-guolu.gif") no-repeat; }

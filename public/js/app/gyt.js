@@ -44,6 +44,7 @@ define(function(require){
              globalMode = 0;
           }
 
+    //projectid = '1';
         scaleGYT();
         $(window).resize(function(){
             scaleGYT();
@@ -90,7 +91,7 @@ function dateInit(rectime){
 }
 
         function gytDynamicCharts(data,parameter) {
-            console.log(data)
+            console.log(data);
             var linesObj = parameter.dataLines;
             var sName, sA = [];
             var propertyid = parameter.propertyid;
@@ -127,7 +128,6 @@ function dateInit(rectime){
         /*
         projectid=1 对应pageid=100，projectid=3 对应pageid=101，projectid=4对应pageid=102
          * */
-    projectid = '5';
         //check project
         switch(projectid) { //复位为overview
             case '1': 
@@ -161,6 +161,7 @@ function dateInit(rectime){
             case '6': 
                 $('#gytSidebar').removeClass('hide');
                 showMe('#zhaoqingArtwork');
+                zhaoqingPAFn();
                 buildGytList(['zhaoqingPA-A-乙二醇系统','zhaoqingPB-B-冷冻水系统','zhaoqingPC-C-冷却水系统',])
                 pageid = 9; 
                 break;
@@ -376,18 +377,38 @@ function clickPopup(){}
                     //x = 1.5;    
                 //}
                     if(x >= 2) {
-                        console.log('up',x)
-                        $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                        console.log('up',x);
+                        //if(winHeight <= 653 && winWidth <=1024 ) {
+                        if(winHeight <= 767 && winWidth <=1024 ) {
+                        console.log(1024);
+                            if(projectid ==6) {
+                        console.log(666);
+                                $('.xa-con-cent').css({'transform':'scale(0.37) translate(-50%, -50%)'});
+                            } else if(projectid ==5) {
+                                $('.xa-con-cent').css({'transform':'scale(0.3) translate(-50%, -50%)'});
+                            } else {
+                        console.log('pid',projectid );
+                        console.log(777);
+                                $('.xa-con-cent').css({'transform':'scale(0.25) translate(-50%, -50%)'});
+                            }
+                        } else {
+                            $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
+                        }
                     } else {
-                        console.log('down',x)
+                        console.log('down',x);
                         
                         if(!(winHeight < 534) ) {
-                            $('.xa-con-cent').css({'transform':'scale(0.25) translate(-50%, -50%)'});
+        console.log(9999);
+                            if(winHeight <= 599 && winWidth <= 800 ) {
+                                $('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
+                            } else {
+                            
+                                $('.xa-con-cent').css({'transform':'scale(0.25) translate(-50%, -50%)'});
+                            }
                         } else {
                             $('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
                         }
                     }
-        console.log(9999);
                 }  
                 x--;
             }
@@ -457,6 +478,9 @@ function clickPopup(){}
             .on('click', '.tinghuPB', tinghuPBFn)
             .on('click', '.tinghuPC', tinghuPCFn)
             .on('click', '.tinghuPD', tinghuPDFn)
+            .on('click', '.zhaoqingPA', zhaoqingPAFn)
+            .on('click', '.zhaoqingPB', zhaoqingPBFn)
+            .on('click', '.zhaoqingPC', zhaoqingPCFn)
             .on('click', '.shenlongchengPA', shenlongchengPAFn)
             .on('click', '.shenlongchengPB', shenlongchengPBFn)
             .on('click', '.shenlongchengPC', shenlongchengPCFn)
@@ -1039,6 +1063,19 @@ function clickPopup(){}
             gytSelectFn(true,'#zhongdeA','三联供系统',[0]);
             shenlongchengArtwork.height(1418);
         }
+        //肇庆
+        function zhaoqingPAFn() {
+            gytSelectFn(true,'#zhaoqingA','乙二醇系统',[0]);
+            shenlongchengArtwork.height(1126);
+        }
+        function zhaoqingPBFn() {
+            gytSelectFn(true,'#zhaoqingB','冷冻水系统',[1]);
+            shenlongchengArtwork.height(1108);
+        }
+        function zhaoqingPCFn() {
+            gytSelectFn(true,'#zhaoqingC','冷却水系统',[2]);
+            shenlongchengArtwork.height(1188);
+        }
         //神农城
         function shenlongchengPAFn() {
             gytSelectFn(true,'#shenlongchengA','三联供系统',[0]);
@@ -1053,7 +1090,7 @@ function clickPopup(){}
             gytSelectFn(true,'#shenlongchengC','燃气锅炉',[2]);
             shenlongchengArtwork.height(1158);
         }
-
+//参数显示按钮，显示图片，标题，对应下标
         function gytSelectFn(showBottom,showName,title,num) {
             $(showName).removeClass('hide').siblings('div').addClass('hide');
 
@@ -1091,6 +1128,9 @@ function clickPopup(){}
                 case 4:
                     className = ['shenlongchengPA','shenlongchengPB','shenlongchengPC']
                     break;
+                //case 6:
+                    //className = ['zhaoqingPA','zhaoqingPB','zhaoqingPC']
+                    //break;
               }
               for(var i = 0, l = num; i < l; i++) {
                  str += '<span class="tail-icon active '+className[i]+'" >'+className[i].substr(className[i].length - 1)+'</span>'; //取最后一个字符

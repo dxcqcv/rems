@@ -220,6 +220,8 @@ define(function(require) {
             if($this.hasClass('disableIcon')) return;
             modal.attr('data-num',num);
             modal.find('.modal-title').text(title);
+			modal.modal({backdrop:"static"});//2015.12.16 xusheng
+
             modal.modal('show');
         },
 

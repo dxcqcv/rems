@@ -111,6 +111,7 @@ define(function(require) {
 			var chartPie;
 			optionsPie.chart.renderTo = parameter.id;
 			optionsPie.chart.backgroundColor = '#ddd';
+			optionsPie.series[0].name='占比';
 			optionsPie.series[0].data = data;
 			chartPie = new Highcharts.Chart(optionsPie);
 		}

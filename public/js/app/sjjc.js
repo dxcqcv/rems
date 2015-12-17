@@ -20,6 +20,16 @@ define(function(require) {
 		//下拉选择
 		$('#classTypeList').selectpicker({});
 
+//hover 控制
+$("#table1 tbody tr span img").hover(function(){
+    		$(this).attr("src","/img/sjjc/uikj.png");
+    	},
+    	function(){
+    		$(this).attr("src","/img/sjjc/uill.png");
+    		
+    	});
+
+
 		var selectedCategorytype = 0;
 		var ltftInstanceid = 2;
 

@@ -18,8 +18,18 @@ define(function(require){
 	  
       (function(){
 	  //var dateStar ='2015-09-01' //moment().format('YYYY-MM-DD');
+	  var date = new Date ();
 	  var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =moment().format('hh');
+	  var dateHour="";
+	  if(date.getHours ()-1<10)
+	  {
+		 dateHour=dateStar+" 0"+(date.getHours () - 1);
+	  }
+	  else
+	  {
+		  dateHour=dateStar+" "+(date.getHours () - 1);
+	  }
       //下拉选择
       $('.selectpicker').selectpicker({});
       //图表
@@ -39,7 +49,7 @@ define(function(require){
         });
        
         var highchartsPieData;
-        demand.start({url:'/api/effiCheck/sysindex.json',data:{projectid:projectid,dateHour:'2015-07-01 15'},done:zbfxPie});
+        demand.start({url:'/api/effiCheck/sysindex.json',data:{projectid:projectid,dateHour:dateHour},done:zbfxPie});
 
         function zbfxPie(data) {
             var id;
@@ -52,6 +62,11 @@ define(function(require){
             var zbfxName;
             var pieColors;
             var color;
+
+			if(data.status.data=="")
+			{
+				return;
+			}
 			
 			var tempArr=new Array;
 			$.each(data.status.data.list, function(i,item){
@@ -62,6 +77,7 @@ define(function(require){
 			});
             highchartsPieData = tempArr;
             
+			
             $.each(data.status.data.list, function(i,v){
                 switch(i) {
                     case 0: id = 'pieChart1'; pieColors = ['#7cc576', '#e8ebeb']; color = '#7cc576'; break; 
@@ -150,7 +166,7 @@ define(function(require){
 				
 				parameter.id="#gyxtxlSel";
 				globalTools.selCallback(res, parameter);
-				var itemTemp=$("#gyxtxlSel option:first").attr("id").split(',');
+				var itemTemp=$("#gyxtxlSel option:first").attr("id").split('-');
 				demand.start({
 					 url:'/api/effiCheck/list4.json',
 					 parameter:{id:'gyxtxl',options: options},
@@ -229,6 +245,7 @@ define(function(require){
             options.series = sData;
 			options.xAxis.categories=["0点","1点","2点","3点","4点","5点","6点","7点","8点","9点","10点","11点","12点","13点","14点","15点","16点","17点","18点","19点","20点","21点","22点","23点"];
             options.chart.renderTo = parameter.id;
+			options.exporting=false;
             chart = new Highcharts.Chart(options); 
          }
       //供能信息
@@ -521,6 +538,10 @@ define(function(require){
 			
 			});
 		}
+		else
+		{
+			GetData(xData,result,parameter);
+		}
 
       }
 	  
@@ -560,7 +581,10 @@ define(function(require){
 			
 			});
 		}
-
+		else
+		{
+			GetData(xData,result,parameter);
+		}
       }
 
       }());

@@ -3,7 +3,7 @@ define(function(require){
     // check projectid
     var curProjectid = localStorage.getItem('curProjectid');
     var title = localStorage.getItem('curProjectidName');
-    $('#subTitleNav').text(title);
+    $('#subTitleNav').text(title).attr('title',title);
 
     return curProjectid;
 });

@@ -131,6 +131,7 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                         case '4': 
                             img = '<img src="/img/index/shnch.jpg" class="" alt="">';
                             break;
+                            //肇庆
                         case '6': 
                             img = '<img src="/img/index/ZQ2.jpg" class="" alt="">';
                             break;

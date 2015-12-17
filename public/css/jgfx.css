@@ -35,8 +35,8 @@
   height: 92px;
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%); }
+  left: 0;
+  z-index: 2; }
 
 .jgfx-card-title,
 .jgfx-chart-box {

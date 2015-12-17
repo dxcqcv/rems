@@ -7,9 +7,9 @@
 .ulli{padding-left: 15px;}
 .iconimg{width: 12px!important;}
 .ulliul{padding-left: 30%;}
-#tabdivall,.tab_all,#glszym,#nxjcpz,#nxglpz{background-color:white;position: relative; margin: 10px; width: 80%;float: right; height: 100%;min-height: 100%;font-size: 12px; }
+#tabdivall,.tab_all,#glszym,#nxjcpz,#nxglpz{background-color:white;position: relative; width: 80%;float: right; height: 100%;min-height: 100%;font-size: 12px; }
 .tabdivtop{position: absolute;width: 100%;z-index: 99;background-color: #ccc;}
-#tabdivall,#glszym,#nxjcpz,#nxglpz{position: absolute; height: 100%;min-height: 100%;width: 99%;padding-top: 80px;overflow: auto;}
+#tabdivall,#glszym,#nxjcpz,#nxglpz{position: absolute; height: 100%;min-height: 100%;width: 100%;padding-top: 80px;overflow: auto;}
 #myTab,#myTabs,#myTabes{  background-color: darkgrey;  z-index: 999; }
 #myTabes{display: none;}
 #myTabs li{display: inline-block;line-height: 30px;padding-left: 10px;float: right;padding-right: 10px;}
