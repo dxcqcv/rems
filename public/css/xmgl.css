@@ -1,5 +1,6 @@
 .xmgl-wrapper {
   height: 100%;
+  overflow: hidden;
   min-height: 100%;
   background: #d9d9d9; }
 

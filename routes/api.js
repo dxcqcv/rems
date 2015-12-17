@@ -5,7 +5,8 @@ var ipaddr = require('ipaddr.js');
 var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 //var remoteApiHost = "http://117.144.16.98:8080";
-var remoteApiHost = "http://10.20.1.144:8080";
+//var remoteApiHost = "http://10.20.1.144:8080";
+var remoteApiHost = "http://10.20.1.42:8888";
 var remoteApiPath = "/rems";
 
 
