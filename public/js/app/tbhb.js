@@ -17,7 +17,7 @@ define(function(require) {
 	(function() {
 
 		//var projectid = 1;
-		var dateFlag = 1;
+		var dateFlag = 1, dateFlag02 = 1,dateFlag03 = 1,dateFlag04 = 1 ;
 		//var dateStar = '2015-09-01';
 		var tabFlag = 1; //(1：同比，2:环比)
         var charFlag; //1-柱形,2-曲线
@@ -75,6 +75,7 @@ define(function(require) {
                     charFlag = 1;
                     break;
                 case 'tbhbGongneng':
+                    dateFlag02 = dateFlag  
                     if(tabFlag === 1)   url = '/api/CSInfo/provide/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/provide/list2.json';
                     dateFn = tbhbHngn;
@@ -82,6 +83,7 @@ define(function(require) {
                     charFlag = 1;
                     break;
                 case 'tbhbNyzhlyl':
+                    dateFlag03 = dateFlag 
                     if(tabFlag === 1)   url = '/api/CSInfo/use/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/use/list2.json';
                     unit = 'kWh';
@@ -90,6 +92,7 @@ define(function(require) {
                     charFlag = 2;
                     break;
                 case 'tbhbJnl':
+                    dateFlag04 = dateFlag
                     if(tabFlag === 1)   url = '/api/CSInfo/saving/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/saving/list2.json';
                     unit = 'kWh';
@@ -106,7 +109,24 @@ define(function(require) {
                     fn: dateFn,
                     options: optionsSel,
                     dateStar: dateStar,
-                    dateFlag: dateFlag,
+                    dateFlag: function(){
+                        var realFlag;
+                        switch (id) {
+                            case 'tbhbHaoneng':
+                                realFlag = dateFlag;
+                                break;
+                            case 'tbhbGongneng':
+                                realFlag = dateFlag02;
+                                break;
+                            case 'tbhbNyzhlyl':
+                                realFlag = dateFlag03;
+                                break;
+                            case 'tbhbJnl':
+                                realFlag = dateFlag04;
+                                break;
+                        }
+                        return realFlag
+                    },
                     self:globalTools,
                     unit: unit,
                     charFlag: charFlag 
