@@ -5,8 +5,8 @@ var ipaddr = require('ipaddr.js');
 var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 //var remoteApiHost = "http://117.144.16.98:8080";
-//var remoteApiHost = "http://10.20.1.95:8080";
-var remoteApiHost = "http://10.20.1.42:8888";
+var remoteApiHost = "http://10.20.1.95:8080";
+//var remoteApiHost = "http://10.20.1.42:8888";
 var remoteApiPath = "/rems";
 
 
@@ -115,7 +115,8 @@ router.get('/gislist_features.json', function(req, res, next) {
     request.post({
         url: remoteApiHost + '/rems/gislist_features.json',
         form: {
-            userKey: req.session.user.token
+            userKey: req.session.user.token,
+            dateHour: req.query.dateHour
         }
     }, function(error, response, body) {
 

@@ -14,7 +14,7 @@ define(function(require) {
 		optionsLines = require('app/highchartsConfigLines');
 
 	(function() {
-		var dateFlag = 1;
+		var dateFlag = 1, dateFlag02 = 1 ;
 
         //var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
         var dateStar = '2015-12-15'; //初始化查询时间

@@ -18,7 +18,7 @@ define(function(require){
         Index.prototype = {
             init: function() {
                 //localData != null ? localData : localJsonp.start({url:jsonpPath+'gislist.js',jsonpCallback:'gislist',done:this.getGislist}) 
-                localData != null ? localData : demand.start({url:'/api/gislist_features.json', done:this.getGislist});
+                localData != null ? localData : demand.start({url:'/api/gislist_features.json',data:{dateHour:'2015-12-15 10'}, done:this.getGislist});
                 this.switchProject();
                 this.enterProject();
 //                this.configMap(); 

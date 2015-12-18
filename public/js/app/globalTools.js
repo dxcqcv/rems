@@ -7,6 +7,8 @@ define(function(require) {
             return true;
         },
         selCallback: function(data,parameter) {
+        
+        if(data.length === 0 ) { var data = [{selName:'暂无数据',instancename:'暂无数据' }] }
           var str; 
           $.each(data,function(i,v){
               str += '<option id="'+v.id+'" data-instanceid="'+v.instanceid+'" data-instancename="'+v.instancename+'">'+(v.instanceid ? v.instancename : v.selName)+'</option>'
