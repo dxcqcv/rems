@@ -18,8 +18,9 @@ define(function(require){
 	  
       (function(){
 	  //var dateStar ='2015-09-01' //moment().format('YYYY-MM-DD');
+      var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
 	  var date = new Date ();
-	  var dateStar =moment().format('YYYY-MM-DD');
+	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =moment().format('hh');
 	  var dateHour="";
 	  if(date.getHours ()-1<10)
