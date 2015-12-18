@@ -44,7 +44,7 @@ define(function(require){
              globalMode = 0;
           }
 
-    //projectid = '10';
+    projectid = '10';
         scaleGYT();
         $(window).resize(function(){
             scaleGYT();
@@ -383,32 +383,46 @@ function clickPopup(){}
                         console.log('up',x);
                         //if(winHeight <= 653 && winWidth <=1024 ) {
                         if(winHeight <= 653 && winWidth <=1366){
+                            if(projectid ==10 ||projectid ==17){
+                                console.log('zhongde111');
                                 $('.xa-con-cent').css({'transform':'scale(0.3) translate(-50%, -50%)'});
+                            }else {
+                                console.log('zhongde222');
+                                $('.xa-con-cent').css({'transform':'scale(0.3) translate(-50%, -50%)'});
+                            }
                         }
                         else if(winHeight <= 767 && winWidth <=1024 ) {
-                        console.log(1024);
-                            if(projectid ==6) {
-                        console.log(666);
+                        //console.log(1024);
+                             if(projectid ==6) {
+                        //console.log(666);
                                 $('.xa-con-cent').css({'transform':'scale(0.37) translate(-50%, -50%)'});
                             } else if(projectid ==5) {
                                 $('.xa-con-cent').css({'transform':'scale(0.3) translate(-50%, -50%)'});
                             } else {
-                        console.log('pid',projectid );
-                        console.log(777);
+                        //console.log('pid',projectid );
+                        //console.log(777);
                                 $('.xa-con-cent').css({'transform':'scale(0.25) translate(-50%, -50%)'});
                             }
                         } else {
+                        //任何
                             if(projectid ==6) {
                                 $('.xa-con-cent').css({'transform':'scale(0.4) translate(-50%, -50%)'});
+                            } else if(projectid ==10 ||projectid ==17){
+                                console.log('zhongde');
+                                $('.xa-con-cent').css({'transform':'scale(0.35) translate(-50%, -50%)'});
+                            
                             } else {
                                 $('.xa-con-cent').css({'transform':'scale(0.'+(x)+') translate(-50%, -50%)'});
                             }
                         }
+                        //if(winHeight <= 767 && winWidth <=1366) {
+                        
+                        //}
                     } else {
                         console.log('down',x);
                         
                         if(!(winHeight < 534) ) {
-        console.log(9999);
+        //console.log(9999);
                             if(winHeight <= 599 && winWidth <= 800 ) {
                                 $('.xa-con-cent').css({'transform':'scale(0.2) translate(-50%, -50%)'});
                             } else {
