@@ -44,7 +44,7 @@ define(function(require){
              globalMode = 0;
           }
 
-    projectid = '10';
+    //projectid = '10';
         scaleGYT();
         $(window).resize(function(){
             scaleGYT();
