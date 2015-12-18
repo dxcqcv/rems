@@ -44,7 +44,7 @@ define(function(require){
              globalMode = 0;
           }
 
-    //projectid = '6';
+    //projectid = '10';
         scaleGYT();
         $(window).resize(function(){
             scaleGYT();
@@ -155,8 +155,10 @@ function dateInit(rectime){
             case '10': 
                 $('#gytSidebar').removeClass('hide');
                 showMe('#zhongdeArtwork');
+                //改title
                 zhongdePAFn();
-                buildGytList(['zhongdePA-A-三联供系统'])
+                //buildGytList(['zhongdePA-A-三联供系统'])
+                buildGytList(['zhongdePA-A-总览图'])
                 pageid = 9; 
                 break;
             case '6': 
@@ -422,6 +424,17 @@ function clickPopup(){}
             }
                         if(winHeight <= 380 && winWidth<= 733) {
                             $('.xa-con-cent').css({'transform':'scale(0.15) translate(-50%, -50%)'});
+                        }
+                        if(winHeight > 900 ) {
+
+                            if(projectid ==6) {
+                                $('.xa-con-cent').css({'transform':'scale(0.53) translate(-50%, -50%)'});
+                            } else if(projectid ==10 ||projectid ==17 ) {
+                                $('.xa-con-cent').css({'transform':'scale(0.45) translate(-50%, -50%)'});
+                            }
+                            else {
+                                $('.xa-con-cent').css({'transform':'scale(0.4) translate(-50%, -50%)'});
+                            }
                         }
                         //if(!(winHeight <= 380 && winWidth<= 733)) {
                         //console.log(888)
@@ -1068,7 +1081,7 @@ function clickPopup(){}
         }
         //中德
         function zhongdePAFn() {
-            gytSelectFn(true,'#zhongdeA','三联供系统',[0]);
+            gytSelectFn(true,'#zhongdeA','总览图',[0]);
             shenlongchengArtwork.height(1418);
         }
         //肇庆
@@ -1077,11 +1090,11 @@ function clickPopup(){}
             shenlongchengArtwork.height(1126);
         }
         function zhaoqingPBFn() {
-            gytSelectFn(true,'#zhaoqingB','冷冻水系统',[1]);
+            gytSelectFn(true,'#zhaoqingB','冷却水系统',[1]);
             shenlongchengArtwork.height(1108);
         }
         function zhaoqingPCFn() {
-            gytSelectFn(true,'#zhaoqingC','冷却水系统',[2]);
+            gytSelectFn(true,'#zhaoqingC','冷冻水系统',[2]);
             shenlongchengArtwork.height(1188);
         }
         //神农城

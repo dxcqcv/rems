@@ -14,7 +14,8 @@ define(function(require) {
 		datetimepickerObj = require('app/dateObj');
 
     (function() {
-		var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+		//var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+        var dateStar = '2015-12-15'; //初始化查询时间
 
 		var todayGroup, yesterdayGroup, monthGroup, yearGroup;
         var hnfxData = [];

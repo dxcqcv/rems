@@ -17,7 +17,8 @@ define(function(require) {
 	(function() {
 		var dateFlag = 1;//1是日，2是月，3是年
 		//var dateStar = '2015-09-01';
-        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+        //var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+        var dateStar = '2015-12-15'; //初始化查询时间
 		var oldDate; //防止重复
         // optionidTop  冷温水供水温度,optionidBottom 冷却水泵组  
         //var optionidTop = [468], optionidBottom = [358,10099];

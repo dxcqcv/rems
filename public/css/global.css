@@ -122,17 +122,18 @@ html, body {
   top: 0;
   right: -18px; }
 
+/*隐藏导航后偏移量*/
 .ycjc-offset {
-  margin-left: 179px; }
+  margin-left: 93px; }
 
 .nygl-offset {
-  margin-left: 265px; }
+  margin-left: 179px; }
 
 .pgzd-offset {
-  margin-left: 351px; }
+  margin-left: 265px; }
 
 .pgzdzj-offset {
-  margin-left: 452px; }
+  margin-left: 366px; }
 
 /* gnhn modal */
 .gnhn-header {

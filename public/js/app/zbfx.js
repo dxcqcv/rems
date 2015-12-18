@@ -17,7 +17,8 @@ define(function(require) {
 
 		var dateFlag = 1;
 		//var dateStr = '2015-09-01';
-		var dateStr = moment().format('YYYY-MM-DD');
+		//var dateStr = moment().format('YYYY-MM-DD');
+        var dateStr = '2015-12-15'; //初始化查询时间
         var oldDate; //防止重复
         var url, name;
 		// 日月年

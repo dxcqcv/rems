@@ -14,12 +14,6 @@ define(function(require) {
 		optionsLines = require('app/highchartsConfigLines'),
 		datetimepickerObj = require('app/dateObj');
 
-	$(function(){
-	   $(".btn_coin").mouseover(function(e) {
-		   alert(4)
-        $(this).css("background", "url(../img/sjjc/uikj.png) no-repeat left center");
-    });
-	  })		
 
 	(function() {
 
@@ -97,8 +91,13 @@ define(function(require) {
 		//根据查询的结果，生成页面数据
 		function leftinfoSet(dataArr) {
 			$('#classInstanceList').empty();
+             //var regI = new RegExp('<div class="item">',i)
 			$.each(dataArr, function(i, v) {
-				var oneLi = '<li class="classinstance" classid=' + v.classid + ' id=' + v.classinstanceid + '>' + v.classinstancename + '</li>';
+                if(i == 0) {
+                    var oneLi = '<li class="classinstance" style="background-color:#3498db;color:white;border-radius:5px;" classid=' + v.classid + ' id=' + v.classinstanceid + '>' + v.classinstancename + '</li>';
+                } else {
+                    var oneLi = '<li class="classinstance" classid=' + v.classid + ' id=' + v.classinstanceid + '>' + v.classinstancename + '</li>';
+                }
 				$('#classInstanceList').append(oneLi);
 			});
 		}
@@ -125,6 +124,17 @@ define(function(require) {
 				}
 			});
 		});
+        //初始化动态属性
+			demand.start({
+				url: '/api/datamonitor/value.json',
+				data: {
+					projectid: projectid,
+					instanceid:2 
+				},
+				done: function(data) {
+					rightInfoSet(2, data.status.data,'黄花机场1#泛能站' );
+				}
+			});
 		function f1(obj)
 			{
 				alert("a");

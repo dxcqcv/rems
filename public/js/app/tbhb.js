@@ -23,7 +23,8 @@ define(function(require) {
         var charFlag; //1-柱形,2-曲线
         var optionsSel; // options 柱形，optionsLines 曲线
         var initCharts = ['tbhbHnDate','tbhbGnDate','tbhbNyzhlylDate','tbhbJnlDate']; 
-        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+        //var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+        var dateStar = '2015-12-15'; //初始化查询时间
 		var oldDate; //防止重复
         var unit;
 		var url, name;

@@ -32,9 +32,13 @@ define(function(require){
                 });
                 //check current nav position
                 if(localStorage.getItem('curNav') != null) {
+                console.log(90909)
                     this.curNav = localStorage.getItem('curNav').split('-');
                     highlightNav(this.curNav[0]);
+                console.log(this.curNav)
                     $('.'+this.curNav[1]+'-subnav').parent('li').siblings('li').removeClass('active').end().addClass('active');
+                } else {
+                     
                 }
                 // global nav layout
                 switch(this.mySectionId) {
