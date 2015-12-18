@@ -5,8 +5,8 @@ var ipaddr = require('ipaddr.js');
 var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 //var remoteApiHost = "http://117.144.16.98:8080";
-//var remoteApiHost = "http://10.20.1.144:8080";
-var remoteApiHost = "http://10.20.1.42:8888";
+var remoteApiHost = "http://10.20.1.95:8080";
+//var remoteApiHost = "http://10.20.1.42:8888";
 var remoteApiPath = "/rems";
 
 
@@ -366,7 +366,8 @@ router.get('/effiCheck/sysindex.json', function(req, res, next) {
         url: remoteApiHost + '/rems/effiCheck/sysindex.json',
         form: {
             userKey: req.session.user.token,
-            projectid: req.query.projectid
+            projectid: req.query.projectid,
+            dateHour: req.query.dateHour
         }
     }, function(error, response, body) {
         res.send(body);
@@ -1200,18 +1201,6 @@ router.get('/deviceGroupInfo/list2.json', function(req, res, next) {
     })
 });
 
-//能效分析页面：系统指标数据查询
-router.get('/effiCheck/sysindex.json', function(req, res, next) {
-    request.post({
-        url: remoteApiHost + '/rems/effiCheck/sysindex.json',
-        form: {
-            userKey: req.session.user.token,
-            projectid: req.query.projectid
-        }
-    }, function(error, response, body) {
-        res.send(body);
-    })
-});
 
 //结构分析页面：结构分析数据查询
 router.get('/structureInfo/list.json', function(req, res, next) {

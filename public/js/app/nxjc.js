@@ -18,7 +18,7 @@ define(function(require){
 	  
       (function(){
 	  //var dateStar ='2015-09-01' //moment().format('YYYY-MM-DD');
-      var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
+      var dateStar ='2015-07-01' //moment().format('YYYY-MM-DD');
 	  var date = new Date ();
 	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =moment().format('hh');
@@ -31,6 +31,7 @@ define(function(require){
 	  {
 		  dateHour=dateStar+" "+(date.getHours () - 1);
 	  }
+      console.log(dateHour);
       //下拉选择
       $('.selectpicker').selectpicker({});
       //图表
@@ -160,14 +161,17 @@ define(function(require){
 				$.each(data.status.data.list,function(i,item){
 					var itemSplitList=item.split(',');
 					itemC = new Object;
-					itemC.id = itemSplitList[0]+"-"+itemSplitList[2];
-					itemC.selName = itemSplitList[1]+"-"+itemSplitList[3];
+					//itemC.id = itemSplitList[0]+"-"+itemSplitList[2];
+					//itemC.selName = itemSplitList[1]+"-"+itemSplitList[3];
+                    itemC.id = itemSplitList[0]+"-"+itemSplitList[2];
+                    itemC.selName = itemSplitList[1];
 					res.push(itemC);
 				});
 				
 				parameter.id="#gyxtxlSel";
 				globalTools.selCallback(res, parameter);
 				var itemTemp=$("#gyxtxlSel option:first").attr("id").split('-');
+                //alert(itemTemp[1])
 				demand.start({
 					 url:'/api/effiCheck/list4.json',
 					 parameter:{id:'gyxtxl',options: options},
@@ -212,6 +216,7 @@ define(function(require){
 			var currentValue=0;
 			if(data.status.data!="")
 			{
+            //alert(12121)
 				$.each(data.status.data.list,function(i,item){
 					sArrNames.push(item.showname);
 				});
@@ -224,7 +229,9 @@ define(function(require){
 					 for(var i=0;i<24;i++)
 					 {
 						$.each(data.status.data.list,function(j,item2){
-							  if(item==item2.showname && item2.rectime.indexOf(dateStar+" "+(i<10)?("0"+i):(i+"")))
+
+                              console.log(item2)
+							  if(item==item2.showname && item2.recTime.indexOf(dateStar+" "+(i<10)?("0"+i):(i+"")))
 							  {
 								  sumXiaolv+=Math.round(item2.dataVlue);
 							  }
@@ -233,6 +240,7 @@ define(function(require){
 						 dataList.push(sumXiaolv);
 						 if((dateStarHour+"")==(i+""))
 						 {
+                         console.log(dataList)
 							 currentValue=sumXiaolv;
 						 }
 					 }

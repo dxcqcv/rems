@@ -62,7 +62,7 @@ define(function(require) {
 				}
 
 				$.each(tmpRes, function(i, v) {
-					item = new Object;
+					var item = new Object;
 					item.selName = v.classPropertyname;
 					item.id = v.classPropertyid;
 					res.push(item);
@@ -195,7 +195,7 @@ define(function(require) {
 					 vid = v.classPropertyid;
 					if(vid=="10344" || vid=="10346" || vid=="10347")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);
@@ -209,7 +209,7 @@ define(function(require) {
 					 vid = v.classPropertyid;
 					if(vid=="10334" || vid=="10341" || vid=="10342")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);
@@ -223,7 +223,7 @@ define(function(require) {
 					 vid = v.classPropertyid;
 					if(vid=="10350" || vid=="10351" || vid=="10352")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);
@@ -239,7 +239,7 @@ define(function(require) {
 					 vid = v.classPropertyid;
 					if(vid=="10099" || vid=="10117")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);
@@ -253,7 +253,7 @@ define(function(require) {
 					 vid = v.classPropertyid;
 					if(vid=="10087" || vid=="10088")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);
@@ -267,7 +267,7 @@ define(function(require) {
 					 vid = v.classPropertyid;
 					if(vid=="10161" || vid=="10162")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);
@@ -324,7 +324,7 @@ define(function(require) {
 				{
 					if(vid=="10344" || vid=="10346" || vid=="10347")
 					{
-						item = new Object;
+						var item = new Object;
 						item.selName = v.classPropertyname;
 						item.id = vid;
 						res.push(item);

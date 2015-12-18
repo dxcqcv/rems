@@ -44,7 +44,7 @@ define(function(require){
              globalMode = 0;
           }
 
-    projectid = '6';
+    //projectid = '6';
         scaleGYT();
         $(window).resize(function(){
             scaleGYT();
@@ -163,7 +163,7 @@ function dateInit(rectime){
                 $('#gytSidebar').removeClass('hide');
                 showMe('#zhaoqingArtwork');
                 zhaoqingPAFn();
-                buildGytList(['zhaoqingPA-A-乙二醇系统','zhaoqingPB-B-冷冻水系统','zhaoqingPC-C-冷却水系统',])
+                buildGytList(['zhaoqingPA-A-乙二醇系统','zhaoqingPB-B-冷却水系统','zhaoqingPC-C-冷冻水系统',])
                 pageid = 9; 
                 break;
             default: 
