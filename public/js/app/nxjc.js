@@ -17,7 +17,8 @@ define(function(require){
       ;
 	  
       (function(){
-	  var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
+	  //var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
+	  var dateStar =moment().format('YYYY-MM-DD');
 	  var date = new Date ();
 	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =date.getHours();//moment().format('hh');
@@ -52,60 +53,69 @@ define(function(require){
         demand.start({url:'/api/effiCheck/sysindex.json',data:{projectid:projectid,dateHour:dateHour},done:zbfxPie});
 
         function zbfxPie(data) {
-			
-            var id;
-            var title;
-            var zbfxCharts = $('.xtzb-charts').height(); 
-            var subtitleY = zbfxCharts/1.2;
-            var titleY =  zbfxCharts/ 2;
-            var tempData;
-            var zbfxData = []
-            var zbfxName;
-            var pieColors;
-            var color;
-			if(data.status==undefined  || data.status.data=="")
-			{
-				return;
-			}
-			
-			var tempArr=new Array;
-			$.each(data.status.data.list, function(i,item){
-				var obj=new Object;
-				obj.name=item.showname;
-				obj.value=Math.round(item.dataVlue);
-				tempArr.push(obj);
-			});
-            highchartsPieData = tempArr;
-            
-			
-            $.each(data.status.data.list, function(i,v){
-                switch(i) {
-                    case 0: id = 'pieChart1'; pieColors = ['#7cc576', '#e8ebeb']; color = '#7cc576'; break; 
-                    case 1: id = 'pieChart2'; pieColors = ['#1cbbb4', '#e8ebeb']; color = '#1cbbb4'; break; 
-                    case 2: id = 'pieChart3'; pieColors = ['#00aeef', '#e8ebeb']; color = '#00aeef'; break; 
-                    case 3: id = 'pieChart4'; pieColors = ['#a864a8', '#e8ebeb']; color = '#a864a8'; break; 
-                }     
-                zbfxName = v.showname;
-				if(id=="pieChart3")
+			setTimeout(function(){
+				var id;
+				var title;
+				var zbfxCharts = $('.xtzb-charts').height(); 
+				var subtitleY = zbfxCharts/1.2;
+				var titleY =  zbfxCharts/ 2;
+				var tempData;
+				var zbfxData = []
+				var zbfxName;
+				var pieColors;
+				var color;
+				if(data.status==undefined  || data.status.data=="")
 				{
+					return;
+				}
 				
-					// alert(GonglengTotal);
-					// alert(GongreTotal);
-					// alert(FadianTotal);
-					// alert(HaoDianTotal);
-					// alert(HaoQiTotal);
-					tempData=Math.round(((parseFloat(0.09*GonglengTotal)+ parseFloat(0.188*GongreTotal)+parseFloat(FadianTotal))/(parseFloat(HaoDianTotal)+parseFloat(6.22*HaoQiTotal)))*100);
+				var tempArr=new Array;
+				$.each(data.status.data.list, function(i,item){
+					var obj=new Object;
+					obj.name=item.showname;
+					obj.value=Math.round(item.dataVlue);
+					tempArr.push(obj);
+				});
+				highchartsPieData = tempArr;
+				
+				
+				$.each(data.status.data.list, function(i,v){
+					switch(i) {
+						case 0: id = 'pieChart1'; pieColors = ['#7cc576', '#e8ebeb']; color = '#7cc576'; break; 
+						case 1: id = 'pieChart2'; pieColors = ['#1cbbb4', '#e8ebeb']; color = '#1cbbb4'; break; 
+						case 2: id = 'pieChart3'; pieColors = ['#00aeef', '#e8ebeb']; color = '#00aeef'; break; 
+						case 3: id = 'pieChart4'; pieColors = ['#a864a8', '#e8ebeb']; color = '#a864a8'; break; 
+					}     
+					zbfxName = v.showname;
+					if(id=="pieChart3")
+					{
 					
-				}
-				else{
-					tempData = Math.round(v.dataVlue)>100?100:Math.round(v.dataVlue);
-				}
-                
-                title = tempData + '<span style="font-size: 14px;">%</span>';
-                zbfxData = [tempData,(100-tempData)]; 
-				
-                setPiecharts(id,title,zbfxName,titleY,subtitleY,zbfxData,pieColors,color);
-            });
+						// alert(GonglengTotal);
+						// alert(GongreTotal);
+						// alert(FadianTotal);
+						// alert(HaoDianTotal);
+						// alert(HaoQiTotal);
+						if(GonglengTotal==0 && GongreTotal==0 && FadianTotal==0 && HaoDianTotal==0 && HaoQiTotal==0 )
+						{
+							tempData=0;
+						}
+						else
+						{
+							tempData=Math.round(((parseFloat(0.09*GonglengTotal)+ parseFloat(0.188*GongreTotal)+parseFloat(FadianTotal))/(parseFloat(HaoDianTotal)+parseFloat(6.22*HaoQiTotal)))*100);
+						}
+						
+					}
+					else{
+						tempData = Math.round(v.dataVlue)>100?100:Math.round(v.dataVlue);
+					}
+					
+					title = tempData + '<span style="font-size: 14px;">%</span>';
+					zbfxData = [tempData,(100-tempData)]; 
+					
+					setPiecharts(id,title,zbfxName,titleY,subtitleY,zbfxData,pieColors,color);
+				});
+			}, 2000 );
+           
         }
         
 		
@@ -274,6 +284,7 @@ define(function(require){
 				options.chart.renderTo = parameter.id;
 				options.exporting={enabled:false};
 				chartGH=new Highcharts.Chart(options);
+
 				return;
 			}
 			$("#spgyxtxlSel").html(0+"%");
