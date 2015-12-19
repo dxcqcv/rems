@@ -14,7 +14,7 @@ define(function(require) {
 		optionsLines = require('app/highchartsConfigLines');
 
 	(function() {
-		var dateFlag = 1, dateFlag02 = 1,dateFlag03 = 1,dateFlag04 = 1 ;
+		var dateFlag = 1, dateFlag01 = 1,dateFlag02 = 1,dateFlag03 = 1,dateFlag04 = 1 ;
 
         //var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
         var dateStar = '2015-12-15'; //初始化查询时间
@@ -61,21 +61,25 @@ define(function(require) {
 				}
 
 
+                //输配下拉框
 				if (parameter.id == '#spSel') {
                     var csList = data.status.data.CSlist;
                     for(var j = 0, l = csList.length; j < l; j ++) {
                         var spObj = {instanceid:csList[j].classPropertyid,instancename :csList[j].classPropertyname};
                         $.each(data.status.data.SPlist,function(i,v){
-                            if(v.classPropertyid == '10082' && csList[j].classPropertyid == '332' || v.classPropertyid == '10085' && csList[j].classPropertyid == '333') {
-                                spObj.classPropertyid = v.classPropertyid; 
-                                spObj.classPropertyname = v.classPropertyname; 
-                            }
+                            $.each(v,function(i,v){
+                                if(v.classPropertyid == '10082' && csList[j].classPropertyid == '332' || v.classPropertyid == '10085' && csList[j].classPropertyid == '333') {
+                                        spObj.classPropertyid = v.classPropertyid; 
+                                        spObj.classPropertyname = v.classPropertyname; 
+                                }
+                            });
                         });
 
                        spList.push(spObj); 
                     }
                     spList.push({classPropertyid:'10204',classPropertyname:'冷却效率',instanceid:357,instancename:'冷却塔组'});
                     tmpRes = spList;
+                    console.log(tmpRes)
 					//tmpRes = data.status.data.CSlist;
 				}
 
@@ -114,9 +118,11 @@ define(function(require) {
 			////			globalTools.selCallback(res, parameter);
 		//}
 
+		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
 		// 选择框
 
 		$('.selectpicker').change(function() {
+        console.log('触发选择')
 			var $this = $(this);
 			var selected = $this.find('option:selected');
             var instanceid = selected.attr('data-instanceid');
@@ -125,146 +131,109 @@ define(function(require) {
 			var charts = parents.find('.chart-box').attr('id');
             var url, config, selectOptions,realFlag;
             dateStar = parents.find('.datetimepicker1').children('input').val();  
-            dateFlag = setDate.getFlag();
-
-var s = dateStar.split('-'); 
-console.log(s);
+            //dateFlag = setDate.getFlag();
 
             config = getConf(charts);
             url = config[0];
 
-            switch (charts) {
-                case 'mkfxCCHP':
-                    break;
-                case 'mkfxCgtf':
-                    dateFlag02 = dateFlag ;
-                    break;
-                case 'mkfxXntf':
-                    dateFlag03 = dateFlag ;
-                    break;
-                case 'mkfxSp':
-                    dateFlag04 = dateFlag ;
-                    break;
-            }
-
-            switch (charts) {
-                case 'mkfxCCHP':
-                   realFlag = dateFlag  ;
-                    break;
-                case 'mkfxCgtf':
-                   realFlag = dateFlag02  ;
-                    break;
-                case 'mkfxXntf':
-                   realFlag = dateFlag03  ;
-                    break;
-                case 'mkfxSp':
-                   realFlag = dateFlag04  ;
-                    break;
-            }
-
-            switch (realFlag ) {
-               case 1:
-                    
-dateStar=s[0]+s[1]+s[2];
-                  break;
-               case 2:
-dateStar=s[0]+s[1];
-                  break;
-               case 3:
-dateStar=s[0];
-                  break;
-            }
 
             switch (charts) {
                 case 'mkfxCCHP':
                     optionid = [propertyid]; 
                     selectOptions = optionid; 
+                console.log(dateFlag01);
+            builtCharts(url,charts,dateStar,dateFlag01,selectOptions);
                     break;
                 case 'mkfxCgtf':
                     optionid2 = [propertyid,instanceid]; 
                     selectOptions = optionid2; 
+                console.log(dateFlag02);
+            builtCharts(url,charts,dateStar,dateFlag02,selectOptions);
                     break;
                 case 'mkfxXntf':
                     optionid3 = [propertyid]; 
                     selectOptions = optionid3; 
+                console.log(dateFlag03);
+            builtCharts(url,charts,dateStar,dateFlag03,selectOptions);
                     break;
                 case 'mkfxSp':
                     optionid4 = [propertyid,instanceid]; 
                     selectOptions = optionid4; 
+                console.log(dateFlag04);
+            builtCharts(url,charts,dateStar,dateFlag04,selectOptions);
                     break;
             }
 
             //builtCharts(url,charts,dateStar,dateFlag,selectOptions);
-            builtCharts(url,charts,dateStar,realFlag,selectOptions);
+            //builtCharts(url,charts,dateStar,realFlag,selectOptions);
 			//localJsonp.start({url:jsonpPath+'tbhb3.js',parameter:{charts:charts,fn:globalTools.tbhbLines,options:optionsLines},jsonpCallback:'tbhb3',done:globalTools.selFn});
 		});
 		// 日月年
 		//globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, localJsonp.start, setDate, globalTools, optionsLines);
-		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
- //var aa = [1,2,2,3,3];
- //var bb = globalTools.uniq(aa);
- //console.log(bb)
+
+
 		//时间空间
 		$('.datetimepicker1').datetimepicker(datetimepickerObj).on('dp.change', function(ev) {
+        console.log('触发时间')
 			//dateStar = ev.date.format('YYYY-MM-DD');
 			var id = $(this).parents('.my-card').find('.chart-box').attr('id');
             var url, dateOptionid, config, realFlag;
             dateFlag = setDate.getFlag();
 
             
-            switch (id) {
-                case 'mkfxCCHP':
-                    break;
-                case 'mkfxCgtf':
-                    dateFlag02 = dateFlag ;
-                    break;
-                case 'mkfxXntf':
-                    dateFlag03 = dateFlag ;
-                    break;
-                case 'mkfxSp':
-                    dateFlag04 = dateFlag ;
-                    break;
-            }
-
-            switch (id) {
-                case 'mkfxCCHP':
-                   realFlag = dateFlag  ;
-                    break;
-                case 'mkfxCgtf':
-                   realFlag = dateFlag02  ;
-                    break;
-                case 'mkfxXntf':
-                   realFlag = dateFlag03  ;
-                    break;
-                case 'mkfxSp':
-                   realFlag = dateFlag04  ;
-                    break;
-            }
-
-console.log(realFlag)
-            switch(realFlag) {
-                case 1:
-                    if(ev.date === undefined) dateStar = $this.find('input').val();
-                    else dateStar = ev.date.format('YYYY-MM-DD');
-                    if(oldDate == dateStar) break;
-                    oldDate = dateStar;break;
-                case 2: 
-                    if(ev.date === undefined) dateStar = $this.find('input').val();
-                    else dateStar = ev.date.format('YYYY-MM');
-                    if(oldDate == dateStar) break;
-                    oldDate = dateStar;break;
-                case 3: 
-                    if(ev.date === undefined) dateStar = $this.find('input').val();
-                    else dateStar = ev.date.format('YYYY');
-                    if(oldDate == dateStar) break;
-                    oldDate = dateStar;break;
-            }
             config = getConf(id);
             url = config[0]; dateOptionid = config[1]; 
 
-            //builtCharts(url,id,dateStar,dateFlag, dateOptionid);
-            builtCharts(url,id,dateStar,realFlag, dateOptionid);
+            switch (id) {
+                case 'mkfxCCHP':
+                console.log(dateFlag01);
+                   dateFlag01 = dateFlag ; 
+                   var dateStar01 = formaterDate(ev.date,dateFlag01,this);
+            builtCharts(url,id,dateStar01,dateFlag01, dateOptionid);
+                    break;
+                case 'mkfxCgtf':
+                console.log(dateFlag02);
+                   dateFlag02 = dateFlag ; 
+                   var dateStar02 = formaterDate(ev.date,dateFlag02,this);
+                   builtCharts(url,id,dateStar02,dateFlag02, dateOptionid);
+                    break;
+                case 'mkfxXntf':
+                console.log(dateFlag03);
+                   dateFlag03 = dateFlag ; 
+                   var dateStar03 = formaterDate(ev.date,dateFlag03,this);
+                   builtCharts(url,id,dateStar03,dateFlag03, dateOptionid);
+                    break;
+                case 'mkfxSp':
+                console.log(dateFlag04);
+                   dateFlag04 = dateFlag ; 
+                   var dateStar04 = formaterDate(ev.date,dateFlag04,this);
+                   builtCharts(url,id,dateStar04,dateFlag04, dateOptionid);
+                    break;
+            }
+
 		});
+        //格式化日期
+        function formaterDate(evDate, dateFlag,tar){
+            var dateStar, $this = $(tar);
+            switch(dateFlag) {
+                case 1:
+                    if(evDate === undefined) dateStar = $this.find('input').val();
+                    else dateStar = evDate.format('YYYY-MM-DD');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 2: 
+                    if(evDate === undefined) dateStar = $this.find('input').val();
+                    else dateStar = evDate.format('YYYY-MM');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+                case 3: 
+                    if(evDate === undefined) dateStar = $this.find('input').val();
+                    else dateStar = evDate.format('YYYY');
+                    if(oldDate == dateStar) break;
+                    oldDate = dateStar;break;
+            }
+            return dateStar;
+        }
         function getConf(id) {
             var url, dateOptionid; 
             switch (id) {
