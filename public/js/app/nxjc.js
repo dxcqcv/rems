@@ -63,8 +63,7 @@ define(function(require){
             var zbfxName;
             var pieColors;
             var color;
-
-			if(data.status.data=="")
+			if(data.status==undefined  || data.status.data=="")
 			{
 				return;
 			}
@@ -87,8 +86,22 @@ define(function(require){
                     case 3: id = 'pieChart4'; pieColors = ['#a864a8', '#e8ebeb']; color = '#a864a8'; break; 
                 }     
                 zbfxName = v.showname;
-                tempData = Math.round(v.dataVlue)>100?100:Math.round(v.dataVlue);
-                title = tempData + '<span style="font-size: 14px;">%</span>'; 
+				if(id=="pieChart3")
+				{
+				
+					// alert(GonglengTotal);
+					// alert(GongreTotal);
+					// alert(FadianTotal);
+					// alert(HaoDianTotal);
+					// alert(HaoQiTotal);
+					tempData=Math.round(((parseFloat(0.09*GonglengTotal)+ parseFloat(0.188*GongreTotal)+parseFloat(FadianTotal))/(parseFloat(HaoDianTotal)+parseFloat(6.22*HaoQiTotal)))*100);
+					
+				}
+				else{
+					tempData = Math.round(v.dataVlue)>100?100:Math.round(v.dataVlue);
+				}
+                
+                title = tempData + '<span style="font-size: 14px;">%</span>';
                 zbfxData = [tempData,(100-tempData)]; 
 				
                 setPiecharts(id,title,zbfxName,titleY,subtitleY,zbfxData,pieColors,color);
@@ -283,6 +296,15 @@ define(function(require){
 		},
 		done:highchartsGN
 	  });
+	  
+	  var GonglengTotal=0;
+	  var GongreTotal=0;
+	  var FadianTotal=0;
+	  var HaoShuiTotal=0;
+	  var HaoQiTotal=0;
+	  var HaoDianTotal=0;
+
+	  
 	  var sumGongNengTotal=[0,0,0];
 	  function GetData(xData,resultList,parameter,uniteName)
 	  {
@@ -698,22 +720,32 @@ define(function(require){
 			if(xData=="供冷")
 			{
 				$("#li_gnxxSel").html("供冷量：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"【Kwh】</span>");
+				GonglengTotal=Math.round(sumGongNengTotal[0]);
 			}
 			if(xData=="供热")
 			{
 				$("#li_gnxxSel").html("供热量：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"【Kwh】</span>");
+				GongreTotal=Math.round(sumGongNengTotal[0]);
+			}
+			if(xData=="发电")
+			{
+				$("#li_gnxxSel").html("发电量：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"【Kwh】</span>");
+				FadianTotal=Math.round(sumGongNengTotal[0]);
 			}
 			if(xData=="耗水")
 			{
 				$("#li_hnxxSel").html("耗水：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"【m3/h】</span>");
+				HaoShuiTotal=Math.round(sumGongNengTotal[0]);
 			}
 			if(xData=="耗气")
 			{
 				$("#li_hnxxSel").html("耗气：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"【m3/h】</span>");
+				HaoQiTotal=Math.round(sumGongNengTotal[0]);
 			}
 			if(xData=="耗电")
 			{
 				$("#li_hnxxSel").html("耗电：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"【Kwh】</span>");
+				HaoDianTotal=Math.round(sumGongNengTotal[0]);
 			}
 			
 			var chartGH;
@@ -725,8 +757,11 @@ define(function(require){
 			chartGH = new Highcharts.Chart(parameter.options); 
 	  }
 	  
-	  
+
       function highchartsGN(data,parameter) {
+		console.log("下拉框数据");
+		console.info(data);
+		
 		var xData=[];
 		if(data.status.data!="")
 		{
@@ -736,6 +771,10 @@ define(function(require){
 			var result=data.status.data.list;
 			xData.push("供冷");
 			GetData(xData,result,parameter,"kwh");
+			GetdataValue(["供冷"],result);
+			GetdataValue(["供热"],result);
+			GetdataValue(["发电"],result);
+
 			$("#gnxxSel").on("change",function(){
 				if($(this).val()==0)
 				{
@@ -744,12 +783,19 @@ define(function(require){
 					GetData(xData,result,parameter,"kwh");
 					//$("#li_gnxxSel").html("供冷量：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"Kwh</span>");
 				}
-				else
+				else if($(this).val()==1)
 				{
 					xData=[];
 					xData.push("供热");
 					GetData(xData,result,parameter,"kwh");
 					//$("#li_gnxxSel").html("供热量：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"Kwh</span>");
+				}
+				else
+				{
+					xData=[];
+					xData.push("发电");
+					GetData(xData,result,parameter,"kwh");
+					//$("#li_gnxxSel").html("发电量：<span class='navy' id='spGonglengCount'>"+Math.round(sumGongNengTotal[0])+"Kwh</span>");
 				}
 			
 			});
@@ -761,7 +807,7 @@ define(function(require){
 
       }
 	  
-	   function highchartsHaoN(data,parameter) {
+	  function highchartsHaoN(data,parameter) {
 		var xData=[];
 		if(data.status.data!="")
 		{
@@ -771,6 +817,9 @@ define(function(require){
 			var result=data.status.data.list;
 			xData.push("耗气");
 			GetData(xData,result,parameter,"m3/h");
+			GetdataValue(["耗水"],result);
+			GetdataValue(["耗气"],result);
+			GetdataValue(["耗电"],result);
 			$("#hnxxSel").on("change",function(){
 				if($(this).val()==1)
 				{
@@ -802,7 +851,305 @@ define(function(require){
 			GetData(xData,result,parameter,"");
 		}
       }
-
+		
+	  
+	  function GetdataValue(xData,resultList)
+	  {
+			var sum=0;
+			$.each(xData,function(i,item){
+					var i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 00"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 01"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 02"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 03"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 04"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 05"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 06"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 07"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 08"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 09"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 10"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 11"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 12"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 13"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 14"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 15"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 16"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 17"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 18"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 19"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 20"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 21"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 22"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					i=0;
+					for(i=0;i<resultList.length;i++)
+					{
+						var rectime=resultList[i].rectime;
+						var result=rectime.substring(0,rectime.indexOf(':'));
+						if(item==resultList[i].showname && result==(dateStar+" 23"))
+						{
+							sum+=Math.round(resultList[i].datavalue);
+							break;
+						}	
+					}
+					
+			});
+			if(xData[0]=="供冷")
+			{
+				GonglengTotal=sum;
+			}
+			if(xData[0]=="供热")
+			{
+				GongreTotal=sum;
+			}
+			if(xData[0]=="发电")
+			{
+				FadianTotal=sum;
+			}
+			if(xData[0]=="耗水")
+			{
+				HaoShuiTotal=sum;
+			}
+			if(xData[0]=="耗电")
+			{
+				HaoDianTotal=sum;
+			}
+			if(xData[0]=="耗气")
+			{
+				HaoQiTotal=sum;
+			}
+	  }
+	  
+	  
       }());
 });
 
