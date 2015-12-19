@@ -29,9 +29,12 @@ define(function(require) {
         var cgtfList = [{classPropertyid:'10107',classPropertyname:'COP',instanceid:339,instancename:'电制冷机组'},{classPropertyid:'10109',classPropertyname:'热效率',instanceid:340,instancename:'锅炉机组'},{classPropertyid:'10108',classPropertyname:'COP',instanceid:361,instancename:'溴化锂机组'},{classPropertyid:'10110',classPropertyname:'COP',instanceid:341,instancename:'地/水源热泵机组'}]; 
         var spList = [];
 
+        var loadConfig = [['.my-card'], 1];
+
 		// 选择框
 		demand.start({
 			url: '/api/moduleAnalysis/listOption.json',
+			loadContainer: loadConfig,
 			parameter: {
 				id: '#cchpSel',
 				idList: ['#cchpSel', '#cgtfSel', '#xntfSel', '#spSel']
@@ -266,7 +269,8 @@ for(var i = 0, l = initConfig.length; i < l; i++) {
 function builtCharts(url, id, dateStar,dateFlag,optionid) {
         var o = optionid[0], o2 = optionid[1];
 		demand.start({
-            loadContainer: [['#'+id], 1],
+			loadContainer: loadConfig,
+            //loadContainer: [['#'+id], 1],
 			url: url,
 			parameter: {
 				id: id,

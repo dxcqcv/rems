@@ -21,6 +21,7 @@ define(function(require) {
         var dateStr = '2015-12-15'; //初始化查询时间
         var oldDate; //防止重复
         var url, name;
+        var loadConfig = [['.my-card'], 1];
 		// 日月年
 		//		globalTools.tbhbClick('.date-controls-box', 'button', jsonpPath, 'tbhb3', globalTools.tbhbLines, demand.start, setDate, globalTools, optionsLines);
         //var dataP = {projectid:1,dateFlag:1,dateStr:'2015-08-01'};
@@ -77,6 +78,7 @@ define(function(require) {
             }
             demand.start({
                 url: url,
+			loadContainer: loadConfig,
                 parameter: {
                     id: id,
                     fn: globalTools.tbhbLines,
@@ -108,6 +110,7 @@ define(function(require) {
 		// 图表
 		var chartLines;
 		demand.start({
+			loadContainer: loadConfig,
 			url: '/api/KPIInfo/list1.json',
 			parameter: {
 				id: 'zbfxNyzhlyl',
@@ -126,6 +129,7 @@ define(function(require) {
 		});
 
 		demand.start({
+			loadContainer: loadConfig,
 			url: '/api/KPIInfo/list2.json',
 			parameter: {
 				id: 'zbfxJnl',
@@ -144,6 +148,7 @@ define(function(require) {
 		});
 
 		demand.start({
+			loadContainer: loadConfig,
 			url: '/api/KPIInfo/list3.json',
 			parameter: {
 				id: 'zbfxEyhtjpl',
@@ -162,6 +167,7 @@ define(function(require) {
 		});
 
 		demand.start({
+			loadContainer: loadConfig,
 			url: '/api/KPIInfo/list4.json',
 			parameter: {
 				id: 'zbfxKzsnylyl',

@@ -28,6 +28,7 @@ define(function(require) {
 		var oldDate; //防止重复
         var unit;
 		var url, name;
+        var loadConfig = [['.my-card'], 1];
 		// 日月年
 
 		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);
@@ -104,6 +105,7 @@ define(function(require) {
 
             demand.start({
                 url: url,
+			loadContainer: loadConfig,
                 parameter: {
                     id: id,
                     fn: dateFn,

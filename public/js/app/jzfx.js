@@ -26,8 +26,10 @@ define(function(require) {
         var lwList = {}, lqList = {};//无用
 		var bottom358List, bottom353List, bottom341List;//缓存List
         var tabId = 0;//无用
+        var loadConfig = [['.my-card'], 1];
 
 		demand.start({
+			loadContainer: loadConfig,
 			url: '/api/deviceGroupInfo/listOption.json',
 			parameter: {
 				id: '#lqlwSel1',
@@ -441,7 +443,8 @@ function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
         o2 = optionid[1];
     }
 		demand.start({
-            loadContainer: [['#'+id], 1],
+			loadContainer: loadConfig,
+            //loadContainer: [['#'+id], 1],
 			url: url,
 			parameter: {
 				id: id,

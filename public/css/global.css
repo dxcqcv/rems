@@ -599,12 +599,7 @@ input.radio {
   .jgfx-top-right {
     display: none; }
 
-  .zbbg-top-line ul {
-    position: absolute;
-    top: 49px;
-    left: 5%; }
-
-  .zbbg-top-line {
-    padding-top: 50px; } }
+  /*.zbbg-top-line ul {position: absolute;top: 49px;left: 5%;}*/
+  /*.zbbg-top-line { padding-top: 50px; }*/ }
 
 /*# sourceMappingURL=global.css.map */

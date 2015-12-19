@@ -23,6 +23,7 @@ define(function(require){
 	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =date.getHours();//moment().format('hh');
 	  var dateHour="";
+        var loadConfig = [['.my-card'], 1];
 	  if(date.getHours ()-1<10)
 	  {
 		 dateHour=dateStar+" 0"+(date.getHours () - 1);
@@ -148,7 +149,7 @@ define(function(require){
         });
 
         function setPiecharts(id,title,subtitle,titleY,subtitleY,data,pieColors,color) {
-			
+            if(id == 'pieChart3') var subtitle = '能源综合利用率';
             optionsDonut.chart.renderTo = id;
             optionsDonut.title.text = title;
             optionsDonut.title.style.color = color;
@@ -165,6 +166,7 @@ define(function(require){
       // localJsonp.start({url:jsonpPath+'highchartsJson6.js',parameter:{id:'haonengCharts',options: optionsTwo},jsonpCallback:'highchartsJsonp6',done:highchartsGH});
 // });
     demand.start({
+			loadContainer: loadConfig,
 		url:'/api/effiCheck/list1.json',
 		parameter:{id:'haonengCharts',options: optionsTwo},
 		data:{projectid:projectid,dateStar:dateStar},
@@ -173,6 +175,7 @@ define(function(require){
 
  //工艺系统效率下拉框
  demand.start({
+			loadContainer: loadConfig,
 		url:'/api/effiCheck/list3.json',
 		parameter:{id:'gyxtxlSel'},
 		done:function(data,parameter){
@@ -192,6 +195,7 @@ define(function(require){
 				globalTools.selCallback(res, parameter);
 				var itemTemp=$("#gyxtxlSel option:first").attr("id").split('-');
 				demand.start({
+			loadContainer: loadConfig,
 					 url:'/api/effiCheck/list4.json',
 					 parameter:{id:'gyxtxl',options: options},
 					 data:{
@@ -220,6 +224,7 @@ define(function(require){
 			var optionid1="",optionid2="";
 			var optionList=$('#gyxtxlSel option:selected').attr("id").split('-');
 			 demand.start({
+			loadContainer: loadConfig,
 				 url:'/api/effiCheck/list4.json',
 				 parameter:{id:'gyxtxl',options: options},
 				 data:{
@@ -300,6 +305,7 @@ define(function(require){
       // localJsonp.start({url:jsonpPath+'highchartsJson5.js',parameter:{id:'gongnengCharts',options: optionsTwo},jsonpCallback:'highchartsJsonp5',done:highchartsGH});
 // });
       demand.start({url:'/api/effiCheck/list2.json',
+			loadContainer: loadConfig,
 		parameter:{id:'gongnengCharts',options: optionsTwo},
 		data:{
 			projectid: projectid,
