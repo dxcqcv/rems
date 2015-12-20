@@ -70,6 +70,7 @@ define(function(require) {
 			    $("#input-4").fileinput("upload");
 		}).on('fileloaded', function(event, file, previewId, index, reader) {
 		    console.log(file.name);
+		    $("#addExcelName").val(file.name);
 
 		    //请求转化这个excel文件；
 		    // demand.start({url:'/user/export',data:{fileName:file.name}, done:function(data){
@@ -121,7 +122,7 @@ define(function(require) {
 			// 
 			var dateString = $("#dateStrY").val() + "," + $("#dateStrM").val()+ "," + $("#dateStrD").val();
 
-
+			var excelName = $("#addExcelName").val();
 			var reportName = $("#bbName").val();
 			var header = $("#bbHeaderInput").val();
 			var codes = codes;
@@ -141,8 +142,8 @@ define(function(require) {
 						dateStr:dateStr,
 						isShow:isShow,
 						chartType:chartType,
-						chartAddress:chartAddress
-
+						chartAddress:chartAddress,
+						excelName:excelName
 					},
 					done:saveNewbb
 					//此处的如果接口添加成功之后 添加到此页面列表中 
@@ -159,7 +160,8 @@ define(function(require) {
 						dateStr:dateStr,
 						isShow:isShow,
 						chartType:chartType,
-						chartAddress:chartAddress
+						chartAddress:chartAddress,
+						excelName:excelName
 
 					},
 					done:bb_left
@@ -174,6 +176,15 @@ define(function(require) {
 
 	function saveNewbb(data){
 		console.log(data);
+		if (data.status.msg == "success") {
+
+			//隐藏添加报表的弹出框
+			//重新刷新报表列表 
+			$("#bg").css('display','none');
+			$("#tablediv").css('display','none');
+			demand.start({url:'/api/config/report/list.json', data:{reportName:""},done:addBbSelect})
+
+		};
 	}
 	
 	$(function(){
