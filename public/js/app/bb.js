@@ -51,12 +51,14 @@ define(function(require) {
                 var cellWidth = $("#tbyDyrb colgroup").find("col").eq(0).width();
                 
                 var colNumber = Math.round(100/cellWidth);
-                var htmlInputString = "<tabe id='table22'><thead><tr id='codesTr'>";
+                var htmlInputString = "<tr id='codesTr' style='display:none;'>";
                 for (var i = 0; i < colNumber; i++) {
                     htmlInputString += '<th width="'+cellWidth+'%" data-field="P'+i+'">P'+i+'</th> ';
                 };
-                htmlInputString += "</tr></thead></table>";
-                $("#tabDyrb").append(htmlInputString);
+                htmlInputString += "</tr>";
+                
+            $("#tbyDyrb thead").prepend(htmlInputString);
+                $("#tbyDyrb colgroup").remove();
                 console.log("iok");
                 
                 demand.start({url:'/api/runReport/list.json',data:{reportid:selected, dateStar:'2015-09-01',dateFlag:1},done:bb_left})
@@ -71,13 +73,10 @@ define(function(require) {
             var dataObj = [];
             $.each(data.status.data,function(name,value) {
                for(var i=0;i<value.length;i++){
-                
                     dataObj[i]= {};
                 }
                 //{ "date": "2014/12/29 0:00", "P1": 296.69, "P2": 1000, "P3": 47.87, "P4": 43.74, "P5": 14, "P6": 13.6, "P7": 11.67, "P8": 0, "P9": 242.04, "P10": 0, "P11": 481.48, "P12": 588.67, "P13": 155.06, "P14": 516.8, "P15": 444.38, "P16": 183 }
             });
-
-
             $.each(data.status.data,function(name,value) {
                 // console.log(name);
                 // console.log(value);
@@ -85,55 +84,39 @@ define(function(require) {
                 // 判断是date 相同的则放在一起；
                 // 放在p1中：
                 // 列：
-               
                 for(var i=0;i<value.length;i++){
                  //for(var i=0;i<15;i++){
-                   
                     var pnub = "P"+count;
-                   
-                    // if (value[i].datavalue) {
-                    //     dataObj[i][pnub]= value[i].datavalue;
-                    // }else{
-                    //     dataObj[i][pnub]= 10;
-                    // }
-                    dataObj[i][pnub]= 10;
-                    
-                    
+                    if (value[i].datavalue) {
+                        dataObj[i][pnub]= value[i].datavalue;
+                    }else{
+                        dataObj[i][pnub]= 10;
+                    }
+                    //dataObj[i][pnub]= 10; 
                 }
                 count++;
-                
-
-
-                
                 //{ "date": "2014/12/29 0:00", "P1": 296.69, "P2": 1000, "P3": 47.87, "P4": 43.74, "P5": 14, "P6": 13.6, "P7": 11.67, "P8": 0, "P9": 242.04, "P10": 0, "P11": 481.48, "P12": 588.67, "P13": 155.06, "P14": 516.8, "P15": 444.38, "P16": 183 }
             });
 
-            for (var i = 0; i < dataObj.length; i++) {
-                dataObj[i]["P0"]= 10;
-                dataObj[i]["P1"]= 10;
-                dataObj[i]["P2"]= 10;
-                dataObj[i]["P3"]= 10;
-                dataObj[i]["P4"]= 10;
-                dataObj[i]["P5"]= 10;
-                dataObj[i]["P6"]= 10;
-                dataObj[i]["P7"]= 10;
-                dataObj[i]["P8"]= 10;
-                dataObj[i]["P9"]= 10;
-                dataObj[i]["P10"]= 10;
-                dataObj[i]["P11"]= 10;
-                dataObj[i]["P12"]= 10;
-                dataObj[i]["P13"]= 10;
-                dataObj[i]["P14"]= 10;
-
-            };
-
-           
-
-
-
-            
+            // for (var i = 0; i < dataObj.length; i++) {
+            //     dataObj[i]["P0"]= 10;
+            //     dataObj[i]["P1"]= 10;
+            //     dataObj[i]["P2"]= 10;
+            //     dataObj[i]["P3"]= 10;
+            //     dataObj[i]["P4"]= 10;
+            //     dataObj[i]["P5"]= 10;
+            //     dataObj[i]["P6"]= 10;
+            //     dataObj[i]["P7"]= 10;
+            //     dataObj[i]["P8"]= 10;
+            //     dataObj[i]["P9"]= 10;
+            //     dataObj[i]["P10"]= 10;
+            //     dataObj[i]["P11"]= 10;
+            //     dataObj[i]["P12"]= 10;
+            //     dataObj[i]["P13"]= 10;
+            //     dataObj[i]["P14"]= 10;
+            // };
             console.log(dataObj);
-            $table = $('#table22').bootstrapTable({ halign: "center", align: "center", valign: "middle"});
+            $table = $('#tbyDyrb').bootstrapTable({ halign: "center", align: "center", valign: "middle"});
         $table.bootstrapTable('load', dataObj);
 
             // var formatData = 
@@ -382,8 +365,8 @@ define(function(require) {
 
 
 
-        $table = $('#tbyDyrb').bootstrapTable({ halign: "center", align: "center", valign: "middle"});
-        $table.bootstrapTable('load', dyrb_data);
+        //$table = $('#tbyDyrb').bootstrapTable({ halign: "center", align: "center", valign: "middle"});
+        //$table.bootstrapTable('load', dyrb_data);
 
 
         for (var i = 0; i < guolu_data.length; i++)
