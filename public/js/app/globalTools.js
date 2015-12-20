@@ -82,9 +82,13 @@ define(function(require) {
            if(parameter.unit !== undefined) parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options, parameter.unit);
            else{
                 if(parameter.label != undefined) {
-                   parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options,null,1);
-                } else if(parameter.title != undefined) {
-                   //parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options, null, 1, parameter.title);
+                   if(parameter.title != undefined){
+                       parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options, null, 1, parameter.title);
+                   } else {
+                       parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options,null,1);
+                   }
+                } else {
+                   parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options);
                 }
            } 
         },
@@ -94,6 +98,10 @@ define(function(require) {
               else options.yAxis.title.text = null;
               if(label !== undefined){
                options.plotOptions.line.dataLabels.enabled = true;
+              }
+
+              if(title !== undefined){
+                options.title.text = title;
               }
               options.chart.renderTo = id;
               options.yAxis.plotLines.value = baseLine;
@@ -474,15 +482,15 @@ define(function(require) {
 			});
 			yestday.data = xData;
 
-			var baseLines = new Array;
-			var line = new Object;
+            var baseLines = new Array;
+            var line = new Object;
             line.vaule = yestday.line; // 约束性指标
-			baseLines.push(line);
-			line = new Object;
+            baseLines.push(line);
+            line = new Object;
             line.vaule = yestday.line1; // 引导性指标
-			baseLines.push(line);
+            baseLines.push(line);
 
-			yestday.baseLines = baseLines;
+            yestday.baseLines = baseLines;
 
 			parameter.id = info[0];
 			parameter.name = info[1];
