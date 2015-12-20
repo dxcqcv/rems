@@ -4,6 +4,62 @@
 <link rel="stylesheet" href="/css/zdbg.css" media="all">
 <% include header-bottom.html %>
 	<!--诊断报告-->
+<!--弹出层-->
+<div id="myModal" class="modal fade bs-example-modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header zdbg-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">子系统</h4>
+            </div>
+            <div class="modal-body" id="zdbgModalBody">
+                <div id="allZxt" class="zdbg-hide">
+                    <p>系统全局层</p>
+                    <p>工艺系统运行时间</p>
+                </div>
+                <div id="cchpZxt" class="cchp-zxt zdbg-hide">
+                    <div id="cchpZXTLine01"></div>
+                                <table class="table table-bordered gridtable">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>热效率</th>
+                                            <th>热电比</th>
+                                            <th>余热总量</th>
+                                            <th>余热回收量</th>
+                                            <th>热回收率</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot></tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>CCHP系统1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CCHP系统2</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                    <div id="cchpZXTLine02"></div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
 	<div id="zdbg" class="my-section zdbg-wrapper">
 
         <div class="top-bar col-md-12 col-lg-12 col-xs-12">
@@ -15,8 +71,8 @@
                         </li>
                         <li>
                             <select class="form-control selectpicker" id="zdbgProjectSel">
-                              <option value="0">黄花</option>
-                              <option value="1">亭湖</option>
+                              <option value="1">黄花</option>
+                              <option value="3">亭湖</option>
                             </select>
                         </li>
                         <li>
@@ -30,7 +86,7 @@
                         </li>
                     </ul>
                     <div class="jgfx-top-right pull-right pr10">
-                        <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-info">查看</button>
+                        <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-info">分析</button>
                         <button type="button" id="myButton2" data-loading-text="Loading..." class="btn btn-info">导出</button>
                     </div>
                     <div class="jgfx-date-box pull-right">
@@ -61,7 +117,20 @@
                 <div class="zdbg-img zdbg-th">
                     <img src="../images/th-gyt-detail.png" alt="">
                 </div>
-                <div class="zd-list">12121</div>
+                <div id="zdList" class="zd-list zdbg-hide">
+                        <div  class="list-group">
+                            <a  class="list-group-item " data-num=0 data-title="全局工艺系统">全局工艺系统
+                            </a>
+                            <a  class="list-group-item " data-num=1 data-title="CCHP联供子系统">A-CCHP联供子系统
+                            </a>
+                            <a  class="list-group-item" data-num=2 data-title="常规调峰子系统">B-常规调峰子系统
+                            </a>
+                            <a  class="list-group-item" data-num=3 data-title="冷温输配子系统">C-冷温输配子系统
+                            </a>
+                            <a  class="list-group-item" data-num=4 data-title="冷却子系统">D-冷却子系统
+                            </a>
+                    </div>
+                </div>
             </div>
 		<!--<div id="ZDBG_top">-->
             <!--<div class="zdbg-top-bar">-->

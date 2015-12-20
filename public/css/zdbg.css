@@ -3,7 +3,9 @@
 .zdbg-main {  height: 100%; padding-top: 64px;}
 .zdbg-img { height: 100%;  text-align: center; position: relative;}
 .zdbg-img > img { max-width: 100%; max-height: 100%;}
-.zd-list { top: 100px; left:1000px; width: 100px; height: 100px; background: yellow; position: absolute;}
+.zd-list { bottom: 20px; right:20px; width: 200px;  position: absolute; cursor: pointer;}
+div.zdbg-active { display: block; }
+.zdbg-hide { display: none; }
 /*.zdbg-th { */
     /*background: url("../images/tinghu-gyt-s.png") no-repeat center; */
     /*background-size: cover;*/

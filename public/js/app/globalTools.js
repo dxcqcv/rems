@@ -80,12 +80,21 @@ define(function(require) {
             //console.log(parameter.id,data);
            //parameter.fn(parameter.id,data[0].baseLine,data[0].xData,data[0].sData,parameter.options);
            if(parameter.unit !== undefined) parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options, parameter.unit);
-           else parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options);
+           else{
+                if(parameter.label != undefined) {
+                   parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options,null,1);
+                } else if(parameter.title != undefined) {
+                   //parameter.fn(parameter.id,null,data.xData,data.sData,parameter.options, null, 1, parameter.title);
+                }
+           } 
         },
-        tbhbLines: function(id,baseLine,xData,sData,options,unit) {
+        tbhbLines: function(id,baseLine,xData,sData,options,unit,label,title) {
               var tbhbChartLines
               if(unit !== undefined) options.yAxis.title.text = unit;
               else options.yAxis.title.text = null;
+              if(label !== undefined){
+               options.plotOptions.line.dataLabels.enabled = true;
+              }
               options.chart.renderTo = id;
               options.yAxis.plotLines.value = baseLine;
               options.xAxis.categories = xData;
@@ -214,7 +223,7 @@ define(function(require) {
                 //gnfxLines = new Highcharts.Chart(parameter.options); 
             //});
         //},
-        //供能分析，耗能分析弹出框
+        //供能分析，耗能分析,诊断分析弹出框
         modalFn: function () {
             var $this = $(this)
               , title = $this.data('title')
@@ -467,10 +476,10 @@ define(function(require) {
 
 			var baseLines = new Array;
 			var line = new Object;
-			line.vaule = yestday.line; // 约束性指标
+            line.vaule = yestday.line; // 约束性指标
 			baseLines.push(line);
 			line = new Object;
-			line.vaule = yestday.line1; // 引导性指标
+            line.vaule = yestday.line1; // 引导性指标
 			baseLines.push(line);
 
 			yestday.baseLines = baseLines;

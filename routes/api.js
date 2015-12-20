@@ -6,9 +6,9 @@ var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 //var remoteApiHost = "http://117.144.16.98:8080";
 //var remoteApiHost = "http://10.20.1.95:8080";
-var remoteApiHost = "http://10.20.1.42:8888";
+//var remoteApiHost = "http://10.20.1.42:8888";
+var remoteApiHost = "http://10.20.1.167:8888";
 var remoteApiPath = "/rems";
-
 
 
 /* 登录页面 */
@@ -1626,4 +1626,22 @@ router.get('/datamonitor/lineValue.json', function(req, res, next) {
 });
 //----------------------远程监测（数据监测）结束------------------------------------
 
+//
+//诊断分析
+//
+//http://10.20.1.216:8080/rems/dxReport/reportAll.json
+router.get('/dxReport/reportAll.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/dxReport/reportAll.json',
+		form: {
+			userKey: req.session.user.token,
+            projectid: req.query.projectid,
+            dxStart: req.query.dxStart,
+            dxEnd: req.query.dxEnd,
+            seasonType: req.query.seasonType
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
 module.exports = router;
