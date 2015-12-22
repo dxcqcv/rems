@@ -236,7 +236,6 @@ function formatTable(isArray,table,box,col){
 
 			highchartsJsonp(resArr, id);
 		}
-<<<<<<< HEAD
 		var tablesCCHP;
 		var tablesGE;
 		var tablesWHLB;
