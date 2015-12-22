@@ -48,6 +48,10 @@ html, body {
 .two-nav {
   padding: 81px 0 0; }
 
+table {
+  table-layout: fixed;
+  word-break: break-all; }
+
 .my-top-brand {
   position: relative;
   padding-left: 60px;
@@ -599,12 +603,7 @@ input.radio {
   .jgfx-top-right {
     display: none; }
 
-  .zbbg-top-line ul {
-    position: absolute;
-    top: 49px;
-    left: 5%; }
-
-  .zbbg-top-line {
-    padding-top: 50px; } }
+  /*.zbbg-top-line ul {position: absolute;top: 49px;left: 5%;}*/
+  /*.zbbg-top-line { padding-top: 50px; }*/ }
 
 /*# sourceMappingURL=global.css.map */

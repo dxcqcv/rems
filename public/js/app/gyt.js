@@ -151,7 +151,6 @@ function dateInit(rectime){
                 buildGytList(['shenlongchengPA-A-三联供系统','shenlongchengPB-B-电制冷系统','shenlongchengPC-C-燃气锅炉'])
                 pageid = 102; 
                 break;
-            case '17': 
             case '10': 
                 $('#gytSidebar').removeClass('hide');
                 showMe('#zhongdeArtwork');
@@ -159,7 +158,7 @@ function dateInit(rectime){
                 zhongdePAFn();
                 //buildGytList(['zhongdePA-A-三联供系统'])
                 buildGytList(['zhongdePA-A-总览图'])
-                pageid = 9; 
+                pageid = 9541; 
                 break;
             case '6': 
                 $('#gytSidebar').removeClass('hide');
@@ -168,6 +167,7 @@ function dateInit(rectime){
                 buildGytList(['zhaoqingPA-A-乙二醇系统','zhaoqingPB-B-冷却水系统','zhaoqingPC-C-冷冻水系统',])
                 pageid = 9; 
                 break;
+            case '17': 
             default: 
                 showMe('#defaultArtwork');
                 $('#gytSidebar').addClass('hide');
@@ -844,7 +844,11 @@ function clickPopup(){}
             }
         }
         function huanghAlabellistFn(data) {
+        console.log('label list ',data)
             $.each(data.status.data.list,function(index, value){
+            //中德站工艺图数据
+                if(value.widgetid === 992) 
+            //中德数据结束
                 if(value.widgetid === 992) {
                     widgetidFn(1,w992,[value.title,value.units])
                 } else if(value.widgetid === 993) {
@@ -949,6 +953,7 @@ function clickPopup(){}
             //demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:1,pageid:100}, done:huanghuaAlabeldataAllFn});
         }
         function huanghuaAlabeldataAllFn(data) {
+        console.log('label data all fn',data)
             //console.log(data);
             if(data.status.data.length ===0) { console.log('工艺图属性名接口列表为空'); return; }
             $.each(data.status.data.list, function(index, value) {
@@ -1752,6 +1757,7 @@ function clickPopup(){}
 
         }
         function huanghuaEquipStatFn(data) {
+        console.log('equip status fn',data);
         //console.log(data.status.data.length )
             if(data.status.data.length == 0) { console.log('工艺图设备状态列表为空'); return;}
           //, globalMode = 1 // 默认供冷模式

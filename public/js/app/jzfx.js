@@ -26,8 +26,10 @@ define(function(require) {
         var lwList = {}, lqList = {};//无用
 		var bottom358List, bottom353List, bottom341List;//缓存List
         var tabId = 0;//无用
+        var loadConfig = [['.my-card'], 1];
 
 		demand.start({
+			loadContainer: loadConfig,
 			url: '/api/deviceGroupInfo/listOption.json',
 			parameter: {
 				id: '#lqlwSel1',
@@ -290,7 +292,7 @@ define(function(require) {
 				$.each(res,function(i,item){
 					tempArr.push(item.id);
 				});
-				$.unique(tempArr);
+				tempArr=globalTools.uniq(tempArr);
 				for(var i=0;i<tempArr.length;i++)
 				{
 					var obj=new Object;
@@ -416,7 +418,7 @@ define(function(require) {
 		//358,10348,10087,10348
 		//341,10160
         //var initConfig = [['/api/deviceGroupInfo/list1.json','nyzhlyl',[470]],['/api/deviceGroupInfo/list2.json','jnl',[372,10140]]];
-        var initConfig = [['/api/deviceGroupInfo/list2.json','nyzhlyl',[353,10334]],['/api/deviceGroupInfo/list2.json','jnl',[353,10087]]];
+        var initConfig = [['/api/deviceGroupInfo/list2.json','nyzhlyl',[353,10334]],['/api/deviceGroupInfo/list2.json','jnl',[358,10099]]];
 
 //初始化事件
 for(var i = 0, l = initConfig.length; i < l; i++) {
@@ -426,6 +428,12 @@ for(var i = 0, l = initConfig.length; i < l; i++) {
 }
 		// 图表
 function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
+	console.info(url);
+	console.info(id);
+	console.info(tabId);
+	console.info(dateStar);
+	console.info(dateFlag);
+	console.info(optionid);
     var o, o1,o2,oLength = optionid.length ;
 
     if(oLength === 1) {
@@ -435,7 +443,8 @@ function builtCharts(url, id,tabId,dateStar,dateFlag,optionid) {
         o2 = optionid[1];
     }
 		demand.start({
-            loadContainer: [['#'+id], 1],
+			loadContainer: loadConfig,
+            //loadContainer: [['#'+id], 1],
 			url: url,
 			parameter: {
 				id: id,

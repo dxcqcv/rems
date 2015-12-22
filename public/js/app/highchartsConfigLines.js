@@ -11,6 +11,11 @@ define(function(require){
               enabled:false
         },
         plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                }
+            },
             pie: {
                 dataLabels: {}
             },

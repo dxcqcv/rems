@@ -1,17 +1,18 @@
-
- var process = require('child_process');
- var express = require('express');
+var process = require('child_process');
+var express = require('express');
 var multer  = require('multer');
+var request = require('request');
 var fs = require('fs');
 var upload = multer({ dest: './data/upload/' });
 //自己实际路径
-var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
-var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
-// var shellDir = "c:/Users/Roy/Documents/long/dev/rems/shell/";
-// var uploadDir = "c:/Users/Roy/Documents/long/dev/rems/data/upload/";
+//var shellDir = "/Users/lvwei/Develop/github/rems/shell/";
+//var uploadDir = "/Users/lvwei/Develop/github/rems/data/upload/";
+ var shellDir = 'C:/dev/rems/shell';
+ var uploadDir = 'C:/dev/rems/data/upload/';
 var router = express.Router();
 var nhe = require('node-highcharts-exporter');
 var rmdir   = require('rimraf');
+
 // //直接调用命令
 //     exports.createDir = function (){
 //         process.exec('php -v',
@@ -167,10 +168,9 @@ router.get('/tygjpz', function(req, res) {
     res.render('tygjpz', { title: 'Home' });
 });
 
+router.get('/test', function(req, res) {
 
-router.post('/export', function(req, res) {
-
-    process.exec('php '+shellDir+'excel.php ' + uploadDir + " " + req.body.fileName,
+   process.exec('C:/dev/rems/shell/excel.php','php',
           function (error, stdout, stderr) {
             if (error !== null) {
               console.log('exec error: ' + error);
@@ -179,6 +179,40 @@ router.post('/export', function(req, res) {
                 res.send(stdout);
             }
         });
+});
+
+
+router.post('/export', function(req, res) {
+    request.post({
+        url: 'http://localhost:8000/excel.php',
+        form: {
+            uploadDir: uploadDir,
+            reportName: req.body.fileName
+        }
+    }, function(error, response, body) {
+        res.send(body);
+    })
+
+    // process.exec('php '+shellDir+'\\excel.php ' + uploadDir + " " + req.body.fileName,
+    //       function (error, stdout, stderr) {
+    //         if (error !== null) {
+    //           console.log('exec error: ' + error);
+    //         }else{
+    //             console.log(stdout);
+    //             res.send(stdout);
+    //         }
+    //     });
+
+
+     // process.exec('php excel.php',
+     //      function (error, stdout, stderr) {
+     //        if (error !== null) {
+     //          console.log('exec error: ' + error);
+     //        }else{
+     //            console.log(stdout);
+     //            res.send(stdout);
+     //        }
+     //    });
     
 });
 

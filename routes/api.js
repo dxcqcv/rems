@@ -2,13 +2,17 @@ var express = require('express');
 var request = require('request');
 var moment = require('moment');
 var ipaddr = require('ipaddr.js');
+var fs = require('fs');
 var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 //var remoteApiHost = "http://117.144.16.98:8080";
-//var remoteApiHost = "http://10.20.1.95:8080";
-var remoteApiHost = "http://10.20.1.42:8888";
+//var remoteApiHost = "http://10.20.1.218:8080";
+//var remoteApiHost = "http://10.20.1.42:8888";
+//var remoteApiHost = "http://10.20.1.229:8080";
+//var remoteApiHost = "http://10.20.1.167:8888";
+//var remoteApiHost = "http://10.20.1.216:8080";
+var remoteApiHost = "http://10.20.1.231:8080";
 var remoteApiPath = "/rems";
-
 
 
 /* 登录页面 */
@@ -1398,7 +1402,6 @@ router.get('/config/report/add.json', function(req, res, next) {
         url: remoteApiHost + '/rems/config/report/add.json',
         form: {
             userKey: req.session.user.token,
-            
             reportName: req.query.reportName,
             header: req.query.header,
             codes:req.query.codes,
@@ -1408,16 +1411,21 @@ router.get('/config/report/add.json', function(req, res, next) {
             chartAddress:req.query.chartAddress
         }
     }, function(error, response, body) {
-        ////此处修改excel文件名为id.xslx
-        // fs.rename(__dirname + '/test', __dirname + '/fsDir', function (err) {
-        //    if(err) {
-        //         console.error(err);
-        //         return;
-        //    }
-        //     console.log('重命名成功')
-        // });
+        console.log(body);
+         var result = JSON.parse(body);
+        if (result.status.code == 200) {
+            //此处修改excel文件名为id.xslx
+            fs.rename("C:/dev/rems/data/upload/"+req.query.excelName, "C:/dev/rems/data/upload/" + result.status.data.id + ".xls", function (err) {
+               if(!err) {
+                    console.error(err);
+                    
+               }
+               res.send(body);
+            });
+        } 
+        
 
-        res.send(body);
+        
     })
 });
 //自定义报表配置：查询报表
@@ -1625,5 +1633,39 @@ router.get('/datamonitor/lineValue.json', function(req, res, next) {
 	})
 });
 //----------------------远程监测（数据监测）结束------------------------------------
+
+
+//
+//诊断分析
+//
+//http://10.20.1.216:8080/rems/dxReport/reportAll.json
+router.get('/dxReport/reportAll.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/dxReport/reportAll.json',
+		form: {
+			userKey: req.session.user.token,
+            projectid: req.query.projectid,
+            dxStart: req.query.dxStart,
+            dxEnd: req.query.dxEnd,
+            seasonType: req.query.seasonType
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
+//项目下拉框选择   2015.12.21 xusheng
+router.get('/dxReport/listProjects.json', function(req, res, next) {
+	request.post({
+		url: remoteApiHost + '/rems/dxReport/listProjects.json',
+		form: {
+			userKey: req.session.user.token,
+            projectid: req.query.projectid
+		}
+	}, function(error, response, body) {
+		res.send(body);
+	})
+});
+
 
 module.exports = router;
