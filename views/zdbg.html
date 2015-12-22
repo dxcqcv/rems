@@ -28,23 +28,23 @@
                             <tbody>
                                 <tr>
                                     <td>CCHP子系统</td>
-                                    <td>168</td>
+                                    <td>50</td>
                                 </tr>
                                 <tr>
                                     <td>常规调峰子系统</td>
-                                    <td>168</td>
+                                    <td>563</td>
                                 </tr>
-                                <tr>
-                                    <td>储能调峰子系统</td>
-                                    <td>168</td>
-                                </tr>
+                                <!--<tr>-->
+                                    <!--<td>储能调峰子系统</td>-->
+                                    <!--<td>115</td>-->
+                                <!--</tr>-->
                                 <tr>
                                     <td>冷温水输配子系统</td>
-                                    <td></td>
+                                    <td>115</td>
                                 </tr>
                                 <tr>
                                     <td>冷却子系统</td>
-                                    <td></td>
+                                    <td>0</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -90,8 +90,8 @@
                         </table>
                         <div id="gnjgping2"></div>
                         <h5>分析</h5>
-                        <p>（1）该段时间内，消耗最多的能源类型是 <span>电能/天然气/可再生能源  </span>。</p>
-                        <p>（2）该段时间内，供能出力最多的系统是 <span>CCHP系统/调峰系统 </span>。</p>
+                        <p>（1）该段时间内，消耗最多的能源类型是 <span>天然气</span>。</p>
+                        <p>（2）该段时间内，供能出力最多的系统是 <span>调峰系统 </span>。</p>
                         <div id="gllyswkqhzLine"></div>
 						<div id="gllyswkqhzLine2"></div>
                         <h5>分析</h5>
@@ -109,6 +109,11 @@
                         <h5>1.4 经济性分析</h5>
                         <div id="allLine01"></div>
                         <div id="dwgnnh"></div>
+                        <h5>分析</h5>
+                        <p>（1）该段时间，单位供能能耗最高为   5339.62    kwh/kwh；最低为   360.11    kwh/kwh；</p>
+                        <p>（2）该段时间，单位供能成本最高为     16100.27   元/kwh；最低为   1127.22     元/kwh；</p>
+
+
                 </div>
                 <div id="cchpZxt" class="cchp-zxt zdbg-hide">
                     <h2>CCHP子系统</h2>
@@ -238,9 +243,11 @@
 					<div id="cchpZXTLine01"></div>
                     
                     <h5>分析</h5>
-                    <p>（1）	该段时间内，<span>CCHP系统2 </span> 热效率偏低， <span>CCHP系统2 </span> 热电比偏低，<span>CCHP系统2 </span> 热回收率偏低。   。</p>
-                    <p>（2）	<span>发电机1  </span> 发电效率偏低，<span>发电机1   </span>负荷率偏低。   。</p>
+                    <p>（1）该段时间内，CCHP子系统  热效率偏低， CCHP子系统 热电比偏低，CCHP子系统 热回收率偏低。	</p>
+                    <p>（2）	烟气余热型蒸汽锅炉1，蒸汽型溴化锂机组1  未开启。</p>
                     <p>可能存在问题：<span></span></p>
+                    <p>（1）	处于低负荷运行状态。</p>
+                    <p>（2）	未利用烟气余热。</p>
                 </div>
                 <div id="cgtfZxt" class="cgtf-zxt zdbg-hide">
 
@@ -300,8 +307,13 @@
                                
                                 <div id="ranqixingLine"></div>
                     <h5>分析</h5>
-                    <p>该段时间内， <span>电冷机2，溴化锂1</span> 的COP偏低。</p>
+<p>（1）	该段时间内， 直燃型溴化锂机组1，直燃型溴化锂机组2  长期处于部分负荷下工作，  直燃型溴化锂机组1，直燃型溴化锂机组2 的COP偏低。</p>
+<p>（2）	该段时间内， 燃气型蒸汽锅炉1，燃气型蒸汽锅炉2  热效率低于限值。</p>
+
                     <p>可能存在问题： <span></span> </p>
+<p>（1）	处于低负荷运行状态。</p>
+<p>（2）	可能受冷温水输配子系统、冷却子系统等其他子系统影响。</p>
+
                     <h4>2.2.2 可再生能源类</h4>
 
                             <table id="t_2_2_02" class="table table-bordered gridtable">
@@ -335,9 +347,13 @@
 							
 							
                                 <div id="xhl1Line"></div>
+
                     <h5>分析</h5>
-                    <p>该段时间内， <span>电冷机2，溴化锂1</span> 的COP偏低。</p>
+<p>（1）	该段时间内， 土壤源热泵机组1 长期处于部分负荷下工作，  土壤源热泵机组1 的COP偏低。</p>
+
                     <p>可能存在问题： <span></span> </p>
+<p>（1）	处于低负荷运行状态。</p>
+<p>（2）	可能受冷温水输配子系统、冷却子系统等其他子系统影响。</p>
 							
                             <div id="dyrb1Line"></div>
                             <div id="dyrb2Line"></div>
@@ -350,11 +366,8 @@
 					
 					
                     
-                    <h5>分析</h5>
-                    <p>（1）该段时间内， <span>蓄冷2</span>  蓄冷量偏低，<span>蓄冷2</span>  释冷量偏低。</p>
-                    <p>（2）该段时间内，<span>双工况制冷机2</span>  的制冷COP偏低，<span>双工况制冷机2</span>  的制冰COP偏低，<span>乙二醇循环泵组1</span>  运行效率偏低。</p>
-                    <p>可能存在问题：<span></span></p>
 					
+
 					
                 </div>
                 <div id="lwspZxt" class="lws-zxt zdbg-hide">
@@ -389,8 +402,9 @@
                             </tbody>
                         </table>
                     <h5>分析</h5>
-                    <p>该段时间内，<span>冷温水泵组1</span>  输送系数偏低，<span>冷温水泵组1</span>  运行效率偏低。</p>
-                    <p>可能存在问题:<span></span></p>
+<p>（1）	该段时间内，亭湖医院冷温水循环泵组  输送系数偏低。</p>
+<p>可能存在的问题：</p>
+<p>（1）	系统负荷较低，可能未合理安排水泵启停。</p>
                 </div>
                 <div id="lqZxt" class="lq-zxt zdbg-hide">
                     <h2>冷却子系统</h2>
@@ -422,9 +436,9 @@
                                 <!--</tr>-->
                             </tbody>
                         </table>
-                    <h5>分析</h5>
-                    <p>该段时间内，<span>冷却水泵组1</span>  输送系数偏低，<span>冷却水泵组1</span>  运行效率偏低。</p>
-                    <p>可能存在问题:<span></span></p>
+<p>冷却子系统</p>
+<p>分析：未开启</p>
+
                         <table id="d_t_02" class="table table-bordered gridtable">
                             <thead>
                                 <tr>

@@ -16,6 +16,19 @@ define(function(require) {
 		datapicker = require('bootstrap-datetimepicker.min')
       ;
     (function() {
+      //下拉框默认值
+       //var zdbgStr = '', zdbgProjectSel = $('#zdbgProjectSel') ;
+       //console.log(12121)
+       //console.log(projectid)
+       //switch(projectid) {
+         //case 1:
+             //zdbgProjectSel.val(1);
+             //break; 
+         //case 3:
+             //zdbgProjectSel.val(3);
+             //break; 
+       //}
+
 	$("#subTitleNav").text("");
 	
     //var pid = projectid;
@@ -345,7 +358,7 @@ function getReportAll(data){
 				//				parseFloat((v.datavalue / kzsCount * 100).toFixed(1));
 				v.y = parseFloat((v.datavalue / count * 100).toFixed(2));
 			});
-			highchartsJsonp2(resArr, "gnjg");
+			highchartsJsonp(resArr, "gnjg");
 			
 			bingtuformat(data.status.data.piegraghEC, "dyrb_fhl");
 }
@@ -385,45 +398,17 @@ function getReportAll(data){
             globalTools.modalFn.call(this);
 
        });
-	   
-	   $('#myModal').on('show.bs.modal', function() {
-		  
-		    
-	   })
 
 		$('#myModal').on('shown.bs.modal', function() {
-			
-			 var wid = $("#myModal .modal-body").width();
+        //  修复调峰曲线
+         var wid = $("#myModal .modal-body").width();
 		  
 		    $("#ranqixingLine").css("width",wid + "px");
 			$("#xhl1Line").css("width",wid);
 			$("#zhiranjiLine").css("width",wid + "px");
-			
-	
-		   
-		   
             var area = $(this).attr('data-num');
             //全局
             if(area == 0) {
-				
-				var projectId=$("#zdbgProjectSel option:selected").attr("id");
-       
-				demand.start({
-					url: '/api/dxReport/reportAll.json',
-					loadContainer: loadConfig,
-					parameter: {d:1},
-					data: {
-						projectid: projectId,
-						dxStart: dateEnd,
-						dxEnd:dateStar ,
-						//dxStart: '2015-08-01',
-						//dxEnd:'2015-08-02',
-						seasonType: groupType
-					},
-					done: getReportAll 
-				});
-				
-				
                globalTools.selectFn('#allZxt','div','zdbg-active','zdbg-active'); 
                // lineCostParameter = {id:'allLine01',options:optionsLabel,fn: globalTools.tbhbLines,label:1, title:'单位供能成本'};
 			   
@@ -478,7 +463,6 @@ function getReportAll(data){
 				
 
             } else if(area == 2) {//调峰
-			
 				
 				//显示 2.2常规调峰子系统 table1
 				formatTables("t_2_2_01",["设备序号","耗气量","供能量","COP","负荷率"],tablesLB);
@@ -519,7 +503,6 @@ function getReportAll(data){
 				
 			
                 globalTools.selectFn('#lqZxt','div','zdbg-active','zdbg-active'); 
-				
             }
         });
 
@@ -571,16 +554,6 @@ zdbgEnd.data("DateTimePicker").date(dateEnd );
            zdbgStart.data("DateTimePicker").minDate(ev.date); 
            //if(groupType  ===)
         });
-      //下拉框默认值
-      // var zdbgStr = '', zdbgProjectSel = $('#zdbgProjectSel') ;
-      // switch(projectid) {
-        // case 1:
-            // zdbgProjectSel.val(1);
-            // break; 
-        // case 3:
-            // zdbgProjectSel.val(3);
-            // break; 
-      // }
 	  
 	  
       //分析按钮
@@ -622,28 +595,13 @@ zdbgEnd.data("DateTimePicker").date(dateEnd );
             //dateStar = parents.find('.datetimepicker1').children('input').val();  
             //dateFlag = setDate.getFlag();
         });
-		
+
 		function highchartsJsonp(data, id) {
 			var chartPie;
 			optionsPie.chart.renderTo = id;
 			optionsPie.chart.backgroundColor = '#fff';
 			optionsPie.series[0].name = '占比';
 			optionsPie.series[0].data = data;
-			
-			//optionsPie.plotOptions.pie.dataLabels.format ="<b>{point.name}</b>: {point.percentage:.1f}kwh"
-			
-			chartPie = new Highcharts.Chart(optionsPie);
-		}
-
-		function highchartsJsonp2(data, id) {
-			var chartPie;
-			optionsPie.chart.renderTo = id;
-			optionsPie.chart.backgroundColor = '#fff';
-			optionsPie.series[0].name = '占比';
-			optionsPie.series[0].data = data;
-			
-			optionsPie.plotOptions.pie.dataLabels.format ="<b>{point.name}</b>: {point.percentage:.1f}kwh"
-			
 			chartPie = new Highcharts.Chart(optionsPie);
 		}
 

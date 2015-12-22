@@ -584,6 +584,14 @@ function clickPopup(){}
               , w1053= $('#widgetid1053')   
               , w1054= $('#widgetid1054')   
               , w1055= $('#widgetid1055')   
+              //中德
+              , w28025= $('#widgetid28025')   
+              , w28026= $('#widgetid28026')
+              , w28018= $('#widgetid28018')
+              , w28020= $('#widgetid28020')
+              , w28089= $('#widgetid28089')
+              , w28091= $('#widgetid28091')
+              ;
 
         if(globalMode === 0) { //供热
         //黄花A区1or2号余热直燃机
@@ -847,9 +855,20 @@ function clickPopup(){}
         console.log('label list ',data)
             $.each(data.status.data.list,function(index, value){
             //中德站工艺图数据
-                if(value.widgetid === 992) 
+                if(value.widgetid === 28025) {
+                    widgetidFn(1,w28025,[value.title,value.units])
+                } else if(value.widgetid === 28026) {
+                    widgetidFn(1,w28026,[value.title,value.units])
+                } else if(value.widgetid === 28018) {
+                    widgetidFn(1,w28018,[value.title,value.units])
+                } else if(value.widgetid === 28020) {
+                    widgetidFn(1,w28020,[value.title,value.units])
+                } else if(value.widgetid === 28089) {
+                    widgetidFn(1,w28089,[value.title,value.units])
+                } else if(value.widgetid === 28091) {
+                    widgetidFn(1,w28091,[value.title,value.units])
             //中德数据结束
-                if(value.widgetid === 992) {
+                } else if(value.widgetid === 992) {
                     widgetidFn(1,w992,[value.title,value.units])
                 } else if(value.widgetid === 993) {
                     widgetidFn(1,w993,[value.title,value.units])
