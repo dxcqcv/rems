@@ -91,7 +91,7 @@ function dateInit(rectime){
 }
 
         function gytDynamicCharts(data,parameter) {
-            console.log(data);
+            if(data.status.data.length == 0) { console.log('动态数据为空'); return;}
             var linesObj = parameter.dataLines;
             var sName, sA = [];
             var propertyid = parameter.propertyid;
@@ -179,11 +179,13 @@ function dateInit(rectime){
 if(pageid !==9){
     if(pageid == 101) {
         demand.start({url:'/api/techCheck/equLabellist.json',data:{projectid:projectid,pageid:pageid}, done:tinghuLabellistFn});
-    console.log(1212)
         demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid}, done:tinghuEquipStatFn});
         demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:tinghuLabeldataAllFn});
+    } else if(pageid == 102)  {
+        demand.start({url:'/api/techCheck/equLabellist.json',data:{projectid:projectid,pageid:pageid}, done:shenlongchengLabellistFn});
+        demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid}, done:shenlongchengEquipStatFn});
+        demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:shenlongchengLabeldataAllFn});
     } else {
-    console.log(3333)
         demand.start({url:'/api/techCheck/equLabellist.json',data:{projectid:projectid,pageid:pageid}, done:huanghAlabellistFn});
         demand.start({url:'/api/techCheck/equState.json',data:{projectid:projectid}, done:huanghuaEquipStatFn});
         demand.start({url:'/api/techCheck/equDatas.json',data:{projectid:projectid,pageid:pageid}, done:huanghuaAlabeldataAllFn});
@@ -598,6 +600,7 @@ function clickPopup(){}
               , w28020= $('#widgetid28020')
               , w28089= $('#widgetid28089')
               , w28091= $('#widgetid28091')
+
               ;
 
         if(globalMode === 0) { //供热
@@ -835,7 +838,8 @@ function clickPopup(){}
             });
         }
         function shenlongchengLabellistFn(data) {
-            $.each(data,function(index, value){
+            $.each(data.status.data.list,function(index, value){
+            //$.each(data,function(index, value){
                 if(value.widgetid === 1090) {
                     widgetidFn(1,w1090,[value.title,value.units])
                 } else if(value.widgetid === 1092) {
@@ -843,10 +847,14 @@ function clickPopup(){}
                 }
             });
             //demand.start({url:'http://10.36.128.73:8080/reds/ds/labeldataAll?pageid=102', jsonp: 'labeldataAll',done:shenlongchengLabeldataAllFn});
-            localJsonp.start({url:ajaxPath+'labeldataAll102.js', jsonpCallback: 'labeldataAll',done:shenlongchengLabeldataAllFn});
+            //localJsonp.start({url:ajaxPath+'labeldataAll102.js', jsonpCallback: 'labeldataAll',done:shenlongchengLabeldataAllFn});
         }
         function shenlongchengLabeldataAllFn(data) {
-            $.each(data, function(index, value) {
+        console.log('label data all fn',data)
+            //console.log(data);
+            if(data.status.data.length ===0) { console.log('工艺图属性名接口列表为空'); return; }
+            $.each(data.status.data.list, function(index, value) {
+            //$.each(data, function(index, value) {
                 if(value.widgetid === 1090) {
                     widgetidFn(0,w1090,[value.datavalue])
                 } else if(value.widgetid === 1092) {
@@ -876,7 +884,7 @@ function clickPopup(){}
                     widgetidFn(1,w28020,[value.title,value.units])
                 } else if(value.widgetid === 28089) {
                     widgetidFn(1,w28089,[value.title,value.units])
-                } else if(value.widgetid === 28091) {
+                } else if (value.widgetid === 28091) {
                     widgetidFn(1,w28091,[value.title,value.units])
             //中德数据结束
                 } else if(value.widgetid === 992) {
@@ -992,6 +1000,26 @@ function clickPopup(){}
                 } else if(value.widgetid === 993) {
                     widgetidFn(0,w993,[value.datavalue])
                 }
+                //中德开始
+                else if(value.widgetid === 28089) {
+                    widgetidFn(0,w28089,[value.datavalue])
+                }
+                else if(value.widgetid === 28091) {
+                    widgetidFn(0,w28091,[value.datavalue])
+                }
+                else if(value.widgetid === 28026) {
+                    widgetidFn(0,w28026,[value.datavalue])
+                }
+                else if(value.widgetid === 28025) {
+                    widgetidFn(0,w28025,[value.datavalue])
+                }
+                else if(value.widgetid === 28018) {
+                    widgetidFn(0,w28018,[value.datavalue])
+                }
+                else if(value.widgetid === 28020) {
+                    widgetidFn(0,w28020,[value.datavalue])
+                }
+                //中德结束
                 /*
                 else if(value.widgetid === 973) {
                     widgetidFn(0,w973,[value.datavalue])
@@ -1809,6 +1837,28 @@ addClassinstanceid('#tinghuDERanqiguolu02',156);
 addClassinstanceid(huanghuaDianlengji17,17);
                     //pipelineStatus(0,'.huanghua-d-lixindianlengji01');
                     classinstanceid17Flag = 0
+                }
+                //中德开始
+                else if(value.classinstanceid === 10340 && value.datavalue1 === '0') {
+                    equipStatus(0,'#zhongdeDianzhilengji');  
+addClassinstanceid('#zhongdeDianzhilengji',10340);
+                }else if(value.classinstanceid === 10340 && value.datavalue1 === '1') {
+                    equipStatus(1,'#zhongdeDianzhilengji');  
+addClassinstanceid('#zhongdeDianzhilengji',10340);
+                 
+                }else if(value.classinstanceid === 10342 && value.datavalue1 === '0') {
+                    equipStatus(1,'#zhongdeDiyuanrebeng');  
+addClassinstanceid('#zhongdeDiyuanrebeng',10342);
+                }else if(value.classinstanceid === 10342 && value.datavalue1 === '1') {
+                    equipStatus(1,'#zhongdeDiyuanrebeng');  
+addClassinstanceid('#zhongdeDiyuanrebeng',10342);
+                }else if(value.classinstanceid === 10343 && value.datavalue1 === '0') {
+                    equipStatus(1,'#zhongdeXiulengji');  
+addClassinstanceid('#zhongdeXiulengji',10343);
+                }else if(value.classinstanceid === 10343 && value.datavalue1 === '1') {
+                    equipStatus(1,'#zhongdeXiulengji');  
+addClassinstanceid('#zhongdeXiulengji',10343);
+                //中德结束
                 } else if(value.classinstanceid === 17 && value.datavalue1 === '1') {
 addClassinstanceid(huanghuaDianlengji17,17);
                     equipStatus(1,huanghuaDianlengji17);  

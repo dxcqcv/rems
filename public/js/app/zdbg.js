@@ -36,6 +36,10 @@ define(function(require) {
 			locale: 'zh-cn'
 		};
 
+		$("#myButton2").on("click",function(){
+			alert("导出成功!");
+		});
+		
 		//加载项目下拉框
 		demand.start({
 			url: '/api/dxReport/listProjects.json',
@@ -611,13 +615,13 @@ define(function(require) {
 			if ($this.prop('checked') && id === 'glj') {
 				console.log('供冷及');
 				groupType = 0;
-				//zdbgStart.data("DateTimePicker").date('2015-10-31');
-				//zdbgEnd.data("DateTimePicker").date('2015-05-01');
+				zdbgStart.data("DateTimePicker").date('2015-10-31');
+				zdbgEnd.data("DateTimePicker").date('2015-05-01');
 			} else if ($this.prop('checked') && id === 'grj') {
 				console.log('供热及');
 				groupType = 1;
-				//zdbgStart.data("DateTimePicker").date('2016-04-30');
-				//zdbgEnd.data("DateTimePicker").date('2015-11-01');
+				zdbgStart.data("DateTimePicker").date('2016-04-30');
+				zdbgEnd.data("DateTimePicker").date('2015-11-01');
 			}
 		});
 
@@ -629,8 +633,8 @@ define(function(require) {
 			zdbgEnd.datetimepicker(datetimepickerObjZdbg);
 			//zdbgStart.data("DateTimePicker").date('2015-10-31');
 			//zdbgEnd.data("DateTimePicker").date('2015-05-01');
-			zdbgStart.data("DateTimePicker").date(dateStar);
-			zdbgEnd.data("DateTimePicker").date(dateEnd);
+			zdbgStart.data("DateTimePicker").date("2015-10-31");
+			zdbgEnd.data("DateTimePicker").date("2015-05-01");
 		} else { //供热季 
 			$('#grj').prop('checked', true);
 			groupType = 1;
@@ -638,18 +642,52 @@ define(function(require) {
 			zdbgEnd.datetimepicker(datetimepickerObjZdbg);
 			//zdbgStart.data("DateTimePicker").date('2016-04-30');
 			//zdbgEnd.data("DateTimePicker").date('2015-11-01');
-			zdbgStart.data("DateTimePicker").date(dateStar);
-			zdbgEnd.data("DateTimePicker").date(dateEnd);
+			zdbgStart.data("DateTimePicker").date('2016-04-30');
+			zdbgEnd.data("DateTimePicker").date('2015-11-01');
 			//时间控件
 		}
 		zdbgStart.on('dp.change', function(ev) {
 			dateStar = ev.date.format('YYYY-MM-DD');
 			zdbgEnd.data("DateTimePicker").maxDate(ev.date);
+			
+			var dateBeginTime="",datEndTime="";
+			if(groupType==1)
+			{
+				dateBeginTime='2015-11-01',datEndTime='2016-04-30';
+			}
+			else
+			{
+				dateBeginTime='2015-05-01',datEndTime='2015-10-31';
+			}
+			if(dateStar>datEndTime)
+			{
+				alert("选择的时间不能大于下限!");
+				zdbgStart.data("DateTimePicker").date(datEndTime);
+			}
+
+			
 			console.log(groupType)
 		});
 		zdbgEnd.on('dp.change', function(ev) {
 			dateEnd = ev.date.format('YYYY-MM-DD');
 			zdbgStart.data("DateTimePicker").minDate(ev.date);
+			
+			var dateBeginTime="",datEndTime="";
+			if(groupType==1)
+			{
+				dateBeginTime='2015-11-01',datEndTime='2016-04-30';
+			}
+			else
+			{
+				dateBeginTime='2015-05-01',datEndTime='2015-10-31';
+			}
+			//alert(dateEnd+"|"+dateBeginTime);
+			if(dateEnd<dateBeginTime)
+			{
+				alert("选择的时间不能小于下限!");
+				zdbgEnd.data("DateTimePicker").date(dateBeginTime);
+			}
+
 			//if(groupType  ===)
 		});
 		//下拉框默认值

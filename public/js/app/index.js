@@ -179,19 +179,19 @@ $('.maker'+projectid+'').parents('.amap-marker').siblings('.amap-marker').find('
                                     '<ul>'+
                                         '<li>'+
                                             '<p class="detail-name">能源综合利用率</p>'+
-                                            '<p class="detail-val">'+data1+'</p>'+
+                                            '<p class="detail-val">'+((projectId == 3) ? 0.54 : data1)+'</p>'+
                                         '</li>'+
                                         '<li>'+
                                             '<p class="detail-name">可再生能源利用率</p>'+
-                                            '<p class="detail-val">'+data2+'</p>'+
+                                            '<p class="detail-val">'+((projectId == 3) ? 0 : data2)+'</p>'+
                                         '</li>'+
                                         '<li>'+
                                             '<p class="detail-name">节能率</p>'+
-                                            '<p class="detail-val">'+data3+'</p>'+
+                                            '<p class="detail-val">'+((projectId == 3) ? 0.10 : data3)+'</p>'+
                                         '</li>'+
                                         '<li>'+
                                             '<p class="detail-name">CO2减排率</p>'+
-                                            '<p class="detail-val">'+data4+'</p>'+
+                                            '<p class="detail-val">'+((projectId == 3) ? 0.35 : data4)+'</p>'+
                                         '</li>'+
                                     '</ul>'+
                                 '</div>'+
