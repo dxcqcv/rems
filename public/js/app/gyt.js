@@ -1280,6 +1280,7 @@ function clickPopup(){}
                 {
                     $('#tinghuAEZhengqixiulengji01').removeClass('gray-filter');
                     //pipelineStatus(1,'.tinghu-xiulengji-out02','.tinghu-xiulengji-in05','.tinghu-a-l-xiulengji','.tinghu-xiulengji-out02','.tinghu-xiulengji-in05');
+addClassinstanceid('#tinghuAEZhengqixiulengji01',180);
                     classinstanceid180Flag = 1
                 }
                 else if(value.classinstanceid === 157 && value.datavalue1 === '0') { //亭湖A烟气余热型蒸汽锅炉1
@@ -1292,6 +1293,7 @@ function clickPopup(){}
                 {
                     $('#tinghuAEYureguolu01').removeClass('gray-filter');
                     //pipelineStatus(1,'.tinghu-ranqiguolu-0-out01','.tinghu-ranqiguolu-1-out02','.tinghu-ranqiguolu-1-in01','.tinghu-a-l-yureguolu','.tinghu-ranqiguolu2-1-out06','.tinghu-yureguolu-out04');
+addClassinstanceid('#tinghuAEYureguolu01',157);
                     classinstanceid157Flag = 1
                 }
                 else if(value.classinstanceid === 152 && value.datavalue1 === '0') { //亭湖A发电机
@@ -1303,6 +1305,7 @@ function clickPopup(){}
                 {
                     equipStatus(1,'#tinghuAEFdianji01','#tinghuAELengqueta02','#tinghuAELengqueta01');  
 
+addClassinstanceid('#tinghuAEFdianji01',152);
                     if(globalMode === 0) { //供热
                         equipStatus(1,'#tinghuAEHuanreqi02','#tinghuAEHuanreqi01')
                         //pipelineStatus(1,'.tinghu-huanreqi-0-in01','.tinghu-huanreqi-0-in02','.tinghu-a-l-huanreqi01','.tinghu-a-l-huanreqi02','.tb','.tb02','.tinghu-xiulengji-out02','.tinghu-xiulengji-in05','.tinghu-fadianji-out07','.tinghu-fadianji-out06','.tinghu-fadianji-in08');
@@ -1328,6 +1331,7 @@ function clickPopup(){}
                 {
                     $('#tinghuBCEZhiranji01').removeClass('gray-filter');
                     classinstanceid153Flag = 1
+addClassinstanceid('#tinghuBCEZhiranji01',153);
                     //pipelineStatus(1,'.tinghu-bc-l-zhiranji01','.tinghu-zhiranji-0-in02','.tinghu-zhiranji-0-out02','.tinghu-zhiranji-0-in01','.tinghu-zhiranji-0-out01');
                 }
                 else if(value.classinstanceid === 154 && value.datavalue1 === '0') { //亭湖bc直燃机02
@@ -1338,6 +1342,7 @@ function clickPopup(){}
                 else if(value.classinstanceid  === 154 && value.datavalue1 === '1')
                 {
                     $('#tinghuBCEZhiranji02').removeClass('gray-filter');
+addClassinstanceid('#tinghuBCEZhiranji02',154);
                     classinstanceid154Flag = 1
                     //pipelineStatus(1,'.tinghu-zhiranji-0-in01','.tinghu-zhiranji-0-out01','.tinghu-zhiranji-2-out03','.tinghu-zhiranji-2-in03','.tinghu-zhiranji-0-out02','.tinghu-zhiranji-0-in02','.tinghu-bc-l-zhiranji02');
                 }
@@ -1349,6 +1354,7 @@ function clickPopup(){}
                 else if(value.classinstanceid  === 151 && value.datavalue1 === '1')
                 {
                     $('#tinghuBCEDiyuanrebeng01').removeClass('gray-filter');
+addClassinstanceid('#tinghuBCEDiyuanrebeng01',151);
                     classinstanceid151Flag = 1
                     //pipelineStatus(1,'.tinghu-zhiranji-2-out03','.tinghu-zhiranji-2-in03','.tinghu-zhiranji-0-out02','.tinghu-zhiranji-0-in02','.tinghu-bc-l-diyuanrebeng');
                 }
@@ -1360,6 +1366,7 @@ function clickPopup(){}
                 else if(value.classinstanceid  === 155 && value.datavalue1 === '1')
                 {
                     $('#tinghuDERanqiguolu01').removeClass('gray-filter');
+addClassinstanceid('#tinghuDERanqiguolu01',155);
                     //pipelineStatus(1,'.tinghu-ranqiguolu-1-out02','.tinghu-ranqiguolu-0-out01','.tinghu-ranqiguolu2-0-in01','.tinghu-d-l-ranqiguolu01','.tinghu-ranqiguolu2-1-out06','.tinghu-yureguolu-out03','.tinghu-yureguolu-out04');
                     classinstanceid155Flag =1
                 }
@@ -1371,6 +1378,7 @@ function clickPopup(){}
                 else if(value.classinstanceid  === 156 && value.datavalue1 === '1')
                 {
                     $('#tinghuDERanqiguolu02').removeClass('gray-filter');
+addClassinstanceid('#tinghuDERanqiguolu02',156);
                     //pipelineStatus(1,'.tinghu-ranqiguolu2-0-in01','.tinghu-ranqiguolu2-1-out06','.tinghu-ranqiguolu-0-out01','.tinghu-d-l-ranqiguolu02','.tinghu-yureguolu-out03','.tinghu-yureguolu-out04');
                     $('.tinghu-yureguolu-out03').attr('id','true');
                     classinstanceid156Flag =1
