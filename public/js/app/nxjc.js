@@ -17,8 +17,8 @@ define(function(require){
       ;
 	  
       (function(){
-	  var dateStar ='2015-12-15' //moment().format('YYYY-MM-DD');
-	  //var dateStar =moment().format('YYYY-MM-DD');
+	  //var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
+	  var dateStar =moment().format('YYYY-MM-DD');
 	  var date = new Date ();
 	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =date.getHours();//moment().format('hh');
@@ -88,26 +88,43 @@ define(function(require){
 						case 3: id = 'pieChart4'; pieColors = ['#a864a8', '#e8ebeb']; color = '#a864a8'; break; 
 					}     
 					zbfxName = v.showname;
-					if(id=="pieChart3")
-					{
+					// if(id=="pieChart3")
+					// {
 					
-						// alert(GonglengTotal);
-						// alert(GongreTotal);
-						// alert(FadianTotal);
-						// alert(HaoDianTotal);
-						// alert(HaoQiTotal);
-						if(GonglengTotal==0 && GongreTotal==0 && FadianTotal==0 && HaoDianTotal==0 && HaoQiTotal==0 )
-						{
-							tempData=0;
-						}
-						else
-						{
-							tempData=Math.round(((parseFloat(0.09*GonglengTotal)+ parseFloat(0.188*GongreTotal)+parseFloat(FadianTotal))/(parseFloat(HaoDianTotal)+parseFloat(6.22*HaoQiTotal)))*100);
-						}
+						// // alert(GonglengTotal);
+						// // alert(GongreTotal);
+						// // alert(FadianTotal);
+						// // alert(HaoDianTotal);
+						// // alert(HaoQiTotal);
+						// if(GonglengTotal==0 && GongreTotal==0 && FadianTotal==0 && HaoDianTotal==0 && HaoQiTotal==0 )
+						// {
+							// tempData=0;
+						// }
+						// else
+						// {
+							// tempData=Math.round(((parseFloat(0.09*GonglengTotal)+ parseFloat(0.188*GongreTotal)+parseFloat(FadianTotal))/(parseFloat(HaoDianTotal)+parseFloat(6.22*HaoQiTotal)))*100);
+						// }
 						
+					// }
+					// else{
+						// tempData = Math.round(v.dataVlue)>100?100:Math.round(v.dataVlue);
+					// }
+					
+					if(i==0)
+					{
+						tempData=54;
 					}
-					else{
-						tempData = Math.round(v.dataVlue)>100?100:Math.round(v.dataVlue);
+					else if(i==1)
+					{
+						tempData=0;
+					}
+					else if(i==2)
+					{
+						tempData=10;
+					}
+					else
+					{
+						tempData=35;
 					}
 					
 					title = tempData + '<span style="font-size: 14px;">%</span>';
@@ -115,7 +132,7 @@ define(function(require){
 					
 					setPiecharts(id,title,zbfxName,titleY,subtitleY,zbfxData,pieColors,color);
 				});
-			}, 2000 );
+			}, 500 );
            
         }
         
@@ -220,6 +237,7 @@ define(function(require){
 	$('#gyxtxlSel').on('change', function(){
 			var $this = $(this);
 			var selected = $this.find('option:selected');
+			
 			$("#HiddengyxtxlSel").val(selected.text());
 			var optionid1="",optionid2="";
 			var optionList=$('#gyxtxlSel option:selected').attr("id").split('-');
@@ -231,7 +249,7 @@ define(function(require){
 					projectid:projectid,
 					optionid1:optionList[0],
 					optionid2:optionList[1],
-					dateStar:dateStar
+					dateStar:'2015-12-01'
 				 },
 				 done:highchartsJsonp
 			 });
@@ -285,7 +303,6 @@ define(function(require){
 				//});
 				$("#spgyxtxlSel").html(currentValue+"%");
 				options.series = sData;
-				options.series.name = 'Tokyo';
 				options.xAxis.categories=["0点","1点","2点","3点","4点","5点","6点","7点","8点","9点","10点","11点","12点","13点","14点","15点","16点","17点","18点","19点","20点","21点","22点","23点"];
 				options.chart.renderTo = parameter.id;
 				options.exporting={enabled:false};
@@ -293,12 +310,13 @@ define(function(require){
 
 				return;
 			}
+			
 			$("#spgyxtxlSel").html(0+"%");
-			options.series[0] = {};
+			options.series= [];
 			options.chart.renderTo = parameter.id;
 			options.exporting={enabled:false};
-
 			chartGH=new Highcharts.Chart(options);
+			$(".highcharts-legend").find("span").text("aaaaaa");
 				//chart=null;
 			
          }

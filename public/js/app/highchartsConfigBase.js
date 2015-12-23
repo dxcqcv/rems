@@ -43,7 +43,7 @@ define(function(require){
             title: {
                 text: null 
             },
-             plotLines: [{value:10,color: 'green',dashStyle:'shortdash',width:2,zIndex:10, label: {text: '约束性指标',align:'left'}},{value:20,color: 'red',dashStyle:'shortdash',width:2,zIndex:10, label: {text: '引导性指标',align:'right'}}]
+             plotLines: [{value:10,color: 'green',dashStyle:'shortdash',width:0,zIndex:10, label: {text: '约束性指标',align:'left'}},{value:20,color: 'red',dashStyle:'shortdash',width:0,zIndex:10, label: {text: '引导性指标',align:'right'}}]
         },
         series: [{}]
     };
