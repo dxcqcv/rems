@@ -15,8 +15,8 @@ define(function(require) {
                          // 日期
 		var dateFlag = 1, dateTips = 1;
 		var oldDate; //防止重复
-		//var dateStar = '2015-09-01';
-        var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
+		var dateStar = '2015-12-15';
+        //var dateStar = moment().format('YYYY-MM-DD'); //初始化查询时间
 		// 日月年
 		//jgfxClick('.date-controls-box', 'button', jsonpPath);
 		globalTools.realClick('.date-controls-box', 'button', setDate, globalTools);

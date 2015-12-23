@@ -14,7 +14,7 @@ define(function(require) {
       , api = require('app/getApi')
       ;
     (function() {
-        // if(window.localStorage){
+                // if(window.localStorage){
         //  alert('This browser supports localStorage');
         // }else{
         //  alert('This browser does NOT support localStorage');
@@ -51,13 +51,18 @@ define(function(require) {
                 var cellWidth = $("#tbyDyrb colgroup").find("col").eq(0).width();
                 
                 var colNumber = Math.round(100/cellWidth);
-                var htmlInputString = "<tr id='codesTr' style='display:none;'>";
+                var htmlInputString = "<tr>";
                 for (var i = 0; i < colNumber; i++) {
-                    htmlInputString += '<th width="'+cellWidth+'%" data-field="P'+i+'">P'+i+'</th> ';
+                    htmlInputString += '<th width="'+cellWidth+'%" data-field="P'+i+'"></th> ';
                 };
                 htmlInputString += "</tr>";
                 
-            $("#tbyDyrb thead").prepend(htmlInputString);
+            
+             var checkString = generateOneLineCheckboxHtml(colNumber);
+             console.log(checkString);
+             
+             $("#tbyDyrb thead").append(checkString);
+          // $("#tbyDyrb thead").append(htmlInputString);
                 $("#tbyDyrb colgroup").remove();
                 console.log("iok");
                 
@@ -134,7 +139,7 @@ define(function(require) {
         //导出excel按钮事件：
         
         $("#exportExcelBtn").on('click',function(){
-            alert("iioioi");
+            
             resetChartsForExport();
             $('#myModal-dyrb').modal();
             // var tmpChart = new Highcharts.Chart({
@@ -327,24 +332,27 @@ define(function(require) {
 
         function generateOneLineCheckboxHtml(oneLineData) {
             var thisLineHtml = '<tr>';
-            var oneColumn = null;
-            for (var i = 0; i < oneLineData.length; i++) {
+            var oneColumn = "";
+            for (var i = 0; i < oneLineData; i++) {
                 if (i == 0)
                 {
-                    oneColumn = '<td style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;">' +
-                                     '全选<input type="checkbox" id="tchkDyrbPa" />' +
-                                    '</td>';
+                    oneColumn += '<th data-field="P'+i+'" style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;">' +
+                                     '全选<input type="checkbox" id="chkDyrbP" />' +
+                                    '</th>';
                 }
                 else
                 {
-                    oneColumn = '<td style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;">' +
-                                        '<input type="checkbox"  id="tchkDyrbP' + i + '"/>' +
-                                    '</td>';
+                    oneColumn += '<th data-field="P'+i+'" style="width: 300px; text-align: center; vertical-align: middle; word-wrap: break-word;">' +
+                                        '<input type="checkbox"  id="chkDyrbP' + i + '"/>' +
+                                    '</th>';
                 }
 
-                thisLineHtml = thisLineHtml + oneColumn;
+               
             }
-            thisLineHtml = thisLineHtml + '</tr>';
+
+
+            thisLineHtml ='<tr>' + oneColumn + '</tr>';
+
             return thisLineHtml;
         }
 
@@ -485,14 +493,7 @@ define(function(require) {
                 selectParameterIndexes.push(14);
                 selectParameters.push("P14");
             }
-            if (chkDyrbP15.checked == true) {
-                selectParameterIndexes.push(15);
-                selectParameters.push("P15");
-            }
-            if (chkDyrbP16.checked == true) {
-                selectParameterIndexes.push(16);
-                selectParameters.push("P16");
-            }
+            
 
             var xlabels = new Array();
             //Json方式
@@ -680,14 +681,7 @@ define(function(require) {
                 selectParameterIndexes.push(14);
                 selectParameters.push("P14");
             }
-            if (chkDyrbP15.checked == true) {
-                selectParameterIndexes.push(15);
-                selectParameters.push("P15");
-            }
-            if (chkDyrbP16.checked == true) {
-                selectParameterIndexes.push(16);
-                selectParameters.push("P16");
-            }
+           
 
             var xlabels = new Array();
             //Json方式
@@ -789,7 +783,7 @@ define(function(require) {
                     },
                     labels: {
                         formatter: function () {
-                            return this.value + dyrb_Parameter[selectParameterIndexes[i]-1].unit;
+                            return this.value + dyrb_Parameter[selectParameterIndexes[i]-1];
                         },
                         style: {
                             color: dyrb_Parameter[selectParameterIndexes[i]-1].color
@@ -807,7 +801,7 @@ define(function(require) {
                         yAxis: i,
                         data: thisSeriesData,
                         tooltip: {
-                            valueSuffix: dyrb_Parameter[selectParameterIndexes[i]-1].unit
+                            valueSuffix: dyrb_Parameter[selectParameterIndexes[i]-1]
                         }
                     }
                 );

@@ -17,8 +17,8 @@ define(function(require){
       ;
 	  
       (function(){
-	  //var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
-	  var dateStar =moment().format('YYYY-MM-DD');
+	  var dateStar ='2015-12-15' //moment().format('YYYY-MM-DD');
+	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var date = new Date ();
 	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =date.getHours();//moment().format('hh');
@@ -285,6 +285,7 @@ define(function(require){
 				//});
 				$("#spgyxtxlSel").html(currentValue+"%");
 				options.series = sData;
+				options.series.name = 'Tokyo';
 				options.xAxis.categories=["0点","1点","2点","3点","4点","5点","6点","7点","8点","9点","10点","11点","12点","13点","14点","15点","16点","17点","18点","19点","20点","21点","22点","23点"];
 				options.chart.renderTo = parameter.id;
 				options.exporting={enabled:false};
@@ -296,6 +297,7 @@ define(function(require){
 			options.series[0] = {};
 			options.chart.renderTo = parameter.id;
 			options.exporting={enabled:false};
+
 			chartGH=new Highcharts.Chart(options);
 				//chart=null;
 			
