@@ -18,8 +18,8 @@ define(function(require) {
 		$("#subTitleNav").text("");
 
 		//var pid = projectid;
-		var zdbgStart = $('#zdbgStart'),
-			zdbgEnd = $('#zdbgEnd');
+		var zdbgStart = $('#zdbgStart');
+		var zdbgEnd = $('#zdbgEnd');
 		var loadConfig = [
 			['#zdbg'], 0
 		];
@@ -615,8 +615,9 @@ define(function(require) {
 			if ($this.prop('checked') && id === 'glj') {
 				console.log('供冷及');
 				groupType = 0;
-				zdbgStart.data("DateTimePicker").date('2015-10-31');
 				zdbgEnd.data("DateTimePicker").date('2015-05-01');
+				zdbgStart.data("DateTimePicker").date('2015-10-31');
+				
 			} else if ($this.prop('checked') && id === 'grj') {
 				console.log('供热及');
 				groupType = 1;
@@ -647,6 +648,8 @@ define(function(require) {
 			//时间控件
 		}
 		zdbgStart.on('dp.change', function(ev) {
+			
+			
 			dateStar = ev.date.format('YYYY-MM-DD');
 			zdbgEnd.data("DateTimePicker").maxDate(ev.date);
 			
