@@ -616,13 +616,13 @@ define(function(require) {
 				console.log('供冷及');
 				groupType = 0;
 				zdbgEnd.data("DateTimePicker").date('2015-05-01');
-				zdbgStart.data("DateTimePicker").date('2015-10-31');
+				zdbgStart.data("DateTimePicker").date('2015-9-30');
 				
 			} else if ($this.prop('checked') && id === 'grj') {
 				console.log('供热及');
 				groupType = 1;
 				zdbgStart.data("DateTimePicker").date('2016-04-30');
-				zdbgEnd.data("DateTimePicker").date('2015-11-01');
+				zdbgEnd.data("DateTimePicker").date('2015-10-01');
 			}
 		});
 
@@ -634,7 +634,7 @@ define(function(require) {
 			zdbgEnd.datetimepicker(datetimepickerObjZdbg);
 			//zdbgStart.data("DateTimePicker").date('2015-10-31');
 			//zdbgEnd.data("DateTimePicker").date('2015-05-01');
-			zdbgStart.data("DateTimePicker").date("2015-10-31");
+			zdbgStart.data("DateTimePicker").date("2015-09-30");
 			zdbgEnd.data("DateTimePicker").date("2015-05-01");
 		} else { //供热季 
 			$('#grj').prop('checked', true);
@@ -644,7 +644,7 @@ define(function(require) {
 			//zdbgStart.data("DateTimePicker").date('2016-04-30');
 			//zdbgEnd.data("DateTimePicker").date('2015-11-01');
 			zdbgStart.data("DateTimePicker").date('2016-04-30');
-			zdbgEnd.data("DateTimePicker").date('2015-11-01');
+			zdbgEnd.data("DateTimePicker").date('2015-10-01');
 			//时间控件
 		}
 		zdbgStart.on('dp.change', function(ev) {
@@ -656,11 +656,11 @@ define(function(require) {
 			var dateBeginTime="",datEndTime="";
 			if(groupType==1)
 			{
-				dateBeginTime='2015-11-01',datEndTime='2016-04-30';
+				dateBeginTime='2015-10-01',datEndTime='2016-04-30';
 			}
 			else
 			{
-				dateBeginTime='2015-05-01',datEndTime='2015-10-31';
+				dateBeginTime='2015-05-01',datEndTime='2015-09-30';
 			}
 			if(dateStar>datEndTime)
 			{
@@ -678,11 +678,11 @@ define(function(require) {
 			var dateBeginTime="",datEndTime="";
 			if(groupType==1)
 			{
-				dateBeginTime='2015-11-01',datEndTime='2016-04-30';
+				dateBeginTime='2015-10-01',datEndTime='2016-04-30';
 			}
 			else
 			{
-				dateBeginTime='2015-05-01',datEndTime='2015-10-31';
+				dateBeginTime='2015-05-01',datEndTime='2015-09-31';
 			}
 			//alert(dateEnd+"|"+dateBeginTime);
 			if(dateEnd<dateBeginTime)
