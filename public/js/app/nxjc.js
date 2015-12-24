@@ -17,9 +17,9 @@ define(function(require){
       ;
 	  
       (function(){
-	  //var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
-	  var dateStar =moment().format('YYYY-MM-DD');
-	  var date = new Date ();
+      var dateStar ='2015-12-14' //moment().format('YYYY-MM-DD');
+	  //var dateStar =moment().format('YYYY-MM-DD');
+	  var date = new Date ('2015-12-14');
 	  //var dateStar =moment().format('YYYY-MM-DD');
 	  var dateStarHour =date.getHours();//moment().format('hh');
 	  var dateHour="";
