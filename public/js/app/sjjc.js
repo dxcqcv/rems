@@ -17,7 +17,8 @@ define(function(require) {
 
 	(function() {
 
-		var dateSta = moment().format('YYYY-MM-DD');
+		//var dateSta = moment().format('YYYY-MM-DD');
+		var dateSta = '2015-12-15';
 		//下拉选择
 		$('#classTypeList').selectpicker({});
 
