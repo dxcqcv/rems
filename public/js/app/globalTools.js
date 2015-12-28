@@ -184,6 +184,10 @@ define(function(require) {
               });
         },
         ghnCallback: function (data,parameter) {
+			if(parameter.name.indexOf('耗能'))
+			{
+				 parameter.options.yAxis.title.text="kwh";
+			}
             var ghnChart
             parameter.options.chart.renderTo = parameter.id;
             parameter.options.lang.noData = '暂无数据';
@@ -206,6 +210,15 @@ define(function(require) {
                         '<div class="gnhn-modal-charts" id="gnhnHaodianCharts'+i+'"></div>'+
                     '</div>';
                 body.append(str);
+				if(v.name=="耗电")
+				{
+					parameter.options.yAxis.title.text="kwh";
+				}
+				if(v.name=="耗气" || v.name=="耗水")
+				{
+					parameter.options.yAxis.title.text="m3/h";
+				}
+				
                 parameter.options.chart.renderTo = "gnhnHaodianCharts"+i;
                 parameter.options.yAxis.plotLines[0].color = parameter.color;
                 parameter.options.xAxis.categories = v.list[0].xData;

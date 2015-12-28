@@ -202,7 +202,7 @@ define(function(require) {
             sData1.push(yItem)
 
             tmp.sData = sData1;
-
+			parameter.unit="%";
             globalTools.tbhbCallback(tmp, parameter);
         }
 
