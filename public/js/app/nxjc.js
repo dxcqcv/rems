@@ -54,7 +54,7 @@ define(function(require){
         demand.start({url:'/api/effiCheck/sysindex.json',data:{projectid:projectid,dateHour:dateHour},done:zbfxPie});
 
         function zbfxPie(data) {
-			setTimeout(function(){
+            //setTimeout(function(){
 				var id;
 				var title;
 				var zbfxCharts = $('.xtzb-charts').height(); 
@@ -77,10 +77,12 @@ define(function(require){
 					obj.value=Math.round(item.dataVlue);
 					tempArr.push(obj);
 				});
-				highchartsPieData = tempArr;
+
+				//highchartsPieData = tempArr;
+                highchartsPieData = data;
 				
 				
-				$.each(data.status.data.list, function(i,v){
+                $.each(data.status.data.list, function(i,v){
 					switch(i) {
 						case 0: id = 'pieChart1'; pieColors = ['#7cc576', '#e8ebeb']; color = '#7cc576'; break; 
 						case 1: id = 'pieChart2'; pieColors = ['#1cbbb4', '#e8ebeb']; color = '#1cbbb4'; break; 
@@ -132,7 +134,7 @@ define(function(require){
 					
 					setPiecharts(id,title,zbfxName,titleY,subtitleY,zbfxData,pieColors,color);
 				});
-			}, 500 );
+            //}, 500 );
            
         }
         
@@ -149,14 +151,18 @@ define(function(require){
                            .end()
                            .removeClass('col-md-6 col-lg-6').addClass('col-md-12 col-lg-12')
                            .css({'height':'100%'})
-                           .find('.xtzb-charts').each(function(){
+                           .find('.xtzb-charts').each(function(i,v){
+        console.log('pie data',highchartsPieData)
+
+                                    //$(v).highcharts() 
                                     zbfxPie(highchartsPieData);
                                })
                     ; 
                 } else {
                    $this.removeClass('card-button-resize-small').parents('.my-card').removeClass('col-md-12 col-lg-12').addClass('col-md-6 col-lg-6')
                        .css({'height':'50%'})
-                       .find('.xtzb-charts').each(function(){
+                       .find('.xtzb-charts').each(function(i,v){
+                                    //$(v).highcharts() 
                                     zbfxPie(highchartsPieData);
                                })
                    ;
@@ -176,6 +182,7 @@ define(function(require){
             optionsDonut.series[0].data = data;
             optionsDonut.colors = pieColors;
             var piecharts = new Highcharts.Chart(optionsDonut); 
+//piecharts.highcharts().reflow() 
 			$("text[y='152']").attr("y","165");
         }
       //耗能信息
