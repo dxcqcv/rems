@@ -214,6 +214,14 @@ define(function(require) {
 				$container.find("svg").attr("height",parseInt($container.find("svg").attr("height"))+5);
 			}
 			
+			var $container2 = $("#ztnyjg [class^='highcharts-container']");
+			var styles2 = $container.attr("style");
+			if(styles2){
+				var  newStyle2= styles.replace(new RegExp("hidden"),"none");		
+				$container2.attr("style",newStyle2);
+				$container2.find("svg").attr("height",parseInt($container2.find("svg").attr("height"))+5);
+			}
+			
 			//$("#highcharts-11").attr("style",styles);
 			
 			

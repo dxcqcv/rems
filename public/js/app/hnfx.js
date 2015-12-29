@@ -31,10 +31,10 @@ var loadConfig = [['.my-card'], 1];
 var url = '/api/consumptionEnergyInfo/list.json';
 var parameterConfig = {
 				dir: {
-					today: ['drgnsp', '当日耗能水平'],
-					yestday: ['qrgnsp', '前日耗能水平'],
-					month: ['dygnsp', '当月耗能水平'],
-					year: ['dngnsp', '当年耗能水平']
+					today: ['drgnsp', '耗能量'],
+					yestday: ['qrgnsp', '耗能量'],
+					month: ['dygnsp', '耗能量'],
+					year: ['dngnsp', '耗能量']
 				},
 				id: 'drgnsp',
 				name: '',

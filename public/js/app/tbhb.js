@@ -87,7 +87,7 @@ define(function(require) {
                     dateFlag03 = dateFlag 
                     if(tabFlag === 1)   url = '/api/CSInfo/use/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/use/list2.json';
-                    unit = 'kWh';
+                    unit = '';
                     dateFn = globalTools.tbhbLines;
                     optionsSel =optionsLines; 
                     charFlag = 2;
@@ -96,7 +96,7 @@ define(function(require) {
                     dateFlag04 = dateFlag
                     if(tabFlag === 1)   url = '/api/CSInfo/saving/list1.json';    
                     else if(tabFlag === 2) url = '/api/CSInfo/saving/list2.json';
-                    unit = 'kWh';
+                    unit = '';
                     dateFn = globalTools.tbhbLines;
                     optionsSel =optionsLines; 
                     charFlag = 2;

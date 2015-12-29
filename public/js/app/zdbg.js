@@ -15,7 +15,6 @@ define(function(require) {
 
 		datapicker = require('bootstrap-datetimepicker.min');
 	(function() {
-		$("#subTitleNav").text("");
 
 		//var pid = projectid;
 		var zdbgStart = $('#zdbgStart');
@@ -49,6 +48,11 @@ define(function(require) {
 			done: getProjectAll
 		});
 
+		//站点选择下拉框change
+		$("#zdbgProjectSel").on("change",function(){
+			$("#subTitleNav").text($("#zdbgProjectSel").next("div").find(".dropdown-menu li[class='selected']").text());
+		});
+		
 		//项目下拉框回调
 		function getProjectAll(data) {
 			if (data.status.data != "") {
@@ -63,10 +67,11 @@ define(function(require) {
 				});
 				parameter.id = "#zdbgProjectSel";
 				globalTools.selCallback(res, parameter);
-				$("#zdbgProjectSel option").eq(1).attr("selected", true);
-				$("#zdbgProjectSel").next("div").find(".filter-option").text($("#zdbgProjectSel option").eq(1).text());
-				$("#zdbgProjectSel").next("div").find(".dropdown-menu li").eq(1).attr("class", "selected");
-				$("#subTitleNav").text($("#zdbgProjectSel option").eq(1).text());
+
+				$("#zdbgProjectSel option:contains('"+$("#subTitleNav").text()+"')").attr("selected", true);
+				$("#zdbgProjectSel").next("div").find(".filter-option").text($("#subTitleNav").text());
+				$("#zdbgProjectSel").next("div").find(".dropdown-menu li:contains('"+$("#subTitleNav").text()+"')").attr("class", "selected");
+
 
 			}
 		}

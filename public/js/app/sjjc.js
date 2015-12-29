@@ -243,6 +243,9 @@ define(function(require) {
 			sData1.push(yItem)
 			tmp.sData = sData1;
 			globalTools.tbhbCallback(tmp, parameter);
+			setTimeout(function(){
+				$("div[id^='highcharts'").css("width",$(".modal-dialog").width()-50);
+			},100);
 		}
 
 

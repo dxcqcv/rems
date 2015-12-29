@@ -44,7 +44,7 @@
 
 .jgfx-info-title {
   display: inline-block;
-  width: 130px; }
+  width: 100%; }
 
 .jgfx-info-words {
   width: 290px; }
