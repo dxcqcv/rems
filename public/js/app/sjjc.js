@@ -226,6 +226,10 @@ define(function(require) {
 
 		//解析数据，变成HighChar识别的数据格式
 		function formatZbLines(data, parameter) {
+			
+			$('#sjjcCharts').css("width",$(".modal-dialog").width()-20);
+			
+			
 			var result = data.status.data.list;
 			var tmp = {};
 			var sData1 = [];
@@ -243,12 +247,15 @@ define(function(require) {
 			sData1.push(yItem)
 			tmp.sData = sData1;
 			globalTools.tbhbCallback(tmp, parameter);
-			setTimeout(function(){
-				$("div[id^='highcharts'").css("width",$(".modal-dialog").width()-50);
-			},100);
+			// setTimeout(function(){
+				// $("div[id^='highcharts'").css("width",$(".modal-dialog").width()-50);
+				// $(".highcharts-container").css("overflow","none").css("overflow-x","scroll");
+				// $(".highcharts-container svg").css("width","850px");
+			// },100);
 		}
 
 
+		
 	}());
 
 });

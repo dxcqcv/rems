@@ -29,6 +29,7 @@ define(function(require) {
 
 var loadConfig = [['.my-card'], 1];
 var url = '/api/consumptionEnergyInfo/list.json';
+optionsBase.yAxis.title.text='khw';
 var parameterConfig = {
 				dir: {
 					today: ['drgnsp', '耗能量'],
@@ -43,6 +44,7 @@ var parameterConfig = {
 todayGroup:todayGroup, yesterdayGroup:yesterdayGroup, monthGroup:monthGroup, yearGroup:yearGroup,
 				options: optionsBase
 			};
+		
 		//弹出层
 		$('.gnhnIcon').on('click', globalTools.modalFn);
 

@@ -36,6 +36,7 @@ html, body { height: 100%; font-family: "Helvetica Neue",Helvetica, "微软雅�
 table {table-layout: fixed; word-break:break-all;}
 
 .my-top-brand {position: relative; padding-left: 60px; margin-right: 25px;}
+.my-top-brand:hover { color: #fff!important;}
 .rems-logo { background: url('../img/header/rems-logo.png') no-repeat; width: 32px; height: 31px; position: absolute; top: 7px; left: 15px;}
 
 .my-content {

@@ -7,12 +7,12 @@ var router = express.Router();
 //var remoteApiHost = "http://localhost:8080";
 //var remoteApiHost = "http://117.144.16.98:8080";
 //var remoteApiHost = "http://10.20.1.218:8080";
-//var remoteApiHost = "http://10.20.1.42:8888";
+var remoteApiHost = "http://10.20.1.42:8888";
 //var remoteApiHost = "http://10.20.1.229:8080";
 //var remoteApiHost = "http://10.20.1.167:8888";
 //var remoteApiHost = "http://10.20.1.216:8080";
 //var remoteApiHost = "http://10.20.1.231:8080";
-var remoteApiHost = "http://10.20.1.4:8080";
+//var remoteApiHost = "http://10.20.1.4:8080";
 var remoteApiPath = "/rems";
 
 

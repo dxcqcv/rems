@@ -57,6 +57,9 @@ table {
   padding-left: 60px;
   margin-right: 25px; }
 
+.my-top-brand:hover {
+  color: #fff !important; }
+
 .rems-logo {
   background: url("../img/header/rems-logo.png") no-repeat;
   width: 32px;
