@@ -50,6 +50,13 @@ router.get('/xmgl', function(req, res) {
     req.session.title = req.query.title;
     res.render('xmgl', { title: 'Home', projectid: req.session.projectid, projectTitle: req.session.title });
 });
+//戴敏
+router.get('/xmgl-dm', function(req, res) {
+    
+    req.session.projectid = req.query.projectid ;
+    req.session.title = req.query.title;
+    res.render('xmgl-dm', { title: 'Home', projectid: req.session.projectid, projectTitle: req.session.title });
+});
 router.get('/sjjc', function(req, res) {
     res.render('sjjc', { title: 'Home' });
 });

@@ -1,0 +1,39 @@
+<% include header-top.html %>
+<link rel="stylesheet" href="/css/xmgl-dm.css" media="all">
+<% include header-bottom.html %>
+        <!--项目概览-->        
+        <div id="xmgl" class="my-section xmgl-wrapper">
+			<div class="box">	
+						<div class="pic">
+							<ul>
+								<li style="background:url(images/bg1.jpg) center">
+									<img class="img1" src="/img/xmgl/bg1.png" />
+								</li>
+								<li style="background:url(images/bg2.jpg) center">
+									<img class="img1" src="/img/xmgl/bg2.png" />
+								</li>
+								<li style="background:url(images/bg3.jpg) center">
+									<img class="img1" src="/img/xmgl/bg3.png" />
+								</li>
+								<li style="background:url(images/bg4.jpg) center">
+									<img class="img1" src="/img/xmgl/bg4.png" />
+								</li>
+							</ul>
+						</div>
+						<div class="all">
+							<ul>
+								<li class="bg">第一张</li>
+								<li class="bg">第二张</li>
+								<li class="bg">第三张</li>
+								<li class="bg">第四张</li>
+							</ul>
+						</div>
+					</div>
+				<div class="btn_sp">
+		</div>
+        <script>
+            requirejs(['../js/common'], function (common) {
+                requirejs(['app/xmgl-dm']);
+            });
+        </script>
+<% include footer.html %>

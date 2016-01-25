@@ -1,0 +1,11 @@
+.xmgl-wrapper {text-align: center;overflow: hidden;background: #000; }
+.box{width:1280px;height:562px;margin:0 auto;position:relative;}
+		.pic{width:1280px;height:528px;overflow:hidden;}
+		.pic ul li{list-style-type:none;width:1280px;height:528px;position:relative;overflow:hidden;}
+		.pic ul li .img1{position:absolute;left:-1280px;top:0px;width:1280px;height:528px;}
+		.pic ul li .img2{position:absolute;left:-15px;top:0px;display:none;width:1280px;height:562px;}
+		.all{width: 100px;position: absolute;bottom: -3px; left: 37%;}
+		.all ul{width: 450px;}
+		.all ul li{color: white; list-style-type:none;width:80px;height:25px;float:left;margin-right:5px;cursor:pointer;background-color: #00b9cb;}
+		.all ul .bg{background:#00b9cb;width: 90px;height: 21px;border:none;}
+		.btn_sp{text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';}
